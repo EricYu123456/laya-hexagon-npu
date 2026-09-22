@@ -121,11 +121,11 @@ GitHub has a strict **100 MB per file limit**. The following binary weights exce
 
 | File Path | Size | Description | How to Obtain |
 | :--- | :---: | :--- | :--- |
-| `npu/modernbert_clamped_qdq.onnx` | **106.3 MB** | Quantized 22-layer Hexagon HTP QDQ model | [Google Drive Link](#) / Build via script |
+| `npu/modernbert_clamped_qdq.onnx` | **106.3 MB** | Quantized 22-layer Hexagon HTP QDQ model | [GitHub Releases](https://github.com/EricYu123456/laya-hexagon-npu/releases/tag/v1.0.0) / Build via script |
 | `models/multilingual/model.safetensors` | **615 MB** | Hugging Face base PyTorch weights | `python download.py` |
 
 > 💡 **Download Options**:
-> - **Option A (Google Drive)**: [Download pre-converted models from Google Drive](#) *(Paste your Google Drive link here)* and extract to `npu/` and `models/`.
+> - **Option A (GitHub Releases - Recommended)**: Directly download `modernbert_clamped_qdq.onnx` from [v1.0.0 Release Assets](https://github.com/EricYu123456/laya-hexagon-npu/releases/download/v1.0.0/modernbert_clamped_qdq.onnx) and place it under `npu/`.
 > - **Option B (One-Click Local Build)**: Run `./download_models.sh`. It automatically pulls weights from Hugging Face and quantizes `modernbert_clamped_qdq.onnx` directly on the device in ~2 minutes.
 
 ---

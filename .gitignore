@@ -21,7 +21,7 @@ models/*.safetensors
 models/*/*.safetensors
 
 # Quantized & Exported ONNX models (>100 MB)
-# Can be generated using npu/build_clamped_22l.py or downloaded from Release / Google Drive
+# Can be generated using npu/build_clamped_22l.py or downloaded from GitHub Releases
 *.onnx
 *.onnx.data
 npu/*.onnx
