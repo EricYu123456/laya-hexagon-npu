@@ -1,0 +1,18 @@
+[Unit]
+Description=Laya decision API on Rubik Pi 3
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/ubuntu/laya-service
+EnvironmentFile=/home/ubuntu/laya-service/service.env
+ExecStart=/home/ubuntu/laya-service/.venv/bin/uvicorn app:app --host 0.0.0.0 --port 8000 --workers 1 --limit-concurrency 8 --timeout-keep-alive 5
+Restart=on-failure
+RestartSec=10
+CPUAccounting=true
+MemoryAccounting=true
+MemoryMax=4G
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

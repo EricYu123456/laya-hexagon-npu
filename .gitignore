@@ -1,0 +1,42 @@
+# Virtual environments
+.venv/
+*/.venv/
+venv/
+env/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Model checkpoints and weights (>100 MB)
+# Base PyTorch weights can be downloaded via download.py
+*.safetensors
+models/*.safetensors
+models/*/*.safetensors
+
+# Quantized & Exported ONNX models (>100 MB)
+# Can be generated using npu/build_clamped_22l.py or downloaded from Release / Google Drive
+*.onnx
+*.onnx.data
+npu/*.onnx
+
+# Experimental, logs and vendor blobs
+*.log
+*.csv
+*.strace
+*profile*.json
+npu/validator*/
+npu/vendor/
+npu/debs/
+npu/legacy/
+
+# IDE & OS
+.DS_Store
+.vscode/
+.idea/

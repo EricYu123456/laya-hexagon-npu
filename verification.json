@@ -1,0 +1,93 @@
+{
+  "health": {
+    "status": "ready",
+    "checkpoint": "multilingual",
+    "device": "npu",
+    "threads": 4,
+    "revision": "1c5edc17a7acd8701df6fc341c0d179f1c62c982"
+  },
+  "cold_request_ms": 281.0,
+  "warm_two_questions_median_ms": 183.4,
+  "positive": {
+    "model": "laya-rl-agent",
+    "answers": {
+      "department": {
+        "type": "choice",
+        "choice": "billing",
+        "probabilities": {
+          "billing": 0.8221,
+          "technical": 0.1524,
+          "sales": 0.0255
+        },
+        "confidence": 0.5072,
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "refund_requested": {
+        "type": "noul",
+        "noul": 0.9883,
+        "confidence": 0.9883,
+        "action": {
+          "act_probability": 1.0
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 98,
+      "output_tokens": 0
+    },
+    "elapsed_ms": 183.4,
+    "checkpoint": "multilingual"
+  },
+  "negative": {
+    "model": "laya-rl-agent",
+    "answers": {
+      "refund_requested": {
+        "type": "noul",
+        "noul": 0.641,
+        "confidence": 0.641,
+        "action": {
+          "act_probability": 1.0
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 46,
+      "output_tokens": 0
+    },
+    "elapsed_ms": 78.8,
+    "checkpoint": "multilingual"
+  },
+  "negative_semantic_check_passed": false,
+  "score": {
+    "model": "laya-rl-agent",
+    "answers": {
+      "urgency": {
+        "type": "score",
+        "score": 1.9552,
+        "legend": {
+          "0": "not urgent",
+          "1": "soon",
+          "2": "critical deadline or blocking issue"
+        },
+        "probabilities": {
+          "0": 0.0012,
+          "1": 0.0424,
+          "2": 0.9564
+        },
+        "confidence": 0.8319,
+        "action": {
+          "act_probability": 1.0
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 48,
+      "output_tokens": 0
+    },
+    "elapsed_ms": 103.4,
+    "checkpoint": "multilingual"
+  },
+  "invalid_requests": "422 as expected"
+}

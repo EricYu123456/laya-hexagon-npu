@@ -1,0 +1,94 @@
+[
+  {
+    "state": "我想了解你們的新方案價格。",
+    "instructions": "Does the user explicitly request a refund?",
+    "result": {
+      "model": "laya-rl-agent",
+      "answers": {
+        "refund": {
+          "type": "noul",
+          "noul": 0.0015,
+          "confidence": 0.9985,
+          "action": {
+            "act_probability": 1.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 42,
+        "output_tokens": 0
+      },
+      "elapsed_ms": 486.3,
+      "checkpoint": "multilingual"
+    }
+  },
+  {
+    "state": "I only want information about pricing. I do not want a refund.",
+    "instructions": "Does the user explicitly request a refund?",
+    "result": {
+      "model": "laya-rl-agent",
+      "answers": {
+        "refund": {
+          "type": "noul",
+          "noul": 0.6914,
+          "confidence": 0.6914,
+          "action": {
+            "act_probability": 1.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 48,
+        "output_tokens": 0
+      },
+      "elapsed_ms": 363.2,
+      "checkpoint": "multilingual"
+    }
+  },
+  {
+    "state": "我只是想查詢新方案的價格，不需要退款。",
+    "instructions": "使用者是否明確要求退款？",
+    "result": {
+      "model": "laya-rl-agent",
+      "answers": {
+        "refund": {
+          "type": "noul",
+          "noul": 0.9172,
+          "confidence": 0.9172,
+          "action": {
+            "act_probability": 1.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 45,
+        "output_tokens": 0
+      },
+      "elapsed_ms": 419.0,
+      "checkpoint": "multilingual"
+    }
+  },
+  {
+    "state": "我的信用卡被重複扣款了，請幫我退款。",
+    "instructions": "使用者是否明確要求退款？",
+    "result": {
+      "model": "laya-rl-agent",
+      "answers": {
+        "refund": {
+          "type": "noul",
+          "noul": 0.9945,
+          "confidence": 0.9945,
+          "action": {
+            "act_probability": 1.0
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 46,
+        "output_tokens": 0
+      },
+      "elapsed_ms": 349.8,
+      "checkpoint": "multilingual"
+    }
+  }
+]
