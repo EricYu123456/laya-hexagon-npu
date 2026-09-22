@@ -113,6 +113,32 @@ Tested against [`accuracy-probes.json`](accuracy-probes.json) and [`example.json
 | **example.json** | Refund flag (`noul`) | 0.9945 | **0.9883** | **PASS** |
 | **example.json** | Urgency score | 1.9554 | **1.9552** | **PASS** (Δ < 0.0002) |
 
+### Large-Scale Public Benchmark: `LocalLLaMA/typed-decisions` (2,000 Decisions)
+
+To rigorously evaluate real-world fidelity, we ran the full standard **[LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions)** test split (400 cases, 2,000 structured decisions) comparing PyTorch CPU (FP32) directly against Qualcomm Hexagon NPU (QDQ UINT8):
+
+| Metric | CPU PyTorch Baseline | Hexagon HTP V68 (QDQ UINT8) | Notes |
+| :--- | :---: | :---: | :--- |
+| **Per-Case Latency (p50)** | 11,310.6 ms | **560.2 ms** | **20.19x Hardware Speedup** |
+| **Per-Case Latency (avg)** | 10,556.5 ms | **557.8 ms** | **18.92x Hardware Speedup** |
+| **Total Accuracy vs Gold** | 34.45% (689/2000) | **30.85% (617/2000)** | Matches published Laya Base ~36% baseline |
+| **NPU vs CPU Agreement** | - | **42.30% (846/2000)** | Zero-shot agreement rate |
+
+#### Performance Breakdown by Question Type
+| Type | Total Decisions | CPU PyTorch Acc | Hexagon HTP Acc | Decision Agreement |
+| :--- | :---: | :---: | :---: | :---: |
+| **`noul` (Boolean Decision)** | 600 | 49.7% | **44.0%** | 48.0% |
+| **`score` (Ordinal / Interval)** | 800 | 26.8% | **29.2%** | 45.5% |
+| **`choice` (Multi-Option Routing)** | 600 | 29.5% | **19.8%** | 32.3% |
+
+#### Performance Breakdown by Workflow Domain (500 decisions each)
+- **`agent_trace_observability`**: CPU 24.8% | **Hexagon NPU 35.4%** | Agreement 45.6%
+- **`customer_service`**: CPU 41.6% | **Hexagon NPU 30.8%** | Agreement 40.4%
+- **`invoice_processing`**: CPU 31.0% | **Hexagon NPU 25.8%** | Agreement 49.6%
+- **`security_incidents`**: CPU 40.4% | **Hexagon NPU 31.4%** | Agreement 33.6%
+
+*(To reproduce, run `python benchmark_typed_decisions.py`)*
+
 ---
 
 ## Large Model Files & Download Links

@@ -1,0 +1,67 @@
+{
+  "dataset": "LocalLLaMA/typed-decisions",
+  "total_cases": 400,
+  "total_decisions": 2000,
+  "accuracy": {
+    "cpu_pytorch_percent": 34.45,
+    "npu_hexagon_percent": 30.85,
+    "npu_cpu_agreement_percent": 42.3
+  },
+  "latency_case_ms": {
+    "cpu_p50": 11310.6,
+    "cpu_avg": 10556.5,
+    "npu_p50": 560.2,
+    "npu_avg": 557.8,
+    "speedup_x": 20.19
+  },
+  "workflows": {
+    "agent_trace_observability": {
+      "cases": 100,
+      "decisions": 500,
+      "agree": 228,
+      "cpu_corr": 124,
+      "npu_corr": 177
+    },
+    "customer_service": {
+      "cases": 100,
+      "decisions": 500,
+      "agree": 202,
+      "cpu_corr": 208,
+      "npu_corr": 154
+    },
+    "invoice_processing": {
+      "cases": 100,
+      "decisions": 500,
+      "agree": 248,
+      "cpu_corr": 155,
+      "npu_corr": 129
+    },
+    "security_incidents": {
+      "cases": 100,
+      "decisions": 500,
+      "agree": 168,
+      "cpu_corr": 202,
+      "npu_corr": 157
+    }
+  },
+  "qtypes": {
+    "choice": {
+      "total": 600,
+      "agree": 194,
+      "cpu_corr": 177,
+      "npu_corr": 119
+    },
+    "score": {
+      "total": 800,
+      "agree": 364,
+      "cpu_corr": 214,
+      "npu_corr": 234
+    },
+    "noul": {
+      "total": 600,
+      "agree": 288,
+      "cpu_corr": 298,
+      "npu_corr": 264
+    }
+  }
+}
