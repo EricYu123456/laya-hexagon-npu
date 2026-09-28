@@ -1,0 +1,12 @@
+{
+  "verified_utc": "2026-09-28T17:00:14Z",
+  "source_commit": "f03af31",
+  "fresh_source_build": "folded1024-long-reproduction.json",
+  "uncorrected_source_sha256": "8d7a7f1fdbfd01fb58026eb5ece936d4cfb410b1e993fa97b7c3517a587da008",
+  "correction_biases_sha256": "150da10b34f5d45db052b5d5c29ed6c2ddbffcaa6d133d0df03ec071e88a0c87",
+  "zero_outputs_sha256": "e54e0e70b8a2d32638e56145158ef57b6c9936c076078cf6e433794ccb5d1630",
+  "corrected_graph_sha256": "cfd85315c4ee6b5bfaeb24ced44bba3cf6ebb37ff421efb4c65ade90c571ec64",
+  "matches_selected_pi_corrected_graph_byte_for_byte": true,
+  "command": "python -m npu.calibrate_conv_offsets apply --source .work/reproduce1024_static/backbone_1024_a16w8.onnx --out .work/conv_offsets_folded1024_long_static --target .work/reproduce1024_corrected/backbone_1024_a16w8.onnx --source-manifest .work/reproduce1024_static/manifest.json",
+  "scope": "WSL reproduced the selected corrected graph from a fresh source build and the preserved Pi zero-input measurements. This checks artifact reproduction, not full-model NPU fidelity."
+}

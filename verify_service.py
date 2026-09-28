@@ -6,6 +6,9 @@ Example:
   .venv/bin/python verify_service.py --reference .work/probe_reference_wsl.json \
       --expected-npu .work/final_probe_npu.json --output .work/service-verification.json
 This is service integration evidence, not a replacement for held-out fidelity.
+``passed`` means integration only; ``development_fidelity_passed`` separately
+applies the unchanged <=5% decision-error and mean-TV <=5% development gates.
+An expected standalone NPU report is required to certify exact API replay.
 Capture systemd/cgroup memory and deployed artifact hashes separately.
 """
 import argparse
@@ -75,13 +78,38 @@ def load_inputs(args):
     expected = None
     if args.expected_npu:
         expected = json.loads(args.expected_npu.read_text(encoding='utf-8'))
-        if (expected.get('backend') != 'npu' or expected.get('suite_sha256') != json_hash(suite)
-                or expected.get('model_files') != ref.get('model_files') or not expected.get('passed')):
-            raise ValueError('Expected NPU report must be a passing same-suite standalone hardware report')
+        if (expected.get('kind') != 'laya_probe_comparison' or expected.get('backend') != 'npu'
+                or expected.get('suite_sha256') != json_hash(suite)
+                or expected.get('reference_sha256') != sha256_file(args.reference)
+                or expected.get('model_files') != ref.get('model_files')
+                or not isinstance(expected.get('passed'), bool)):
+            raise ValueError('Expected NPU report must be a completed same-suite comparison against this exact reference')
         if [r['id'] for r in expected['records']] != [p['id'] for p in suite]:
             raise ValueError('Expected NPU report is incomplete')
-        if not all(r.get('npu_execution_verified') for r in expected['records']):
-            raise ValueError('Expected NPU report does not verify actual encoder execution')
+        buckets = sorted(expected.get('candidate_assets', {}).get('supported_buckets', []))
+        if not buckets:
+            raise ValueError('Expected NPU report has no supported buckets')
+        total_calls, total_buckets = 0, {}
+        for probe, original, candidate in zip(suite, ref['records'], expected['records']):
+            if (candidate.get('input_sha256') != original['input_sha256']
+                    or candidate.get('tokens') != original['tokens']
+                    or candidate.get('tokens_equal') is not True
+                    or candidate.get('reported_tokens_equal') is not True
+                    or candidate.get('output', {}).get('usage') != original['output']['usage']):
+                raise ValueError('Expected NPU report input/token identity differs from the reference')
+            bucket = next((b for b in buckets if b >= max(t['tokens'] for t in original['tokens'].values())), None)
+            calls = len(probe['questions'])
+            expected_delta = {'npu_calls': calls, 'cpu_fallbacks': 0, 'bucket_calls': {str(bucket): calls}}
+            if (bucket is None or candidate.get('npu_execution_verified') is not True
+                    or candidate.get('accelerator_delta') != expected_delta
+                    or candidate.get('expected_bucket_calls') != expected_delta['bucket_calls']):
+                raise ValueError('Expected NPU report does not verify actual encoder execution')
+            total_calls += calls
+            total_buckets[str(bucket)] = total_buckets.get(str(bucket), 0) + calls
+        stats = expected.get('accelerator_stats_after_measurement', {})
+        if (stats.get('cpu_fallbacks') != 0 or stats.get('npu_calls') != total_calls
+                or stats.get('bucket_calls') != total_buckets):
+            raise ValueError('Expected NPU report aggregate execution counters are inconsistent')
     return suite, ref, expected
 
 
@@ -90,7 +118,8 @@ def main(argv=None):
     parser.add_argument('--base-url', default='http://127.0.0.1:8000')
     parser.add_argument('--suite', type=Path, default=ROOT/'tests/fidelity-probes.json')
     parser.add_argument('--reference', type=Path, required=True)
-    parser.add_argument('--expected-npu', type=Path)
+    parser.add_argument('--expected-npu', type=Path,
+                        help='Completed strict NPU comparison; required for integration_passed, independently of its fidelity gate')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--timeout', type=float, default=120)
     parser.add_argument('--ready-timeout', type=float, default=300)
@@ -102,8 +131,10 @@ def main(argv=None):
               'base_url': args.base_url, 'suite_sha256': json_hash(suite),
               'reference_sha256': sha256_file(args.reference),
               'expected_npu_sha256': sha256_file(args.expected_npu) if args.expected_npu else None,
-              'records': [], 'invalid_requests': [], 'passed': False,
-              'note': 'Service integration using development probes. Separate held-out reports qualify fidelity. HTTP token usage is checked; token/marker hashes are established by separate runtime benchmarks.'}
+              'records': [], 'invalid_requests': [], 'passed': False, 'integration_passed': False,
+              'runtime_checks_passed': False, 'development_fidelity_passed': None,
+              'standalone_development_fidelity_passed': expected['passed'] if expected else None,
+              'note': 'passed is an alias for integration_passed: HTTP validation, strict NPU execution, token usage, both bucket transitions, and exact standalone NPU output replay. It is not a fidelity qualification. development_fidelity_passed separately retains the unchanged <=5% decision-error and mean-TV <=5% gates on these development probes. Separate declared evaluations qualify fidelity. Token/marker hashes are established by the standalone runtime comparison.'}
     deadline = time.monotonic() + args.ready_timeout
     try:
         print('Waiting for strict NPU readiness', flush=True)
@@ -167,16 +198,21 @@ def main(argv=None):
         report['long_short_transition_verified'] = ((768, 1024) in transitions and (1024, 768) in transitions)
         report['overall'] = summarize_decisions(metrics)
         report['health_after'] = health(args.base_url, args.timeout)
-        report['passed'] = (report['long_short_transition_verified'] and
-                            report['overall']['decision_error_percent'] <= 5 and
-                            report['overall']['total_variation']['mean'] <= .05)
+        report['development_fidelity_passed'] = (report['overall']['decision_error_percent'] <= 5 and
+                                                report['overall']['total_variation']['mean'] <= .05)
+        report['runtime_checks_passed'] = report['long_short_transition_verified']
+        report['integration_passed'] = (report['runtime_checks_passed'] and expected is not None and
+                                        all(r['standalone_npu_outputs_equal'] is True for r in report['records']))
+        report['passed'] = report['integration_passed']
+        if expected is None:
+            report['integration_not_verified_reason'] = 'Exact standalone NPU output replay requires --expected-npu'
     except Exception as error:
         report['error'] = f'{type(error).__name__}: {error}'
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open('x', encoding='utf-8') as stream:
         json.dump(report, stream, ensure_ascii=False, indent=2, allow_nan=False)
         stream.write('\n')
-    print(json.dumps({k: report.get(k) for k in ['passed', 'overall', 'error']}, indent=2))
+    print(json.dumps({k: report.get(k) for k in ['passed', 'integration_passed', 'development_fidelity_passed', 'overall', 'error']}, indent=2))
     return 0 if report['passed'] else 1
 
 
