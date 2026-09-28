@@ -1,119 +1,233 @@
-# Laya on Rubik Pi 3
+# Laya on Qualcomm Hexagon NPU (Rubik Pi 3)
 
-Experimental acceleration of the multilingual [Laya decision agent](https://huggingface.co/convaiinnovations/laya) on the Qualcomm Hexagon HTP V68 in the Rubik Pi 3 (QCS6490).
+[![Qualcomm Hexagon](https://img.shields.io/badge/Hardware-Hexagon%20HTP%20V68-orange.svg)](#architecture)
+[![ONNX Runtime QNN](https://img.shields.io/badge/Runtime-ONNX%20Runtime%20QNN%202.5.0-blue.svg)](#quickstart-guide)
+[![Input Budget](https://img.shields.io/badge/Input%20Budget-1024%20tokens-blue.svg)](#highlights)
+[![Strict NPU](https://img.shields.io/badge/CPU%20EP%20Fallback-Disabled-brightgreen.svg)](#implementation)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**Actual NPU fidelity passes the declared primary targets:** **3.5326% decision mismatch** and **2.5021% mean total variation** on 1,840 decisions excluded from calibration and model selection. An additional predeclared 80-decision synthetic 1024-token validation has **0% mismatch** and **2.0614% mean TV**. All preprocessed inputs match original Laya, with zero CPU EP fallbacks. The 768/1024 graph set is deployed on the Pi; HTTP replay and the 4 GiB service memory check pass.
+Deploy the multilingual [Laya decision agent](https://huggingface.co/convaiinnovations/laya) on the **Qualcomm Hexagon HTP V68** in the **Rubik Pi 3 (QCS6490)**. The service provides structured routing, boolean decisions and ordinal scores through a local web interface and FastAPI.
 
-The goal is decision mismatch **≤5%** and mean total variation **≤5%**, with identical preprocessed inputs. See [the evaluation method](docs/fidelity-method.md) and [held-out hardware evidence](reports/qualification-2026-09-29/heldout.json). These aggregate thresholds do not mean every individual prediction has less than 5% probability error.
+The current implementation prioritizes agreement with original Laya: **3.53% decision mismatch on 1,840 held-out decisions**, and **2.93% across 1,160 additional external decisions**, with actual NPU execution and zero CPU EP fallbacks.
 
-**Development limitation:** the separate 15-decision Chinese/English probe suite has **1 difference (6.6667%)**, despite mean TV of only **0.9462%**. Its accuracy gate remains failed in the preserved report. The service reproduces those same NPU answers exactly; [service integration is reported separately from fidelity](reports/qualification-2026-09-29/service-acceptance.md).
+## Highlights
 
-Additional [external dataset evaluation](reports/external-2026-09-29/README.md) covers **1,160 adapted choice decisions** from BANKING77, CLINC150, and MASSIVE English/Traditional Chinese/Simplified Chinese. **5/5 suites** pass separately; pooled mismatch is **2.9310%** and mean TV is **2.5973%**. These are fixed subsets and adapted label spaces, not native leaderboard scores.
+- **Strict NPU encoder:** the 22-layer ModernBERT encoder runs through QNN HTP; unsupported execution fails instead of silently falling back to a CPU provider.
+- **Original input capacity:** preserves Laya's 1024-token sequence and 256-token question/head budgets, using 768- and 1024-token graphs without imposing extra truncation.
+- **Multilingual structured decisions:** supports `choice`, `noul` and `score`, including English, Traditional Chinese and Simplified Chinese evaluation.
+- **Ready-to-use API and UI:** browser demo at `/`, interactive API documentation at `/docs`, and `/health` with readiness, bucket usage and NPU counters.
+- **Deployment controls:** persistent QNN context caches, graph/backend hash verification, one active bucket session, and a systemd user service with a 4 GiB memory limit. Measured service peak: **2.56 GiB**.
 
-## What runs where
+## Quickstart Guide
 
-`laya_npu.py` loads the original Laya agent and replaces only its encoder. The original tokenizer, sequence construction, decision heads, temperatures, and response formatting remain in use. Token embeddings and heads run on the CPU; the quantized encoder runs on HTP with CPU EP fallback disabled. A QNN failure is an error.
+### 1. Prepare the Pi environment
 
-The checkpoint uses `max_len=1024` and `head_max_len=256`. The runtime selects a static ONNX bucket large enough for the unchanged input and rejects sequences beyond the available buckets instead of silently truncating them. The deployed graph set has 768- and 1024-token buckets, covering the complete original API budget.
-
-The current recipe uses 16-bit activations, per-channel 8-bit convolution weights, native GELU, separate GeGLU outlier channels, and separate CLS/rest residual paths. Masked padding embeddings are zeroed without changing input tokens. Dynamic attention MatMuls approximate their 16-bit right operand using two supported 8-bit terms. Finally, [zero-input HTP calibration](npu/CONV_OFFSET_CALIBRATION.md) corrects measured per-channel Conv offsets. CPU ONNX results are diagnostics; hardware results decide whether a candidate is acceptable.
-
-## Reproduce an experimental build
-
-Build and calibrate on an x86 machine or WSL2 using Python 3.12 and [the tested build dependencies](requirements-fidelity-build.txt). No ARM cross compiler is required for this ONNX export path. The general `requirements.txt` includes the target QNN plugin and is distinct from this build environment.
-
-From the repository root:
+Tested with Ubuntu 24.04, Python 3.12, Laya 0.3.5, ONNX Runtime 1.30.0 and `onnxruntime-qnn` 2.5.0. The board image must provide working FastRPC/DSP drivers and `cdsprpcd`:
 
 ```bash
-python3.12 -m venv .venv-build
-source .venv-build/bin/activate
-python -m pip install -r requirements-fidelity-build.txt
-python download.py
-python -c "from huggingface_hub import hf_hub_download; hf_hub_download('LocalLLaMA/typed-decisions', 'all/test-00000-of-00001.parquet', repo_type='dataset', revision='c76749ec58bd8c3d2ea706b31c333a9059c38f90', local_dir='.work/dataset')"
+ls -l /dev/fastrpc-cdsp
+pgrep -a cdsprpcd
 ```
 
-Build the uncorrected `refined32` recipe:
+For a new checkout, use the path expected by the supplied service files:
 
 ```bash
-python npu/build_fidelity.py \
-  --model models/multilingual \
-  --parquet .work/dataset/all/test-00000-of-00001.parquet \
-  --length 768 --samples 32 --threads 8 \
-  --activation-bits 16 --group-outliers --conv-linear --split-cls \
-  --zero-pad-embeddings --refine-matmul-rhs all \
-  --indices 0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375 \
-  --output-dir .work/refined32
-```
-
-This creates FP32 and QDQ graphs, build metadata, and `manifest.json`. **The uncorrected graph fails hardware fidelity.** Follow the [Conv calibration workflow](npu/CONV_OFFSET_CALIBRATION.md) on the Pi to produce a separate corrected graph and manifest before evaluation. Keep each recipe in its own output directory and retain its metadata. Large checkpoints, generated graphs, and context binaries are not stored in Git.
-
-For larger buckets on memory-limited WSL, `--low-memory-calibration` disables the calibration arena and merges MinMax ranges after every sample; it does not discard samples. `--append-long-calibration` adds full-length repeated-state variants from the same selected calibration cases while retaining the originals; with `--samples 32` this means 64 sequences. It is restricted to the original maximum-length bucket. Rebuild and calibrate each bucket independently. Combine compatible corrected bucket manifests with `python -m npu.merge_manifests --output npu/fidelity/manifest.json <768-manifest> <1024-manifest>`.
-
-The separately selected 1024-token recipe also folds interior LayerNorm affine parameters into the adjacent projections. Its calibration uses the same reserved cases, including their full-length variants:
-
-```bash
-python npu/build_fidelity.py \
-  --model models/multilingual \
-  --parquet .work/dataset/all/test-00000-of-00001.parquet \
-  --length 1024 --samples 32 --threads 8 \
-  --activation-bits 16 --group-outliers --conv-linear --split-cls \
-  --zero-pad-embeddings --refine-matmul-rhs all --fold-norms \
-  --append-long-calibration --low-memory-calibration \
-  --indices 0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375 \
-  --output-dir .work/folded1024_long
-```
-
-The builder materializes folded unit LayerNorm parameters as static U8 gamma and I32 zero bias, preserving their exact dequantized values; V68 rejects the U16 gamma aliases produced by the exporter. Run the same Conv calibration workflow on this bucket's own graph. Do not reuse the 768-token correction. The [candidate declaration](reports/evaluation-plans/long-input-candidate-static-gamma.json) records selection before the independent long-input NPU evaluation.
-
-Use a fresh output directory for a new recipe. The builder rejects existing quantized graphs and incompatible manifests before writing. `--reuse-export` only finishes a verified FP32 export when no quantized graph exists; its sidecar must match the checkpoint, tokenizer/configuration files, calibration dataset, and requested export settings. Older sidecars without those input hashes require a fresh export.
-
-## Evaluate on the Pi
-
-Copy the candidate directory, checkpoint, and pinned dataset to the Pi. Use the installed ARM QNN environment (currently ONNX Runtime 1.30.0 and `onnxruntime-qnn` 2.5.0). Before **every** QNN command, source `npu/env.sh`; it selects the wheel's matching backend, stub, and DSP skeleton. Mixing these with another vendor SDK caused device failures during investigation.
-
-```bash
+git clone --branch main https://github.com/EricYu123456/laya-hexagon-npu.git \
+  /home/ubuntu/laya-service
+cd /home/ubuntu/laya-service
+python3.12 -m venv .venv
 source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+HF_HUB_OFFLINE=0 python download.py
+```
+
+An existing configured Pi can reuse its checkout, environment and model files. If deploying under another user or directory, update the paths in [`service.env`](service.env) and [`systemd/laya.service`](systemd/laya.service).
+
+### 2. Prepare the model artifacts
+
+Git contains source code and evaluation reports. **The corrected ONNX graphs and context caches are not bundled or published as current release assets.** Copy a complete compatible model set from an existing deployment, or follow the [WSL/Linux build guide](docs/build-fidelity.md) to export, calibrate and validate both buckets.
+
+| Artifact | Location | How to obtain |
+| --- | --- | --- |
+| Original checkpoint, tokenizer and configuration | `models/multilingual/` | `python download.py` (pinned checkpoint revision) |
+| Corrected 768/1024 ONNX graphs, per-bucket manifests and `.offsets.json` provenance | Paths referenced by the deployment manifest | Copy a compatible set or [build and calibrate](docs/build-fidelity.md) |
+| Combined deployment manifest | `npu/fidelity/manifest.json` | Included with the prepared set; [merge and activate](docs/deployment.md) when building a new set |
+| Compiled QNN contexts | `npu/fidelity/context_cache/` | Prepare on the Pi in the next step |
+
+Keep graph paths relative to their manifests intact when copying. The configured Pi stores its corrected buckets under `npu/fidelity/qualified-2026-09-29/{768,1024}/`. Each graph is about 112 MiB; the original weights are about 614 MiB, in addition to tokenizer/configuration files.
+
+`download_models.sh`, `build_clamped_22l.py` and the v1.0.0 model asset belong to the older 64-token/clamped implementation. Use the build guide above for the current model set; no ARM cross compiler is required.
+
+### 3. Prepare the context cache
+
+Stop an existing Laya service with `systemctl --user stop laya.service` and finish other NPU jobs before this step. Load the same configuration used by the service:
+
+```bash
+cd /home/ubuntu/laya-service
+source .venv/bin/activate
+set -a
+source service.env
+set +a
 source npu/env.sh
-export LAYA_NPU_MANIFEST="$PWD/.work/corrected_768/manifest.json"
-export LAYA_NPU_CONTEXT_CACHE=1
+python npu/compile_contexts.py \
+  --manifest "$LAYA_NPU_MANIFEST" --verify-reload
 ```
 
-Capture unchanged Laya on the development selection, then compare the actual HTP candidate. Use new output paths for each experiment:
+Initial context preparation takes several minutes and must run **outside the service's 4 GiB cgroup**. The 768 build peaked near 5 GiB; the 1024 build needed temporary swap on the tested board. Cached inference runs without that swap. See [deployment preparation and rollback](docs/deployment.md) for the memory requirements and validation steps.
+
+Always source `npu/env.sh` before direct QNN commands. It selects matching backend, stub and DSP skeleton libraries from the installed QNN wheel. Cache keys bind the graph, runtime and QNN binaries; changing these requires fresh preparation and validation.
+
+### 4. Run and verify
+
+With the environment from step 3 still loaded, start the API in the foreground:
 
 ```bash
-DEV=1,26,51,76,101,126,151,176,201,226,251,276,301,326,351,376
-DATA=.work/dataset/all/test-00000-of-00001.parquet
-python benchmark_fidelity.py --backend cpu --dataset-path "$DATA" \
-  --indices "$DEV" --threads 4 --output .work/reference-dev.jsonl
-python benchmark_fidelity.py --backend npu --dataset-path "$DATA" \
-  --indices "$DEV" --threads 4 --reference .work/reference-dev.jsonl \
-  --output .work/corrected-dev.json
+bash systemd/run-laya.sh
 ```
 
-The benchmark records checkpoint/graph hashes, input token and marker identities, probability errors, decision mismatches, and runtime statistics. A failed threshold returns exit code 1. A development pass still requires the declared held-out evaluation described in [the method](docs/fidelity-method.md). Supplementary Chinese, English, and 1024-token probes are available through `benchmark_probes.py`; capture their unchanged CPU reference before NPU comparison.
-
-## Context cache and deployment
-
-Persistent QNN context generation and strict reload have been validated on the Pi: the corrected 768 graph's current schema-2 cache compiled in 442.4 seconds and reloaded in 1.43 seconds. Its embedded context contains a single QNN EPContext node, and a five-question replay exactly matches the qualified candidate's earlier outputs. Cache publication is atomic; keys bind graph SHA256, runtime versions, backend/stub/skeleton hashes, and provider settings. A cache schema or binary change requires fresh preparation.
-
-To test context precompilation after loading the QNN environment:
+In another terminal:
 
 ```bash
-export LAYA_NPU_CONTEXT_CACHE=1
-python npu/compile_contexts.py --manifest "$LAYA_NPU_MANIFEST" \
-  --model-dir models/multilingual --verify-reload
+cd /home/ubuntu/laya-service
+curl -f http://127.0.0.1:8000/health
+curl -f http://127.0.0.1:8000/predict \
+  -H 'Content-Type: application/json' --data-binary @example.json
 ```
 
-The CLI hashes the checkpoint without loading its tensors and compiles using only encoder configuration, reducing peak memory relative to loading the full agent first. The measured 768-token compilation still peaked at about 5.04 GiB, so prepare caches outside the 4 GiB service cgroup before starting the service. `LAYA_NPU_CACHE_DIR` overrides the default `npu/fidelity/context_cache` directory. Compilation and cache reload are reported separately.
+Open `http://<pi-ip>:8000/` for the demo or `http://<pi-ip>:8000/docs` for the API explorer. `/health` becomes ready only after an actual NPU warmup succeeds. Check for `device: "npu"`, `encoder_provider: "QNNExecutionProvider"`, buckets `[768, 1024]`, and `cpu_fallbacks: 0`.
 
-The 1024-token graph required temporary swap for one-time cache preparation. Swap was disabled and removed afterward; a new process loaded its single QNN EPContext in 2.19 seconds with about 1.18 GiB peak RSS. This is cache-load memory, not the full service footprint.
+## Running as a Systemd Service
 
-The FastAPI entry point remains `app:app`, with `/health` and `/predict`. The deployed service passed exact HTTP/CLI replay, invalid-input rejection, and 768→1024→768 switching. Its measured cgroup peak was **2.556 GiB**, below `MemoryMax=4G`, with zero restarts, memory-limit events, OOMs, CPU fallbacks, or cache misses. [Deployment instructions](docs/deployment.md) and [recorded service evidence](reports/qualification-2026-09-29/service-http.json) describe the boundaries. The existing disabled-at-login unit setting was preserved; the service is currently running.
+After preparing the models and caches, stop the foreground server and install the user service:
 
-## Legacy results
+```bash
+cd /home/ubuntu/laya-service
+install -D -m 644 systemd/laya.service ~/.config/systemd/user/laya.service
+systemctl --user daemon-reload
+systemctl --user start laya.service
+systemctl --user status laya.service
+journalctl --user -u laya.service -n 50 --no-pager
+```
 
-The older 64-token UINT8/clamped implementation changed the sequence and head budgets and did not preserve original-model fidelity. Its historical full public-split agreement was 42.3% (57.7% mismatch). Four semantic probes did not establish general fidelity, and historical speed comparisons do not establish speedup for the corrected input contract.
+To start automatically at login, run `systemctl --user enable laya.service`. For unattended startup without a login session, enable lingering with `sudo loginctl enable-linger ubuntu` as well.
 
-`npu/build_clamped_22l.py`, `download_models.sh`, and [npu/REPORT.md](npu/REPORT.md) are legacy artifacts. Their clamp, latency, and accuracy statements are not validation of the current work. Use `npu/build_fidelity.py` and `benchmark_fidelity.py` for new experiments.
+The unit reads `service.env`, uses four CPU threads and a single API worker, and enforces `MemoryMax=4G`. Key settings are:
 
-Author: [Eric Yu](https://github.com/EricYu123456). License: [MIT](LICENSE).
+| Setting | Default |
+| --- | --- |
+| `LAYA_DEVICE` | `npu` |
+| `LAYA_CHECKPOINT` | `multilingual` |
+| `LAYA_THREADS` | `4` |
+| `LAYA_NPU_MANIFEST` | `/home/ubuntu/laya-service/npu/fidelity/manifest.json` |
+| `LAYA_NPU_CACHE_DIR` | `/home/ubuntu/laya-service/npu/fidelity/context_cache` |
+| `LAYA_NPU_CONTEXT_CACHE` | `1` |
+
+## Architecture
+
+```mermaid
+flowchart TD
+    A[HTTP request /predict] --> B[CPU: original tokenizer and embeddings]
+    B --> C[NPU: 22-layer ModernBERT encoder<br/>A16W8, 768 or 1024 tokens]
+    C --> D[CPU: original decision heads and temperatures]
+    D --> E[JSON answers, probabilities and confidence]
+```
+
+Only the encoder is replaced. Tokenization, input construction, embeddings, decision heads and response formatting remain with original Laya. CPU work in this hybrid pipeline is intentional; **CPU EP fallback for the NPU graph is disabled**.
+
+## Implementation
+
+1. **Preserve the model's input contract.** Select a static bucket large enough for the original collated sequence, with the original local/global attention pattern and head budgets.
+2. **Reduce quantization loss.** Use 16-bit activations, per-channel 8-bit projection weights, native GELU, separate GeGLU outlier channels and CLS/rest paths, plus refined attention MatMuls. The 1024 graph also folds LayerNorm affine parameters and materializes compatible static parameters for HTP.
+3. **Correct measured hardware offsets.** Zero-input probes measure per-channel HTP Conv offsets; corrected biases and backend fingerprints are saved with each graph. The final outputs are validated on the physical NPU against unchanged FP32 Laya.
+
+See the [build recipes](docs/build-fidelity.md) and [Conv calibration method](npu/CONV_OFFSET_CALIBRATION.md) for implementation details.
+
+## Performance Benchmarks
+
+### Fidelity to Original Laya
+
+The acceptance target is **decision mismatch ≤5% and mean total variation (TV) ≤5%**, with identical tokens and markers. TV measures probability-distribution differences; these are fidelity metrics, **not accuracy against dataset labels**.
+
+| Evaluation | Decisions | Decision mismatch | Mean TV |
+| --- | ---: | ---: | ---: |
+| [Typed-decisions held-out](reports/qualification-2026-09-29/heldout.json) | 1,840 | **3.53%** | **2.50%** |
+| [Typed-decisions complete public split](reports/qualification-2026-09-29/full-public.json) | 2,000 | 3.55% | 2.50% |
+| [Synthetic 1024-token inputs](reports/qualification-2026-09-29/long-input-npu.json) | 80 | **0.00%** | **2.06%** |
+| [BANKING77: eight fixed intents](reports/external-2026-09-29/banking77-card8-npu.json) | 320 | **2.81%** | **2.55%** |
+| [CLINC150: ten domains](reports/external-2026-09-29/clinc150-domain10-npu.json) | 300 | **3.00%** | **2.83%** |
+| [MASSIVE: English](reports/external-2026-09-29/massive-en-US-npu.json) | 180 | **3.33%** | **2.26%** |
+| [MASSIVE: Traditional Chinese](reports/external-2026-09-29/massive-zh-TW-npu.json) | 180 | **1.67%** | **2.78%** |
+| [MASSIVE: Simplified Chinese](reports/external-2026-09-29/massive-zh-CN-npu.json) | 180 | **3.89%** | **2.45%** |
+| [External suites combined](reports/external-2026-09-29/summary.json) | 1,160 | **2.93%** | **2.60%** |
+
+All runs above used actual HTP inference with zero CPU EP fallbacks. The 1,840 held-out decisions are a subset of the 2,000-decision public split, excluding calibration/development cases. External tasks use fixed subsets and adapted label spaces; MASSIVE's 540 decisions across three languages share 180 paired IDs. They are not native dataset leaderboard scores. Long-input cases are synthetic extensions of source cases, not another independent natural corpus.
+
+**Remaining limitations:** a separate [15-decision development suite](reports/qualification-2026-09-29/supplementary-development-npu.json) has **1/15 differences (6.67%)** and **0.95% mean TV**, so its decision gate fails. Aggregate passes also do not guarantee a ≤5% error on every input: 204/1,160 external decisions have TV above 5%, with a maximum of 33.55%. Full splits, gold-label results and per-case errors are in the [evaluation method](docs/fidelity-method.md) and [external report](reports/external-2026-09-29/README.md).
+
+### Measured Latency and Memory
+
+| Workload on the Pi | Median | P95 |
+| --- | ---: | ---: |
+| [External choice tasks](reports/external-2026-09-29/README.md): one question, 768 bucket | **947.6 ms** | **1,008.0 ms** |
+| [Typed-decisions](reports/qualification-2026-09-29/full-public.json): five questions per call | **4,764.4 ms** | **5,121.7 ms** |
+
+These are complete `agent.predict` timings with four CPU threads, including tokenization, CPU heads and NPU inference, not isolated encoder/kernel timings or HTTP round trips. External timings retain each process's first cached-session load. Original CPU references ran in WSL, so these results do not establish a same-host speedup.
+
+| Deployment measurement | Result |
+| --- | --- |
+| QNN cached session load, 768 / 1024 | **1.43 s / 2.19 s** |
+| Service cgroup peak / configured limit | **2.56 GiB / 4 GiB** |
+| HTTP replay | 15/15 outputs exactly match standalone NPU results |
+| Observed service restarts / OOMs / CPU fallbacks during verification | **0 / 0 / 0** |
+
+Session-load times are separate from inference latency and full service startup. [Service evidence](reports/qualification-2026-09-29/deployment.json), [768 cache measurements](reports/qualification-2026-09-29/cache-v2-768.json) and [1024 cache measurements](reports/qualification-2026-09-29/cache-v2-1024.json) preserve the measured conditions. HTTP replay verifies integration; it does not turn the failed 15-decision fidelity gate into a pass.
+
+## API Reference
+
+| Endpoint | Purpose |
+| --- | --- |
+| `GET /` | Browser demo |
+| `GET /docs` | Interactive OpenAPI documentation |
+| `GET /health` | Readiness, checkpoint, input capacity and NPU/cache counters |
+| `POST /predict` | Evaluate structured questions over a string, object or list state |
+
+Example request:
+
+```json
+{
+  "state": "My card was charged twice. Please refund the duplicate payment.",
+  "questions": {
+    "department": {
+      "type": "choice",
+      "instructions": "Which department should handle this request?",
+      "criteria": {
+        "billing": "payments, invoices and refunds",
+        "technical": "software bugs and outages",
+        "sales": "pricing and new purchases"
+      }
+    },
+    "refund_requested": {
+      "type": "noul",
+      "instructions": "Does the user explicitly request a refund?"
+    }
+  }
+}
+```
+
+Responses contain `answers`, `usage`, `elapsed_ms` and `checkpoint`. `choice` returns a selected label and probabilities; `noul` returns a yes/no probability; `score` returns an expected ordinal score with a probability distribution. Each answer includes confidence and action probability.
+
+The HTTP API accepts **1–4 questions**, **2–12 options for choice/score**, and a serialized state of at most **16,000 characters**. Score criteria must be an ordered list. Original Laya's token/head budgets still apply. Invalid requests return 422; concurrent requests receive 503 with `Retry-After: 2` while inference is busy. The five-question and eighteen-option benchmark tasks use the CLI.
+
+## Documentation
+
+- [Build and calibration recipes](docs/build-fidelity.md)
+- [Deployment, verification and rollback](docs/deployment.md)
+- [Fidelity methodology and reproducible evaluations](docs/fidelity-method.md)
+- [Recorded reports and raw outputs](reports/README.md)
+- [Historical technical report](npu/REPORT.md) — describes the earlier truncated/clamped model; its latency and accuracy claims do not apply to this version.
+
+## Author & License
+
+- **Author:** Eric Yu ([@EricYu123456](https://github.com/EricYu123456))
+- **Code license:** [MIT](LICENSE). Adapted evaluation datasets retain their [source licenses](reports/external-2026-09-29/README.md#sources-attribution-and-licenses).

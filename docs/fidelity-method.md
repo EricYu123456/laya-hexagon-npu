@@ -116,7 +116,7 @@ The helper checks the committed declaration's Git identity, dataset and input ha
 
 ## Reproduction and evaluation commands
 
-Follow the Python 3.12 setup, pinned checkpoint/dataset download, and corrected candidate build commands in [README.md](../README.md). Use [requirements-fidelity-build.txt](../requirements-fidelity-build.txt) for x86/WSL builds, not the target environment's requirements. Copy the graph directory and manifest together to the Pi. Keep recipes in separate directories because a manifest's bucket mapping alone is not a complete recipe description. Preserve the export sidecar and quantization metadata.
+Follow the Python 3.12 setup, pinned checkpoint/dataset download, and corrected candidate build commands in [the build guide](build-fidelity.md). Use [requirements-fidelity-build.txt](../requirements-fidelity-build.txt) for x86/WSL builds, not the target environment's requirements. Copy the graph directory and manifest together to the Pi. Keep recipes in separate directories because a manifest's bucket mapping alone is not a complete recipe description. Preserve the export sidecar and quantization metadata.
 
 For the earlier `grouped16` experiment, use only `--group-outliers --samples 16`. `clsconv16` adds `--conv-linear --split-cls --samples 32` but omits zero-padding, MatMul refinement, and measured offset correction. The qualified 768-token recipe does not fold norms. The separately selected 1024-token recipe adds `--fold-norms` and `--append-long-calibration`; `--balance` is not part of either recipe.
 
