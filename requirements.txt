@@ -2,18 +2,21 @@
 fastapi>=0.115.0
 uvicorn>=0.30.0
 pydantic>=2.8.0
-torch>=2.4.0
-transformers>=4.45.0
-safetensors>=0.4.5
-numpy>=1.26.0,<3.0.0
-laya>=0.3.5
+# Keep the reference model implementation aligned with exported fidelity graphs.
+torch==2.6.0
+transformers==5.0.0
+safetensors==0.8.0
+numpy==2.5.3
+laya==0.3.5
+tokenizers==0.22.2
 
 # ONNX & Qualcomm QNN HTP Execution Provider
-onnx>=1.16.0
+onnx==1.23.0
 onnxruntime==1.30.0
 onnxruntime-qnn==2.5.0
 
 # Utilities
 requests>=2.31.0
 tqdm>=4.66.0
-huggingface_hub>=0.24.0
+huggingface_hub==1.32.0
+pyarrow==25.0.1

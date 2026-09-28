@@ -1,324 +1,92 @@
-# Laya on Qualcomm Hexagon NPU (Rubik Pi 3)
+# Laya on Rubik Pi 3
 
-[![Qualcomm Hexagon](https://img.shields.io/badge/Hardware-Qualcomm%20Hexagon%20HTP%20V68-orange.svg)](https://developer.qualcomm.com/)
-[![ONNX Runtime QNN](https://img.shields.io/badge/Runtime-ONNX%20Runtime%20QNN%202.5.0-blue.svg)](https://github.com/microsoft/onnxruntime)
-[![Latency](https://img.shields.io/badge/Backbone%20Latency-14.1ms-green.svg)](#performance-benchmarks)
-[![Zero Fallback](https://img.shields.io/badge/Strict%20NPU-disable__cpu__ep__fallback%3D1-brightgreen.svg)](#key-technical-breakthroughs)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+Experimental acceleration of the multilingual [Laya decision agent](https://huggingface.co/convaiinnovations/laya) on the Qualcomm Hexagon HTP V68 in the Rubik Pi 3 (QCS6490).
 
-High-performance edge deployment of the **Laya decision agent** (`convaiinnovations/laya`, multilingual checkpoint) on the **Qualcomm Hexagon NPU (HTP V68)** of the **Thundercomm Rubik Pi 3 (QCS6490)**.
+**The fidelity target has not been achieved.** As of 2026-09-28, the best measured hardware candidate disagrees with original Laya on **12.5% of 80 development decisions**, with **8.551% mean total variation** between output distributions. These are development results from 16 cases, not a held-out qualification or a completed deployment.
 
-Achieves true hardware acceleration with **`session.disable_cpu_ep_fallback=1`** strictly enforced, eliminating silent CPU fallbacks.
+The goal is decision mismatch **≤5%** and mean total variation **≤5%**, with identical preprocessed inputs. See [the evaluation method](docs/fidelity-method.md) and [hardware evidence](reports/development-2026-09-28/grouped16-npu.json) for definitions, results, and remaining work.
 
----
+## What runs where
 
-## Highlights
+`laya_npu.py` loads the original Laya agent and replaces only its encoder. The original tokenizer, sequence construction, decision heads, temperatures, and response formatting remain in use. Token embeddings and heads run on the CPU; the quantized encoder runs on HTP with CPU EP fallback disabled. A QNN failure is an error.
 
-- ⚡ **14.26 ms Backbone Latency**: The 22-layer ModernBERT backbone executes entirely on Hexagon HTP V68 in ~14ms with **0 DDR spill bytes** (fully resident in VTCM).
-- 🚀 **Up to 6.6x API Acceleration**: End-to-end FastAPI endpoint latency dropped from **520.4 ms** (CPU PyTorch) down to **182.9 ms** for 2-question routing, and down to **58.9 ms** for single-question evaluation.
-- 🎯 **100% Accuracy Fidelity**: Passes all 4/4 semantic test probes in `accuracy-probes.json` and perfectly matches routing decisions on `example.json`.
-- 🛡️ **Zero Silent CPU Fallback**: Compiled as a single unified HTP graph under strict `session.disable_cpu_ep_fallback=1`.
+The checkpoint uses `max_len=1024` and `head_max_len=256`. The runtime selects a static ONNX bucket large enough for the unchanged input and rejects sequences beyond the available buckets instead of silently truncating them. Current measured candidates have a 768-token bucket; a validated set covering the complete 1024-token API budget is still pending.
 
----
+The new build path uses 16-bit activation quantization, 8-bit weights, native GELU, and separate GeGLU groups for extreme channels. It preserves outlier values rather than clamping them. Experimental alternatives include CLS/rest separation, per-channel convolution weights, and folding normalization affine weights into projections. CPU ONNX results are diagnostics; hardware results decide whether a candidate is acceptable.
 
-## Architecture: Hybrid Edge Offloading
+## Reproduce an experimental build
 
-The service employs a hybrid execution pipeline designed for minimal latency:
+Build and calibrate on an x86 machine or WSL2 using Python 3.12 and [the tested build dependencies](requirements-fidelity-build.txt). No ARM cross compiler is required for this ONNX export path. The general `requirements.txt` includes the target QNN plugin and is distinct from this build environment.
 
-```
-                      [ HTTP Request (FastAPI /predict) ]
-                                      │
-                                      ▼
-             ┌──────────────────────────────────────────────────┐
-             │ CPU (ARM Cortex-A78)                             │
-             │ • Fast Tokenizer (Hugging Face)                  │
-             │ • Embedding Lookup (tok_embed)                   │
-             └──────────────────────────────────────────────────┘
-                                      │
-                                      ▼ (1 x 64 x 768 Tensor)
-             ┌──────────────────────────────────────────────────┐
-             │ Qualcomm Hexagon NPU (CDSP / HTP V68)            │
-             │ • 22-Layer ModernBERT Encoder Backbone           │
-             │ • Static UINT8 QDQ Quantized Graph               │
-             │ • session.disable_cpu_ep_fallback = 1            │
-             │ • Inference Time: ~14.1 ms (0 DDR Spills)        │
-             └──────────────────────────────────────────────────┘
-                                      │
-                                      ▼ (1 x 64 x 768 Hidden State)
-             ┌──────────────────────────────────────────────────┐
-             │ CPU (ARM Cortex-A78)                             │
-             │ • Question Type Embeddings                       │
-             │ • Head Attention (2-layer transformer encoder)   │
-             │ • Scorer & Policy/Cost Action Heads              │
-             │ • Calibrated Softmax / Temperature Scaling       │
-             └──────────────────────────────────────────────────┘
-                                      │
-                                      ▼
-                      [ HTTP Response (JSON Decision) ]
-```
-
----
-
-## Key Technical Breakthroughs
-
-Deploying ModernBERT to Qualcomm Hexagon DSP required resolving three major hardware/compilation roadblocks:
-
-### 1. DSP Sub-graph Fragmentation & Handle Limit (Code 6001)
-* **Root Cause**: PyTorch's default ONNX export expands GELU into mathematical primitives (`Div`, `Erf`, `Pow`, `Add`). The QNN HTP compiler could not fuse these unquantized nodes, fragmenting the 22-layer model into **282 individual subgraphs**. This immediately exceeded Hexagon DSP's hardware limit of 32 session handles (`Code 6001: Exceeded max graph limit`). Additionally, bias-free `LayerNormalization` produced Constant 0 bias nodes that failed QNN op validation (error 3110).
-* **Fix**: Exported with **ONNX Opset 20** to emit native single `Gelu` nodes natively supported by QNN HTP, and promoted all 45 LayerNorm zero-biases into static graph initializers. The entire 22-layer backbone now fuses into **1 single unified Hexagon HTP graph**.
-
-### 2. GeGLU Activation Outliers Collapsing Dynamic Range
-* **Root Cause**: ModernBERT Layer 11 MLP GeGLU activation generates an extreme outlier of **+33,419.97** at channel 924 of the CLS token. Tensor-wise UINT8 quantization widened the quantization scale to 131, rounding the other 1,151 normal channels to 0 and destroying representations.
-* **Fix**: Bounded GeGLU activations with `torch.clamp(act, -50.0, 50.0)`. PyTorch accuracy verified at >99.99% fidelity, while UINT8 quantization dynamic range was kept perfectly well-conditioned.
-
-### 3. Attention Mask Dynamic Range Collapse
-* **Root Cause**: Standard `-10000.0` attention mask penalties stretched the dynamic range of `Add` nodes to 10,000, setting the quantization scale to ~40 and washing out normal attention logits.
-* **Fix**: Replaced mask penalty with `MASK_PENALTY = -15.0`. In Softmax:
-  $$\exp(-15.0) \approx 3.05 \times 10^{-7} \approx 0$$
-  This completely eliminates padded tokens while keeping the `Add` node quantization scale fine-grained. Logit difference against FP32 is `< 0.001`.
-
----
-
-## Performance Benchmarks
-
-### Backbone Inference Latency (Hexagon HTP vs CPU)
-
-| Metric | CPU Baseline (PyTorch 4-Threads) | Hexagon HTP V68 (UINT8 QDQ) | Speedup |
-| :--- | :---: | :---: | :---: |
-| **Backbone Latency (avg)** | ~230 ms | **14.26 ms** | **16.1x** |
-| **Backbone Latency (p50)** | ~228 ms | **14.12 ms** | **16.1x** |
-| **DDR Spill Bytes** | N/A | **0 bytes** (100% in VTCM) | Optimal |
-| **Fallback Policy** | N/A | `disable_cpu_ep_fallback=1` | Zero CPU |
-
-### End-to-End API Latency (`verify.py`)
-
-| Benchmark Scenario | CPU Baseline (ms) | Hexagon NPU (ms) | Speedup |
-| :--- | :---: | :---: | :---: |
-| **Cold Request (First Call)** | 615.0 ms | **281.0 ms** | **2.19x** |
-| **Warm Two-Question Routing** | 520.4 ms | **183.4 ms** | **2.84x** |
-| **Single-Question Urgency Score** | 392.9 ms | **58.9 ms** | **6.67x** |
-| **Negative Verification** | 609.2 ms | **78.8 ms** | **7.73x** |
-
-### Accuracy Verification
-
-Tested against [`accuracy-probes.json`](accuracy-probes.json) and [`example.json`](example.json):
-
-| Test Case | Metric / Question | CPU PyTorch | Hexagon NPU | Status |
-| :--- | :--- | :---: | :---: | :---: |
-| **Probe 1** | Price inquiry (non-refund) | 0.0015 | **0.0459** (<0.5) | **PASS** |
-| **Probe 2** | English non-refund statement | 0.6914 | **0.7148** (>0.5) | **PASS** |
-| **Probe 3** | Chinese complex refund | 0.9172 | **0.9366** (>0.5) | **PASS** |
-| **Probe 4** | Explicit refund request | 0.9945 | **0.9684** (>0.5) | **PASS** |
-| **example.json** | Department classification | `billing` (97.5%) | **`billing` (82.2%)** | **PASS** |
-| **example.json** | Refund flag (`noul`) | 0.9945 | **0.9883** | **PASS** |
-| **example.json** | Urgency score | 1.9554 | **1.9552** | **PASS** (Δ < 0.0002) |
-
-### Large-Scale Public Benchmark: `LocalLLaMA/typed-decisions` (2,000 Decisions)
-
-To rigorously evaluate real-world fidelity, we ran the full standard **[LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions)** test split (400 cases, 2,000 structured decisions) comparing PyTorch CPU (FP32) directly against Qualcomm Hexagon NPU (QDQ UINT8):
-
-| Metric | CPU PyTorch Baseline | Hexagon HTP V68 (QDQ UINT8) | Notes |
-| :--- | :---: | :---: | :--- |
-| **Per-Case Latency (p50)** | 11,310.6 ms | **560.2 ms** | **20.19x Hardware Speedup** |
-| **Per-Case Latency (avg)** | 10,556.5 ms | **557.8 ms** | **18.92x Hardware Speedup** |
-| **Total Accuracy vs Gold** | 34.45% (689/2000) | **30.85% (617/2000)** | Matches published Laya Base ~36% baseline |
-| **NPU vs CPU Agreement** | - | **42.30% (846/2000)** | Zero-shot agreement rate |
-
-#### Performance Breakdown by Question Type
-| Type | Total Decisions | CPU PyTorch Acc | Hexagon HTP Acc | Decision Agreement |
-| :--- | :---: | :---: | :---: | :---: |
-| **`noul` (Boolean Decision)** | 600 | 49.7% | **44.0%** | 48.0% |
-| **`score` (Ordinal / Interval)** | 800 | 26.8% | **29.2%** | 45.5% |
-| **`choice` (Multi-Option Routing)** | 600 | 29.5% | **19.8%** | 32.3% |
-
-#### Performance Breakdown by Workflow Domain (500 decisions each)
-- **`agent_trace_observability`**: CPU 24.8% | **Hexagon NPU 35.4%** | Agreement 45.6%
-- **`customer_service`**: CPU 41.6% | **Hexagon NPU 30.8%** | Agreement 40.4%
-- **`invoice_processing`**: CPU 31.0% | **Hexagon NPU 25.8%** | Agreement 49.6%
-- **`security_incidents`**: CPU 40.4% | **Hexagon NPU 31.4%** | Agreement 33.6%
-
-*(To reproduce, run `python benchmark_typed_decisions.py`)*
-
----
-
-## Large Model Files & Download Links
-
-GitHub has a strict **100 MB per file limit**. The following binary weights exceed 100 MB:
-
-| File Path | Size | Description | How to Obtain |
-| :--- | :---: | :--- | :--- |
-| `npu/modernbert_clamped_qdq.onnx` | **106.3 MB** | Quantized 22-layer Hexagon HTP QDQ model | [GitHub Releases](https://github.com/EricYu123456/laya-hexagon-npu/releases/tag/v1.0.0) / Build via script |
-| `models/multilingual/model.safetensors` | **615 MB** | Hugging Face base PyTorch weights | `python download.py` |
-
-> 💡 **Download Options**:
-> - **Option A (GitHub Releases - Recommended)**: Directly download `modernbert_clamped_qdq.onnx` from [v1.0.0 Release Assets](https://github.com/EricYu123456/laya-hexagon-npu/releases/download/v1.0.0/modernbert_clamped_qdq.onnx) and place it under `npu/`.
-> - **Option B (One-Click Local Build)**: Run `./download_models.sh`. It automatically pulls weights from Hugging Face and quantizes `modernbert_clamped_qdq.onnx` directly on the device in ~2 minutes.
-
----
-
-## Quickstart Guide
-
-### 1. Prerequisites (Rubik Pi 3 / Ubuntu 24.04)
-
-Ensure FastRPC drivers and daemon are running:
-```bash
-# Check device
-ls -l /dev/fastrpc-cdsp
-
-# Ensure cdsprpcd daemon is active
-sudo cdsprpcd &
-```
-
-### 2. Environment Setup
+From the repository root:
 
 ```bash
-git clone https://github.com/EricYu123456/laya-hexagon-npu.git
-cd laya-hexagon-npu
-
-# Run setup script (creates virtualenv and installs dependencies)
-./setup.sh
-```
-
-Or manually:
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-### 3. Obtain Model Weights
-
-```bash
-./download_models.sh
-```
-Or rebuild the quantized ONNX graph from scratch:
-```bash
+python3.12 -m venv .venv-build
+source .venv-build/bin/activate
+python -m pip install -r requirements-fidelity-build.txt
 python download.py
-python npu/build_clamped_22l.py
+python -c "from huggingface_hub import hf_hub_download; hf_hub_download('LocalLLaMA/typed-decisions', 'all/test-00000-of-00001.parquet', repo_type='dataset', revision='c76749ec58bd8c3d2ea706b31c333a9059c38f90', local_dir='.work/dataset')"
 ```
 
-### 4. Run the API Service
+Build the `grouped16` recipe used by the best hardware result currently recorded:
+
+```bash
+python npu/build_fidelity.py \
+  --model models/multilingual \
+  --parquet .work/dataset/all/test-00000-of-00001.parquet \
+  --length 768 --samples 16 --threads 8 \
+  --activation-bits 16 --group-outliers \
+  --indices 0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375 \
+  --output-dir .work/grouped16
+```
+
+This creates FP32 and QDQ graphs, build metadata, and `manifest.json`. It does not certify the candidate. Keep each recipe in its own output directory and retain its metadata. Large checkpoints, generated graphs, and context binaries are not stored in Git.
+
+## Evaluate on the Pi
+
+Copy the candidate directory, checkpoint, and pinned dataset to the Pi. Use the installed ARM QNN environment (currently ONNX Runtime 1.30.0 and `onnxruntime-qnn` 2.5.0). Before **every** QNN command, source `npu/env.sh`; it selects the wheel's matching backend, stub, and DSP skeleton. Mixing these with another vendor SDK caused device failures during investigation.
 
 ```bash
 source .venv/bin/activate
-export LAYA_DEVICE=npu
-uvicorn app:app --host 0.0.0.0 --port 8000
+source npu/env.sh
+export LAYA_NPU_MANIFEST="$PWD/.work/grouped16/manifest.json"
+export LAYA_NPU_CONTEXT_CACHE=0
 ```
 
-### 5. Run Verification
-
-In another terminal:
-```bash
-source .venv/bin/activate
-python verify.py
-```
-
----
-
-## Running as a Systemd Service
-
-To run Laya as a persistent background daemon managed by systemd:
+Capture unchanged Laya on the development selection, then compare the actual HTP candidate. Use new output paths for each experiment:
 
 ```bash
-mkdir -p ~/.config/systemd/user/
-cp systemd/laya.service ~/.config/systemd/user/laya.service
-
-# Reload and enable
-systemctl --user daemon-reload
-systemctl --user enable --now laya.service
-
-# Check status
-systemctl --user status laya.service
+DEV=1,26,51,76,101,126,151,176,201,226,251,276,301,326,351,376
+DATA=.work/dataset/all/test-00000-of-00001.parquet
+python benchmark_fidelity.py --backend cpu --dataset-path "$DATA" \
+  --indices "$DEV" --threads 4 --output .work/reference-dev.jsonl
+python benchmark_fidelity.py --backend npu --dataset-path "$DATA" \
+  --indices "$DEV" --threads 4 --reference .work/reference-dev.jsonl \
+  --output .work/grouped16-dev.json
 ```
 
----
+The benchmark records checkpoint/graph hashes, input token and marker identities, probability errors, decision mismatches, and runtime statistics. A failed threshold returns exit code 1. A development pass would still require the declared held-out evaluation described in [the method](docs/fidelity-method.md).
 
-## API Reference
+## Context cache and service status
 
-### `GET /health`
-Returns readiness status, active checkpoint, execution device, and threads.
+Persistent QNN context caching is implemented, with atomic publication and keys derived from graph SHA256, runtime versions, and provider settings. Its target-device generation/reload validation is pending at this milestone. The evaluation commands above disable it to keep that separate from numerical testing.
 
-**Response**:
-```json
-{
-  "status": "ready",
-  "checkpoint": "multilingual",
-  "device": "npu",
-  "threads": 4,
-  "revision": "1c5edc17a7acd8701df6fc341c0d179f1c62c982"
-}
+To test context precompilation after loading the QNN environment:
+
+```bash
+export LAYA_NPU_CONTEXT_CACHE=1
+python npu/compile_contexts.py --manifest "$LAYA_NPU_MANIFEST" \
+  --model-dir models/multilingual --verify-reload
 ```
 
-### `POST /predict`
-Evaluates dynamic questions over dialogue state.
+The CLI hashes the checkpoint without loading its tensors and compiles using only encoder configuration, reducing peak memory relative to loading the full agent first. `LAYA_NPU_CACHE_DIR` overrides the default `npu/fidelity/context_cache` directory. Compilation and cache reload are reported separately.
 
-**Request**:
-```json
-{
-  "state": "Hi, I would like to request a refund for order #12345.",
-  "questions": {
-    "department": {
-      "type": "choice",
-      "instructions": "Which department should handle this ticket?",
-      "criteria": {
-        "billing": "Invoice, refunds, subscription charges",
-        "technical": "Software bugs, system crashes",
-        "sales": "Product purchase inquiries"
-      }
-    },
-    "refund_requested": {
-      "type": "noul",
-      "instructions": "Does the user explicitly request a refund?"
-    }
-  }
-}
-```
+The FastAPI entry point remains `app:app`, with `/health` and `/predict`. Service files are experimental integration scaffolding; no candidate is currently presented as a qualified replacement for original Laya. Final service validation also requires buckets covering the original input budget and measured memory use under the service limit.
 
-**Response**:
-```json
-{
-  "model": "laya-rl-agent",
-  "answers": {
-    "department": {
-      "type": "choice",
-      "choice": "billing",
-      "probabilities": {
-        "billing": 0.8221,
-        "technical": 0.1524,
-        "sales": 0.0255
-      },
-      "confidence": 0.5072,
-      "action": {
-        "act_probability": 1.0
-      }
-    },
-    "refund_requested": {
-      "type": "noul",
-      "noul": 0.9883,
-      "confidence": 0.9883,
-      "action": {
-        "act_probability": 1.0
-      }
-    }
-  },
-  "usage": {
-    "input_tokens": 98,
-    "output_tokens": 0
-  },
-  "elapsed_ms": 183.4,
-  "checkpoint": "multilingual"
-}
-```
+## Legacy results
 
----
+The older 64-token UINT8/clamped implementation changed the sequence and head budgets and did not preserve original-model fidelity. Its historical full public-split agreement was 42.3% (57.7% mismatch). Four semantic probes did not establish general fidelity, and historical speed comparisons do not establish speedup for the corrected input contract.
 
-## Technical Report
+`npu/build_clamped_22l.py`, `download_models.sh`, and [npu/REPORT.md](npu/REPORT.md) are legacy artifacts. Their clamp, latency, and accuracy statements are not validation of the current work. Use `npu/build_fidelity.py` and `benchmark_fidelity.py` for new experiments.
 
-For in-depth mathematical analysis, profiling traces, and quantization logs, see [`npu/REPORT.md`](npu/REPORT.md).
-
----
-
-## Author & License
-
-- **Author**: Eric Yu ([@EricYu123456](https://github.com/EricYu123456))
-- **License**: [MIT License](LICENSE)
+Author: [Eric Yu](https://github.com/EricYu123456). License: [MIT](LICENSE).

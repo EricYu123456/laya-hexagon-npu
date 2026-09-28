@@ -40,3 +40,6 @@ npu/legacy/
 .DS_Store
 .vscode/
 .idea/
+.work/
+npu/fidelity/*.json
+!npu/fidelity/manifest.example.json

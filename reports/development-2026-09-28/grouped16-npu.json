@@ -1,0 +1,710 @@
+{
+  "metadata": {
+    "kind": "metadata",
+    "format_version": 1,
+    "created_utc": "2026-09-28T14:30:22.098824+00:00",
+    "dataset": {
+      "id": "LocalLLaMA/typed-decisions",
+      "revision": "c76749ec58bd8c3d2ea706b31c333a9059c38f90",
+      "file": "all/test-00000-of-00001.parquet",
+      "sha256": "4f294f218ea1da27f3efef936359389c62ea4d3973a41457732990f1d31b647c"
+    },
+    "model_files": {
+      "model.safetensors": {
+        "sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204"
+      },
+      "rl_agent_config.json": {
+        "semantic_json_sha256": "3cbac8e77bc83a1cb54a4cfa21a9806e2bb3b2b9348151b74536bad4b19be8b4"
+      },
+      "encoder/config.json": {
+        "semantic_json_sha256": "63c6ff324dca566d85b326575694184961acbe97f4f54070fdc1a0337faaba0b"
+      },
+      "tokenizer/tokenizer.json": {
+        "semantic_json_sha256": "781b8f0a0f543024c43cd95ded23081e2709b20ae6f92f986feca33ce02a4a6e"
+      },
+      "tokenizer/tokenizer_config.json": {
+        "semantic_json_sha256": "24ec1d141fc3d2ddd8b9a4cd23d95568f93713b1f5f479dbb8bd5438bc6b7a80"
+      }
+    },
+    "backend": "npu",
+    "module": "laya_npu",
+    "runtime": {
+      "python": "3.12.3",
+      "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+      "hostname": "ubuntu",
+      "packages": {
+        "laya": "0.3.5",
+        "torch": "2.6.0",
+        "transformers": "5.0.0",
+        "onnxruntime": "1.30.0",
+        "onnxruntime-qnn": "2.5.0"
+      },
+      "laya_source_files": {
+        "__init__.py": "43e8c7d02969b37381915850cb4970e62b6ea0a328ac26c1efc9fb3fca0916d7",
+        "agent.py": "128567096446c5d39af8e4a3a7c4dd9e32a134a1b099ce5a5eed383beeff1b89",
+        "common.py": "f231d42fcec84da203222fcaa89c083b22776e00341e66e118183d754e1dcabf"
+      }
+    },
+    "threads": 4,
+    "warmup_cases": 1,
+    "selection": [
+      1,
+      26,
+      51,
+      76,
+      101,
+      126,
+      151,
+      176,
+      201,
+      226,
+      251,
+      276,
+      301,
+      326,
+      351,
+      376
+    ],
+    "total_dataset_cases": 400,
+    "excluded_calibration_or_development_indices": [],
+    "module_source_sha256": "720bf957fdfdc7dad998221eb2508721d0868ac1c30b8a89092243d6f6ad16e3",
+    "candidate_assets": {
+      "manifest_path": "/home/ubuntu/laya-service/npu/fidelity/manifest.json",
+      "manifest": {
+        "buckets": {
+          "768": "backbone_768_a16w8.onnx"
+        },
+        "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+        "mask_penalty": -100,
+        "model_sha256": {
+          "768": "c0a812181fd2771992a476221d5f66039cdad96dedcb86b23d6102069a016b6b"
+        },
+        "precision": "a16w8"
+      },
+      "manifest_sha256": "ca7e2b8f40a72de5d349150b785af171286660da26711b8878e34b0598e3c104",
+      "manifest_canonical_sha256": "0c4742a9353680fe66fadeadc294f2b5051bec8da9b1dbf1291d7b753c8857b5",
+      "supported_buckets": [
+        768
+      ],
+      "models": {
+        "768": {
+          "path": "/home/ubuntu/laya-service/npu/fidelity/backbone_768_a16w8.onnx",
+          "sha256": "c0a812181fd2771992a476221d5f66039cdad96dedcb86b23d6102069a016b6b",
+          "manifest_verified": true
+        }
+      },
+      "checkpoint_path": "/home/ubuntu/laya-service/models/multilingual/model.safetensors",
+      "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "checkpoint_manifest_verified": true,
+      "precision": "a16w8"
+    },
+    "accelerator_stats_after_warmup": {
+      "npu_calls": 5,
+      "cpu_fallbacks": 0,
+      "session_creations": 1,
+      "session_evictions": 0,
+      "bucket_calls": {
+        "768": 5
+      },
+      "max_len": 1024,
+      "head_max_len": 256
+    }
+  },
+  "reference_metadata": {
+    "kind": "metadata",
+    "format_version": 1,
+    "created_utc": "2026-09-28T14:20:02.623136+00:00",
+    "dataset": {
+      "id": "LocalLLaMA/typed-decisions",
+      "revision": "c76749ec58bd8c3d2ea706b31c333a9059c38f90",
+      "file": "all/test-00000-of-00001.parquet",
+      "sha256": "4f294f218ea1da27f3efef936359389c62ea4d3973a41457732990f1d31b647c"
+    },
+    "model_files": {
+      "model.safetensors": {
+        "sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204"
+      },
+      "rl_agent_config.json": {
+        "semantic_json_sha256": "3cbac8e77bc83a1cb54a4cfa21a9806e2bb3b2b9348151b74536bad4b19be8b4"
+      },
+      "encoder/config.json": {
+        "semantic_json_sha256": "63c6ff324dca566d85b326575694184961acbe97f4f54070fdc1a0337faaba0b"
+      },
+      "tokenizer/tokenizer.json": {
+        "semantic_json_sha256": "781b8f0a0f543024c43cd95ded23081e2709b20ae6f92f986feca33ce02a4a6e"
+      },
+      "tokenizer/tokenizer_config.json": {
+        "semantic_json_sha256": "24ec1d141fc3d2ddd8b9a4cd23d95568f93713b1f5f479dbb8bd5438bc6b7a80"
+      }
+    },
+    "backend": "cpu",
+    "module": "laya",
+    "runtime": {
+      "python": "3.12.3",
+      "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+      "hostname": "ubuntu",
+      "packages": {
+        "laya": "0.3.5",
+        "torch": "2.6.0",
+        "transformers": "5.0.0",
+        "onnxruntime": "1.30.0",
+        "onnxruntime-qnn": "2.5.0"
+      },
+      "laya_source_files": {
+        "__init__.py": "43e8c7d02969b37381915850cb4970e62b6ea0a328ac26c1efc9fb3fca0916d7",
+        "agent.py": "128567096446c5d39af8e4a3a7c4dd9e32a134a1b099ce5a5eed383beeff1b89",
+        "common.py": "f231d42fcec84da203222fcaa89c083b22776e00341e66e118183d754e1dcabf"
+      }
+    },
+    "threads": 4,
+    "warmup_cases": 1,
+    "selection": [
+      1,
+      26,
+      51,
+      76,
+      101,
+      126,
+      151,
+      176,
+      201,
+      226,
+      251,
+      276,
+      301,
+      326,
+      351,
+      376
+    ],
+    "total_dataset_cases": 400,
+    "excluded_calibration_or_development_indices": [],
+    "module_source_sha256": "43e8c7d02969b37381915850cb4970e62b6ea0a328ac26c1efc9fb3fca0916d7",
+    "candidate_assets": null,
+    "accelerator_stats_after_warmup": null
+  },
+  "reference_cache_sha256": "121e0c21a871987317702986d8f97a737724ac0c0c0ffd89ca76556f5af4078a",
+  "reference_cache_cases": 16,
+  "accelerator_stats_after_measurement": {
+    "npu_calls": 85,
+    "cpu_fallbacks": 0,
+    "session_creations": 1,
+    "session_evictions": 0,
+    "bucket_calls": {
+      "768": 85
+    },
+    "max_len": 1024,
+    "head_max_len": 256
+  },
+  "cases": 16,
+  "complete_public_split": false,
+  "evaluation_scope": "development_subset",
+  "complete_declared_heldout_selection": false,
+  "criteria": {
+    "decision_error_percent_max": 5.0,
+    "mean_total_variation_max": 0.05,
+    "identical_preprocessed_inputs_required": true
+  },
+  "selected_cases_pass": false,
+  "full_public_split_pass": false,
+  "heldout_selection_pass": false,
+  "overall": {
+    "decisions": 80,
+    "decision_mismatches": 10,
+    "decision_error_percent": 12.5,
+    "argmax_mismatches": 11,
+    "argmax_error_percent": 13.750000000000002,
+    "total_variation": {
+      "count": 80,
+      "mean": 0.08551044238197943,
+      "p50": 0.0631589197470892,
+      "p95": 0.2254749999999998,
+      "max": 0.458866296629663
+    },
+    "probability_mae": {
+      "count": 80,
+      "mean": 0.052591564009619396,
+      "p50": 0.0315794598735446,
+      "p95": 0.1837091927192719,
+      "max": 0.3216
+    },
+    "max_probability_error": {
+      "count": 80,
+      "mean": 0.08098245182451203,
+      "p50": 0.055408125278081255,
+      "p95": 0.22233999999999982,
+      "max": 0.458866296629663
+    },
+    "noul_abs_error": {
+      "count": 24,
+      "mean": 0.07478333333333334,
+      "p50": 0.027950000000000027,
+      "p95": 0.297595,
+      "max": 0.3216
+    },
+    "score_abs_error": {
+      "count": 32,
+      "mean": 0.083471875,
+      "p50": 0.06125000000000003,
+      "p95": 0.28265999999999974,
+      "max": 0.3165
+    },
+    "score_normalized_abs_error": {
+      "count": 32,
+      "mean": 0.027136979166666665,
+      "p50": 0.02024999999999999,
+      "p95": 0.09421999999999991,
+      "max": 0.1055
+    },
+    "confidence_abs_error": {
+      "count": 80,
+      "mean": 0.055456250000000006,
+      "p50": 0.035550000000000026,
+      "p95": 0.1512149999999998,
+      "max": 0.3216
+    },
+    "action_probability_abs_error": {
+      "count": 80,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    }
+  },
+  "by_type": {
+    "choice": {
+      "decisions": 24,
+      "decision_mismatches": 3,
+      "decision_error_percent": 12.5,
+      "argmax_mismatches": 3,
+      "argmax_error_percent": 12.5,
+      "total_variation": {
+        "count": 24,
+        "mean": 0.1052625790953758,
+        "p50": 0.07893420342034205,
+        "p95": 0.20177650715071507,
+        "max": 0.458866296629663
+      },
+      "probability_mae": {
+        "count": 24,
+        "mean": 0.04910569394646111,
+        "p50": 0.03615809830983098,
+        "p95": 0.09741983592439833,
+        "max": 0.1835465186518652
+      },
+      "max_probability_error": {
+        "count": 24,
+        "mean": 0.09972022652536894,
+        "p50": 0.07664083408340837,
+        "p95": 0.19398818420003175,
+        "max": 0.458866296629663
+      },
+      "noul_abs_error": null,
+      "score_abs_error": null,
+      "score_normalized_abs_error": null,
+      "confidence_abs_error": {
+        "count": 24,
+        "mean": 0.0691375,
+        "p50": 0.05774999999999999,
+        "p95": 0.20277499999999976,
+        "max": 0.28930000000000006
+      },
+      "action_probability_abs_error": {
+        "count": 24,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    "noul": {
+      "decisions": 24,
+      "decision_mismatches": 3,
+      "decision_error_percent": 12.5,
+      "argmax_mismatches": 3,
+      "argmax_error_percent": 12.5,
+      "total_variation": {
+        "count": 24,
+        "mean": 0.07478333333333334,
+        "p50": 0.02795000000000003,
+        "p95": 0.29759499999999994,
+        "max": 0.3216
+      },
+      "probability_mae": {
+        "count": 24,
+        "mean": 0.07478333333333334,
+        "p50": 0.02795000000000003,
+        "p95": 0.29759499999999994,
+        "max": 0.3216
+      },
+      "max_probability_error": {
+        "count": 24,
+        "mean": 0.07478333333333334,
+        "p50": 0.02795000000000003,
+        "p95": 0.297595,
+        "max": 0.3216
+      },
+      "noul_abs_error": {
+        "count": 24,
+        "mean": 0.07478333333333334,
+        "p50": 0.027950000000000027,
+        "p95": 0.297595,
+        "max": 0.3216
+      },
+      "score_abs_error": null,
+      "score_normalized_abs_error": null,
+      "confidence_abs_error": {
+        "count": 24,
+        "mean": 0.06103333333333335,
+        "p50": 0.02795000000000003,
+        "p95": 0.27174999999999966,
+        "max": 0.3216
+      },
+      "action_probability_abs_error": {
+        "count": 24,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    "score": {
+      "decisions": 32,
+      "decision_mismatches": 4,
+      "decision_error_percent": 12.5,
+      "argmax_mismatches": 5,
+      "argmax_error_percent": 15.625,
+      "total_variation": {
+        "count": 32,
+        "mean": 0.07874167163341672,
+        "p50": 0.06724729033647286,
+        "p95": 0.1954681189027812,
+        "max": 0.2218
+      },
+      "probability_mae": {
+        "count": 32,
+        "mean": 0.038562139564202645,
+        "p50": 0.031683580858085814,
+        "p95": 0.0977340594513906,
+        "max": 0.1109
+      },
+      "max_probability_error": {
+        "count": 32,
+        "mean": 0.07157845966725335,
+        "p50": 0.05393427842784279,
+        "p95": 0.1954681189027812,
+        "max": 0.21850000000000003
+      },
+      "noul_abs_error": null,
+      "score_abs_error": {
+        "count": 32,
+        "mean": 0.083471875,
+        "p50": 0.06125000000000003,
+        "p95": 0.28265999999999974,
+        "max": 0.3165
+      },
+      "score_normalized_abs_error": {
+        "count": 32,
+        "mean": 0.027136979166666665,
+        "p50": 0.02024999999999999,
+        "p95": 0.09421999999999991,
+        "max": 0.1055
+      },
+      "confidence_abs_error": {
+        "count": 32,
+        "mean": 0.0410125,
+        "p50": 0.030699999999999998,
+        "p95": 0.128825,
+        "max": 0.1477
+      },
+      "action_probability_abs_error": {
+        "count": 32,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    }
+  },
+  "by_workflow": {
+    "agent_trace_observability": {
+      "decisions": 20,
+      "decision_mismatches": 1,
+      "decision_error_percent": 5.0,
+      "argmax_mismatches": 3,
+      "argmax_error_percent": 15.0,
+      "total_variation": {
+        "count": 20,
+        "mean": 0.13100870476843707,
+        "p50": 0.09312534253425345,
+        "p95": 0.29917999999999995,
+        "max": 0.3216
+      },
+      "probability_mae": {
+        "count": 20,
+        "mean": 0.08839435238421853,
+        "p50": 0.04656267126712672,
+        "p95": 0.29917999999999995,
+        "max": 0.3216
+      },
+      "max_probability_error": {
+        "count": 20,
+        "mean": 0.13051418172074183,
+        "p50": 0.09312534253425345,
+        "p95": 0.29918,
+        "max": 0.3216
+      },
+      "noul_abs_error": {
+        "count": 4,
+        "mean": 0.2289,
+        "p50": 0.29664999999999997,
+        "p95": 0.31806,
+        "max": 0.3216
+      },
+      "score_abs_error": {
+        "count": 8,
+        "mean": 0.13542499999999996,
+        "p50": 0.0838500000000002,
+        "p95": 0.2888199999999998,
+        "max": 0.29959999999999987
+      },
+      "score_normalized_abs_error": {
+        "count": 8,
+        "mean": 0.045141666666666656,
+        "p50": 0.027950000000000065,
+        "p95": 0.09627333333333327,
+        "max": 0.09986666666666662
+      },
+      "confidence_abs_error": {
+        "count": 20,
+        "mean": 0.094865,
+        "p50": 0.06680000000000003,
+        "p95": 0.296615,
+        "max": 0.3216
+      },
+      "action_probability_abs_error": {
+        "count": 20,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    "customer_service": {
+      "decisions": 20,
+      "decision_mismatches": 5,
+      "decision_error_percent": 25.0,
+      "argmax_mismatches": 4,
+      "argmax_error_percent": 20.0,
+      "total_variation": {
+        "count": 20,
+        "mean": 0.09249659255621594,
+        "p50": 0.05232088708870886,
+        "p95": 0.21535666066606682,
+        "max": 0.458866296629663
+      },
+      "probability_mae": {
+        "count": 20,
+        "mean": 0.05165258155663582,
+        "p50": 0.029003480848084816,
+        "p95": 0.18370919271927194,
+        "max": 0.1868
+      },
+      "max_probability_error": {
+        "count": 20,
+        "mean": 0.08579861780778618,
+        "p50": 0.051049999999999984,
+        "p95": 0.20040331483148335,
+        "max": 0.458866296629663
+      },
+      "noul_abs_error": {
+        "count": 4,
+        "mean": 0.09635,
+        "p50": 0.08894999999999997,
+        "p95": 0.17829499999999998,
+        "max": 0.18680000000000002
+      },
+      "score_abs_error": {
+        "count": 8,
+        "mean": 0.0761625,
+        "p50": 0.046699999999999964,
+        "p95": 0.24257999999999988,
+        "max": 0.3165
+      },
+      "score_normalized_abs_error": {
+        "count": 8,
+        "mean": 0.025387499999999997,
+        "p50": 0.015566666666666656,
+        "p95": 0.08085999999999996,
+        "max": 0.1055
+      },
+      "confidence_abs_error": {
+        "count": 20,
+        "mean": 0.06402,
+        "p50": 0.04909999999999998,
+        "p95": 0.12922500000000015,
+        "max": 0.28930000000000006
+      },
+      "action_probability_abs_error": {
+        "count": 20,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    "invoice_processing": {
+      "decisions": 20,
+      "decision_mismatches": 3,
+      "decision_error_percent": 15.0,
+      "argmax_mismatches": 1,
+      "argmax_error_percent": 5.0,
+      "total_variation": {
+        "count": 20,
+        "mean": 0.052121895890618976,
+        "p50": 0.04202208720872089,
+        "p95": 0.13736239923992408,
+        "max": 0.19744798479847983
+      },
+      "probability_mae": {
+        "count": 20,
+        "mean": 0.028380947945309494,
+        "p50": 0.02453905359464053,
+        "p95": 0.06868119961996204,
+        "max": 0.09872399239923992
+      },
+      "max_probability_error": {
+        "count": 20,
+        "mean": 0.046607526689225284,
+        "p50": 0.0349943205679432,
+        "p95": 0.1319923117311732,
+        "max": 0.19644623462346228
+      },
+      "noul_abs_error": {
+        "count": 8,
+        "mean": 0.011600000000000027,
+        "p50": 0.006900000000000017,
+        "p95": 0.031090000000000003,
+        "max": 0.033399999999999985
+      },
+      "score_abs_error": {
+        "count": 8,
+        "mean": 0.06073750000000003,
+        "p50": 0.05315000000000003,
+        "p95": 0.12062499999999997,
+        "max": 0.13129999999999997
+      },
+      "score_normalized_abs_error": {
+        "count": 8,
+        "mean": 0.02024583333333334,
+        "p50": 0.017716666666666676,
+        "p95": 0.04020833333333332,
+        "max": 0.043766666666666655
+      },
+      "confidence_abs_error": {
+        "count": 20,
+        "mean": 0.02315000000000001,
+        "p50": 0.024200000000000027,
+        "p95": 0.04162000000000004,
+        "max": 0.060999999999999985
+      },
+      "action_probability_abs_error": {
+        "count": 20,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    "security_incidents": {
+      "decisions": 20,
+      "decision_mismatches": 1,
+      "decision_error_percent": 5.0,
+      "argmax_mismatches": 3,
+      "argmax_error_percent": 15.0,
+      "total_variation": {
+        "count": 20,
+        "mean": 0.06641457631264576,
+        "p50": 0.06584999999999999,
+        "p95": 0.141165,
+        "max": 0.1671
+      },
+      "probability_mae": {
+        "count": 20,
+        "mean": 0.04193837415231374,
+        "p50": 0.03235427207279272,
+        "p95": 0.08628750000000003,
+        "max": 0.13829999999999998
+      },
+      "max_probability_error": {
+        "count": 20,
+        "mean": 0.0610094810802948,
+        "p50": 0.056655954404559554,
+        "p95": 0.13974,
+        "max": 0.16709999999999997
+      },
+      "noul_abs_error": {
+        "count": 8,
+        "mean": 0.050125,
+        "p50": 0.04215000000000002,
+        "p95": 0.11684499999999998,
+        "max": 0.13829999999999998
+      },
+      "score_abs_error": {
+        "count": 8,
+        "mean": 0.06156249999999999,
+        "p50": 0.06379999999999986,
+        "p95": 0.09164000000000003,
+        "max": 0.09360000000000013
+      },
+      "score_normalized_abs_error": {
+        "count": 8,
+        "mean": 0.017772916666666663,
+        "p50": 0.020691666666666664,
+        "p95": 0.027256666666666644,
+        "max": 0.029333333333333284
+      },
+      "confidence_abs_error": {
+        "count": 20,
+        "mean": 0.039790000000000006,
+        "p50": 0.03405000000000001,
+        "p95": 0.08006500000000011,
+        "max": 0.13829999999999998
+      },
+      "action_probability_abs_error": {
+        "count": 20,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    }
+  },
+  "token_sequences_equal_cases": 16,
+  "reported_token_counts_equal_cases": 16,
+  "latency_case_ms": {
+    "reference": {
+      "count": 16,
+      "mean": 8273.477940249904,
+      "p50": 8406.24787500019,
+      "p95": 12120.090528499532,
+      "max": 14838.931510999828
+    },
+    "candidate": {
+      "count": 16,
+      "mean": 2207.0159754374004,
+      "p50": 2207.5111039998774,
+      "p95": 2655.3849952499604,
+      "max": 2959.989111000141
+    }
+  },
+  "latency_same_host_and_threads": true,
+  "notes": [
+    "Fidelity is relative to unchanged FP32 Laya, not gold-label accuracy.",
+    "Decision mismatch uses choice labels, noul > 0.5, and rounded expected scores; argmax error is reported separately.",
+    "Probability errors are fractions in [0,1], not relative percent errors; distributions are normalized after API rounding.",
+    "Latency includes tokenization and heads, excludes model loading and warmup. Cross-host timings are not comparable and cannot establish hardware speedup.",
+    "Exclusions are declared calibration/development cases; define them before evaluating candidates, never after observing failures.",
+    "A test-set result does not guarantee fidelity for arbitrary inputs; evaluation covers only the recorded selection."
+  ],
+  "records_file": "reports\\development-2026-09-28\\grouped16-npu.cases.jsonl"
+}

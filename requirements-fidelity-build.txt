@@ -1,0 +1,13 @@
+# Tested on x86_64 Ubuntu/WSL2 with Python 3.12.
+# These are build/evaluation dependencies; the ARM QNN plugin runs on the Pi.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.6.0+cpu
+transformers==5.0.0
+laya==0.3.5
+numpy==2.5.3
+onnx==1.23.0
+onnxruntime==1.30.0
+pyarrow==25.0.1
+safetensors==0.8.0
+tokenizers==0.22.2
+huggingface-hub==1.32.0

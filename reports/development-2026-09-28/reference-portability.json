@@ -1,0 +1,67 @@
+{
+  "cases": 16,
+  "description": "Pristine LAYA on ARM Pi CPU versus WSL x86 CPU, same torch/transformers versions; latency deliberately excluded.",
+  "overall": {
+    "decisions": 80,
+    "decision_mismatches": 0,
+    "decision_error_percent": 0.0,
+    "argmax_mismatches": 0,
+    "argmax_error_percent": 0,
+    "total_variation": {
+      "count": 80,
+      "mean": 9.417808219179254e-07,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 5.1294870512925105e-05
+    },
+    "probability_mae": {
+      "count": 80,
+      "mean": 4.708904109589627e-07,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 2.5647435256462552e-05
+    },
+    "max_probability_error": {
+      "count": 80,
+      "mean": 9.417808219183699e-07,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 5.129487051291903e-05
+    },
+    "noul_abs_error": {
+      "count": 24,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "score_abs_error": {
+      "count": 32,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "score_normalized_abs_error": {
+      "count": 32,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "confidence_abs_error": {
+      "count": 80,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "action_probability_abs_error": {
+      "count": 80,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    }
+  }
+}

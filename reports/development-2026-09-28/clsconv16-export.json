@@ -1,0 +1,16 @@
+{
+  "config": {
+    "length": 768,
+    "indices": "0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375",
+    "samples": 32,
+    "mask_penalty": -100,
+    "balance": false,
+    "group_outliers": true,
+    "outlier_ratio": 16,
+    "max_outliers": 8,
+    "conv_linear": true,
+    "split_cls": true,
+    "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204"
+  },
+  "fp32_sha256": "cd2a3ff2bae4d169d4490beaf1eb743f0f5ee4649c73ad59b3a599f8b04aa795"
+}
