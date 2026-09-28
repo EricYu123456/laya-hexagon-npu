@@ -30,7 +30,9 @@ class FakeAgent:
     def __init__(self, buckets=(768, 1024), *, npu=True, failure=None, fallback=False):
         self.cfg = {'max_len': 1024, 'head_max_len': 256}
         self.buckets = list(buckets)
-        self.npu_stats = {'npu_calls': 0, 'cpu_fallbacks': 0}
+        self.npu_stats = {'npu_calls': 0, 'cpu_fallbacks': 0, 'bucket_calls': {},
+                          'context_cache_hits': 0, 'context_cache_misses': 0, 'context_cache_errors': 0,
+                          'context_cache_paths': {'768': '/private/cache/path.onnx'}}
         self.calls = []
         self.npu, self.failure, self.fallback = npu, failure, fallback
         self.during_predict = None
@@ -46,6 +48,9 @@ class FakeAgent:
             raise self.failure
         self.npu_stats['npu_calls'] += int(self.npu)
         self.npu_stats['cpu_fallbacks'] += int(self.fallback)
+        if self.npu:
+            self.npu_stats['bucket_calls']['768'] = self.npu_stats['bucket_calls'].get('768', 0) + 1
+            self.npu_stats['context_cache_hits'] = 1
         return {'answers': {key: {'type': question['type']} for key, question in questions.items()},
                 'usage': {'input_tokens': 10}}
 
@@ -80,9 +85,26 @@ class ServiceReadinessTests(unittest.IsolatedAsyncioTestCase):
                 'status': 'ready', 'checkpoint': 'multilingual', 'device': 'npu',
                 'threads': 4, 'revision': 'checkpoint-revision', 'supported_input_capacity': 1024,
                 'encoder_provider': 'QNNExecutionProvider', 'cpu_fallbacks': 0,
+                'supported_buckets': [768, 1024], 'npu_calls': 1, 'bucket_calls': {'768': 1},
+                'context_cache_hits': 1, 'context_cache_misses': 0, 'context_cache_errors': 0,
             })
             self.service.laya.load.assert_not_called()
         self.assert_not_ready()
+
+    async def test_health_counters_are_live_snapshots_without_filesystem_paths(self):
+        candidate = FakeAgent()
+        self.service.laya_npu.load.return_value = candidate
+        async with self.service.lifespan(self.service.app):
+            before = self.service.health()
+            candidate.npu_stats['npu_calls'] += 2
+            candidate.npu_stats['bucket_calls']['1024'] = 2
+            candidate.npu_stats['context_cache_hits'] += 1
+            after = self.service.health()
+            self.assertEqual(after['npu_calls'] - before['npu_calls'], 2)
+            self.assertEqual(before['bucket_calls'], {'768': 1})
+            self.assertEqual(after['bucket_calls'], {'768': 1, '1024': 2})
+            self.assertEqual(after['context_cache_hits'], 2)
+            self.assertNotIn('context_cache_paths', after)
 
     async def test_short_bucket_set_rejected_before_warmup(self):
         candidate = FakeAgent(buckets=(768,))

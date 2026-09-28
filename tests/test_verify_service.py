@@ -1,0 +1,103 @@
+"""HTTP verifier control-flow tests; no HTTP server or accelerator is contacted."""
+import contextlib
+import copy
+import io
+import json
+from pathlib import Path
+import tempfile
+import unittest
+from unittest.mock import patch
+
+from benchmark_fidelity import json_hash
+import verify_service as verifier
+
+
+class ServiceVerifierTests(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.addCleanup(self.directory.cleanup)
+        self.root = Path(self.directory.name)
+        self.question = {'type': 'choice', 'instructions': 'Choose.', 'criteria': ['a', 'b']}
+        self.answer = {'model': 'laya-rl-agent', 'answers': {'q': {'type': 'choice', 'choice': 'a',
+                       'probabilities': {'a': .9, 'b': .1}, 'confidence': .8, 'action': {'act_probability': 1}}}}
+        self.suite = [{'id': label, 'state': label, 'questions': {'q': self.question}}
+                      for label in ['short', 'long', 'short-again']]
+        self.records = [{'id': p['id'], 'input_sha256': json_hash([p['state'], p['questions']]),
+                         'tokens': {'q': {'tokens': 1024 if p['id'] == 'long' else 32}},
+                         'output': {**self.answer, 'usage': {'input_tokens': 1024 if p['id'] == 'long' else 32, 'output_tokens': 0}},
+                         'npu_execution_verified': True} for p in self.suite]
+        self.reference = {'kind': 'laya_probe_reference', 'backend': 'cpu', 'module': 'laya',
+                          'suite_sha256': json_hash(self.suite), 'model_files': {'weights': 'same'}, 'records': self.records}
+        self.expected = {**self.reference, 'backend': 'npu', 'kind': 'laya_probe_comparison', 'passed': True}
+        self.health = {'status': 'ready', 'device': 'npu', 'checkpoint': 'multilingual',
+                       'encoder_provider': 'QNNExecutionProvider', 'supported_input_capacity': 1024,
+                       'supported_buckets': [768, 1024], 'npu_calls': 1, 'bucket_calls': {'768': 1},
+                       'cpu_fallbacks': 0, 'context_cache_hits': 1, 'context_cache_misses': 0, 'context_cache_errors': 0}
+        self.wrong_bucket = False
+        self.http_calls = []
+
+    def fake_http(self, base, endpoint, body=None, timeout=120):
+        self.http_calls.append((endpoint, body))
+        if endpoint == '/health':
+            return 200, copy.deepcopy(self.health), .1
+        index = next((i for i, p in enumerate(self.suite) if p['state'] == body['state']), None)
+        if index is None:
+            return 422, {'detail': 'validation error'}, .2
+        bucket = '1024' if body['state'] == 'long' and not self.wrong_bucket else '768'
+        self.health['npu_calls'] += 1
+        self.health['bucket_calls'][bucket] = self.health['bucket_calls'].get(bucket, 0) + 1
+        return 200, {**copy.deepcopy(self.records[index]['output']), 'elapsed_ms': 1.0, 'checkpoint': 'multilingual'}, 1.5
+
+    def run_verifier(self, expected=True):
+        for name, data in [('suite', self.suite), ('reference', self.reference), ('expected', self.expected)]:
+            (self.root / f'{name}.json').write_text(json.dumps(data), encoding='utf-8')
+        args = ['--suite', str(self.root/'suite.json'), '--reference', str(self.root/'reference.json'),
+                '--output', str(self.root/'output.json'), '--ready-timeout', '.001']
+        if expected:
+            args += ['--expected-npu', str(self.root/'expected.json')]
+        with patch.object(verifier, 'http_json', side_effect=self.fake_http), contextlib.redirect_stdout(io.StringIO()):
+            code = verifier.main(args)
+        return code, json.loads((self.root/'output.json').read_text(encoding='utf-8'))
+
+    def test_valid_service_proves_counter_transitions_and_exact_npu_replay(self):
+        code, report = self.run_verifier()
+        self.assertEqual(code, 0)
+        self.assertTrue(report['passed'])
+        self.assertTrue(report['long_short_transition_verified'])
+        self.assertTrue(all(r['standalone_npu_outputs_equal'] for r in report['records']))
+        self.assertEqual(report['health_after']['npu_calls'], 4)
+        self.assertEqual(len(report['invalid_requests']), 5)
+        self.assertTrue(all(r['http_status'] == 422 and r['accelerator_delta']['npu_calls'] == 0 for r in report['invalid_requests']))
+
+    def test_wrong_bucket_is_not_hidden_by_correct_answers(self):
+        self.wrong_bucket = True
+        code, report = self.run_verifier()
+        self.assertEqual(code, 1)
+        self.assertFalse(report['passed'])
+        self.assertFalse(report['records'][1]['npu_execution_verified'])
+
+    def test_standalone_answer_change_fails_even_when_decision_is_same(self):
+        self.expected = copy.deepcopy(self.expected)
+        self.expected['records'][0]['output']['answers']['q']['confidence'] = .81
+        code, report = self.run_verifier()
+        self.assertEqual(code, 1)
+        self.assertFalse(report['records'][0]['standalone_npu_outputs_equal'])
+
+    def test_missing_precompiled_context_is_not_ready_for_qualification(self):
+        self.health['context_cache_misses'] = 1
+        with patch.object(verifier.time, 'sleep'):
+            code, report = self.run_verifier()
+        self.assertEqual(code, 1)
+        self.assertFalse(report['records'])
+        self.assertIn('readiness deadline', report['error'])
+
+    def test_five_question_cli_suite_rejected_before_http(self):
+        self.suite[0]['questions'] = {str(i): self.question for i in range(5)}
+        self.reference['suite_sha256'] = json_hash(self.suite)
+        with self.assertRaisesRegex(ValueError, 'HTTP schema'):
+            self.run_verifier(expected=False)
+        self.assertEqual(self.http_calls, [])
+
+
+if __name__ == '__main__':
+    unittest.main()

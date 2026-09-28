@@ -101,6 +101,8 @@ async def lifespan(app):
     readiness = {'supported_input_capacity': capacity,
                  'encoder_provider': 'QNNExecutionProvider' if DEVICE == 'npu' else 'PyTorch',
                  'cpu_fallbacks': 0}
+    if DEVICE == 'npu':
+        readiness['supported_buckets'] = list(buckets)
     agent = candidate
     try:
         yield
@@ -115,7 +117,10 @@ def health():
         raise HTTPException(503, 'Model is not ready')
     details = dict(readiness)
     if DEVICE == 'npu':
-        details['cpu_fallbacks'] = agent.npu_stats['cpu_fallbacks']
+        stats = agent.npu_stats
+        for key in ('cpu_fallbacks', 'npu_calls', 'context_cache_hits', 'context_cache_misses', 'context_cache_errors'):
+            details[key] = stats[key]
+        details['bucket_calls'] = dict(stats['bucket_calls'])
     return {'status': 'ready', 'checkpoint': CHECKPOINT, 'device': DEVICE, 'threads': torch.get_num_threads(), 'revision': (ROOT / 'models/revision.txt').read_text().strip(), **details}
 
 @app.post('/predict')
