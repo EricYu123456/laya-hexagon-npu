@@ -1,0 +1,35 @@
+{
+  "created_utc": "2026-09-28T17:27:16.009211+00:00",
+  "systemd": {
+    "MainPID": "306769",
+    "NRestarts": "0",
+    "ExecMainStartTimestampMonotonic": "15465825474",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/laya.service",
+    "MemoryCurrent": "1919373312",
+    "MemoryPeak": "2744172544",
+    "MemoryMax": "4294967296",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/home/ubuntu/.config/systemd/user/laya.service",
+    "UnitFileState": "disabled",
+    "InvocationID": "1fd0e4e94be5410387677acba123f666"
+  },
+  "cgroup": {
+    "memory.max": "4294967296",
+    "memory.current": "1919373312",
+    "memory.peak": "2744172544",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+  },
+  "source_sha256": {
+    "app.py": "2488def7c35f1342bdda16f6e072cb4be5eee6f8d568ab33ae9241d345cc6a13",
+    "laya_npu.py": "c98aa7b4de2334acf476747ea9068f7e3cada27a32f7e49d25bded5430ae022c",
+    "npu/fidelity_runtime.py": "d7410ca49ec45876eca293519e6cac2f342355f1508b9165d1b09af24f8a886e",
+    "npu/env.sh": "eb5987b0895dcc2f6e5f57bd0aed0ee0809b98bb62bb69fb272ea63873a790bd",
+    "systemd/laya.service": "2613f7857fdf1ca51adc484442ec4f87b2c6f7b6f8e4e7e57e46f01f23ca4baa",
+    "systemd/run-laya.sh": "2997f2685d06f76c36bdf322afd93f7f30f6c9135403c3cfb8572951ef307eb4",
+    "service.env": "528eb5a042ad40fb32fe8543e5fd845a69ce3183a7dbbfeb97dca2d122070bb7",
+    "npu/fidelity/manifest.json": "95cadda20ef661ace20e2ba32ed41bef955d76219758cf6453806d8c32b986a7"
+  },
+  "git_commit": "95ebd38ed0bdc2b22a70954c27a863a7b23d6032",
+  "installed_unit_sha256": "2613f7857fdf1ca51adc484442ec4f87b2c6f7b6f8e4e7e57e46f01f23ca4baa"
+}

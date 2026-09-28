@@ -2,15 +2,17 @@
 
 Experimental acceleration of the multilingual [Laya decision agent](https://huggingface.co/convaiinnovations/laya) on the Qualcomm Hexagon HTP V68 in the Rubik Pi 3 (QCS6490).
 
-**Actual NPU fidelity passes the declared held-out target:** **3.5326% decision mismatch** and **2.5021% mean total variation** on 1,840 decisions excluded from calibration and model selection. The complete 2,000-decision public split has 3.55% mismatch. All preprocessed inputs match original Laya, with zero CPU EP fallbacks. Validation of 1024-token long inputs and the service deployment is still in progress.
+**Actual NPU fidelity passes the declared primary targets:** **3.5326% decision mismatch** and **2.5021% mean total variation** on 1,840 decisions excluded from calibration and model selection. An additional predeclared 80-decision synthetic 1024-token validation has **0% mismatch** and **2.0614% mean TV**. All preprocessed inputs match original Laya, with zero CPU EP fallbacks. The 768/1024 graph set is deployed on the Pi; HTTP replay and the 4 GiB service memory check pass.
 
 The goal is decision mismatch **≤5%** and mean total variation **≤5%**, with identical preprocessed inputs. See [the evaluation method](docs/fidelity-method.md) and [held-out hardware evidence](reports/qualification-2026-09-29/heldout.json). These aggregate thresholds do not mean every individual prediction has less than 5% probability error.
+
+**Development limitation:** the separate 15-decision Chinese/English probe suite has **1 difference (6.6667%)**, despite mean TV of only **0.9462%**. Its accuracy gate remains failed in the preserved report. The service reproduces those same NPU answers exactly; [service integration is reported separately from fidelity](reports/qualification-2026-09-29/service-acceptance.md).
 
 ## What runs where
 
 `laya_npu.py` loads the original Laya agent and replaces only its encoder. The original tokenizer, sequence construction, decision heads, temperatures, and response formatting remain in use. Token embeddings and heads run on the CPU; the quantized encoder runs on HTP with CPU EP fallback disabled. A QNN failure is an error.
 
-The checkpoint uses `max_len=1024` and `head_max_len=256`. The runtime selects a static ONNX bucket large enough for the unchanged input and rejects sequences beyond the available buckets instead of silently truncating them. Current measured candidates have a 768-token bucket; a validated set covering the complete 1024-token API budget is still pending.
+The checkpoint uses `max_len=1024` and `head_max_len=256`. The runtime selects a static ONNX bucket large enough for the unchanged input and rejects sequences beyond the available buckets instead of silently truncating them. The deployed graph set has 768- and 1024-token buckets, covering the complete original API budget.
 
 The current recipe uses 16-bit activations, per-channel 8-bit convolution weights, native GELU, separate GeGLU outlier channels, and separate CLS/rest residual paths. Masked padding embeddings are zeroed without changing input tokens. Dynamic attention MatMuls approximate their 16-bit right operand using two supported 8-bit terms. Finally, [zero-input HTP calibration](npu/CONV_OFFSET_CALIBRATION.md) corrects measured per-channel Conv offsets. CPU ONNX results are diagnostics; hardware results decide whether a candidate is acceptable.
 
@@ -88,7 +90,7 @@ python benchmark_fidelity.py --backend npu --dataset-path "$DATA" \
 
 The benchmark records checkpoint/graph hashes, input token and marker identities, probability errors, decision mismatches, and runtime statistics. A failed threshold returns exit code 1. A development pass still requires the declared held-out evaluation described in [the method](docs/fidelity-method.md). Supplementary Chinese, English, and 1024-token probes are available through `benchmark_probes.py`; capture their unchanged CPU reference before NPU comparison.
 
-## Context cache and service status
+## Context cache and deployment
 
 Persistent QNN context generation and strict reload have been validated on the Pi: the corrected 768 graph's current schema-2 cache compiled in 442.4 seconds and reloaded in 1.43 seconds. Its embedded context contains a single QNN EPContext node, and a five-question replay exactly matches the qualified candidate's earlier outputs. Cache publication is atomic; keys bind graph SHA256, runtime versions, backend/stub/skeleton hashes, and provider settings. A cache schema or binary change requires fresh preparation.
 
@@ -102,7 +104,9 @@ python npu/compile_contexts.py --manifest "$LAYA_NPU_MANIFEST" \
 
 The CLI hashes the checkpoint without loading its tensors and compiles using only encoder configuration, reducing peak memory relative to loading the full agent first. The measured 768-token compilation still peaked at about 5.04 GiB, so prepare caches outside the 4 GiB service cgroup before starting the service. `LAYA_NPU_CACHE_DIR` overrides the default `npu/fidelity/context_cache` directory. Compilation and cache reload are reported separately.
 
-The FastAPI entry point remains `app:app`, with `/health` and `/predict`. Service files are experimental integration scaffolding; no candidate is currently presented as a qualified replacement for original Laya. Final service validation also requires buckets covering the original input budget and measured memory use under the service limit.
+The 1024-token graph required temporary swap for one-time cache preparation. Swap was disabled and removed afterward; a new process loaded its single QNN EPContext in 2.19 seconds with about 1.18 GiB peak RSS. This is cache-load memory, not the full service footprint.
+
+The FastAPI entry point remains `app:app`, with `/health` and `/predict`. The deployed service passed exact HTTP/CLI replay, invalid-input rejection, and 768→1024→768 switching. Its measured cgroup peak was **2.556 GiB**, below `MemoryMax=4G`, with zero restarts, memory-limit events, OOMs, CPU fallbacks, or cache misses. [Deployment instructions](docs/deployment.md) and [recorded service evidence](reports/qualification-2026-09-29/service-http.json) describe the boundaries. The existing disabled-at-login unit setting was preserved; the service is currently running.
 
 ## Legacy results
 

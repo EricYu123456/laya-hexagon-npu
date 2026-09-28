@@ -38,8 +38,9 @@ disable that temporary swap and verify a cache reload in a new process before
 testing the service. Compilation memory and cached inference memory are separate
 measurements.
 
-Before activation, require the standalone NPU fidelity checks to pass, including
-the original 1024-token budget. The fixed supplementary integration probes use:
+Before activation, require the declared primary NPU fidelity checks to pass,
+including the original 1024-token budget. Also capture and disclose the fixed
+supplementary development probes:
 
 ```bash
 .venv/bin/python benchmark_probes.py \
@@ -49,6 +50,11 @@ the original 1024-token budget. The fixed supplementary integration probes use:
 
 Use a fresh report path on each run. These development probes supplement the
 [declared fidelity evaluations](fidelity-method.md); they do not replace them.
+The recorded 15-decision suite has one decision difference and exits with code 1;
+its accuracy gate remains failed. Preserve that result for exact HTTP replay.
+The deployed candidate passes the primary 1,840-decision and synthetic 80-decision
+evaluations, with this supplementary limitation disclosed in the
+[acceptance clarification](../reports/qualification-2026-09-29/service-acceptance.md).
 
 ## Activate and verify HTTP behavior
 
@@ -83,6 +89,9 @@ The HTTP verifier checks invalid-input rejection, exact replay of standalone
 NPU outputs, token usage, per-request NPU counters, both bucket transitions, and
 zero CPU fallbacks or cache misses. Its requests fit the API's four-question,
 16,000-character limits; use the CLI for five-question benchmark cases.
+`integration_passed` (also exposed as `passed`) describes those integration checks;
+`development_fidelity_passed` independently reports the supplementary accuracy
+gate and is false for the currently deployed candidate.
 
 Record `MainPID`, `InvocationID`, `NRestarts`, `MemoryMax`, `MemoryPeak`, and
 `ControlGroup` with `systemctl --user show laya.service` before and after the

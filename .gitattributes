@@ -3,3 +3,4 @@
 *.service text eol=lf
 reports/**/*.json text eol=lf
 reports/**/*.jsonl text eol=lf
+reports/**/*.txt text eol=lf

@@ -1,0 +1,72 @@
+{
+  "kind": "laya_npu_deployment_evidence",
+  "assembled_utc": "2026-09-28T17:33:18.127103+00:00",
+  "measured_source_commit": "95ebd38ed0bdc2b22a70954c27a863a7b23d6032",
+  "integration_passed": true,
+  "memory_check_passed": true,
+  "development_fidelity_passed": false,
+  "same_service_invocation": {
+    "MainPID": "306769",
+    "InvocationID": "1fd0e4e94be5410387677acba123f666",
+    "ExecMainStartTimestampMonotonic": "15465825474",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/laya.service"
+  },
+  "cgroup_peak_bytes": 2744172544,
+  "cgroup_peak_gib": 2.5557098388671875,
+  "cgroup_limit_bytes": 4294967296,
+  "cgroup_events_after": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  },
+  "service_restarts": 0,
+  "active_state": "active",
+  "unit_file_state": "disabled",
+  "health_after": {
+    "status": "ready",
+    "checkpoint": "multilingual",
+    "device": "npu",
+    "threads": 4,
+    "revision": "1c5edc17a7acd8701df6fc341c0d179f1c62c982",
+    "supported_input_capacity": 1024,
+    "encoder_provider": "QNNExecutionProvider",
+    "cpu_fallbacks": 0,
+    "supported_buckets": [
+      768,
+      1024
+    ],
+    "npu_calls": 16,
+    "context_cache_hits": 5,
+    "context_cache_misses": 0,
+    "context_cache_errors": 0,
+    "bucket_calls": {
+      "768": 12,
+      "1024": 4
+    }
+  },
+  "regression_tests": {
+    "regression-service-tests.txt": 106,
+    "regression-numeric-tests.txt": 46
+  },
+  "regression_tests_total": 152,
+  "evidence_sha256": {
+    "service-http.json": "12c84825cda549e1c71baad819ef5fdeb966672d54568cf826f15ecc3f3426bd",
+    "service-before.json": "df1ffe71d5dc9584279310f995a45290b026cd1646ca806d82a9e237366b1507",
+    "service-after.json": "b6e2cbffb86be3447b850d4c1ac295cff6e0bd3b18ca6fe757174b5e60e48b95",
+    "regression-service-tests.txt": "cfa1d2fed75acf613bc9d19412bac34380c64e1779a57c86ed8e63f1360ab7fa",
+    "regression-numeric-tests.txt": "c5d798257af2aee25690c9ff961bed0a123391d5c9456452d48b3f383c3858bd",
+    "heldout.json": "bd9a3b4bd46166d25b6fbefb0d567708882754e325dcafe597f511e745b49564",
+    "long-input-npu.json": "9eebe661fd30b7bc6fca33fdad57675699a529721746f4f9b30903467543dac3",
+    "supplementary-development-npu.json": "eaefa1c9ff70504a5c2e949df40ed71db4c6d7b810c6081172c30b69c8d3e626",
+    "model-manifest.json": "95cadda20ef661ace20e2ba32ed41bef955d76219758cf6453806d8c32b986a7"
+  },
+  "scope": "Integration and memory validation do not override the failed 1/15 supplementary development accuracy result. Primary aggregate fidelity results are recorded separately in heldout.json and long-input-npu.json. No per-input 5% guarantee is asserted.",
+  "regression_log_note": "Public test logs normalize line endings to LF and remove trailing whitespace only; original log hashes are retained below.",
+  "original_regression_log_sha256": {
+    "final_all_tests.log": "6f6614c8b8de62fdb76b42d491d3618087a230adb0e1c22f953c622fbbc8b997",
+    "final_all_numeric_tests.log": "06b02b7e9ba1078982c3510c131564c87fd83c0b204daadb21f4e1a4af056f72"
+  }
+}
