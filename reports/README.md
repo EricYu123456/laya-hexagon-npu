@@ -1,5 +1,7 @@
 # Recorded fidelity experiments
 
+[qualification-2026-09-29](qualification-2026-09-29) preserves the completed actual-NPU evaluation. The [declared held-out selection](qualification-2026-09-29/heldout.json) has **65/1,840 decision differences (3.5326%)** and **2.5021% mean TV**. The [complete public split](qualification-2026-09-29/full-public.json) has **71/2,000 differences (3.55%)**. Both pass the aggregate thresholds with identical inputs and zero CPU fallbacks. Long-input and service qualification remain separate work.
+
 [development-2026-09-28](development-2026-09-28) contains development evidence from 16 fixed cases and 80 decisions. The corrected `refined32` candidate reaches the development thresholds. These are not held-out results or deployment qualification.
 
 | Report | Provider | Decision mismatch | Mean total variation |

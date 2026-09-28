@@ -1,6 +1,6 @@
 # Fidelity method and experimental status
 
-Status recorded on 2026-09-28 UTC: the corrected actual-HTP candidate reaches **5.0% decision mismatch and 2.4568% mean total variation on the development selection**. Independent qualification is in progress. No held-out pass, validated 1024-token model set, or qualified service deployment is claimed yet.
+Status recorded on 2026-09-29 Asia/Taipei: the corrected actual-HTP candidate passes the declared held-out selection with **3.5326% decision mismatch and 2.5021% mean total variation**. Validation of the 1024-token model and the service deployment is still in progress.
 
 ## Reference and input contract
 
@@ -90,6 +90,30 @@ Absolute paths in report metadata identify the original execution environments; 
 
 An independent [reference portability check](../reports/development-2026-09-28/reference-portability.json) compared pristine ARM Pi CPU and WSL x86 CPU outputs on these 80 development decisions: zero decision mismatches and mean TV `9.4178e-7`. This supports using the captured FP32 outputs for numerical diagnostics on this selection, but says nothing about cross-host performance equivalence. The complete 400-case FP32 reference was captured in WSL; the preserved [Pi reference](../reports/development-2026-09-28/reference-pi.jsonl) covers the development cases.
 
+## Independent hardware qualification
+
+The frozen corrected-768 graph ran all 400 cases on the Pi. The [full report](../reports/qualification-2026-09-29/full-public.json) records 2,005 NPU calls including five warmup questions, one cached QNN session, zero CPU fallbacks, and identical input sequences/markers for all cases. The [held-out report](../reports/qualification-2026-09-29/heldout.json) is derived offline from those exact outputs using the exclusion list committed before the run; no additional inference or selection by observed errors is involved.
+
+| Selection | Decisions | Decision differences | Decision mismatch | Mean TV | Argmax mismatch |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Declared held-out | 1,840 | 65 | **3.5326%** | **2.5021%** | 3.9130% |
+| Complete public split, including calibration/development | 2,000 | 71 | **3.5500%** | **2.5027%** | 3.8500% |
+
+The held-out mean probability MAE is 1.4731 percentage points. TV's 95th percentile is 6.8687%, and its maximum is 32.87%; the aggregate pass is not a per-prediction error guarantee. The full run's median latency is 4,764 ms per five-question case on the Pi. Its stored CPU reference ran on WSL and must not be used to claim hardware speedup.
+
+The qualification folder preserves the unchanged CPU reference and full/held-out per-case records. To recompute the held-out report without NPU inference:
+
+```bash
+python benchmark_fidelity.py --dataset-path "$DATA" \
+  --from-candidate-records reports/qualification-2026-09-29/full-public.cases.jsonl \
+  --source-report reports/qualification-2026-09-29/full-public.json \
+  --reference reports/qualification-2026-09-29/reference-wsl.jsonl \
+  --selection-plan reports/evaluation-plans/typed-decisions-heldout.json \
+  --output .work/recomputed-heldout.json
+```
+
+The helper checks the committed declaration's Git identity, dataset and input hashes, exact original reference, and stored per-question metrics. Derived reports retain the original run's counters under `original_run`; they do not invent subset NPU counters.
+
 ## Reproduction and evaluation commands
 
 Follow the Python 3.12 setup, pinned checkpoint/dataset download, and corrected candidate build commands in [README.md](../README.md). Use [requirements-fidelity-build.txt](../requirements-fidelity-build.txt) for x86/WSL builds, not the target environment's requirements. Copy the graph directory and manifest together to the Pi. Keep recipes in separate directories because a manifest's bucket mapping alone is not a complete recipe description. Preserve the export sidecar and quantization metadata.
@@ -127,7 +151,7 @@ python benchmark_fidelity.py --backend npu --dataset-path "$DATA" \
   --output .work/candidate-development.json
 ```
 
-After freezing a hardware candidate, run the full declared held-out selection. **This is a future qualification step; no passing result is recorded yet.** It may require additional validated buckets:
+After freezing a new hardware candidate, run the full declared held-out selection. The result above used a full-split run followed by the verified offline derivation; this command evaluates only the declared held-out cases directly:
 
 ```bash
 EXCLUDED=0,1,25,26,50,51,75,76,100,101,125,126,150,151,175,176,200,201,225,226,250,251,275,276,300,301,325,326,350,351,375,376
@@ -150,4 +174,4 @@ The manifest resolves graph paths relative to its directory and records checkpoi
 
 Latency reports include tokenization, heads, and inference but exclude model loading and warmup. Compare speed only with the same host, CPU thread count, original input contract, and measured selection. Compilation, cache reload, warm latency, bucket switching, and peak memory need separate measurements. Precompilation matters because loading full weights alongside graph compilation can exceed the service's 4 GiB memory limit; hardware memory qualification is still required.
 
-The remaining acceptance work is independent held-out evaluation, validation through the original 1024-token budget, and exercising the service under its actual memory limit. Historical results in `npu/REPORT.md` describe the earlier truncated/clamped implementation and do not satisfy these criteria.
+The remaining acceptance work is validation through the original 1024-token budget and exercising the service under its actual memory limit. Historical results in `npu/REPORT.md` describe the earlier truncated/clamped implementation and do not satisfy these criteria.

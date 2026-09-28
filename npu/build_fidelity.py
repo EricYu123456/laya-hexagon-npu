@@ -80,6 +80,9 @@ class Backbone(nn.Module):
 def sequences(agent, parquet, indices):
     import pyarrow.parquet as pq
     rows = pq.read_table(parquet).to_pylist()
+    if (not indices or len(set(indices)) != len(indices)
+            or any(type(index) is not int or not 0 <= index < len(rows) for index in indices)):
+        raise ValueError("Calibration indices must be distinct valid nonnegative row indices")
     result = []
     for index in indices:
         row = rows[index]
@@ -87,6 +90,39 @@ def sequences(agent, parquet, indices):
         for qid, q in questions.items():
             ids, _ = build_sequence(agent.tok, state, agent._to_internal(q), agent.cfg["max_len"], agent.cfg["head_max_len"])
             result.append((index, qid, ids))
+    return result
+
+
+def long_calibration_sequences(agent, parquet, selected, target_length):
+    """Repeat only reserved calibration states to exercise full valid length.
+
+    Questions, criteria, tokenizer and upstream sequence/head budgets are kept.
+    These are additional calibration inputs, never held-out evaluation examples.
+    """
+    import pyarrow.parquet as pq
+    if target_length != agent.cfg["max_len"]:
+        raise ValueError("Long calibration requires the original max_len bucket")
+    rows = pq.read_table(parquet).to_pylist()
+    result = []
+    for index, qid, _ in selected:
+        if type(index) is not int or not 0 <= index < len(rows):
+            raise ValueError("Selected calibration index must be a valid nonnegative row index")
+        row = rows[index]
+        state, questions = json.loads(row["state"]), json.loads(row["questions"])
+        if not isinstance(state, (str, dict, list)) or not state:
+            raise ValueError(f"Cannot extend empty or unsupported calibration state at row {index}")
+        repeated = state if isinstance(state, str) else json.dumps(state, ensure_ascii=False)
+        if not repeated.strip():
+            raise ValueError(f"Cannot extend empty calibration state at row {index}")
+        for _ in range(12):
+            ids, _ = build_sequence(agent.tok, repeated, agent._to_internal(questions[qid]),
+                                    agent.cfg["max_len"], agent.cfg["head_max_len"])
+            if len(ids) == target_length:
+                result.append((index, qid + "/repeated-state", ids))
+                break
+            repeated = repeated + "\n\n" + repeated
+        else:
+            raise ValueError(f"Calibration state did not fill {target_length} tokens at row {index}")
     return result
 
 
@@ -165,6 +201,8 @@ def main():
     p.add_argument("--parquet", type=Path, default=ROOT / ".work/typed-decisions.parquet")
     p.add_argument("--indices", default="0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375")
     p.add_argument("--samples", type=int, default=32)
+    p.add_argument("--append-long-calibration", action="store_true",
+                   help="Append full-length repeated-state variants of the selected reserved calibration questions")
     p.add_argument("--output-dir", type=Path, default=ROOT / "npu/fidelity")
     p.add_argument("--threads", type=int, default=8)
     p.add_argument("--mask-penalty", type=float, default=-100)
@@ -196,6 +234,8 @@ def main():
     checkpoint_hash = sha256_file(args.model / "model.safetensors")
     export_config = {key: getattr(args, key) for key in ("length", "indices", "samples", "mask_penalty", "balance", "group_outliers", "outlier_ratio", "max_outliers", "conv_linear", "split_cls", "fold_norms", "zero_pad_embeddings")}
     export_config["checkpoint_sha256"] = checkpoint_hash
+    if args.append_long_calibration:
+        export_config["append_long_calibration"] = True
     export_sidecar = fp32.with_suffix(".json")
     if args.reuse_export:
         saved = json.loads(export_sidecar.read_text())
@@ -213,12 +253,25 @@ def main():
     # Spread limited calibration across every selected case/domain, not only the first workflow.
     positions = np.linspace(0, len(seqs_all) - 1, min(args.samples, len(seqs_all)), dtype=int)
     seqs = [seqs_all[i] for i in positions]
+    base_count = len(seqs)
+    if args.append_long_calibration:
+        seqs += long_calibration_sequences(agent, args.parquet, seqs, args.length)
     metadata = {"sequence_length": args.length, "mask_penalty": args.mask_penalty, "calibration_cases": sorted(set(i for i, _, _ in seqs)),
                 "calibration_questions": len(seqs), "activation_bits": args.activation_bits, "weight_bits": 8, "balanced": args.balance,
                 "zero_pad_embeddings": args.zero_pad_embeddings}
+    metadata["base_calibration_questions"] = base_count
+    metadata["calibration_dataset_sha256"] = sha256_file(args.parquet)
+    metadata["original_input_limits"] = {key: agent.cfg[key] for key in ("max_len", "head_max_len")}
+    metadata["long_calibration_questions"] = len(seqs) - base_count
+    metadata["calibration_valid_lengths"] = [len(ids) for _, _, ids in seqs]
+    metadata["calibration_question_identities"] = [[index, qid] for index, qid, _ in seqs]
     # Save untouched reference outputs before any exact reparameterization.
     validation = []
-    for _, _, ids in seqs[:2]:
+    validation_indices = list(range(min(2, base_count)))
+    if args.append_long_calibration:
+        validation_indices += list(range(base_count, base_count + min(2, base_count)))
+    for index in validation_indices:
+        _, _, ids = seqs[index]
         tensor = torch.tensor([ids])
         validation.append(enc(input_ids=tensor, attention_mask=torch.ones_like(tensor)).last_hidden_state.clone())
     if args.fold_norms and not args.reuse_export:
@@ -252,7 +305,8 @@ def main():
             embeds[:, len(ids):] = 0
         data.append({"inputs_embeds": embeds, "attn_mask": attn, "sliding_mask": sliding})
     metadata["torch_export_error"] = []
-    for d, ref in zip(data[:2], validation):
+    validation_data = [data[index] for index in validation_indices]
+    for d, ref in zip(validation_data, validation):
         actual = wrapper(*(torch.from_numpy(d[k]) for k in ("inputs_embeds", "attn_mask", "sliding_mask")))[:, :ref.shape[1]]
         error = (actual - ref).abs()
         metadata["torch_export_error"].append({"mean_abs": float(error.mean()), "max_abs": float(error.max())})
@@ -274,7 +328,7 @@ def main():
     opts.inter_op_num_threads = 1
     sess = ort.InferenceSession(str(fp32), opts, providers=["CPUExecutionProvider"])
     metadata["onnx_export_error"] = []
-    for d, ref in zip(data[:2], validation):
+    for d, ref in zip(validation_data, validation):
         actual = sess.run(None, d)[0][:, :ref.shape[1]]
         error = abs(actual - ref.numpy())
         metadata["onnx_export_error"].append({"mean_abs": float(error.mean()), "max_abs": float(error.max())})

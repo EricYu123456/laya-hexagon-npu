@@ -2,9 +2,9 @@
 
 Experimental acceleration of the multilingual [Laya decision agent](https://huggingface.co/convaiinnovations/laya) on the Qualcomm Hexagon HTP V68 in the Rubik Pi 3 (QCS6490).
 
-**Development target reached; independent qualification is in progress.** As of 2026-09-28, the corrected hardware candidate disagrees with original Laya on **5.0% of 80 development decisions**, with **2.4568% mean total variation** between output distributions. These are development results from 16 cases, not a held-out qualification or a completed deployment.
+**Actual NPU fidelity passes the declared held-out target:** **3.5326% decision mismatch** and **2.5021% mean total variation** on 1,840 decisions excluded from calibration and model selection. The complete 2,000-decision public split has 3.55% mismatch. All preprocessed inputs match original Laya, with zero CPU EP fallbacks. Validation of 1024-token long inputs and the service deployment is still in progress.
 
-The goal is decision mismatch **≤5%** and mean total variation **≤5%**, with identical preprocessed inputs. See [the evaluation method](docs/fidelity-method.md) and [hardware evidence](reports/development-2026-09-28/refined32-corrected-npu.json) for definitions, results, and remaining work.
+The goal is decision mismatch **≤5%** and mean total variation **≤5%**, with identical preprocessed inputs. See [the evaluation method](docs/fidelity-method.md) and [held-out hardware evidence](reports/qualification-2026-09-29/heldout.json). These aggregate thresholds do not mean every individual prediction has less than 5% probability error.
 
 ## What runs where
 
@@ -43,7 +43,7 @@ python npu/build_fidelity.py \
 
 This creates FP32 and QDQ graphs, build metadata, and `manifest.json`. **The uncorrected graph fails hardware fidelity.** Follow the [Conv calibration workflow](npu/CONV_OFFSET_CALIBRATION.md) on the Pi to produce a separate corrected graph and manifest before evaluation. Keep each recipe in its own output directory and retain its metadata. Large checkpoints, generated graphs, and context binaries are not stored in Git.
 
-For larger buckets on memory-limited WSL, `--low-memory-calibration` disables the calibration arena and merges MinMax ranges after every sample; it does not discard samples. Rebuild and calibrate each bucket independently. Combine compatible corrected bucket manifests with `python -m npu.merge_manifests --output npu/fidelity/manifest.json <768-manifest> <1024-manifest>`.
+For larger buckets on memory-limited WSL, `--low-memory-calibration` disables the calibration arena and merges MinMax ranges after every sample; it does not discard samples. `--append-long-calibration` adds full-length repeated-state variants from the same selected calibration cases while retaining the originals; with `--samples 32` this means 64 sequences. It is restricted to the original maximum-length bucket. Rebuild and calibrate each bucket independently. Combine compatible corrected bucket manifests with `python -m npu.merge_manifests --output npu/fidelity/manifest.json <768-manifest> <1024-manifest>`.
 
 ## Evaluate on the Pi
 
