@@ -1,0 +1,17 @@
+{
+  "frozen_utc": "2026-09-28T16:59:07Z",
+  "prior_declaration": "long-input-candidate-static-gamma.json",
+  "validation_plan": "long-input-heldout.json",
+  "validation_inference_started_at_freeze": false,
+  "candidate": "folded1024_long_static_corrected",
+  "uncorrected_source_sha256": "8d7a7f1fdbfd01fb58026eb5ece936d4cfb410b1e993fa97b7c3517a587da008",
+  "corrected_graph_sha256": "cfd85315c4ee6b5bfaeb24ced44bba3cf6ebb37ff421efb4c65ade90c571ec64",
+  "short_bucket_unchanged_sha256": "1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138",
+  "combined_manifest_sha256": "95cadda20ef661ace20e2ba32ed41bef955d76219758cf6453806d8c32b986a7",
+  "combined_manifest": "../qualification-2026-09-29/model-manifest.json",
+  "correction_provenance": "../qualification-2026-09-29/long-input-correction-provenance.json",
+  "zero_input_calibration": "../qualification-2026-09-29/long-input-conv-calibration.json",
+  "calibration_checks": "All 266 Convs measured on the exact repaired source. All three sampled original-spatial-shape controls agree exactly with the compact probes. No validation inputs or answers enter correction.",
+  "source_reproduction": "A fresh build with commit f03af31 reproduces both FP32 and uncorrected quantized source graphs byte-for-byte; see ../development-2026-09-28/folded1024-long-reproduction.json.",
+  "remaining_acceptance": "Strict QNN context generation/reload, unchanged 15-decision supplementary probes, the predeclared 80-decision 1024-token validation, and actual service deployment under its 4 GiB cgroup."
+}

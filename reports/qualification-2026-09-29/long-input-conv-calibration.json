@@ -1,0 +1,1905 @@
+{
+  "source_sha256": "8d7a7f1fdbfd01fb58026eb5ece936d4cfb410b1e993fa97b7c3517a587da008",
+  "probe_sha256": "74ee1bea208dc4f728ec83ff8b45df2b3ea0030dee9e23a625c26b40c22e4638",
+  "probe_manifest_sha256": "dc0b4d21c51ce5db7cb751c195c0194e00ff3e3b8b5bcbea040bfb337d37d40d",
+  "runtime": {
+    "onnxruntime": "1.30.0",
+    "onnxruntime_qnn": "2.5.0",
+    "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+    "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+    "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+    "htp_arch": 68,
+    "cpu_ep_fallback": false,
+    "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+    "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+    "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+    "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+  },
+  "shape_validation": [
+    {
+      "id": "conv_000",
+      "max_abs_offset_difference": 0.0,
+      "tolerance": 0.00010787913121273741,
+      "passed": true
+    },
+    {
+      "id": "conv_001",
+      "max_abs_offset_difference": 0.0,
+      "tolerance": 2.52006586040603e-05,
+      "passed": true
+    },
+    {
+      "id": "conv_006",
+      "max_abs_offset_difference": 0.0,
+      "tolerance": 9.086198330149055e-05,
+      "passed": true
+    }
+  ],
+  "all_shape_validations_passed": true,
+  "per_conv": [
+    {
+      "id": "conv_000",
+      "node": "/attn/Wqkv/conv/Conv",
+      "mean_abs_offset": 0.001820456818677485,
+      "max_abs_offset": 0.004742281045764685,
+      "output_step": 0.00043111652485094965
+    },
+    {
+      "id": "conv_001",
+      "node": "/attn/Wo/conv/Conv",
+      "mean_abs_offset": 0.00024473140365444124,
+      "max_abs_offset": 0.000702818448189646,
+      "output_step": 0.0001004026344162412
+    },
+    {
+      "id": "conv_002",
+      "node": "/mlp/groups.0/gate/conv/Conv",
+      "mean_abs_offset": 0.0009686671546660364,
+      "max_abs_offset": 0.003830969799309969,
+      "output_step": 0.0001235796808032319
+    },
+    {
+      "id": "conv_003",
+      "node": "/mlp/groups.0/value/conv/Conv",
+      "mean_abs_offset": 0.0006810409831814468,
+      "max_abs_offset": 0.002791191218420863,
+      "output_step": 0.00011164764873683453
+    },
+    {
+      "id": "conv_004",
+      "node": "/mlp/groups.1/gate/conv/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 4.5613593101734295e-05
+    },
+    {
+      "id": "conv_005",
+      "node": "/mlp/groups.1/value/conv/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 3.9002228731988e-05
+    },
+    {
+      "id": "conv_006",
+      "node": "/mlp/groups.0/gate/conv_1/Conv",
+      "mean_abs_offset": 0.002659618156030774,
+      "max_abs_offset": 0.007624006364494562,
+      "output_step": 0.0003630479332059622
+    },
+    {
+      "id": "conv_007",
+      "node": "/mlp/groups.0/value/conv_1/Conv",
+      "mean_abs_offset": 0.00212654541246593,
+      "max_abs_offset": 0.0064742667600512505,
+      "output_step": 0.0003808392211794853
+    },
+    {
+      "id": "conv_008",
+      "node": "/mlp/groups.1/gate/conv_1/Conv",
+      "mean_abs_offset": 0.0010732755763456225,
+      "max_abs_offset": 0.0010732755763456225,
+      "output_step": 0.00015332509065046906
+    },
+    {
+      "id": "conv_009",
+      "node": "/mlp/groups.1/value/conv_1/Conv",
+      "mean_abs_offset": 0.0011831443989649415,
+      "max_abs_offset": 0.0011831443989649415,
+      "output_step": 9.85953738563694e-05
+    },
+    {
+      "id": "conv_010",
+      "node": "/mlp/groups.0/output/conv/Conv",
+      "mean_abs_offset": 0.0005270546535030007,
+      "max_abs_offset": 0.001403854344971478,
+      "output_step": 0.00023397570475935936
+    },
+    {
+      "id": "conv_011",
+      "node": "/mlp/groups.1/output/conv/Conv",
+      "mean_abs_offset": 0.0007857758901081979,
+      "max_abs_offset": 0.0021744577679783106,
+      "output_step": 0.00012790923938155174
+    },
+    {
+      "id": "conv_012",
+      "node": "/mlp/groups.0/output/conv_1/Conv",
+      "mean_abs_offset": 0.0033057222608476877,
+      "max_abs_offset": 0.00898007396608591,
+      "output_step": 0.0012828675098717213
+    },
+    {
+      "id": "conv_013",
+      "node": "/mlp/groups.1/output/conv_1/Conv",
+      "mean_abs_offset": 0.0029641513247042894,
+      "max_abs_offset": 0.007602482568472624,
+      "output_step": 0.0004751551023218781
+    },
+    {
+      "id": "conv_014",
+      "node": "/attn/Wqkv/conv_1/Conv",
+      "mean_abs_offset": 0.0020599502604454756,
+      "max_abs_offset": 0.005713489837944508,
+      "output_step": 0.0003570931439753622
+    },
+    {
+      "id": "conv_015",
+      "node": "/attn/Wo/conv_1/Conv",
+      "mean_abs_offset": 0.0003876369446516037,
+      "max_abs_offset": 0.0010220838012173772,
+      "output_step": 9.291671449318528e-05
+    },
+    {
+      "id": "conv_016",
+      "node": "/mlp/groups.0/gate/conv_2/Conv",
+      "mean_abs_offset": 0.00043531556730158627,
+      "max_abs_offset": 0.0012949892552569509,
+      "output_step": 5.630387749988586e-05
+    },
+    {
+      "id": "conv_017",
+      "node": "/mlp/groups.0/value/conv_2/Conv",
+      "mean_abs_offset": 0.0005023239064030349,
+      "max_abs_offset": 0.0015697054332122207,
+      "output_step": 0.00010464703518664464
+    },
+    {
+      "id": "conv_018",
+      "node": "/mlp/groups.1/gate/conv_2/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 7.0601286097371485e-06
+    },
+    {
+      "id": "conv_019",
+      "node": "/mlp/groups.1/value/conv_2/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 1.2857955880463123e-05
+    },
+    {
+      "id": "conv_020",
+      "node": "/mlp/groups.0/gate/conv_3/Conv",
+      "mean_abs_offset": 0.0012222748482599854,
+      "max_abs_offset": 0.003924496006220579,
+      "output_step": 0.0001868807739811018
+    },
+    {
+      "id": "conv_021",
+      "node": "/mlp/groups.0/value/conv_3/Conv",
+      "mean_abs_offset": 0.0018134013516828418,
+      "max_abs_offset": 0.0057578603737056255,
+      "output_step": 0.0003598663315642625
+    },
+    {
+      "id": "conv_022",
+      "node": "/mlp/groups.1/gate/conv_3/Conv",
+      "mean_abs_offset": 0.00011900361278094351,
+      "max_abs_offset": 0.00011900361278094351,
+      "output_step": 0.00011900362733285874
+    },
+    {
+      "id": "conv_023",
+      "node": "/mlp/groups.1/value/conv_3/Conv",
+      "mean_abs_offset": 0.00043991472921334207,
+      "max_abs_offset": 0.00043991472921334207,
+      "output_step": 8.798294584266841e-05
+    },
+    {
+      "id": "conv_024",
+      "node": "/mlp/groups.0/output/conv_2/Conv",
+      "mean_abs_offset": 0.00016030162805691361,
+      "max_abs_offset": 0.00041746237548068166,
+      "output_step": 1.987916220969055e-05
+    },
+    {
+      "id": "conv_025",
+      "node": "/mlp/groups.1/output/conv_2/Conv",
+      "mean_abs_offset": 8.208843610191252e-06,
+      "max_abs_offset": 2.2293881556834094e-05,
+      "output_step": 1.5924201761663426e-06
+    },
+    {
+      "id": "conv_026",
+      "node": "/mlp/groups.0/output/conv_3/Conv",
+      "mean_abs_offset": 0.0014236463466659188,
+      "max_abs_offset": 0.003907959442585707,
+      "output_step": 0.00043421779992058873
+    },
+    {
+      "id": "conv_027",
+      "node": "/mlp/groups.1/output/conv_3/Conv",
+      "mean_abs_offset": 0.0006895456463098526,
+      "max_abs_offset": 0.0019064011285081506,
+      "output_step": 0.00013617151125799865
+    },
+    {
+      "id": "conv_028",
+      "node": "/attn/Wqkv/conv_2/Conv",
+      "mean_abs_offset": 0.001634341897442937,
+      "max_abs_offset": 0.005112930200994015,
+      "output_step": 0.0003007606719620526
+    },
+    {
+      "id": "conv_029",
+      "node": "/attn/Wo/conv_2/Conv",
+      "mean_abs_offset": 0.00045098617556504905,
+      "max_abs_offset": 0.0011841276427730918,
+      "output_step": 8.458055526716635e-05
+    },
+    {
+      "id": "conv_030",
+      "node": "/mlp/groups.0/gate/conv_4/Conv",
+      "mean_abs_offset": 0.000456770125310868,
+      "max_abs_offset": 0.0014657623833045363,
+      "output_step": 6.66255655232817e-05
+    },
+    {
+      "id": "conv_031",
+      "node": "/mlp/groups.0/value/conv_4/Conv",
+      "mean_abs_offset": 0.00026936284848488867,
+      "max_abs_offset": 0.0008591246441937983,
+      "output_step": 5.369529753807001e-05
+    },
+    {
+      "id": "conv_032",
+      "node": "/mlp/groups.1/gate/conv_4/Conv",
+      "mean_abs_offset": 0.0004316756676416844,
+      "max_abs_offset": 0.0004316756676416844,
+      "output_step": 1.726702794258017e-05
+    },
+    {
+      "id": "conv_033",
+      "node": "/mlp/groups.1/value/conv_4/Conv",
+      "mean_abs_offset": 0.0001184376742457971,
+      "max_abs_offset": 0.0001184376742457971,
+      "output_step": 2.3687536668148823e-05
+    },
+    {
+      "id": "conv_034",
+      "node": "/mlp/groups.0/gate/conv_5/Conv",
+      "mean_abs_offset": 0.001142967725172639,
+      "max_abs_offset": 0.0033221107441931963,
+      "output_step": 0.00018456172256264836
+    },
+    {
+      "id": "conv_035",
+      "node": "/mlp/groups.0/value/conv_5/Conv",
+      "mean_abs_offset": 0.0011833739699795842,
+      "max_abs_offset": 0.0034065027721226215,
+      "output_step": 0.0001792896364349872
+    },
+    {
+      "id": "conv_036",
+      "node": "/mlp/groups.1/gate/conv_5/Conv",
+      "mean_abs_offset": 0.0031110658310353756,
+      "max_abs_offset": 0.0031110658310353756,
+      "output_step": 0.00016374030383303761
+    },
+    {
+      "id": "conv_037",
+      "node": "/mlp/groups.1/value/conv_5/Conv",
+      "mean_abs_offset": 0.0007778360741212964,
+      "max_abs_offset": 0.0007778360741212964,
+      "output_step": 0.00012963936023879796
+    },
+    {
+      "id": "conv_038",
+      "node": "/mlp/groups.0/output/conv_4/Conv",
+      "mean_abs_offset": 0.00010703174484660849,
+      "max_abs_offset": 0.00033397815423086286,
+      "output_step": 4.174726927885786e-05
+    },
+    {
+      "id": "conv_039",
+      "node": "/mlp/groups.1/output/conv_4/Conv",
+      "mean_abs_offset": 1.4082402230997104e-05,
+      "max_abs_offset": 3.989747347077355e-05,
+      "output_step": 3.0690366656926926e-06
+    },
+    {
+      "id": "conv_040",
+      "node": "/mlp/groups.0/output/conv_5/Conv",
+      "mean_abs_offset": 0.0012391690397635102,
+      "max_abs_offset": 0.003412268590182066,
+      "output_step": 0.00034122689976356924
+    },
+    {
+      "id": "conv_041",
+      "node": "/mlp/groups.1/output/conv_5/Conv",
+      "mean_abs_offset": 0.0013722442090511322,
+      "max_abs_offset": 0.0038313078694045544,
+      "output_step": 0.0002736648893915117
+    },
+    {
+      "id": "conv_042",
+      "node": "/attn/Wqkv/conv_3/Conv",
+      "mean_abs_offset": 0.0026392575819045305,
+      "max_abs_offset": 0.007077956106513739,
+      "output_step": 0.0004423722857609391
+    },
+    {
+      "id": "conv_043",
+      "node": "/attn/Wo/conv_3/Conv",
+      "mean_abs_offset": 0.00045331381261348724,
+      "max_abs_offset": 0.001196374767459929,
+      "output_step": 0.0001196374578285031
+    },
+    {
+      "id": "conv_044",
+      "node": "/mlp/groups.0/gate/conv_6/Conv",
+      "mean_abs_offset": 0.00035385129740461707,
+      "max_abs_offset": 0.0011533779324963689,
+      "output_step": 5.4922758863540366e-05
+    },
+    {
+      "id": "conv_045",
+      "node": "/mlp/groups.0/value/conv_6/Conv",
+      "mean_abs_offset": 0.0003911097883246839,
+      "max_abs_offset": 0.0010896214516833425,
+      "output_step": 7.783011096762493e-05
+    },
+    {
+      "id": "conv_046",
+      "node": "/mlp/groups.0/gate/conv_7/Conv",
+      "mean_abs_offset": 0.0010362147586420178,
+      "max_abs_offset": 0.0029808206018060446,
+      "output_step": 0.00019872139091603458
+    },
+    {
+      "id": "conv_047",
+      "node": "/mlp/groups.0/value/conv_7/Conv",
+      "mean_abs_offset": 0.0011792121222242713,
+      "max_abs_offset": 0.0032479437068104744,
+      "output_step": 0.0002706619561649859
+    },
+    {
+      "id": "conv_048",
+      "node": "/mlp/groups.0/output/conv_6/Conv",
+      "mean_abs_offset": 0.00023044094268698245,
+      "max_abs_offset": 0.0007004974759183824,
+      "output_step": 4.120573794352822e-05
+    },
+    {
+      "id": "conv_049",
+      "node": "/mlp/groups.0/output/conv_7/Conv",
+      "mean_abs_offset": 0.0008977684192359447,
+      "max_abs_offset": 0.002635938348248601,
+      "output_step": 0.0003765626170206815
+    },
+    {
+      "id": "conv_050",
+      "node": "/attn/Wqkv/conv_4/Conv",
+      "mean_abs_offset": 0.0016508728731423616,
+      "max_abs_offset": 0.004851930774748325,
+      "output_step": 0.0003032457025256008
+    },
+    {
+      "id": "conv_051",
+      "node": "/attn/Wo/conv_4/Conv",
+      "mean_abs_offset": 0.0005371322622522712,
+      "max_abs_offset": 0.0015065086772665381,
+      "output_step": 8.861816604621708e-05
+    },
+    {
+      "id": "conv_052",
+      "node": "/mlp/groups.0/gate/conv_8/Conv",
+      "mean_abs_offset": 0.0004015783779323101,
+      "max_abs_offset": 0.0013213690835982561,
+      "output_step": 6.954574928386137e-05
+    },
+    {
+      "id": "conv_053",
+      "node": "/mlp/groups.0/value/conv_8/Conv",
+      "mean_abs_offset": 0.0006761060212738812,
+      "max_abs_offset": 0.001815355964936316,
+      "output_step": 8.644552872283384e-05
+    },
+    {
+      "id": "conv_054",
+      "node": "/mlp/groups.0/gate/conv_9/Conv",
+      "mean_abs_offset": 0.0011256930883973837,
+      "max_abs_offset": 0.0031248151790350676,
+      "output_step": 0.0001838126772781834
+    },
+    {
+      "id": "conv_055",
+      "node": "/mlp/groups.0/value/conv_9/Conv",
+      "mean_abs_offset": 0.001150584896095097,
+      "max_abs_offset": 0.0032788461539894342,
+      "output_step": 0.0002049279137281701
+    },
+    {
+      "id": "conv_056",
+      "node": "/mlp/groups.0/output/conv_8/Conv",
+      "mean_abs_offset": 0.0004171526525169611,
+      "max_abs_offset": 0.0012431334471330047,
+      "output_step": 8.879524830263108e-05
+    },
+    {
+      "id": "conv_057",
+      "node": "/mlp/groups.0/output/conv_9/Conv",
+      "mean_abs_offset": 0.001338775153271854,
+      "max_abs_offset": 0.004264221992343664,
+      "output_step": 0.0002508366305846721
+    },
+    {
+      "id": "conv_058",
+      "node": "/attn/Wqkv/conv_5/Conv",
+      "mean_abs_offset": 0.0012883602175861597,
+      "max_abs_offset": 0.003842876059934497,
+      "output_step": 0.00024017976829782128
+    },
+    {
+      "id": "conv_059",
+      "node": "/attn/Wo/conv_5/Conv",
+      "mean_abs_offset": 0.0004425423685461283,
+      "max_abs_offset": 0.0013066434767097235,
+      "output_step": 7.259131234604865e-05
+    },
+    {
+      "id": "conv_060",
+      "node": "/mlp/groups.0/gate/conv_10/Conv",
+      "mean_abs_offset": 0.00040814868407323956,
+      "max_abs_offset": 0.0012679597130045295,
+      "output_step": 7.044222002150491e-05
+    },
+    {
+      "id": "conv_061",
+      "node": "/mlp/groups.0/value/conv_10/Conv",
+      "mean_abs_offset": 0.0007099769427441061,
+      "max_abs_offset": 0.0020653328392654657,
+      "output_step": 9.834919183049351e-05
+    },
+    {
+      "id": "conv_062",
+      "node": "/mlp/groups.1/gate/conv_6/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 9.870337089523673e-05
+    },
+    {
+      "id": "conv_063",
+      "node": "/mlp/groups.1/value/conv_6/Conv",
+      "mean_abs_offset": 0.0018994350684806705,
+      "max_abs_offset": 0.0018994350684806705,
+      "output_step": 9.044929902302101e-05
+    },
+    {
+      "id": "conv_064",
+      "node": "/mlp/groups.0/gate/conv_11/Conv",
+      "mean_abs_offset": 0.0008679965976625681,
+      "max_abs_offset": 0.0024740786757320166,
+      "output_step": 0.00015462993178516626
+    },
+    {
+      "id": "conv_065",
+      "node": "/mlp/groups.0/value/conv_11/Conv",
+      "mean_abs_offset": 0.0008745624218136072,
+      "max_abs_offset": 0.002546106232330203,
+      "output_step": 0.00018186475790571421
+    },
+    {
+      "id": "conv_066",
+      "node": "/mlp/groups.1/gate/conv_7/Conv",
+      "mean_abs_offset": 0.0001217221943079494,
+      "max_abs_offset": 0.0001217221943079494,
+      "output_step": 0.00012172217975603417
+    },
+    {
+      "id": "conv_067",
+      "node": "/mlp/groups.1/value/conv_7/Conv",
+      "mean_abs_offset": 0.0012685030233114958,
+      "max_abs_offset": 0.0012685030233114958,
+      "output_step": 0.00015856287791393697
+    },
+    {
+      "id": "conv_068",
+      "node": "/mlp/groups.0/output/conv_10/Conv",
+      "mean_abs_offset": 0.00031794223468750715,
+      "max_abs_offset": 0.0009486387716606259,
+      "output_step": 9.486388444202021e-05
+    },
+    {
+      "id": "conv_069",
+      "node": "/mlp/groups.1/output/conv_6/Conv",
+      "mean_abs_offset": 0.001656563370488584,
+      "max_abs_offset": 0.004416544456034899,
+      "output_step": 0.00027603397029452026
+    },
+    {
+      "id": "conv_070",
+      "node": "/mlp/groups.0/output/conv_11/Conv",
+      "mean_abs_offset": 0.001926869503222406,
+      "max_abs_offset": 0.005509782116860151,
+      "output_step": 0.0004591485776472837
+    },
+    {
+      "id": "conv_071",
+      "node": "/mlp/groups.1/output/conv_7/Conv",
+      "mean_abs_offset": 0.0012888190103694797,
+      "max_abs_offset": 0.0036457206588238478,
+      "output_step": 0.00022785751207266003
+    },
+    {
+      "id": "conv_072",
+      "node": "/attn/Wqkv/conv_6/Conv",
+      "mean_abs_offset": 0.0026542535051703453,
+      "max_abs_offset": 0.0077477553859353065,
+      "output_step": 0.00048423471162095666
+    },
+    {
+      "id": "conv_073",
+      "node": "/attn/Wo/conv_6/Conv",
+      "mean_abs_offset": 0.0005831845919601619,
+      "max_abs_offset": 0.001518256845884025,
+      "output_step": 0.00010844690405065194
+    },
+    {
+      "id": "conv_074",
+      "node": "/mlp/groups.0/gate/conv_12/Conv",
+      "mean_abs_offset": 0.0005525785963982344,
+      "max_abs_offset": 0.001667287782765925,
+      "output_step": 0.00011115252709714696
+    },
+    {
+      "id": "conv_075",
+      "node": "/mlp/groups.0/value/conv_12/Conv",
+      "mean_abs_offset": 0.0014904910931363702,
+      "max_abs_offset": 0.003957155626267195,
+      "output_step": 0.00017987069441005588
+    },
+    {
+      "id": "conv_076",
+      "node": "/mlp/groups.0/gate/conv_13/Conv",
+      "mean_abs_offset": 0.0014839170034974813,
+      "max_abs_offset": 0.00443412596359849,
+      "output_step": 0.0002333750599063933
+    },
+    {
+      "id": "conv_077",
+      "node": "/mlp/groups.0/value/conv_13/Conv",
+      "mean_abs_offset": 0.0010933256708085537,
+      "max_abs_offset": 0.003181119216606021,
+      "output_step": 0.0002120746357832104
+    },
+    {
+      "id": "conv_078",
+      "node": "/mlp/groups.0/output/conv_12/Conv",
+      "mean_abs_offset": 0.0010286036413162947,
+      "max_abs_offset": 0.002522706286981702,
+      "output_step": 0.00012012888328172266
+    },
+    {
+      "id": "conv_079",
+      "node": "/mlp/groups.0/output/conv_13/Conv",
+      "mean_abs_offset": 0.0015933349495753646,
+      "max_abs_offset": 0.005115723703056574,
+      "output_step": 0.0003410482604522258
+    },
+    {
+      "id": "conv_080",
+      "node": "/attn/Wqkv/conv_7/Conv",
+      "mean_abs_offset": 0.0014474998461082578,
+      "max_abs_offset": 0.0039495970122516155,
+      "output_step": 0.00026330648688599467
+    },
+    {
+      "id": "conv_081",
+      "node": "/attn/Wo/conv_7/Conv",
+      "mean_abs_offset": 0.0004590394673869014,
+      "max_abs_offset": 0.0013366531347855926,
+      "output_step": 8.354082820005715e-05
+    },
+    {
+      "id": "conv_082",
+      "node": "/mlp/groups.0/gate/conv_14/Conv",
+      "mean_abs_offset": 0.0004095510230399668,
+      "max_abs_offset": 0.0011926457518711686,
+      "output_step": 9.938715083990246e-05
+    },
+    {
+      "id": "conv_083",
+      "node": "/mlp/groups.0/value/conv_14/Conv",
+      "mean_abs_offset": 0.0007587719010189176,
+      "max_abs_offset": 0.0022235126234591007,
+      "output_step": 0.00024705694522708654
+    },
+    {
+      "id": "conv_084",
+      "node": "/mlp/groups.1/gate/conv_8/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 9.992823834181763e-06
+    },
+    {
+      "id": "conv_085",
+      "node": "/mlp/groups.1/value/conv_8/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 5.009711458114907e-05
+    },
+    {
+      "id": "conv_086",
+      "node": "/mlp/groups.0/gate/conv_15/Conv",
+      "mean_abs_offset": 0.001656069653108716,
+      "max_abs_offset": 0.0042840177193284035,
+      "output_step": 0.000252001074841246
+    },
+    {
+      "id": "conv_087",
+      "node": "/mlp/groups.0/value/conv_15/Conv",
+      "mean_abs_offset": 0.0014109205221757293,
+      "max_abs_offset": 0.00390377314761281,
+      "output_step": 0.00024398582172580063
+    },
+    {
+      "id": "conv_088",
+      "node": "/mlp/groups.1/gate/conv_9/Conv",
+      "mean_abs_offset": 0.0003202786319889128,
+      "max_abs_offset": 0.0003202786319889128,
+      "output_step": 0.0001601393159944564
+    },
+    {
+      "id": "conv_089",
+      "node": "/mlp/groups.1/value/conv_9/Conv",
+      "mean_abs_offset": 0.002970663132146001,
+      "max_abs_offset": 0.002970663132146001,
+      "output_step": 0.0002285125810885802
+    },
+    {
+      "id": "conv_090",
+      "node": "/mlp/groups.0/output/conv_14/Conv",
+      "mean_abs_offset": 0.000975696078967303,
+      "max_abs_offset": 0.003138574305921793,
+      "output_step": 0.00019616089412011206
+    },
+    {
+      "id": "conv_091",
+      "node": "/mlp/groups.1/output/conv_8/Conv",
+      "mean_abs_offset": 9.663098171586171e-05,
+      "max_abs_offset": 0.0002677222073543817,
+      "output_step": 1.7848145944299176e-05
+    },
+    {
+      "id": "conv_092",
+      "node": "/mlp/groups.0/output/conv_15/Conv",
+      "mean_abs_offset": 0.0017690612003207207,
+      "max_abs_offset": 0.004536356311291456,
+      "output_step": 0.00028352232766337693
+    },
+    {
+      "id": "conv_093",
+      "node": "/mlp/groups.1/output/conv_9/Conv",
+      "mean_abs_offset": 0.00643825763836503,
+      "max_abs_offset": 0.017209772020578384,
+      "output_step": 0.0010756105184555054
+    },
+    {
+      "id": "conv_094",
+      "node": "/attn/Wqkv/conv_8/Conv",
+      "mean_abs_offset": 0.0020173443481326103,
+      "max_abs_offset": 0.00540608586743474,
+      "output_step": 0.00031800501164980233
+    },
+    {
+      "id": "conv_095",
+      "node": "/attn/Wo/conv_8/Conv",
+      "mean_abs_offset": 0.0005828230059705675,
+      "max_abs_offset": 0.0016951073193922639,
+      "output_step": 9.97122042463161e-05
+    },
+    {
+      "id": "conv_096",
+      "node": "/mlp/groups.0/gate/conv_16/Conv",
+      "mean_abs_offset": 0.0005478019593283534,
+      "max_abs_offset": 0.0015581974294036627,
+      "output_step": 9.165867231786251e-05
+    },
+    {
+      "id": "conv_097",
+      "node": "/mlp/groups.0/value/conv_16/Conv",
+      "mean_abs_offset": 0.0012061207089573145,
+      "max_abs_offset": 0.003309456165879965,
+      "output_step": 0.00014388939598575234
+    },
+    {
+      "id": "conv_098",
+      "node": "/mlp/groups.1/gate/conv_10/Conv",
+      "mean_abs_offset": 0.00015370581240858883,
+      "max_abs_offset": 0.00015370581240858883,
+      "output_step": 3.074116466450505e-05
+    },
+    {
+      "id": "conv_099",
+      "node": "/mlp/groups.1/value/conv_10/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 2.350222712266259e-05
+    },
+    {
+      "id": "conv_100",
+      "node": "/mlp/groups.0/gate/conv_17/Conv",
+      "mean_abs_offset": 0.0011597255943343043,
+      "max_abs_offset": 0.003542911494150758,
+      "output_step": 0.00020840657816734165
+    },
+    {
+      "id": "conv_101",
+      "node": "/mlp/groups.0/value/conv_17/Conv",
+      "mean_abs_offset": 0.0013281424762681127,
+      "max_abs_offset": 0.003537001321092248,
+      "output_step": 0.00023580009292345494
+    },
+    {
+      "id": "conv_102",
+      "node": "/mlp/groups.1/gate/conv_11/Conv",
+      "mean_abs_offset": 0.0014540700940415263,
+      "max_abs_offset": 0.0014540700940415263,
+      "output_step": 0.00020772429706994444
+    },
+    {
+      "id": "conv_103",
+      "node": "/mlp/groups.1/value/conv_11/Conv",
+      "mean_abs_offset": 0.0015224976232275367,
+      "max_abs_offset": 0.0015224976232275367,
+      "output_step": 0.00021749969164375216
+    },
+    {
+      "id": "conv_104",
+      "node": "/mlp/groups.0/output/conv_16/Conv",
+      "mean_abs_offset": 0.0006851772777736187,
+      "max_abs_offset": 0.0021055119577795267,
+      "output_step": 0.00016196246724575758
+    },
+    {
+      "id": "conv_105",
+      "node": "/mlp/groups.1/output/conv_10/Conv",
+      "mean_abs_offset": 7.702488801442087e-06,
+      "max_abs_offset": 1.8184358850703575e-05,
+      "output_step": 1.3987967122375267e-06
+    },
+    {
+      "id": "conv_106",
+      "node": "/mlp/groups.0/output/conv_17/Conv",
+      "mean_abs_offset": 0.0027480870485305786,
+      "max_abs_offset": 0.007126158569008112,
+      "output_step": 0.0005938466056250036
+    },
+    {
+      "id": "conv_107",
+      "node": "/mlp/groups.1/output/conv_11/Conv",
+      "mean_abs_offset": 0.005109602119773626,
+      "max_abs_offset": 0.013518319465219975,
+      "output_step": 0.0009655940812081099
+    },
+    {
+      "id": "conv_108",
+      "node": "/attn/Wqkv/conv_9/Conv",
+      "mean_abs_offset": 0.0028880226891487837,
+      "max_abs_offset": 0.008169100619852543,
+      "output_step": 0.0005446066497825086
+    },
+    {
+      "id": "conv_109",
+      "node": "/attn/Wo/conv_9/Conv",
+      "mean_abs_offset": 0.000627728586550802,
+      "max_abs_offset": 0.001644628937356174,
+      "output_step": 0.00010964192915707827
+    },
+    {
+      "id": "conv_110",
+      "node": "/mlp/groups.0/gate/conv_18/Conv",
+      "mean_abs_offset": 0.0005714870058000088,
+      "max_abs_offset": 0.0018192131537944078,
+      "output_step": 0.00010106740228366107
+    },
+    {
+      "id": "conv_111",
+      "node": "/mlp/groups.0/value/conv_18/Conv",
+      "mean_abs_offset": 0.0011819559149444103,
+      "max_abs_offset": 0.0033068929333239794,
+      "output_step": 0.0001653446670388803
+    },
+    {
+      "id": "conv_112",
+      "node": "/mlp/groups.0/gate/conv_19/Conv",
+      "mean_abs_offset": 0.0013467514654621482,
+      "max_abs_offset": 0.0035324629861861467,
+      "output_step": 0.00023549752950202674
+    },
+    {
+      "id": "conv_113",
+      "node": "/mlp/groups.0/value/conv_19/Conv",
+      "mean_abs_offset": 0.0029011769220232964,
+      "max_abs_offset": 0.008288293145596981,
+      "output_step": 0.00039468068280257285
+    },
+    {
+      "id": "conv_114",
+      "node": "/mlp/groups.0/output/conv_18/Conv",
+      "mean_abs_offset": 0.0009327986626885831,
+      "max_abs_offset": 0.0023805585224181414,
+      "output_step": 0.00015870388597249985
+    },
+    {
+      "id": "conv_115",
+      "node": "/mlp/groups.0/output/conv_19/Conv",
+      "mean_abs_offset": 0.001874063746072352,
+      "max_abs_offset": 0.005639499519020319,
+      "output_step": 0.00040282143163494766
+    },
+    {
+      "id": "conv_116",
+      "node": "/attn/Wqkv/conv_10/Conv",
+      "mean_abs_offset": 0.0015732559841126204,
+      "max_abs_offset": 0.0046838922426104546,
+      "output_step": 0.0002755231107585132
+    },
+    {
+      "id": "conv_117",
+      "node": "/attn/Wo/conv_10/Conv",
+      "mean_abs_offset": 0.0007678948459215462,
+      "max_abs_offset": 0.0020524703431874514,
+      "output_step": 0.00011402615200495347
+    },
+    {
+      "id": "conv_118",
+      "node": "/mlp/groups.0/gate/conv_20/Conv",
+      "mean_abs_offset": 0.0006168904947116971,
+      "max_abs_offset": 0.001833813963457942,
+      "output_step": 0.00013098672206979245
+    },
+    {
+      "id": "conv_119",
+      "node": "/mlp/groups.0/value/conv_20/Conv",
+      "mean_abs_offset": 0.001532605616375804,
+      "max_abs_offset": 0.003998480271548033,
+      "output_step": 0.00016660330584272742
+    },
+    {
+      "id": "conv_120",
+      "node": "/mlp/groups.1/gate/conv_12/Conv",
+      "mean_abs_offset": 0.0008372932788915932,
+      "max_abs_offset": 0.0008372932788915932,
+      "output_step": 4.651629933505319e-05
+    },
+    {
+      "id": "conv_121",
+      "node": "/mlp/groups.1/value/conv_12/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 4.6327419113367796e-05
+    },
+    {
+      "id": "conv_122",
+      "node": "/mlp/groups.2/gate/conv/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 0.00010089532588608563
+    },
+    {
+      "id": "conv_123",
+      "node": "/mlp/groups.2/value/conv/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 0.00016433170821983367
+    },
+    {
+      "id": "conv_124",
+      "node": "/mlp/groups.0/gate/conv_21/Conv",
+      "mean_abs_offset": 0.0013462331844493747,
+      "max_abs_offset": 0.003878731979057193,
+      "output_step": 0.00027705231332220137
+    },
+    {
+      "id": "conv_125",
+      "node": "/mlp/groups.0/value/conv_21/Conv",
+      "mean_abs_offset": 0.002894361736252904,
+      "max_abs_offset": 0.007868831045925617,
+      "output_step": 0.00037470628740265965
+    },
+    {
+      "id": "conv_126",
+      "node": "/mlp/groups.1/gate/conv_13/Conv",
+      "mean_abs_offset": 0.00330548663623631,
+      "max_abs_offset": 0.00330548663623631,
+      "output_step": 0.00020659288566093892
+    },
+    {
+      "id": "conv_127",
+      "node": "/mlp/groups.1/value/conv_13/Conv",
+      "mean_abs_offset": 0.0006338704843074083,
+      "max_abs_offset": 0.0006338704843074083,
+      "output_step": 0.0003169353003613651
+    },
+    {
+      "id": "conv_128",
+      "node": "/mlp/groups.2/gate/conv_1/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 0.00011773888400057331
+    },
+    {
+      "id": "conv_129",
+      "node": "/mlp/groups.2/value/conv_1/Conv",
+      "mean_abs_offset": 0.002820046152919531,
+      "max_abs_offset": 0.002820046152919531,
+      "output_step": 0.0001762528991093859
+    },
+    {
+      "id": "conv_130",
+      "node": "/mlp/groups.0/output/conv_20/Conv",
+      "mean_abs_offset": 0.0013303774176165462,
+      "max_abs_offset": 0.004232225473970175,
+      "output_step": 0.00035268545616418123
+    },
+    {
+      "id": "conv_131",
+      "node": "/mlp/groups.1/output/conv_12/Conv",
+      "mean_abs_offset": 1.4710826690134127e-05,
+      "max_abs_offset": 3.960706453653984e-05,
+      "output_step": 3.300588787169545e-06
+    },
+    {
+      "id": "conv_132",
+      "node": "/mlp/groups.2/output/conv/Conv",
+      "mean_abs_offset": 0.0022279887925833464,
+      "max_abs_offset": 0.005958810914307833,
+      "output_step": 0.00045837005018256605
+    },
+    {
+      "id": "conv_133",
+      "node": "/mlp/groups.0/output/conv_21/Conv",
+      "mean_abs_offset": 0.0023405912797898054,
+      "max_abs_offset": 0.00713146198540926,
+      "output_step": 0.00044571637408807874
+    },
+    {
+      "id": "conv_134",
+      "node": "/mlp/groups.1/output/conv_13/Conv",
+      "mean_abs_offset": 0.01084108930081129,
+      "max_abs_offset": 0.028746716678142548,
+      "output_step": 0.0015129849780350924
+    },
+    {
+      "id": "conv_135",
+      "node": "/mlp/groups.2/output/conv_1/Conv",
+      "mean_abs_offset": 0.001053718850016594,
+      "max_abs_offset": 0.002772886073216796,
+      "output_step": 0.00021329890296328813
+    },
+    {
+      "id": "conv_136",
+      "node": "/attn/Wqkv/conv_11/Conv",
+      "mean_abs_offset": 0.0018832269124686718,
+      "max_abs_offset": 0.005365306045860052,
+      "output_step": 0.00031560627394355834
+    },
+    {
+      "id": "conv_137",
+      "node": "/attn/Wo/conv_11/Conv",
+      "mean_abs_offset": 0.0006040615844540298,
+      "max_abs_offset": 0.0016744207823649049,
+      "output_step": 0.00010465131344972178
+    },
+    {
+      "id": "conv_138",
+      "node": "/mlp/groups.0/gate/conv_22/Conv",
+      "mean_abs_offset": 0.0004460325581021607,
+      "max_abs_offset": 0.0012482990277931094,
+      "output_step": 0.00011348171392455697
+    },
+    {
+      "id": "conv_139",
+      "node": "/mlp/groups.0/value/conv_22/Conv",
+      "mean_abs_offset": 0.0007218631217256188,
+      "max_abs_offset": 0.0018450027564540505,
+      "output_step": 0.00010852955165319145
+    },
+    {
+      "id": "conv_140",
+      "node": "/mlp/groups.1/gate/conv_14/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 0.002141352044418454
+    },
+    {
+      "id": "conv_141",
+      "node": "/mlp/groups.1/value/conv_14/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 0.003925459459424019
+    },
+    {
+      "id": "conv_142",
+      "node": "/mlp/groups.2/gate/conv_2/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 2.6666313715395518e-05
+    },
+    {
+      "id": "conv_143",
+      "node": "/mlp/groups.2/value/conv_2/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 5.961315764579922e-05
+    },
+    {
+      "id": "conv_144",
+      "node": "/mlp/groups.0/gate/conv_23/Conv",
+      "mean_abs_offset": 0.001356904162093997,
+      "max_abs_offset": 0.0038688587956130505,
+      "output_step": 0.00025792393716983497
+    },
+    {
+      "id": "conv_145",
+      "node": "/mlp/groups.0/value/conv_23/Conv",
+      "mean_abs_offset": 0.001978831132873893,
+      "max_abs_offset": 0.0050762551836669445,
+      "output_step": 0.0002986032923217863
+    },
+    {
+      "id": "conv_146",
+      "node": "/mlp/groups.1/gate/conv_15/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 0.0019651458133012056
+    },
+    {
+      "id": "conv_147",
+      "node": "/mlp/groups.1/value/conv_15/Conv",
+      "mean_abs_offset": 0.003546143416315317,
+      "max_abs_offset": 0.003546143416315317,
+      "output_step": 0.003546143416315317
+    },
+    {
+      "id": "conv_148",
+      "node": "/mlp/groups.2/gate/conv_3/Conv",
+      "mean_abs_offset": 0.00018618912145029753,
+      "max_abs_offset": 0.00018618912145029753,
+      "output_step": 0.00018618909234646708
+    },
+    {
+      "id": "conv_149",
+      "node": "/mlp/groups.2/value/conv_3/Conv",
+      "mean_abs_offset": 0.003906732890754938,
+      "max_abs_offset": 0.003906732890754938,
+      "output_step": 0.0005581047153100371
+    },
+    {
+      "id": "conv_150",
+      "node": "/mlp/groups.0/output/conv_22/Conv",
+      "mean_abs_offset": 0.0013744538882747293,
+      "max_abs_offset": 0.0036798121873289347,
+      "output_step": 0.00017522915732115507
+    },
+    {
+      "id": "conv_151",
+      "node": "/mlp/groups.1/output/conv_14/Conv",
+      "mean_abs_offset": 2.5033342838287354,
+      "max_abs_offset": 6.596762657165527,
+      "output_step": 0.2638705372810364
+    },
+    {
+      "id": "conv_152",
+      "node": "/mlp/groups.2/output/conv_2/Conv",
+      "mean_abs_offset": 0.0007765736081637442,
+      "max_abs_offset": 0.002095657167956233,
+      "output_step": 7.761693268548697e-05
+    },
+    {
+      "id": "conv_153",
+      "node": "/mlp/groups.0/output/conv_23/Conv",
+      "mean_abs_offset": 0.006278436630964279,
+      "max_abs_offset": 0.017692910507321358,
+      "output_step": 0.0010407596128061414
+    },
+    {
+      "id": "conv_154",
+      "node": "/mlp/groups.1/output/conv_15/Conv",
+      "mean_abs_offset": 1.3103759288787842,
+      "max_abs_offset": 3.4697585105895996,
+      "output_step": 0.1387903392314911
+    },
+    {
+      "id": "conv_155",
+      "node": "/mlp/groups.2/output/conv_3/Conv",
+      "mean_abs_offset": 0.01731284148991108,
+      "max_abs_offset": 0.047137487679719925,
+      "output_step": 0.0017458327347412705
+    },
+    {
+      "id": "conv_156",
+      "node": "/attn/Wqkv/conv_12/Conv",
+      "mean_abs_offset": 0.0031797082629054785,
+      "max_abs_offset": 0.00999536458402872,
+      "output_step": 0.0005552980583161116
+    },
+    {
+      "id": "conv_157",
+      "node": "/attn/Wo/conv_12/Conv",
+      "mean_abs_offset": 0.0017084148712456226,
+      "max_abs_offset": 0.005170123185962439,
+      "output_step": 0.0002872290788218379
+    },
+    {
+      "id": "conv_158",
+      "node": "/mlp/groups.0/gate/conv_24/Conv",
+      "mean_abs_offset": 0.000738549861125648,
+      "max_abs_offset": 0.002120973775163293,
+      "output_step": 0.00011783189256675541
+    },
+    {
+      "id": "conv_159",
+      "node": "/mlp/groups.0/value/conv_24/Conv",
+      "mean_abs_offset": 0.0005906675360165536,
+      "max_abs_offset": 0.0018233486916869879,
+      "output_step": 0.00014025761629454792
+    },
+    {
+      "id": "conv_160",
+      "node": "/mlp/groups.1/gate/conv_16/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 6.137952004792169e-05
+    },
+    {
+      "id": "conv_161",
+      "node": "/mlp/groups.1/value/conv_16/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 0.00010384675260866061
+    },
+    {
+      "id": "conv_162",
+      "node": "/mlp/groups.2/gate/conv_4/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 9.896895062411204e-05
+    },
+    {
+      "id": "conv_163",
+      "node": "/mlp/groups.2/value/conv_4/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 3.7543042708421126e-05
+    },
+    {
+      "id": "conv_164",
+      "node": "/mlp/groups.0/gate/conv_25/Conv",
+      "mean_abs_offset": 0.0014308181125670671,
+      "max_abs_offset": 0.004080954473465681,
+      "output_step": 0.00027206362574361265
+    },
+    {
+      "id": "conv_165",
+      "node": "/mlp/groups.0/value/conv_25/Conv",
+      "mean_abs_offset": 0.0017523247515782714,
+      "max_abs_offset": 0.005486450158059597,
+      "output_step": 0.00027432251954451203
+    },
+    {
+      "id": "conv_166",
+      "node": "/mlp/groups.1/gate/conv_17/Conv",
+      "mean_abs_offset": 0.0029146946035325527,
+      "max_abs_offset": 0.0029146946035325527,
+      "output_step": 0.0014573471853509545
+    },
+    {
+      "id": "conv_167",
+      "node": "/mlp/groups.1/value/conv_17/Conv",
+      "mean_abs_offset": 0.041739653795957565,
+      "max_abs_offset": 0.041739653795957565,
+      "output_step": 0.00321074272505939
+    },
+    {
+      "id": "conv_168",
+      "node": "/mlp/groups.2/gate/conv_5/Conv",
+      "mean_abs_offset": 0.006367554422467947,
+      "max_abs_offset": 0.006367554422467947,
+      "output_step": 0.0012735110940411687
+    },
+    {
+      "id": "conv_169",
+      "node": "/mlp/groups.2/value/conv_5/Conv",
+      "mean_abs_offset": 0.0015972721157595515,
+      "max_abs_offset": 0.0015972721157595515,
+      "output_step": 0.000798635883256793
+    },
+    {
+      "id": "conv_170",
+      "node": "/mlp/groups.0/output/conv_24/Conv",
+      "mean_abs_offset": 0.00041872545261867344,
+      "max_abs_offset": 0.0012526424834504724,
+      "output_step": 6.959124584682286e-05
+    },
+    {
+      "id": "conv_171",
+      "node": "/mlp/groups.1/output/conv_16/Conv",
+      "mean_abs_offset": 0.000498842156957835,
+      "max_abs_offset": 0.0014868465950712562,
+      "output_step": 0.0004956154152750969
+    },
+    {
+      "id": "conv_172",
+      "node": "/mlp/groups.2/output/conv_4/Conv",
+      "mean_abs_offset": 0.0005614942056126893,
+      "max_abs_offset": 0.0014598091365769506,
+      "output_step": 0.00029196179821155965
+    },
+    {
+      "id": "conv_173",
+      "node": "/mlp/groups.0/output/conv_25/Conv",
+      "mean_abs_offset": 0.007419832516461611,
+      "max_abs_offset": 0.018626132979989052,
+      "output_step": 0.001164133078418672
+    },
+    {
+      "id": "conv_174",
+      "node": "/mlp/groups.1/output/conv_17/Conv",
+      "mean_abs_offset": 1.3039175271987915,
+      "max_abs_offset": 3.3672919273376465,
+      "output_step": 0.12026043236255646
+    },
+    {
+      "id": "conv_175",
+      "node": "/mlp/groups.2/output/conv_5/Conv",
+      "mean_abs_offset": 0.1159815713763237,
+      "max_abs_offset": 0.3132725656032562,
+      "output_step": 0.011602689512073994
+    },
+    {
+      "id": "conv_176",
+      "node": "/attn/Wqkv/conv_13/Conv",
+      "mean_abs_offset": 0.0021057927515357733,
+      "max_abs_offset": 0.005952150095254183,
+      "output_step": 0.00037200943916104734
+    },
+    {
+      "id": "conv_177",
+      "node": "/attn/Wo/conv_13/Conv",
+      "mean_abs_offset": 0.000859490130096674,
+      "max_abs_offset": 0.0023965085856616497,
+      "output_step": 0.00014978180115576833
+    },
+    {
+      "id": "conv_178",
+      "node": "/mlp/groups.0/gate/conv_26/Conv",
+      "mean_abs_offset": 0.000817084452137351,
+      "max_abs_offset": 0.0023469168227165937,
+      "output_step": 0.00016763689927756786
+    },
+    {
+      "id": "conv_179",
+      "node": "/mlp/groups.0/value/conv_26/Conv",
+      "mean_abs_offset": 0.0005451155593618751,
+      "max_abs_offset": 0.001607211073860526,
+      "output_step": 8.928951137932017e-05
+    },
+    {
+      "id": "conv_180",
+      "node": "/mlp/groups.0/gate/conv_27/Conv",
+      "mean_abs_offset": 0.002131827175617218,
+      "max_abs_offset": 0.005638803355395794,
+      "output_step": 0.0003316943475510925
+    },
+    {
+      "id": "conv_181",
+      "node": "/mlp/groups.0/value/conv_27/Conv",
+      "mean_abs_offset": 0.0012695696204900742,
+      "max_abs_offset": 0.0034171591978520155,
+      "output_step": 0.00022781062580179423
+    },
+    {
+      "id": "conv_182",
+      "node": "/mlp/groups.0/output/conv_26/Conv",
+      "mean_abs_offset": 0.0015555392019450665,
+      "max_abs_offset": 0.004217884503304958,
+      "output_step": 0.0002481109113432467
+    },
+    {
+      "id": "conv_183",
+      "node": "/mlp/groups.0/output/conv_27/Conv",
+      "mean_abs_offset": 0.0033210862893611193,
+      "max_abs_offset": 0.009663375094532967,
+      "output_step": 0.0005368542042560875
+    },
+    {
+      "id": "conv_184",
+      "node": "/attn/Wqkv/conv_14/Conv",
+      "mean_abs_offset": 0.001790866837836802,
+      "max_abs_offset": 0.005149542819708586,
+      "output_step": 0.0003433029050938785
+    },
+    {
+      "id": "conv_185",
+      "node": "/attn/Wo/conv_14/Conv",
+      "mean_abs_offset": 0.0009608727996237576,
+      "max_abs_offset": 0.002704972168430686,
+      "output_step": 0.00016906078963074833
+    },
+    {
+      "id": "conv_186",
+      "node": "/mlp/groups.0/gate/conv_28/Conv",
+      "mean_abs_offset": 0.0012707553105428815,
+      "max_abs_offset": 0.0033936796244233847,
+      "output_step": 0.00015425817400682718
+    },
+    {
+      "id": "conv_187",
+      "node": "/mlp/groups.0/value/conv_28/Conv",
+      "mean_abs_offset": 0.0006695899646729231,
+      "max_abs_offset": 0.0019313158700242639,
+      "output_step": 9.656580368755385e-05
+    },
+    {
+      "id": "conv_188",
+      "node": "/mlp/groups.0/gate/conv_29/Conv",
+      "mean_abs_offset": 0.0012548858067020774,
+      "max_abs_offset": 0.0036435401998460293,
+      "output_step": 0.00021432591893244535
+    },
+    {
+      "id": "conv_189",
+      "node": "/mlp/groups.0/value/conv_29/Conv",
+      "mean_abs_offset": 0.0015144533244892955,
+      "max_abs_offset": 0.004136965144425631,
+      "output_step": 0.00022983140661381185
+    },
+    {
+      "id": "conv_190",
+      "node": "/mlp/groups.0/output/conv_28/Conv",
+      "mean_abs_offset": 0.0008686694782227278,
+      "max_abs_offset": 0.0024518121499568224,
+      "output_step": 0.00012259061622899026
+    },
+    {
+      "id": "conv_191",
+      "node": "/mlp/groups.0/output/conv_29/Conv",
+      "mean_abs_offset": 0.004832629580050707,
+      "max_abs_offset": 0.013039520010352135,
+      "output_step": 0.0006862905574962497
+    },
+    {
+      "id": "conv_192",
+      "node": "/attn/Wqkv/conv_15/Conv",
+      "mean_abs_offset": 0.0038646087050437927,
+      "max_abs_offset": 0.010572797618806362,
+      "output_step": 0.0005873776972293854
+    },
+    {
+      "id": "conv_193",
+      "node": "/attn/Wo/conv_15/Conv",
+      "mean_abs_offset": 0.0013083013473078609,
+      "max_abs_offset": 0.0037447947543114424,
+      "output_step": 0.0002340497012482956
+    },
+    {
+      "id": "conv_194",
+      "node": "/mlp/groups.0/gate/conv_30/Conv",
+      "mean_abs_offset": 0.0011715173022821546,
+      "max_abs_offset": 0.003390924073755741,
+      "output_step": 0.0001994661579374224
+    },
+    {
+      "id": "conv_195",
+      "node": "/mlp/groups.0/value/conv_30/Conv",
+      "mean_abs_offset": 0.0009221498621627688,
+      "max_abs_offset": 0.0023538635578006506,
+      "output_step": 0.00018106642528437078
+    },
+    {
+      "id": "conv_196",
+      "node": "/mlp/groups.0/gate/conv_31/Conv",
+      "mean_abs_offset": 0.0016040216432884336,
+      "max_abs_offset": 0.004752503242343664,
+      "output_step": 0.00029703148175030947
+    },
+    {
+      "id": "conv_197",
+      "node": "/mlp/groups.0/value/conv_31/Conv",
+      "mean_abs_offset": 0.001437675440683961,
+      "max_abs_offset": 0.004440964199602604,
+      "output_step": 0.00027756026247516274
+    },
+    {
+      "id": "conv_198",
+      "node": "/mlp/groups.0/output/conv_30/Conv",
+      "mean_abs_offset": 0.0013650826876983047,
+      "max_abs_offset": 0.0037643935065716505,
+      "output_step": 0.0002352745650568977
+    },
+    {
+      "id": "conv_199",
+      "node": "/mlp/groups.0/output/conv_31/Conv",
+      "mean_abs_offset": 0.0024773639161139727,
+      "max_abs_offset": 0.00816281232982874,
+      "output_step": 0.0006802343996241689
+    },
+    {
+      "id": "conv_200",
+      "node": "/attn/Wqkv/conv_16/Conv",
+      "mean_abs_offset": 0.0020845169201493263,
+      "max_abs_offset": 0.005963650532066822,
+      "output_step": 0.00033131393138319254
+    },
+    {
+      "id": "conv_201",
+      "node": "/attn/Wo/conv_16/Conv",
+      "mean_abs_offset": 0.0009316426585428417,
+      "max_abs_offset": 0.002721334109082818,
+      "output_step": 0.00020933340420015156
+    },
+    {
+      "id": "conv_202",
+      "node": "/mlp/groups.0/gate/conv_32/Conv",
+      "mean_abs_offset": 0.001992838690057397,
+      "max_abs_offset": 0.005674886982887983,
+      "output_step": 0.00025794943212531507
+    },
+    {
+      "id": "conv_203",
+      "node": "/mlp/groups.0/value/conv_32/Conv",
+      "mean_abs_offset": 0.0009259714279323816,
+      "max_abs_offset": 0.0025606376584619284,
+      "output_step": 0.0002133865054929629
+    },
+    {
+      "id": "conv_204",
+      "node": "/mlp/groups.0/gate/conv_33/Conv",
+      "mean_abs_offset": 0.0020830112043768167,
+      "max_abs_offset": 0.005908883176743984,
+      "output_step": 0.00031099392799660563
+    },
+    {
+      "id": "conv_205",
+      "node": "/mlp/groups.0/value/conv_33/Conv",
+      "mean_abs_offset": 0.0018450079951435328,
+      "max_abs_offset": 0.005352277774363756,
+      "output_step": 0.00029734880081377923
+    },
+    {
+      "id": "conv_206",
+      "node": "/mlp/groups.0/output/conv_32/Conv",
+      "mean_abs_offset": 0.0009929913794621825,
+      "max_abs_offset": 0.002602790016680956,
+      "output_step": 0.0002602789900265634
+    },
+    {
+      "id": "conv_207",
+      "node": "/mlp/groups.0/output/conv_33/Conv",
+      "mean_abs_offset": 0.002644996391609311,
+      "max_abs_offset": 0.007291302550584078,
+      "output_step": 0.0004860868793912232
+    },
+    {
+      "id": "conv_208",
+      "node": "/attn/Wqkv/conv_17/Conv",
+      "mean_abs_offset": 0.0023252880200743675,
+      "max_abs_offset": 0.006698306184262037,
+      "output_step": 0.00039401804679073393
+    },
+    {
+      "id": "conv_209",
+      "node": "/attn/Wo/conv_17/Conv",
+      "mean_abs_offset": 0.001056654960848391,
+      "max_abs_offset": 0.0028269486501812935,
+      "output_step": 0.0001766843197401613
+    },
+    {
+      "id": "conv_210",
+      "node": "/mlp/groups.0/gate/conv_34/Conv",
+      "mean_abs_offset": 0.0013024775544181466,
+      "max_abs_offset": 0.003839115146547556,
+      "output_step": 0.00021328419097699225
+    },
+    {
+      "id": "conv_211",
+      "node": "/mlp/groups.0/value/conv_34/Conv",
+      "mean_abs_offset": 0.0010108588030561805,
+      "max_abs_offset": 0.002765617100521922,
+      "output_step": 0.0001843744976213202
+    },
+    {
+      "id": "conv_212",
+      "node": "/mlp/groups.0/gate/conv_35/Conv",
+      "mean_abs_offset": 0.0014367575058713555,
+      "max_abs_offset": 0.00444078678265214,
+      "output_step": 0.00031719906837679446
+    },
+    {
+      "id": "conv_213",
+      "node": "/mlp/groups.0/value/conv_35/Conv",
+      "mean_abs_offset": 0.001943011418916285,
+      "max_abs_offset": 0.005138113629072905,
+      "output_step": 0.00046710128663107753
+    },
+    {
+      "id": "conv_214",
+      "node": "/mlp/groups.0/output/conv_34/Conv",
+      "mean_abs_offset": 0.0015046061016619205,
+      "max_abs_offset": 0.004691585432738066,
+      "output_step": 0.00023457927454728633
+    },
+    {
+      "id": "conv_215",
+      "node": "/mlp/groups.0/output/conv_35/Conv",
+      "mean_abs_offset": 0.006792217027395964,
+      "max_abs_offset": 0.020401550456881523,
+      "output_step": 0.0012750971363857388
+    },
+    {
+      "id": "conv_216",
+      "node": "/attn/Wqkv/conv_18/Conv",
+      "mean_abs_offset": 0.002876813290640712,
+      "max_abs_offset": 0.008765383623540401,
+      "output_step": 0.0005156108527444303
+    },
+    {
+      "id": "conv_217",
+      "node": "/attn/Wo/conv_18/Conv",
+      "mean_abs_offset": 0.0029221808072179556,
+      "max_abs_offset": 0.0077055273577570915,
+      "output_step": 0.0004815954598598182
+    },
+    {
+      "id": "conv_218",
+      "node": "/mlp/groups.0/gate/conv_36/Conv",
+      "mean_abs_offset": 0.0012327969307079911,
+      "max_abs_offset": 0.0036470151972025633,
+      "output_step": 0.00024313437461387366
+    },
+    {
+      "id": "conv_219",
+      "node": "/mlp/groups.0/value/conv_36/Conv",
+      "mean_abs_offset": 0.0011797030456364155,
+      "max_abs_offset": 0.003182886401191354,
+      "output_step": 0.0001872286229627207
+    },
+    {
+      "id": "conv_220",
+      "node": "/mlp/groups.1/gate/conv_18/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 0.0001276554394280538
+    },
+    {
+      "id": "conv_221",
+      "node": "/mlp/groups.1/value/conv_18/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 9.826071618590504e-06
+    },
+    {
+      "id": "conv_222",
+      "node": "/mlp/groups.2/gate/conv_6/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 2.514351945137605e-05
+    },
+    {
+      "id": "conv_223",
+      "node": "/mlp/groups.2/value/conv_6/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 3.033242501260247e-05
+    },
+    {
+      "id": "conv_224",
+      "node": "/mlp/groups.0/gate/conv_37/Conv",
+      "mean_abs_offset": 0.0015283513348549604,
+      "max_abs_offset": 0.004413714166730642,
+      "output_step": 0.00031526529346592724
+    },
+    {
+      "id": "conv_225",
+      "node": "/mlp/groups.0/value/conv_37/Conv",
+      "mean_abs_offset": 0.0021666449028998613,
+      "max_abs_offset": 0.006217445712536573,
+      "output_step": 0.0003885903861373663
+    },
+    {
+      "id": "conv_226",
+      "node": "/mlp/groups.1/gate/conv_19/Conv",
+      "mean_abs_offset": 0.0003280359960626811,
+      "max_abs_offset": 0.0003280359960626811,
+      "output_step": 0.000328036054270342
+    },
+    {
+      "id": "conv_227",
+      "node": "/mlp/groups.1/value/conv_19/Conv",
+      "mean_abs_offset": 0.005558342672884464,
+      "max_abs_offset": 0.005558342672884464,
+      "output_step": 0.0006175937014631927
+    },
+    {
+      "id": "conv_228",
+      "node": "/mlp/groups.2/gate/conv_7/Conv",
+      "mean_abs_offset": 0.0002382134407525882,
+      "max_abs_offset": 0.0002382134407525882,
+      "output_step": 0.00023821341164875776
+    },
+    {
+      "id": "conv_229",
+      "node": "/mlp/groups.2/value/conv_7/Conv",
+      "mean_abs_offset": 0.0030906626489013433,
+      "max_abs_offset": 0.0030906626489013433,
+      "output_step": 0.00022076157620176673
+    },
+    {
+      "id": "conv_230",
+      "node": "/mlp/groups.0/output/conv_36/Conv",
+      "mean_abs_offset": 0.003814154537394643,
+      "max_abs_offset": 0.009963504038751125,
+      "output_step": 0.0005860885721631348
+    },
+    {
+      "id": "conv_231",
+      "node": "/mlp/groups.1/output/conv_18/Conv",
+      "mean_abs_offset": 0.0009758430533111095,
+      "max_abs_offset": 0.0027042401488870382,
+      "output_step": 9.32496550376527e-05
+    },
+    {
+      "id": "conv_232",
+      "node": "/mlp/groups.2/output/conv_6/Conv",
+      "mean_abs_offset": 0.00011419126531109214,
+      "max_abs_offset": 0.0002944892330560833,
+      "output_step": 1.9632616385933943e-05
+    },
+    {
+      "id": "conv_233",
+      "node": "/mlp/groups.0/output/conv_37/Conv",
+      "mean_abs_offset": 0.00656925467774272,
+      "max_abs_offset": 0.015643993392586708,
+      "output_step": 0.0013036660384386778
+    },
+    {
+      "id": "conv_234",
+      "node": "/mlp/groups.1/output/conv_19/Conv",
+      "mean_abs_offset": 0.06664838641881943,
+      "max_abs_offset": 0.16984404623508453,
+      "output_step": 0.006290520075708628
+    },
+    {
+      "id": "conv_235",
+      "node": "/mlp/groups.2/output/conv_7/Conv",
+      "mean_abs_offset": 0.004598187282681465,
+      "max_abs_offset": 0.013088377192616463,
+      "output_step": 0.0008180235745385289
+    },
+    {
+      "id": "conv_236",
+      "node": "/attn/Wqkv/conv_19/Conv",
+      "mean_abs_offset": 0.0020491634495556355,
+      "max_abs_offset": 0.005910362582653761,
+      "output_step": 0.00036939771962352097
+    },
+    {
+      "id": "conv_237",
+      "node": "/attn/Wo/conv_19/Conv",
+      "mean_abs_offset": 0.0021947685163468122,
+      "max_abs_offset": 0.00554575165733695,
+      "output_step": 0.00032622067374177277
+    },
+    {
+      "id": "conv_238",
+      "node": "/mlp/groups.0/gate/conv_38/Conv",
+      "mean_abs_offset": 0.0011583237210288644,
+      "max_abs_offset": 0.0031181597150862217,
+      "output_step": 0.0001834211579989642
+    },
+    {
+      "id": "conv_239",
+      "node": "/mlp/groups.0/value/conv_38/Conv",
+      "mean_abs_offset": 0.0009319523815065622,
+      "max_abs_offset": 0.00263786013238132,
+      "output_step": 0.00021982169710099697
+    },
+    {
+      "id": "conv_240",
+      "node": "/mlp/groups.0/gate/conv_39/Conv",
+      "mean_abs_offset": 0.001514903618954122,
+      "max_abs_offset": 0.0050667207688093185,
+      "output_step": 0.0003166701062582433
+    },
+    {
+      "id": "conv_241",
+      "node": "/mlp/groups.0/value/conv_39/Conv",
+      "mean_abs_offset": 0.002001024316996336,
+      "max_abs_offset": 0.005301702301949263,
+      "output_step": 0.00035344684147275984
+    },
+    {
+      "id": "conv_242",
+      "node": "/mlp/groups.0/output/conv_38/Conv",
+      "mean_abs_offset": 0.0013801449676975608,
+      "max_abs_offset": 0.004136705305427313,
+      "output_step": 0.00031820812728255987
+    },
+    {
+      "id": "conv_243",
+      "node": "/mlp/groups.0/output/conv_39/Conv",
+      "mean_abs_offset": 0.006101338658481836,
+      "max_abs_offset": 0.016158027574419975,
+      "output_step": 0.0010772019159048796
+    },
+    {
+      "id": "conv_244",
+      "node": "/attn/Wqkv/conv_20/Conv",
+      "mean_abs_offset": 0.0021585943177342415,
+      "max_abs_offset": 0.006399804260581732,
+      "output_step": 0.0003764590946957469
+    },
+    {
+      "id": "conv_245",
+      "node": "/attn/Wo/conv_20/Conv",
+      "mean_abs_offset": 0.0016094042221084237,
+      "max_abs_offset": 0.004297714214771986,
+      "output_step": 0.00028651425964199007
+    },
+    {
+      "id": "conv_246",
+      "node": "/mlp/groups.0/gate/conv_40/Conv",
+      "mean_abs_offset": 0.001227320870384574,
+      "max_abs_offset": 0.003569939872249961,
+      "output_step": 0.00020999647676944733
+    },
+    {
+      "id": "conv_247",
+      "node": "/mlp/groups.0/value/conv_40/Conv",
+      "mean_abs_offset": 0.001108789467252791,
+      "max_abs_offset": 0.002910828683525324,
+      "output_step": 0.00018192680727224797
+    },
+    {
+      "id": "conv_248",
+      "node": "/mlp/groups.1/gate/conv_20/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 6.211698928382248e-05
+    },
+    {
+      "id": "conv_249",
+      "node": "/mlp/groups.1/value/conv_20/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 7.5518978519539814e-06
+    },
+    {
+      "id": "conv_250",
+      "node": "/mlp/groups.0/gate/conv_41/Conv",
+      "mean_abs_offset": 0.0012786947190761566,
+      "max_abs_offset": 0.0036880490370094776,
+      "output_step": 0.00024586994550190866
+    },
+    {
+      "id": "conv_251",
+      "node": "/mlp/groups.0/value/conv_41/Conv",
+      "mean_abs_offset": 0.001603432698175311,
+      "max_abs_offset": 0.004941675346344709,
+      "output_step": 0.0003294450289104134
+    },
+    {
+      "id": "conv_252",
+      "node": "/mlp/groups.1/gate/conv_21/Conv",
+      "mean_abs_offset": 0.0,
+      "max_abs_offset": 0.0,
+      "output_step": 0.00026817378238774836
+    },
+    {
+      "id": "conv_253",
+      "node": "/mlp/groups.1/value/conv_21/Conv",
+      "mean_abs_offset": 0.0005464549758471549,
+      "max_abs_offset": 0.0005464549758471549,
+      "output_step": 0.0002732274297159165
+    },
+    {
+      "id": "conv_254",
+      "node": "/mlp/groups.0/output/conv_40/Conv",
+      "mean_abs_offset": 0.0021944676991552114,
+      "max_abs_offset": 0.006135112605988979,
+      "output_step": 0.0003608889237511903
+    },
+    {
+      "id": "conv_255",
+      "node": "/mlp/groups.1/output/conv_20/Conv",
+      "mean_abs_offset": 0.00018011836800724268,
+      "max_abs_offset": 0.0004782399337273091,
+      "output_step": 1.9926663298974745e-05
+    },
+    {
+      "id": "conv_256",
+      "node": "/mlp/groups.0/output/conv_41/Conv",
+      "mean_abs_offset": 0.003248845459893346,
+      "max_abs_offset": 0.008463073521852493,
+      "output_step": 0.0004978278884664178
+    },
+    {
+      "id": "conv_257",
+      "node": "/mlp/groups.1/output/conv_21/Conv",
+      "mean_abs_offset": 0.0061686672270298,
+      "max_abs_offset": 0.016249174252152443,
+      "output_step": 0.001805463689379394
+    },
+    {
+      "id": "conv_258",
+      "node": "/attn/Wqkv/conv_21/Conv",
+      "mean_abs_offset": 0.002655584365129471,
+      "max_abs_offset": 0.007431158795952797,
+      "output_step": 0.00043712701881304383
+    },
+    {
+      "id": "conv_259",
+      "node": "/attn/Wo/conv_21/Conv",
+      "mean_abs_offset": 0.005486865993589163,
+      "max_abs_offset": 0.015620695427060127,
+      "output_step": 0.0009188645053654909
+    },
+    {
+      "id": "conv_260",
+      "node": "/mlp/groups.0/gate/conv_42/Conv",
+      "mean_abs_offset": 0.0017207989003509283,
+      "max_abs_offset": 0.004946624860167503,
+      "output_step": 0.0003091641119681299
+    },
+    {
+      "id": "conv_261",
+      "node": "/mlp/groups.0/value/conv_42/Conv",
+      "mean_abs_offset": 0.0017615804681554437,
+      "max_abs_offset": 0.004642737563699484,
+      "output_step": 0.0002321369101991877
+    },
+    {
+      "id": "conv_262",
+      "node": "/mlp/groups.0/gate/conv_43/Conv",
+      "mean_abs_offset": 0.0019635024946182966,
+      "max_abs_offset": 0.005625105928629637,
+      "output_step": 0.0003308886371087283
+    },
+    {
+      "id": "conv_263",
+      "node": "/mlp/groups.0/value/conv_43/Conv",
+      "mean_abs_offset": 0.0026876511983573437,
+      "max_abs_offset": 0.006904937792569399,
+      "output_step": 0.00046032920363359153
+    },
+    {
+      "id": "conv_264",
+      "node": "/mlp/groups.0/output/conv_42/Conv",
+      "mean_abs_offset": 0.004063439555466175,
+      "max_abs_offset": 0.01081471424549818,
+      "output_step": 0.0006759196985512972
+    },
+    {
+      "id": "conv_265",
+      "node": "/mlp/groups.0/output/conv_43/Conv",
+      "mean_abs_offset": 0.020083628594875336,
+      "max_abs_offset": 0.048050545156002045,
+      "output_step": 0.0020021062809973955
+    }
+  ],
+  "warning": "Offsets measured after output QDQ have up to one output-step uncertainty; spatial validation is sampled.",
+  "correction_biases_sha256": "150da10b34f5d45db052b5d5c29ed6c2ddbffcaa6d133d0df03ec071e88a0c87"
+}

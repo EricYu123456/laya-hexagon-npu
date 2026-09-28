@@ -1,0 +1,28 @@
+{
+  "config": {
+    "length": 1024,
+    "indices": "0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375",
+    "samples": 32,
+    "mask_penalty": -100,
+    "balance": false,
+    "group_outliers": true,
+    "outlier_ratio": 16,
+    "max_outliers": 8,
+    "conv_linear": true,
+    "split_cls": true,
+    "fold_norms": true,
+    "zero_pad_embeddings": true,
+    "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+    "input_sha256": {
+      "calibration_dataset_sha256": "4f294f218ea1da27f3efef936359389c62ea4d3973a41457732990f1d31b647c",
+      "model_files_sha256": {
+        "encoder/config.json": "c44772fe5316bf42b24de4d846dc0ea5dc07ff5999f98239f48b77d45f8928b7",
+        "rl_agent_config.json": "595769e06484c95cf7cf164507a14efafb09da6f38ad6375cda417b3de47d3c7",
+        "tokenizer/tokenizer.json": "86fb58d30f1c8da6dd573914b4a412d06d685d69cd726426a97b038aa849c67c",
+        "tokenizer/tokenizer_config.json": "2c0c4d82d4b4bc6b4ac40b2375e067a1645f78b381a9774248d47915f33d751f"
+      }
+    },
+    "append_long_calibration": true
+  },
+  "fp32_sha256": "62a4c5b0b95dcd877c7ed48c30c175785f5268e93855e96fa7c4cf1d4e25b601"
+}

@@ -59,7 +59,7 @@ python npu/build_fidelity.py \
   --output-dir .work/folded1024_long
 ```
 
-The builder materializes folded unit LayerNorm parameters as static U8 gamma and I32 zero bias, preserving their exact dequantized values; V68 rejects the U16 gamma aliases produced by the exporter. Run the same Conv calibration workflow on this bucket's own graph. Do not reuse the 768-token correction. The [candidate declaration](reports/evaluation-plans/long-input-candidate.json) records selection before the independent long-input NPU evaluation.
+The builder materializes folded unit LayerNorm parameters as static U8 gamma and I32 zero bias, preserving their exact dequantized values; V68 rejects the U16 gamma aliases produced by the exporter. Run the same Conv calibration workflow on this bucket's own graph. Do not reuse the 768-token correction. The [candidate declaration](reports/evaluation-plans/long-input-candidate-static-gamma.json) records selection before the independent long-input NPU evaluation.
 
 Use a fresh output directory for a new recipe. The builder rejects existing quantized graphs and incompatible manifests before writing. `--reuse-export` only finishes a verified FP32 export when no quantized graph exists; its sidecar must match the checkpoint, tokenizer/configuration files, calibration dataset, and requested export settings. Older sidecars without those input hashes require a fresh export.
 

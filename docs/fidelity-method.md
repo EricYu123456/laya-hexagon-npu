@@ -164,7 +164,7 @@ Use a fresh output filename for each run. The script refuses to overwrite eviden
 
 ## Long-input validation design
 
-The public split's longest original sequence has 631 tokens, so its pass does not establish behavior at 1024 tokens. The 1024-token candidate was selected using only the fixed 15-decision Chinese/English supplementary probes. Its CPU QDQ diagnostic has zero decision differences and 0.8245% mean TV; these numbers do not qualify the NPU graph. The selected source hash and allowed zero-input HTP correction are recorded in the [candidate declaration](../reports/evaluation-plans/long-input-candidate.json).
+The public split's longest original sequence has 631 tokens, so its pass does not establish behavior at 1024 tokens. The 1024-token candidate was selected using only the fixed 15-decision Chinese/English supplementary probes. Its CPU QDQ diagnostic has zero decision differences and 0.8245% mean TV; these numbers do not qualify the NPU graph. The selected source hash and allowed zero-input HTP correction are recorded in the [candidate declaration](../reports/evaluation-plans/long-input-candidate-static-gamma.json).
 
 The initial folded graph failed strict HTP compilation because the exporter/quantizer represented constant-one LayerNorm gamma as U16 aliases. A [small hardware probe](../reports/development-2026-09-28/unit-layernorm-htp.json) verifies that static U8 gamma and a matching I32 zero-bias encoding are accepted, with bit-identical CPU outputs. `npu/unit_layernorm.py` materializes only those exact constant parameters; it rejects dynamic/non-unit gamma and nonzero beta. It does not alter calibration ranges, activations, or Conv weights. Whole-model NPU validation is still required after this compatibility repair.
 

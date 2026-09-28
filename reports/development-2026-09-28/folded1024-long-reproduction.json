@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-09-28T16:57:20Z",
+  "source_commit": "f03af31",
+  "command": "OMP_NUM_THREADS=8 python npu/build_fidelity.py --model models/multilingual --parquet .work/typed-decisions.parquet --length 1024 --samples 32 --threads 8 --activation-bits 16 --group-outliers --conv-linear --split-cls --zero-pad-embeddings --refine-matmul-rhs all --fold-norms --append-long-calibration --low-memory-calibration --indices 0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375 --output-dir .work/reproduce1024_static",
+  "fresh_export_and_calibration": true,
+  "build_seconds": 212.14024901390076,
+  "expected_source_sha256": "8d7a7f1fdbfd01fb58026eb5ece936d4cfb410b1e993fa97b7c3517a587da008",
+  "actual_source_sha256": "8d7a7f1fdbfd01fb58026eb5ece936d4cfb410b1e993fa97b7c3517a587da008",
+  "fp32_sha256": "62a4c5b0b95dcd877c7ed48c30c175785f5268e93855e96fa7c4cf1d4e25b601",
+  "source_graph_byte_identical": true,
+  "fp32_graph_byte_identical": true,
+  "scope": "Reproducibility of the frozen uncorrected source graph, not an NPU fidelity result."
+}

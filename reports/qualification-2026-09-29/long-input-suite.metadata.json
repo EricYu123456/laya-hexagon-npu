@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-09-28T16:29:11.852179+00:00",
+  "plan_sha256": "64f3a66a772bbc3cdc910d11b19a5f8b4a08c6f4d64c897c81b0284eaadfdbcd",
+  "suite_sha256": "bb0b78a15d6804b136f95cc4abd22d3b74aedfaeadfa51aa9c3e93e4ad3786d6",
+  "cases": 16,
+  "decisions": 80,
+  "source_indices": [
+    2,
+    27,
+    52,
+    77,
+    102,
+    127,
+    152,
+    177,
+    202,
+    227,
+    252,
+    277,
+    302,
+    327,
+    352,
+    377
+  ],
+  "original_input_limits": {
+    "max_len": 1024,
+    "head_max_len": 256
+  },
+  "generation": "For each selected row, retain every original question and its criteria. Serialize non-string state using JSON ensure_ascii=False, then repeatedly double the state separated by two newlines until every unchanged upstream sequence reaches 1024 tokens; at most 12 attempts."
+}
