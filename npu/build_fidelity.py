@@ -36,6 +36,72 @@ def sha256_file(path):
     return digest.hexdigest()
 
 
+def export_input_hashes(model_dir, parquet):
+    """Bind export reuse to calibration data, configuration and tokenizer bytes."""
+    model_dir = Path(model_dir)
+    required = ["rl_agent_config.json", "encoder/config.json",
+                "tokenizer/tokenizer.json", "tokenizer/tokenizer_config.json"]
+    for name in required:
+        if not (model_dir / name).is_file():
+            raise FileNotFoundError(f"Export input is missing: {model_dir / name}")
+    paths = {model_dir / name for name in required}
+    paths.update(path for path in (model_dir / "tokenizer").rglob("*") if path.is_file())
+    return {
+        "calibration_dataset_sha256": sha256_file(parquet),
+        "model_files_sha256": {path.relative_to(model_dir).as_posix(): sha256_file(path)
+                               for path in sorted(paths)},
+    }
+
+
+def preflight_build(args, fp32, qdq, export_config):
+    """Reject conflicting policies and existing outputs before any build writes.
+
+    Reuse consumes a previously verified FP32 graph but produces a new QDQ file.
+    A metadata-only file left by --export-only may be finalized during reuse.
+    Frozen or partially written QDQ graphs always require a new output directory.
+    """
+    manifest_path = args.output_dir / "manifest.json"
+    policy = {
+        "checkpoint_sha256": export_config["checkpoint_sha256"],
+        "mask_penalty": args.mask_penalty, "precision": f"a{args.activation_bits}w8",
+        "zero_pad_embeddings": args.zero_pad_embeddings,
+        "matmul_rhs_refinement": args.refine_matmul_rhs,
+    }
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        defaults = {"zero_pad_embeddings": False, "matmul_rhs_refinement": "none"}
+        for field, expected in policy.items():
+            if manifest.get(field, defaults.get(field)) != expected:
+                raise ValueError(f"Output manifest has a different {field} policy; choose a new output directory")
+        if "htp_conv_offset_correction" in manifest:
+            raise ValueError("Do not build into a corrected model manifest; choose a new output directory")
+        if not isinstance(manifest.get("buckets"), dict) or not isinstance(manifest.get("model_sha256"), dict):
+            raise ValueError("Build output manifest requires buckets and model_sha256 mappings")
+        if str(args.length) in manifest["buckets"]:
+            raise FileExistsError(f"Output manifest already contains bucket {args.length}; choose a new output directory")
+    else:
+        manifest = {**policy, "buckets": {}, "model_sha256": {}}
+    if qdq.exists():
+        raise FileExistsError(f"Quantized output already exists: {qdq}; choose a new output directory")
+    sidecar = fp32.with_suffix(".json")
+    if args.reuse_export:
+        if not fp32.is_file() or not sidecar.is_file():
+            raise FileNotFoundError("--reuse-export requires both the FP32 graph and its export sidecar")
+        saved = json.loads(sidecar.read_text(encoding="utf-8"))
+        if not isinstance(saved.get("config"), dict) or "input_sha256" not in saved["config"]:
+            raise ValueError("Legacy export sidecar lacks input hashes; make a fresh export in a new output directory")
+        if saved["config"] != export_config or saved.get("fp32_sha256") != sha256_file(fp32):
+            raise ValueError("Existing export does not match the requested configuration/checkpoint/input hashes")
+    else:
+        for path in (fp32, sidecar, qdq.with_suffix(".json")):
+            if path.exists():
+                raise FileExistsError(
+                    f"Build output already exists: {path}; use --reuse-export for a verified FP32 export "
+                    "or choose a new output directory"
+                )
+    return manifest
+
+
 def masks(length, valid, radius, penalty):
     positions = np.arange(length)
     global_mask = np.broadcast_to(positions[None, :] >= valid, (length, length))
@@ -217,7 +283,8 @@ def main():
     p.add_argument("--refine-matmul-rhs", choices=["none", "pv", "all"], default="none",
                    help="Approximate dynamic U16 RHS with two U8 MatMul terms (experimental HTP refinement)")
     p.add_argument("--export-only", action="store_true")
-    p.add_argument("--reuse-export", action="store_true")
+    p.add_argument("--reuse-export", action="store_true",
+                   help="Reuse a verified FP32 export to create a new QDQ graph; existing QDQ outputs are rejected")
     p.add_argument("--low-memory-calibration", action="store_true",
                    help="Disable calibration memory arena and merge MinMax ranges after every sample")
     p.add_argument("--activation-bits", type=int, choices=[8, 16], default=16)
@@ -228,19 +295,17 @@ def main():
         p.error("MatMul RHS refinement requires --activation-bits 16")
     torch.set_num_threads(args.threads)
     torch.set_num_interop_threads(1)
-    args.output_dir.mkdir(parents=True, exist_ok=True)
     fp32 = args.output_dir / f"backbone_{args.length}_fp32.onnx"
     qdq = args.output_dir / f"backbone_{args.length}_a{args.activation_bits}w8.onnx"
     checkpoint_hash = sha256_file(args.model / "model.safetensors")
     export_config = {key: getattr(args, key) for key in ("length", "indices", "samples", "mask_penalty", "balance", "group_outliers", "outlier_ratio", "max_outliers", "conv_linear", "split_cls", "fold_norms", "zero_pad_embeddings")}
     export_config["checkpoint_sha256"] = checkpoint_hash
+    export_config["input_sha256"] = export_input_hashes(args.model, args.parquet)
     if args.append_long_calibration:
         export_config["append_long_calibration"] = True
     export_sidecar = fp32.with_suffix(".json")
-    if args.reuse_export:
-        saved = json.loads(export_sidecar.read_text())
-        if saved["config"] != export_config or saved["fp32_sha256"] != sha256_file(fp32):
-            raise ValueError("Existing export does not match the requested configuration/checkpoint")
+    manifest = preflight_build(args, fp32, qdq, export_config)
+    args.output_dir.mkdir(parents=True, exist_ok=True)
     started = time.time()
     print("Loading pristine LAYA", flush=True)
     agent = laya.load(str(args.model), device="cpu")
@@ -260,7 +325,7 @@ def main():
                 "calibration_questions": len(seqs), "activation_bits": args.activation_bits, "weight_bits": 8, "balanced": args.balance,
                 "zero_pad_embeddings": args.zero_pad_embeddings}
     metadata["base_calibration_questions"] = base_count
-    metadata["calibration_dataset_sha256"] = sha256_file(args.parquet)
+    metadata["calibration_dataset_sha256"] = export_config["input_sha256"]["calibration_dataset_sha256"]
     metadata["original_input_limits"] = {key: agent.cfg[key] for key in ("max_len", "head_max_len")}
     metadata["long_calibration_questions"] = len(seqs) - base_count
     metadata["calibration_valid_lengths"] = [len(ids) for _, _, ids in seqs]
@@ -373,20 +438,16 @@ def main():
             onnx.checker.check_model(model)
             onnx.save(model, qdq)
             del model
+        if args.fold_norms and args.activation_bits == 16:
+            sys.path.insert(0, str(ROOT))
+            from npu.unit_layernorm import repair_unit_layernorm_gamma
+            model = onnx.load(qdq)
+            metadata["static_unit_layernorm"] = repair_unit_layernorm_gamma(model)
+            onnx.checker.check_model(model)
+            onnx.save(model, qdq)
+            del model
         metadata["model_sha256"] = sha256_file(qdq)
         manifest_path = args.output_dir / "manifest.json"
-        manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {
-            "checkpoint_sha256": checkpoint_hash, "mask_penalty": args.mask_penalty,
-            "precision": f"a{args.activation_bits}w8", "zero_pad_embeddings": args.zero_pad_embeddings,
-            "matmul_rhs_refinement": args.refine_matmul_rhs,
-            "buckets": {}, "model_sha256": {},
-        }
-        if manifest["checkpoint_sha256"] != checkpoint_hash or manifest["mask_penalty"] != args.mask_penalty or manifest["precision"] != f"a{args.activation_bits}w8":
-            raise ValueError("Output manifest belongs to a different checkpoint/mask policy")
-        if manifest.get("zero_pad_embeddings", False) != args.zero_pad_embeddings:
-            raise ValueError("Output manifest belongs to a different padding policy")
-        if manifest.get("matmul_rhs_refinement", "none") != args.refine_matmul_rhs:
-            raise ValueError("Output manifest belongs to a different MatMul refinement policy")
         manifest["buckets"][str(args.length)] = qdq.name
         manifest["model_sha256"][str(args.length)] = metadata["model_sha256"]
         manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")

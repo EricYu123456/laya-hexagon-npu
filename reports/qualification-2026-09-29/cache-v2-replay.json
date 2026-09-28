@@ -1,0 +1,1663 @@
+{
+  "metadata": {
+    "kind": "metadata",
+    "format_version": 1,
+    "created_utc": "2026-09-28T16:32:07.866607+00:00",
+    "dataset": {
+      "id": "LocalLLaMA/typed-decisions",
+      "revision": "c76749ec58bd8c3d2ea706b31c333a9059c38f90",
+      "file": "all/test-00000-of-00001.parquet",
+      "sha256": "4f294f218ea1da27f3efef936359389c62ea4d3973a41457732990f1d31b647c"
+    },
+    "model_files": {
+      "model.safetensors": {
+        "sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204"
+      },
+      "rl_agent_config.json": {
+        "semantic_json_sha256": "3cbac8e77bc83a1cb54a4cfa21a9806e2bb3b2b9348151b74536bad4b19be8b4"
+      },
+      "encoder/config.json": {
+        "semantic_json_sha256": "63c6ff324dca566d85b326575694184961acbe97f4f54070fdc1a0337faaba0b"
+      },
+      "tokenizer/tokenizer.json": {
+        "semantic_json_sha256": "781b8f0a0f543024c43cd95ded23081e2709b20ae6f92f986feca33ce02a4a6e"
+      },
+      "tokenizer/tokenizer_config.json": {
+        "semantic_json_sha256": "24ec1d141fc3d2ddd8b9a4cd23d95568f93713b1f5f479dbb8bd5438bc6b7a80"
+      }
+    },
+    "backend": "npu",
+    "module": "laya_npu",
+    "runtime": {
+      "python": "3.12.3",
+      "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+      "hostname": "ubuntu",
+      "packages": {
+        "laya": "0.3.5",
+        "torch": "2.6.0",
+        "transformers": "5.0.0",
+        "onnxruntime": "1.30.0",
+        "onnxruntime-qnn": "2.5.0"
+      },
+      "laya_source_files": {
+        "__init__.py": "43e8c7d02969b37381915850cb4970e62b6ea0a328ac26c1efc9fb3fca0916d7",
+        "agent.py": "128567096446c5d39af8e4a3a7c4dd9e32a134a1b099ce5a5eed383beeff1b89",
+        "common.py": "f231d42fcec84da203222fcaa89c083b22776e00341e66e118183d754e1dcabf"
+      }
+    },
+    "threads": 4,
+    "warmup_cases": 1,
+    "selection": [
+      1
+    ],
+    "total_dataset_cases": 400,
+    "excluded_calibration_or_development_indices": [],
+    "module_source_sha256": "c98aa7b4de2334acf476747ea9068f7e3cada27a32f7e49d25bded5430ae022c",
+    "candidate_assets": {
+      "manifest_path": "/home/ubuntu/laya-service/.work/refined32_corrected/manifest.json",
+      "manifest": {
+        "buckets": {
+          "768": "backbone_768_a16w8.onnx"
+        },
+        "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+        "htp_conv_offset_correction": {
+          "768": {
+            "bias_rounding": [
+              {
+                "id": "conv_000",
+                "max_abs_bias_rounding": 1.884061930468306e-06
+              },
+              {
+                "id": "conv_001",
+                "max_abs_bias_rounding": 1.1005181477230508e-07
+              },
+              {
+                "id": "conv_002",
+                "max_abs_bias_rounding": 4.80277776659932e-07
+              },
+              {
+                "id": "conv_003",
+                "max_abs_bias_rounding": 3.966709414271463e-07
+              },
+              {
+                "id": "conv_004",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_005",
+                "max_abs_bias_rounding": 3.2082425605040044e-08
+              },
+              {
+                "id": "conv_006",
+                "max_abs_bias_rounding": 6.925838533788919e-07
+              },
+              {
+                "id": "conv_007",
+                "max_abs_bias_rounding": 6.180312084325124e-07
+              },
+              {
+                "id": "conv_008",
+                "max_abs_bias_rounding": 2.3267421056516469e-07
+              },
+              {
+                "id": "conv_009",
+                "max_abs_bias_rounding": 1.9561468889151001e-07
+              },
+              {
+                "id": "conv_010",
+                "max_abs_bias_rounding": 3.6415576687431894e-07
+              },
+              {
+                "id": "conv_011",
+                "max_abs_bias_rounding": 1.423497906216653e-07
+              },
+              {
+                "id": "conv_012",
+                "max_abs_bias_rounding": 2.311484422534704e-06
+              },
+              {
+                "id": "conv_013",
+                "max_abs_bias_rounding": 6.850898444099585e-07
+              },
+              {
+                "id": "conv_014",
+                "max_abs_bias_rounding": 6.027021299814805e-07
+              },
+              {
+                "id": "conv_015",
+                "max_abs_bias_rounding": 1.563693672324007e-07
+              },
+              {
+                "id": "conv_016",
+                "max_abs_bias_rounding": 1.4202021247911034e-07
+              },
+              {
+                "id": "conv_017",
+                "max_abs_bias_rounding": 1.353071752419055e-07
+              },
+              {
+                "id": "conv_018",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_019",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_020",
+                "max_abs_bias_rounding": 3.063551048398949e-07
+              },
+              {
+                "id": "conv_021",
+                "max_abs_bias_rounding": 3.4645353252926725e-07
+              },
+              {
+                "id": "conv_022",
+                "max_abs_bias_rounding": 3.0313231036416255e-08
+              },
+              {
+                "id": "conv_023",
+                "max_abs_bias_rounding": 5.044529416409205e-08
+              },
+              {
+                "id": "conv_024",
+                "max_abs_bias_rounding": 8.290584219139419e-08
+              },
+              {
+                "id": "conv_025",
+                "max_abs_bias_rounding": 2.719606762013882e-09
+              },
+              {
+                "id": "conv_026",
+                "max_abs_bias_rounding": 9.096911526285112e-07
+              },
+              {
+                "id": "conv_027",
+                "max_abs_bias_rounding": 2.1838337715962552e-07
+              },
+              {
+                "id": "conv_028",
+                "max_abs_bias_rounding": 9.969071470550261e-07
+              },
+              {
+                "id": "conv_029",
+                "max_abs_bias_rounding": 1.0181878451476223e-07
+              },
+              {
+                "id": "conv_030",
+                "max_abs_bias_rounding": 1.2100028357053816e-07
+              },
+              {
+                "id": "conv_031",
+                "max_abs_bias_rounding": 1.1288992141089693e-07
+              },
+              {
+                "id": "conv_032",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_033",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_034",
+                "max_abs_bias_rounding": 2.696507408472826e-07
+              },
+              {
+                "id": "conv_035",
+                "max_abs_bias_rounding": 1.7653039208198607e-07
+              },
+              {
+                "id": "conv_036",
+                "max_abs_bias_rounding": 3.843274498649407e-08
+              },
+              {
+                "id": "conv_037",
+                "max_abs_bias_rounding": 1.605629904588568e-07
+              },
+              {
+                "id": "conv_038",
+                "max_abs_bias_rounding": 1.0732662758528022e-07
+              },
+              {
+                "id": "conv_039",
+                "max_abs_bias_rounding": 2.8904842963584088e-09
+              },
+              {
+                "id": "conv_040",
+                "max_abs_bias_rounding": 8.817958132567583e-07
+              },
+              {
+                "id": "conv_041",
+                "max_abs_bias_rounding": 6.162072168081068e-07
+              },
+              {
+                "id": "conv_042",
+                "max_abs_bias_rounding": 5.086754981675767e-07
+              },
+              {
+                "id": "conv_043",
+                "max_abs_bias_rounding": 1.1650053011180717e-07
+              },
+              {
+                "id": "conv_044",
+                "max_abs_bias_rounding": 1.5814117659829208e-07
+              },
+              {
+                "id": "conv_045",
+                "max_abs_bias_rounding": 1.396966240463371e-07
+              },
+              {
+                "id": "conv_046",
+                "max_abs_bias_rounding": 3.219277573407453e-07
+              },
+              {
+                "id": "conv_047",
+                "max_abs_bias_rounding": 2.95548488793429e-07
+              },
+              {
+                "id": "conv_048",
+                "max_abs_bias_rounding": 1.2539737781480653e-07
+              },
+              {
+                "id": "conv_049",
+                "max_abs_bias_rounding": 1.0786998245748691e-06
+              },
+              {
+                "id": "conv_050",
+                "max_abs_bias_rounding": 1.0848700640053721e-06
+              },
+              {
+                "id": "conv_051",
+                "max_abs_bias_rounding": 1.299687255595927e-07
+              },
+              {
+                "id": "conv_052",
+                "max_abs_bias_rounding": 1.6137235547830642e-07
+              },
+              {
+                "id": "conv_053",
+                "max_abs_bias_rounding": 1.692528996954934e-07
+              },
+              {
+                "id": "conv_054",
+                "max_abs_bias_rounding": 2.7701480576070026e-07
+              },
+              {
+                "id": "conv_055",
+                "max_abs_bias_rounding": 3.860544666167698e-07
+              },
+              {
+                "id": "conv_056",
+                "max_abs_bias_rounding": 2.2413507849705638e-07
+              },
+              {
+                "id": "conv_057",
+                "max_abs_bias_rounding": 9.580667210684624e-07
+              },
+              {
+                "id": "conv_058",
+                "max_abs_bias_rounding": 7.877156349422876e-07
+              },
+              {
+                "id": "conv_059",
+                "max_abs_bias_rounding": 1.7087984360841801e-07
+              },
+              {
+                "id": "conv_060",
+                "max_abs_bias_rounding": 2.585015863587614e-07
+              },
+              {
+                "id": "conv_061",
+                "max_abs_bias_rounding": 2.7966058269157656e-07
+              },
+              {
+                "id": "conv_062",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_063",
+                "max_abs_bias_rounding": 1.8962626313623332e-07
+              },
+              {
+                "id": "conv_064",
+                "max_abs_bias_rounding": 3.0722395649718237e-07
+              },
+              {
+                "id": "conv_065",
+                "max_abs_bias_rounding": 4.2014198697870597e-07
+              },
+              {
+                "id": "conv_066",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_067",
+                "max_abs_bias_rounding": 9.188806870952249e-08
+              },
+              {
+                "id": "conv_068",
+                "max_abs_bias_rounding": 1.7566821952641476e-07
+              },
+              {
+                "id": "conv_069",
+                "max_abs_bias_rounding": 4.0184863792092074e-07
+              },
+              {
+                "id": "conv_070",
+                "max_abs_bias_rounding": 1.113426151277963e-06
+              },
+              {
+                "id": "conv_071",
+                "max_abs_bias_rounding": 4.232883838994894e-07
+              },
+              {
+                "id": "conv_072",
+                "max_abs_bias_rounding": 7.042322067718487e-07
+              },
+              {
+                "id": "conv_073",
+                "max_abs_bias_rounding": 2.3148351147028734e-07
+              },
+              {
+                "id": "conv_074",
+                "max_abs_bias_rounding": 4.68218672722287e-07
+              },
+              {
+                "id": "conv_075",
+                "max_abs_bias_rounding": 2.7490045795275364e-07
+              },
+              {
+                "id": "conv_076",
+                "max_abs_bias_rounding": 5.598021743935533e-07
+              },
+              {
+                "id": "conv_077",
+                "max_abs_bias_rounding": 3.928016099052911e-07
+              },
+              {
+                "id": "conv_078",
+                "max_abs_bias_rounding": 3.717323693308572e-07
+              },
+              {
+                "id": "conv_079",
+                "max_abs_bias_rounding": 8.617334970040247e-07
+              },
+              {
+                "id": "conv_080",
+                "max_abs_bias_rounding": 6.884138201712631e-07
+              },
+              {
+                "id": "conv_081",
+                "max_abs_bias_rounding": 1.7425963960704394e-07
+              },
+              {
+                "id": "conv_082",
+                "max_abs_bias_rounding": 2.8805106921936385e-07
+              },
+              {
+                "id": "conv_083",
+                "max_abs_bias_rounding": 3.547611413523555e-07
+              },
+              {
+                "id": "conv_084",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_085",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_086",
+                "max_abs_bias_rounding": 5.776498710474698e-07
+              },
+              {
+                "id": "conv_087",
+                "max_abs_bias_rounding": 4.5340220822254196e-07
+              },
+              {
+                "id": "conv_088",
+                "max_abs_bias_rounding": 3.4591357689350843e-07
+              },
+              {
+                "id": "conv_089",
+                "max_abs_bias_rounding": 1.652138053032104e-07
+              },
+              {
+                "id": "conv_090",
+                "max_abs_bias_rounding": 1.2225241334817838e-06
+              },
+              {
+                "id": "conv_091",
+                "max_abs_bias_rounding": 2.2833276602796104e-08
+              },
+              {
+                "id": "conv_092",
+                "max_abs_bias_rounding": 1.2723248801194131e-06
+              },
+              {
+                "id": "conv_093",
+                "max_abs_bias_rounding": 1.1598340279306285e-06
+              },
+              {
+                "id": "conv_094",
+                "max_abs_bias_rounding": 6.65507741359761e-07
+              },
+              {
+                "id": "conv_095",
+                "max_abs_bias_rounding": 2.4130349629558623e-07
+              },
+              {
+                "id": "conv_096",
+                "max_abs_bias_rounding": 2.656810238477192e-07
+              },
+              {
+                "id": "conv_097",
+                "max_abs_bias_rounding": 2.798656169034075e-07
+              },
+              {
+                "id": "conv_098",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_099",
+                "max_abs_bias_rounding": 1.8088394426740706e-07
+              },
+              {
+                "id": "conv_100",
+                "max_abs_bias_rounding": 4.2298620428482536e-07
+              },
+              {
+                "id": "conv_101",
+                "max_abs_bias_rounding": 5.096890163258649e-07
+              },
+              {
+                "id": "conv_102",
+                "max_abs_bias_rounding": 3.630889295891393e-07
+              },
+              {
+                "id": "conv_103",
+                "max_abs_bias_rounding": 3.072585741392686e-07
+              },
+              {
+                "id": "conv_104",
+                "max_abs_bias_rounding": 4.794862888957141e-07
+              },
+              {
+                "id": "conv_105",
+                "max_abs_bias_rounding": 2.4546693566662725e-09
+              },
+              {
+                "id": "conv_106",
+                "max_abs_bias_rounding": 8.84542714629788e-07
+              },
+              {
+                "id": "conv_107",
+                "max_abs_bias_rounding": 1.7159250091935974e-06
+              },
+              {
+                "id": "conv_108",
+                "max_abs_bias_rounding": 6.951543127797777e-07
+              },
+              {
+                "id": "conv_109",
+                "max_abs_bias_rounding": 2.9999051776030683e-07
+              },
+              {
+                "id": "conv_110",
+                "max_abs_bias_rounding": 4.0797260680847103e-07
+              },
+              {
+                "id": "conv_111",
+                "max_abs_bias_rounding": 3.2895059121074155e-07
+              },
+              {
+                "id": "conv_112",
+                "max_abs_bias_rounding": 8.133231403917307e-07
+              },
+              {
+                "id": "conv_113",
+                "max_abs_bias_rounding": 6.040404514351394e-07
+              },
+              {
+                "id": "conv_114",
+                "max_abs_bias_rounding": 5.431775207398459e-07
+              },
+              {
+                "id": "conv_115",
+                "max_abs_bias_rounding": 1.3941366887593176e-06
+              },
+              {
+                "id": "conv_116",
+                "max_abs_bias_rounding": 7.234550594148459e-07
+              },
+              {
+                "id": "conv_117",
+                "max_abs_bias_rounding": 1.828477138587914e-07
+              },
+              {
+                "id": "conv_118",
+                "max_abs_bias_rounding": 4.694808239946724e-07
+              },
+              {
+                "id": "conv_119",
+                "max_abs_bias_rounding": 3.465682993919472e-07
+              },
+              {
+                "id": "conv_120",
+                "max_abs_bias_rounding": 4.71019347969559e-08
+              },
+              {
+                "id": "conv_121",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_122",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_123",
+                "max_abs_bias_rounding": 1.433827492292039e-07
+              },
+              {
+                "id": "conv_124",
+                "max_abs_bias_rounding": 8.07021706350497e-07
+              },
+              {
+                "id": "conv_125",
+                "max_abs_bias_rounding": 6.092604962759651e-07
+              },
+              {
+                "id": "conv_126",
+                "max_abs_bias_rounding": 5.147583124198718e-07
+              },
+              {
+                "id": "conv_127",
+                "max_abs_bias_rounding": 2.980563067467301e-07
+              },
+              {
+                "id": "conv_128",
+                "max_abs_bias_rounding": 1.6955368664639536e-08
+              },
+              {
+                "id": "conv_129",
+                "max_abs_bias_rounding": 3.0801083994447254e-07
+              },
+              {
+                "id": "conv_130",
+                "max_abs_bias_rounding": 1.4058114174986258e-06
+              },
+              {
+                "id": "conv_131",
+                "max_abs_bias_rounding": 3.4317446662157636e-09
+              },
+              {
+                "id": "conv_132",
+                "max_abs_bias_rounding": 1.0140793165192008e-06
+              },
+              {
+                "id": "conv_133",
+                "max_abs_bias_rounding": 1.211330300066038e-06
+              },
+              {
+                "id": "conv_134",
+                "max_abs_bias_rounding": 1.473792963224696e-06
+              },
+              {
+                "id": "conv_135",
+                "max_abs_bias_rounding": 5.750348464061972e-07
+              },
+              {
+                "id": "conv_136",
+                "max_abs_bias_rounding": 5.355755092750769e-07
+              },
+              {
+                "id": "conv_137",
+                "max_abs_bias_rounding": 1.915491338877473e-07
+              },
+              {
+                "id": "conv_138",
+                "max_abs_bias_rounding": 2.200494577664358e-07
+              },
+              {
+                "id": "conv_139",
+                "max_abs_bias_rounding": 2.1033184793850523e-07
+              },
+              {
+                "id": "conv_140",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_141",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_142",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_143",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_144",
+                "max_abs_bias_rounding": 5.77871105633676e-07
+              },
+              {
+                "id": "conv_145",
+                "max_abs_bias_rounding": 9.893678907246795e-07
+              },
+              {
+                "id": "conv_146",
+                "max_abs_bias_rounding": 3.6039750739291776e-07
+              },
+              {
+                "id": "conv_147",
+                "max_abs_bias_rounding": 7.085282049956731e-07
+              },
+              {
+                "id": "conv_148",
+                "max_abs_bias_rounding": 1.9430825659583206e-07
+              },
+              {
+                "id": "conv_149",
+                "max_abs_bias_rounding": 3.5739844861382153e-07
+              },
+              {
+                "id": "conv_150",
+                "max_abs_bias_rounding": 5.332843784344732e-07
+              },
+              {
+                "id": "conv_151",
+                "max_abs_bias_rounding": 0.00037395209074020386
+              },
+              {
+                "id": "conv_152",
+                "max_abs_bias_rounding": 1.3069040960544953e-07
+              },
+              {
+                "id": "conv_153",
+                "max_abs_bias_rounding": 1.7284501154790632e-06
+              },
+              {
+                "id": "conv_154",
+                "max_abs_bias_rounding": 0.00036513141822069883
+              },
+              {
+                "id": "conv_155",
+                "max_abs_bias_rounding": 4.475601599551737e-06
+              },
+              {
+                "id": "conv_156",
+                "max_abs_bias_rounding": 1.2805878668586956e-06
+              },
+              {
+                "id": "conv_157",
+                "max_abs_bias_rounding": 5.774131750513334e-07
+              },
+              {
+                "id": "conv_158",
+                "max_abs_bias_rounding": 4.7127474545050063e-07
+              },
+              {
+                "id": "conv_159",
+                "max_abs_bias_rounding": 5.623882088912069e-07
+              },
+              {
+                "id": "conv_160",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_161",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_162",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_163",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_164",
+                "max_abs_bias_rounding": 1.0722455954237375e-06
+              },
+              {
+                "id": "conv_165",
+                "max_abs_bias_rounding": 8.759155889492831e-07
+              },
+              {
+                "id": "conv_166",
+                "max_abs_bias_rounding": 1.1728097888408229e-06
+              },
+              {
+                "id": "conv_167",
+                "max_abs_bias_rounding": 1.0268740879837424e-07
+              },
+              {
+                "id": "conv_168",
+                "max_abs_bias_rounding": 1.4044517229194753e-06
+              },
+              {
+                "id": "conv_169",
+                "max_abs_bias_rounding": 7.465346243407112e-07
+              },
+              {
+                "id": "conv_170",
+                "max_abs_bias_rounding": 3.1638603559258627e-07
+              },
+              {
+                "id": "conv_171",
+                "max_abs_bias_rounding": 1.6375417999370256e-07
+              },
+              {
+                "id": "conv_172",
+                "max_abs_bias_rounding": 2.9007435387029545e-07
+              },
+              {
+                "id": "conv_173",
+                "max_abs_bias_rounding": 1.3006556400796399e-06
+              },
+              {
+                "id": "conv_174",
+                "max_abs_bias_rounding": 0.00028365314938127995
+              },
+              {
+                "id": "conv_175",
+                "max_abs_bias_rounding": 1.6303543816320598e-05
+              },
+              {
+                "id": "conv_176",
+                "max_abs_bias_rounding": 1.8181171981268562e-06
+              },
+              {
+                "id": "conv_177",
+                "max_abs_bias_rounding": 2.108870944539376e-07
+              },
+              {
+                "id": "conv_178",
+                "max_abs_bias_rounding": 7.876919880800415e-07
+              },
+              {
+                "id": "conv_179",
+                "max_abs_bias_rounding": 6.77689740768983e-07
+              },
+              {
+                "id": "conv_180",
+                "max_abs_bias_rounding": 1.1436968634370714e-06
+              },
+              {
+                "id": "conv_181",
+                "max_abs_bias_rounding": 9.415184649697039e-07
+              },
+              {
+                "id": "conv_182",
+                "max_abs_bias_rounding": 5.32817693965626e-07
+              },
+              {
+                "id": "conv_183",
+                "max_abs_bias_rounding": 1.4302122508524917e-06
+              },
+              {
+                "id": "conv_184",
+                "max_abs_bias_rounding": 1.1105423709523166e-06
+              },
+              {
+                "id": "conv_185",
+                "max_abs_bias_rounding": 2.014614040035667e-07
+              },
+              {
+                "id": "conv_186",
+                "max_abs_bias_rounding": 6.277184638747713e-07
+              },
+              {
+                "id": "conv_187",
+                "max_abs_bias_rounding": 4.6330706027220003e-07
+              },
+              {
+                "id": "conv_188",
+                "max_abs_bias_rounding": 1.3984904398967046e-06
+              },
+              {
+                "id": "conv_189",
+                "max_abs_bias_rounding": 1.0551964351179777e-06
+              },
+              {
+                "id": "conv_190",
+                "max_abs_bias_rounding": 3.59725618181983e-07
+              },
+              {
+                "id": "conv_191",
+                "max_abs_bias_rounding": 1.4277466107159853e-06
+              },
+              {
+                "id": "conv_192",
+                "max_abs_bias_rounding": 1.2266391422599554e-06
+              },
+              {
+                "id": "conv_193",
+                "max_abs_bias_rounding": 3.421629344302346e-07
+              },
+              {
+                "id": "conv_194",
+                "max_abs_bias_rounding": 1.138620064011775e-06
+              },
+              {
+                "id": "conv_195",
+                "max_abs_bias_rounding": 6.74671809974825e-07
+              },
+              {
+                "id": "conv_196",
+                "max_abs_bias_rounding": 1.2060279459547019e-06
+              },
+              {
+                "id": "conv_197",
+                "max_abs_bias_rounding": 9.152940947387833e-07
+              },
+              {
+                "id": "conv_198",
+                "max_abs_bias_rounding": 8.728949296710198e-07
+              },
+              {
+                "id": "conv_199",
+                "max_abs_bias_rounding": 1.1140202786918962e-06
+              },
+              {
+                "id": "conv_200",
+                "max_abs_bias_rounding": 1.3579774531535804e-06
+              },
+              {
+                "id": "conv_201",
+                "max_abs_bias_rounding": 2.1497700686268217e-07
+              },
+              {
+                "id": "conv_202",
+                "max_abs_bias_rounding": 8.683055057190359e-07
+              },
+              {
+                "id": "conv_203",
+                "max_abs_bias_rounding": 7.081914645823417e-07
+              },
+              {
+                "id": "conv_204",
+                "max_abs_bias_rounding": 1.3801873137708753e-06
+              },
+              {
+                "id": "conv_205",
+                "max_abs_bias_rounding": 9.668888196756598e-07
+              },
+              {
+                "id": "conv_206",
+                "max_abs_bias_rounding": 6.647296686423942e-07
+              },
+              {
+                "id": "conv_207",
+                "max_abs_bias_rounding": 1.4639699656981975e-06
+              },
+              {
+                "id": "conv_208",
+                "max_abs_bias_rounding": 1.1701145012921188e-06
+              },
+              {
+                "id": "conv_209",
+                "max_abs_bias_rounding": 2.032900567883189e-07
+              },
+              {
+                "id": "conv_210",
+                "max_abs_bias_rounding": 7.964208634803072e-07
+              },
+              {
+                "id": "conv_211",
+                "max_abs_bias_rounding": 9.149764537141891e-07
+              },
+              {
+                "id": "conv_212",
+                "max_abs_bias_rounding": 1.169272309198277e-06
+              },
+              {
+                "id": "conv_213",
+                "max_abs_bias_rounding": 2.1065998225822113e-06
+              },
+              {
+                "id": "conv_214",
+                "max_abs_bias_rounding": 1.0833482519956306e-06
+              },
+              {
+                "id": "conv_215",
+                "max_abs_bias_rounding": 3.1214112823363394e-06
+              },
+              {
+                "id": "conv_216",
+                "max_abs_bias_rounding": 1.1247079783061054e-06
+              },
+              {
+                "id": "conv_217",
+                "max_abs_bias_rounding": 3.4584638797241496e-07
+              },
+              {
+                "id": "conv_218",
+                "max_abs_bias_rounding": 9.407522156834602e-07
+              },
+              {
+                "id": "conv_219",
+                "max_abs_bias_rounding": 8.929573596105911e-07
+              },
+              {
+                "id": "conv_220",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_221",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_222",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_223",
+                "max_abs_bias_rounding": 3.01676664093975e-07
+              },
+              {
+                "id": "conv_224",
+                "max_abs_bias_rounding": 1.3711496649193577e-06
+              },
+              {
+                "id": "conv_225",
+                "max_abs_bias_rounding": 1.6148824215633795e-06
+              },
+              {
+                "id": "conv_226",
+                "max_abs_bias_rounding": 3.712257239385508e-07
+              },
+              {
+                "id": "conv_227",
+                "max_abs_bias_rounding": 2.702548044908326e-06
+              },
+              {
+                "id": "conv_228",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_229",
+                "max_abs_bias_rounding": 2.8203794499859214e-07
+              },
+              {
+                "id": "conv_230",
+                "max_abs_bias_rounding": 1.7994557310885284e-06
+              },
+              {
+                "id": "conv_231",
+                "max_abs_bias_rounding": 3.1795627819519723e-07
+              },
+              {
+                "id": "conv_232",
+                "max_abs_bias_rounding": 3.6376924583692016e-08
+              },
+              {
+                "id": "conv_233",
+                "max_abs_bias_rounding": 4.157205694355071e-06
+              },
+              {
+                "id": "conv_234",
+                "max_abs_bias_rounding": 2.084871448460035e-05
+              },
+              {
+                "id": "conv_235",
+                "max_abs_bias_rounding": 1.2306072676437907e-06
+              },
+              {
+                "id": "conv_236",
+                "max_abs_bias_rounding": 1.1262582120252773e-06
+              },
+              {
+                "id": "conv_237",
+                "max_abs_bias_rounding": 1.7966016230275272e-07
+              },
+              {
+                "id": "conv_238",
+                "max_abs_bias_rounding": 7.187047685874859e-07
+              },
+              {
+                "id": "conv_239",
+                "max_abs_bias_rounding": 6.907594070071355e-07
+              },
+              {
+                "id": "conv_240",
+                "max_abs_bias_rounding": 8.604548611401697e-07
+              },
+              {
+                "id": "conv_241",
+                "max_abs_bias_rounding": 6.661880433966871e-07
+              },
+              {
+                "id": "conv_242",
+                "max_abs_bias_rounding": 7.509877377742669e-07
+              },
+              {
+                "id": "conv_243",
+                "max_abs_bias_rounding": 2.928301000792999e-06
+              },
+              {
+                "id": "conv_244",
+                "max_abs_bias_rounding": 9.645400496083312e-07
+              },
+              {
+                "id": "conv_245",
+                "max_abs_bias_rounding": 3.044679033337161e-07
+              },
+              {
+                "id": "conv_246",
+                "max_abs_bias_rounding": 7.62768650020007e-07
+              },
+              {
+                "id": "conv_247",
+                "max_abs_bias_rounding": 7.923144949018024e-07
+              },
+              {
+                "id": "conv_248",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_249",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_250",
+                "max_abs_bias_rounding": 8.283150236820802e-07
+              },
+              {
+                "id": "conv_251",
+                "max_abs_bias_rounding": 7.934286259114742e-07
+              },
+              {
+                "id": "conv_252",
+                "max_abs_bias_rounding": 0.0
+              },
+              {
+                "id": "conv_253",
+                "max_abs_bias_rounding": 2.3896427592262626e-07
+              },
+              {
+                "id": "conv_254",
+                "max_abs_bias_rounding": 6.865188879601192e-07
+              },
+              {
+                "id": "conv_255",
+                "max_abs_bias_rounding": 3.7644952044502134e-08
+              },
+              {
+                "id": "conv_256",
+                "max_abs_bias_rounding": 1.3312269402376842e-06
+              },
+              {
+                "id": "conv_257",
+                "max_abs_bias_rounding": 7.384389846265549e-07
+              },
+              {
+                "id": "conv_258",
+                "max_abs_bias_rounding": 6.035073738530627e-07
+              },
+              {
+                "id": "conv_259",
+                "max_abs_bias_rounding": 3.965118935411738e-07
+              },
+              {
+                "id": "conv_260",
+                "max_abs_bias_rounding": 7.780608939356171e-07
+              },
+              {
+                "id": "conv_261",
+                "max_abs_bias_rounding": 8.447119625998312e-07
+              },
+              {
+                "id": "conv_262",
+                "max_abs_bias_rounding": 8.437399401373114e-07
+              },
+              {
+                "id": "conv_263",
+                "max_abs_bias_rounding": 8.900192369765136e-07
+              },
+              {
+                "id": "conv_264",
+                "max_abs_bias_rounding": 1.0413218660687562e-06
+              },
+              {
+                "id": "conv_265",
+                "max_abs_bias_rounding": 1.7235852283192798e-06
+              }
+            ],
+            "calibration_inputs": "all-zero; no evaluation samples",
+            "calibration_results_sha256": "f8ffcfd5c761580fa80a259df4749c34f96f5fef6efc90b3db5d06ff93501983",
+            "corrected_convs": 266,
+            "output_sha256": "1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138",
+            "runtime": {
+              "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+              "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+              "cpu_ep_fallback": false,
+              "htp_arch": 68,
+              "onnxruntime": "1.30.0",
+              "onnxruntime_qnn": "2.5.0",
+              "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39"
+            },
+            "shape_validation": [
+              {
+                "id": "conv_000",
+                "max_abs_offset_difference": 0.0,
+                "passed": true,
+                "tolerance": 0.00010787913121273741
+              },
+              {
+                "id": "conv_001",
+                "max_abs_offset_difference": 0.0,
+                "passed": true,
+                "tolerance": 1.8727546523930504e-05
+              },
+              {
+                "id": "conv_006",
+                "max_abs_offset_difference": 0.0,
+                "passed": true,
+                "tolerance": 9.086198330149055e-05
+              }
+            ],
+            "source_sha256": "db1a0b60850a8c2f9087c5e62a4bd9a0872240426901ff70b78fa54ac7f12ec2",
+            "warning": "Backend-specific HTP correction changes CPU semantics. Revalidate full-model fidelity on HTP; per-Conv output QDQ uncertainty is up to one output step."
+          }
+        },
+        "mask_penalty": -100,
+        "matmul_rhs_refinement": "all",
+        "model_sha256": {
+          "768": "1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138"
+        },
+        "precision": "a16w8",
+        "zero_pad_embeddings": true
+      },
+      "manifest_sha256": "ba04daa8fe5c4b8a5085a5fa4c788a8ef504a1e4a568cc05b431483916387e22",
+      "manifest_canonical_sha256": "c895d26f4052a9b520d765c5f7dcb1676aa5ac70036bbe4495420da1d2e3893d",
+      "supported_buckets": [
+        768
+      ],
+      "models": {
+        "768": {
+          "path": "/home/ubuntu/laya-service/.work/refined32_corrected/backbone_768_a16w8.onnx",
+          "sha256": "1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138",
+          "manifest_verified": true
+        }
+      },
+      "checkpoint_path": "/home/ubuntu/laya-service/models/multilingual/model.safetensors",
+      "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+      "checkpoint_manifest_verified": true,
+      "precision": "a16w8"
+    },
+    "accelerator_stats_after_warmup": {
+      "npu_calls": 5,
+      "cpu_fallbacks": 0,
+      "session_creations": 1,
+      "session_evictions": 0,
+      "bucket_calls": {
+        "768": 5
+      },
+      "zero_pad_embeddings": true,
+      "context_cache_enabled": true,
+      "context_cache_hits": 1,
+      "context_cache_misses": 0,
+      "context_cache_writes": 0,
+      "context_cache_errors": 0,
+      "context_cache_paths": {
+        "768": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_e41340e497b7a0281af4bccf8e2dc314d1029de1b1a23f7d995d7698cfe32268.onnx"
+      },
+      "backend_fingerprint": {
+        "onnxruntime": "1.30.0",
+        "onnxruntime_qnn": "2.5.0",
+        "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+        "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+        "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+        "htp_arch": 68,
+        "cpu_ep_fallback": false,
+        "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+        "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+        "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+        "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+      },
+      "correction_backend_verified_buckets": [
+        768
+      ],
+      "max_len": 1024,
+      "head_max_len": 256
+    }
+  },
+  "reference_metadata": {
+    "kind": "metadata",
+    "format_version": 1,
+    "created_utc": "2026-09-28T14:20:02.623136+00:00",
+    "dataset": {
+      "id": "LocalLLaMA/typed-decisions",
+      "revision": "c76749ec58bd8c3d2ea706b31c333a9059c38f90",
+      "file": "all/test-00000-of-00001.parquet",
+      "sha256": "4f294f218ea1da27f3efef936359389c62ea4d3973a41457732990f1d31b647c"
+    },
+    "model_files": {
+      "model.safetensors": {
+        "sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204"
+      },
+      "rl_agent_config.json": {
+        "semantic_json_sha256": "3cbac8e77bc83a1cb54a4cfa21a9806e2bb3b2b9348151b74536bad4b19be8b4"
+      },
+      "encoder/config.json": {
+        "semantic_json_sha256": "63c6ff324dca566d85b326575694184961acbe97f4f54070fdc1a0337faaba0b"
+      },
+      "tokenizer/tokenizer.json": {
+        "semantic_json_sha256": "781b8f0a0f543024c43cd95ded23081e2709b20ae6f92f986feca33ce02a4a6e"
+      },
+      "tokenizer/tokenizer_config.json": {
+        "semantic_json_sha256": "24ec1d141fc3d2ddd8b9a4cd23d95568f93713b1f5f479dbb8bd5438bc6b7a80"
+      }
+    },
+    "backend": "cpu",
+    "module": "laya",
+    "runtime": {
+      "python": "3.12.3",
+      "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+      "hostname": "ubuntu",
+      "packages": {
+        "laya": "0.3.5",
+        "torch": "2.6.0",
+        "transformers": "5.0.0",
+        "onnxruntime": "1.30.0",
+        "onnxruntime-qnn": "2.5.0"
+      },
+      "laya_source_files": {
+        "__init__.py": "43e8c7d02969b37381915850cb4970e62b6ea0a328ac26c1efc9fb3fca0916d7",
+        "agent.py": "128567096446c5d39af8e4a3a7c4dd9e32a134a1b099ce5a5eed383beeff1b89",
+        "common.py": "f231d42fcec84da203222fcaa89c083b22776e00341e66e118183d754e1dcabf"
+      }
+    },
+    "threads": 4,
+    "warmup_cases": 1,
+    "selection": [
+      1,
+      26,
+      51,
+      76,
+      101,
+      126,
+      151,
+      176,
+      201,
+      226,
+      251,
+      276,
+      301,
+      326,
+      351,
+      376
+    ],
+    "total_dataset_cases": 400,
+    "excluded_calibration_or_development_indices": [],
+    "module_source_sha256": "43e8c7d02969b37381915850cb4970e62b6ea0a328ac26c1efc9fb3fca0916d7",
+    "candidate_assets": null,
+    "accelerator_stats_after_warmup": null
+  },
+  "reference_cache_sha256": "121e0c21a871987317702986d8f97a737724ac0c0c0ffd89ca76556f5af4078a",
+  "reference_cache_cases": 16,
+  "accelerator_stats_after_measurement": {
+    "npu_calls": 10,
+    "cpu_fallbacks": 0,
+    "session_creations": 1,
+    "session_evictions": 0,
+    "bucket_calls": {
+      "768": 10
+    },
+    "zero_pad_embeddings": true,
+    "context_cache_enabled": true,
+    "context_cache_hits": 1,
+    "context_cache_misses": 0,
+    "context_cache_writes": 0,
+    "context_cache_errors": 0,
+    "context_cache_paths": {
+      "768": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_e41340e497b7a0281af4bccf8e2dc314d1029de1b1a23f7d995d7698cfe32268.onnx"
+    },
+    "backend_fingerprint": {
+      "onnxruntime": "1.30.0",
+      "onnxruntime_qnn": "2.5.0",
+      "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+      "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+      "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+      "htp_arch": 68,
+      "cpu_ep_fallback": false,
+      "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+      "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+      "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+      "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+    },
+    "correction_backend_verified_buckets": [
+      768
+    ],
+    "max_len": 1024,
+    "head_max_len": 256
+  },
+  "cases": 1,
+  "complete_public_split": false,
+  "evaluation_scope": "development_subset",
+  "complete_declared_heldout_selection": false,
+  "criteria": {
+    "decision_error_percent_max": 5.0,
+    "mean_total_variation_max": 0.05,
+    "identical_preprocessed_inputs_required": true
+  },
+  "selected_cases_pass": true,
+  "full_public_split_pass": false,
+  "heldout_selection_pass": false,
+  "overall": {
+    "decisions": 5,
+    "decision_mismatches": 0,
+    "decision_error_percent": 0.0,
+    "argmax_mismatches": 0,
+    "argmax_error_percent": 0,
+    "total_variation": {
+      "count": 5,
+      "mean": 0.039413105310531056,
+      "p50": 0.03200000000000003,
+      "p95": 0.07850141414141412,
+      "max": 0.0877087708770877
+    },
+    "probability_mae": {
+      "count": 5,
+      "mean": 0.02290655265526553,
+      "p50": 0.020835993599359923,
+      "p95": 0.041483508350835085,
+      "max": 0.04385438543854385
+    },
+    "max_probability_error": {
+      "count": 5,
+      "mean": 0.03941310531053106,
+      "p50": 0.03200000000000003,
+      "p95": 0.07850141414141415,
+      "max": 0.08770877087708773
+    },
+    "noul_abs_error": {
+      "count": 1,
+      "mean": 0.03200000000000003,
+      "p50": 0.03200000000000003,
+      "p95": 0.03200000000000003,
+      "max": 0.03200000000000003
+    },
+    "score_abs_error": {
+      "count": 2,
+      "mean": 0.038900000000000046,
+      "p50": 0.038900000000000046,
+      "p95": 0.051230000000000185,
+      "max": 0.0526000000000002
+    },
+    "score_normalized_abs_error": {
+      "count": 2,
+      "mean": 0.012966666666666682,
+      "p50": 0.012966666666666682,
+      "p95": 0.017076666666666726,
+      "max": 0.0175333333333334
+    },
+    "confidence_abs_error": {
+      "count": 5,
+      "mean": 0.028879999999999996,
+      "p50": 0.031399999999999983,
+      "p95": 0.060959999999999986,
+      "max": 0.06819999999999998
+    },
+    "action_probability_abs_error": {
+      "count": 5,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    }
+  },
+  "by_type": {
+    "choice": {
+      "decisions": 2,
+      "decision_mismatches": 0,
+      "decision_error_percent": 0.0,
+      "argmax_mismatches": 0,
+      "argmax_error_percent": 0,
+      "total_variation": {
+        "count": 2,
+        "mean": 0.0548967696769677,
+        "p50": 0.054896769676967695,
+        "p95": 0.08442757075707569,
+        "max": 0.0877087708770877
+      },
+      "probability_mae": {
+        "count": 2,
+        "mean": 0.02744838483848385,
+        "p50": 0.027448384838483848,
+        "p95": 0.042213785378537844,
+        "max": 0.04385438543854385
+      },
+      "max_probability_error": {
+        "count": 2,
+        "mean": 0.054896769676967716,
+        "p50": 0.054896769676967716,
+        "p95": 0.08442757075707572,
+        "max": 0.08770877087708773
+      },
+      "noul_abs_error": null,
+      "score_abs_error": null,
+      "score_normalized_abs_error": null,
+      "confidence_abs_error": {
+        "count": 2,
+        "mean": 0.04979999999999998,
+        "p50": 0.04979999999999998,
+        "p95": 0.06635999999999997,
+        "max": 0.06819999999999998
+      },
+      "action_probability_abs_error": {
+        "count": 2,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    "noul": {
+      "decisions": 1,
+      "decision_mismatches": 0,
+      "decision_error_percent": 0.0,
+      "argmax_mismatches": 0,
+      "argmax_error_percent": 0,
+      "total_variation": {
+        "count": 1,
+        "mean": 0.03200000000000003,
+        "p50": 0.03200000000000003,
+        "p95": 0.03200000000000003,
+        "max": 0.03200000000000003
+      },
+      "probability_mae": {
+        "count": 1,
+        "mean": 0.03200000000000003,
+        "p50": 0.03200000000000003,
+        "p95": 0.03200000000000003,
+        "max": 0.03200000000000003
+      },
+      "max_probability_error": {
+        "count": 1,
+        "mean": 0.03200000000000003,
+        "p50": 0.03200000000000003,
+        "p95": 0.03200000000000003,
+        "max": 0.03200000000000003
+      },
+      "noul_abs_error": {
+        "count": 1,
+        "mean": 0.03200000000000003,
+        "p50": 0.03200000000000003,
+        "p95": 0.03200000000000003,
+        "max": 0.03200000000000003
+      },
+      "score_abs_error": null,
+      "score_normalized_abs_error": null,
+      "confidence_abs_error": {
+        "count": 1,
+        "mean": 0.03200000000000003,
+        "p50": 0.03200000000000003,
+        "p95": 0.03200000000000003,
+        "max": 0.03200000000000003
+      },
+      "action_probability_abs_error": {
+        "count": 1,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    "score": {
+      "decisions": 2,
+      "decision_mismatches": 0,
+      "decision_error_percent": 0.0,
+      "argmax_mismatches": 0,
+      "argmax_error_percent": 0,
+      "total_variation": {
+        "count": 2,
+        "mean": 0.027635993599359924,
+        "p50": 0.027635993599359924,
+        "p95": 0.04026838783878385,
+        "max": 0.04167198719871985
+      },
+      "probability_mae": {
+        "count": 2,
+        "mean": 0.013817996799679962,
+        "p50": 0.013817996799679962,
+        "p95": 0.020134193919391925,
+        "max": 0.020835993599359923
+      },
+      "max_probability_error": {
+        "count": 2,
+        "mean": 0.02763599359935992,
+        "p50": 0.02763599359935992,
+        "p95": 0.04026838783878385,
+        "max": 0.04167198719871984
+      },
+      "noul_abs_error": null,
+      "score_abs_error": {
+        "count": 2,
+        "mean": 0.038900000000000046,
+        "p50": 0.038900000000000046,
+        "p95": 0.051230000000000185,
+        "max": 0.0526000000000002
+      },
+      "score_normalized_abs_error": {
+        "count": 2,
+        "mean": 0.012966666666666682,
+        "p50": 0.012966666666666682,
+        "p95": 0.017076666666666726,
+        "max": 0.0175333333333334
+      },
+      "confidence_abs_error": {
+        "count": 2,
+        "mean": 0.006399999999999996,
+        "p50": 0.006399999999999996,
+        "p95": 0.007929999999999996,
+        "max": 0.008099999999999996
+      },
+      "action_probability_abs_error": {
+        "count": 2,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    }
+  },
+  "by_workflow": {
+    "agent_trace_observability": {
+      "decisions": 5,
+      "decision_mismatches": 0,
+      "decision_error_percent": 0.0,
+      "argmax_mismatches": 0,
+      "argmax_error_percent": 0,
+      "total_variation": {
+        "count": 5,
+        "mean": 0.039413105310531056,
+        "p50": 0.03200000000000003,
+        "p95": 0.07850141414141412,
+        "max": 0.0877087708770877
+      },
+      "probability_mae": {
+        "count": 5,
+        "mean": 0.02290655265526553,
+        "p50": 0.020835993599359923,
+        "p95": 0.041483508350835085,
+        "max": 0.04385438543854385
+      },
+      "max_probability_error": {
+        "count": 5,
+        "mean": 0.03941310531053106,
+        "p50": 0.03200000000000003,
+        "p95": 0.07850141414141415,
+        "max": 0.08770877087708773
+      },
+      "noul_abs_error": {
+        "count": 1,
+        "mean": 0.03200000000000003,
+        "p50": 0.03200000000000003,
+        "p95": 0.03200000000000003,
+        "max": 0.03200000000000003
+      },
+      "score_abs_error": {
+        "count": 2,
+        "mean": 0.038900000000000046,
+        "p50": 0.038900000000000046,
+        "p95": 0.051230000000000185,
+        "max": 0.0526000000000002
+      },
+      "score_normalized_abs_error": {
+        "count": 2,
+        "mean": 0.012966666666666682,
+        "p50": 0.012966666666666682,
+        "p95": 0.017076666666666726,
+        "max": 0.0175333333333334
+      },
+      "confidence_abs_error": {
+        "count": 5,
+        "mean": 0.028879999999999996,
+        "p50": 0.031399999999999983,
+        "p95": 0.060959999999999986,
+        "max": 0.06819999999999998
+      },
+      "action_probability_abs_error": {
+        "count": 5,
+        "mean": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      }
+    }
+  },
+  "token_sequences_equal_cases": 1,
+  "reported_token_counts_equal_cases": 1,
+  "latency_case_ms": {
+    "reference": {
+      "count": 1,
+      "mean": 4518.70085399969,
+      "p50": 4518.70085399969,
+      "p95": 4518.70085399969,
+      "max": 4518.70085399969
+    },
+    "candidate": {
+      "count": 1,
+      "mean": 4474.200426999232,
+      "p50": 4474.200426999232,
+      "p95": 4474.200426999232,
+      "max": 4474.200426999232
+    }
+  },
+  "latency_same_host_and_threads": true,
+  "notes": [
+    "Fidelity is relative to unchanged FP32 Laya, not gold-label accuracy.",
+    "Decision mismatch uses choice labels, noul > 0.5, and rounded expected scores; argmax error is reported separately.",
+    "Probability errors are fractions in [0,1], not relative percent errors; distributions are normalized after API rounding.",
+    "Latency includes tokenization and heads, excludes model loading and warmup. Cross-host timings are not comparable and cannot establish hardware speedup.",
+    "Exclusions are declared calibration/development cases; define them before evaluating candidates, never after observing failures.",
+    "A test-set result does not guarantee fidelity for arbitrary inputs; evaluation covers only the recorded selection."
+  ],
+  "records_file": ".work/cache_v2_dev1.cases.jsonl"
+}

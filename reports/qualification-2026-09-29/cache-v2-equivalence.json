@@ -1,0 +1,134 @@
+{
+  "cache_schema": 2,
+  "graph_sha256": {
+    "768": "1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138"
+  },
+  "cache_path": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_e41340e497b7a0281af4bccf8e2dc314d1029de1b1a23f7d995d7698cfe32268.onnx",
+  "cache_nodes": [
+    {
+      "op_type": "EPContext",
+      "domain": "com.microsoft",
+      "name": "QNNExecutionProvider_QNNExecutionProvider_10761044187333032072_15_0"
+    }
+  ],
+  "prepare_seconds": 442.3626974310009,
+  "reload_seconds": 1.4348167150001245,
+  "prepare_stats": {
+    "backend_fingerprint": {
+      "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+      "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+      "cpu_ep_fallback": false,
+      "htp_arch": 68,
+      "onnxruntime": "1.30.0",
+      "onnxruntime_qnn": "2.5.0",
+      "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+      "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+      "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85",
+      "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+      "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23"
+    },
+    "bucket_calls": {},
+    "context_cache_enabled": true,
+    "context_cache_errors": 0,
+    "context_cache_hits": 0,
+    "context_cache_misses": 1,
+    "context_cache_paths": {
+      "768": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_e41340e497b7a0281af4bccf8e2dc314d1029de1b1a23f7d995d7698cfe32268.onnx"
+    },
+    "context_cache_writes": 1,
+    "correction_backend_verified_buckets": [
+      768
+    ],
+    "cpu_fallbacks": 0,
+    "npu_calls": 0,
+    "session_creations": 1,
+    "session_evictions": 0,
+    "zero_pad_embeddings": true
+  },
+  "reload_stats": {
+    "backend_fingerprint": {
+      "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+      "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+      "cpu_ep_fallback": false,
+      "htp_arch": 68,
+      "onnxruntime": "1.30.0",
+      "onnxruntime_qnn": "2.5.0",
+      "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+      "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+      "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85",
+      "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+      "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23"
+    },
+    "bucket_calls": {},
+    "context_cache_enabled": true,
+    "context_cache_errors": 0,
+    "context_cache_hits": 1,
+    "context_cache_misses": 0,
+    "context_cache_paths": {
+      "768": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_e41340e497b7a0281af4bccf8e2dc314d1029de1b1a23f7d995d7698cfe32268.onnx"
+    },
+    "context_cache_writes": 0,
+    "correction_backend_verified_buckets": [
+      768
+    ],
+    "cpu_fallbacks": 0,
+    "npu_calls": 0,
+    "session_creations": 1,
+    "session_evictions": 0,
+    "zero_pad_embeddings": true
+  },
+  "index": 1,
+  "candidate_answers_exactly_equal": true,
+  "candidate_complete_record_exactly_equal": true,
+  "candidate_tokens_exactly_equal": true,
+  "reference_tokens_exactly_equal": true,
+  "input_sha256_equal": true,
+  "question_ids": [
+    "action",
+    "needs_review",
+    "outcome",
+    "risk",
+    "urgency"
+  ],
+  "replay_accelerator_stats": {
+    "npu_calls": 10,
+    "cpu_fallbacks": 0,
+    "session_creations": 1,
+    "session_evictions": 0,
+    "bucket_calls": {
+      "768": 10
+    },
+    "zero_pad_embeddings": true,
+    "context_cache_enabled": true,
+    "context_cache_hits": 1,
+    "context_cache_misses": 0,
+    "context_cache_writes": 0,
+    "context_cache_errors": 0,
+    "context_cache_paths": {
+      "768": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_e41340e497b7a0281af4bccf8e2dc314d1029de1b1a23f7d995d7698cfe32268.onnx"
+    },
+    "backend_fingerprint": {
+      "onnxruntime": "1.30.0",
+      "onnxruntime_qnn": "2.5.0",
+      "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+      "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+      "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+      "htp_arch": 68,
+      "cpu_ep_fallback": false,
+      "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+      "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+      "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+      "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+    },
+    "correction_backend_verified_buckets": [
+      768
+    ],
+    "max_len": 1024,
+    "head_max_len": 256
+  },
+  "qualification_note": "One previously evaluated development case is replayed only to establish cache-version numerical equivalence, not fresh accuracy qualification.",
+  "process_peak_rss_kib": 5282724,
+  "process_exit_status": 0,
+  "source_git_commit": "ff08435fb3d67bae576d52166ae7d99f22f96023",
+  "preserved_stash_commit": "53ebbcfabe6692d45c9f04b8bef56d08d6d2e588"
+}

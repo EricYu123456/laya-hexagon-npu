@@ -1,0 +1,100 @@
+{
+  "artifact_verification_seconds": 0.6933879179996438,
+  "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+  "event": "complete",
+  "graph_sha256": {
+    "768": "1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138"
+  },
+  "manifest": "/home/ubuntu/laya-service/.work/refined32_corrected/manifest.json",
+  "manifest_sha256": "ba04daa8fe5c4b8a5085a5fa4c788a8ef504a1e4a568cc05b431483916387e22",
+  "model_dir": "/home/ubuntu/laya-service/models/multilingual",
+  "prepare": {
+    "buckets": [
+      {
+        "bucket": 768,
+        "cache_hit": false,
+        "cache_path": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_e41340e497b7a0281af4bccf8e2dc314d1029de1b1a23f7d995d7698cfe32268.onnx",
+        "event": "bucket_ready",
+        "phase": "prepare",
+        "seconds": 442.3626974310009
+      }
+    ],
+    "stats": {
+      "backend_fingerprint": {
+        "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+        "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+        "cpu_ep_fallback": false,
+        "htp_arch": 68,
+        "onnxruntime": "1.30.0",
+        "onnxruntime_qnn": "2.5.0",
+        "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+        "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+        "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85",
+        "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+        "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23"
+      },
+      "bucket_calls": {},
+      "context_cache_enabled": true,
+      "context_cache_errors": 0,
+      "context_cache_hits": 0,
+      "context_cache_misses": 1,
+      "context_cache_paths": {
+        "768": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_e41340e497b7a0281af4bccf8e2dc314d1029de1b1a23f7d995d7698cfe32268.onnx"
+      },
+      "context_cache_writes": 1,
+      "correction_backend_verified_buckets": [
+        768
+      ],
+      "cpu_fallbacks": 0,
+      "npu_calls": 0,
+      "session_creations": 1,
+      "session_evictions": 0,
+      "zero_pad_embeddings": true
+    }
+  },
+  "reload": {
+    "buckets": [
+      {
+        "bucket": 768,
+        "cache_hit": true,
+        "cache_path": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_e41340e497b7a0281af4bccf8e2dc314d1029de1b1a23f7d995d7698cfe32268.onnx",
+        "event": "bucket_ready",
+        "phase": "reload",
+        "seconds": 1.4348167150001245
+      }
+    ],
+    "stats": {
+      "backend_fingerprint": {
+        "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+        "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+        "cpu_ep_fallback": false,
+        "htp_arch": 68,
+        "onnxruntime": "1.30.0",
+        "onnxruntime_qnn": "2.5.0",
+        "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+        "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+        "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85",
+        "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+        "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23"
+      },
+      "bucket_calls": {},
+      "context_cache_enabled": true,
+      "context_cache_errors": 0,
+      "context_cache_hits": 1,
+      "context_cache_misses": 0,
+      "context_cache_paths": {
+        "768": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_e41340e497b7a0281af4bccf8e2dc314d1029de1b1a23f7d995d7698cfe32268.onnx"
+      },
+      "context_cache_writes": 0,
+      "correction_backend_verified_buckets": [
+        768
+      ],
+      "cpu_fallbacks": 0,
+      "npu_calls": 0,
+      "session_creations": 1,
+      "session_evictions": 0,
+      "zero_pad_embeddings": true
+    }
+  },
+  "total_seconds": 448.1805684210012
+}

@@ -1,0 +1,3081 @@
+{
+  "sequence_length": 1024,
+  "mask_penalty": -100,
+  "calibration_cases": [
+    0,
+    25,
+    50,
+    75,
+    100,
+    125,
+    150,
+    175,
+    200,
+    225,
+    250,
+    275,
+    300,
+    325,
+    350,
+    375
+  ],
+  "calibration_questions": 64,
+  "activation_bits": 16,
+  "weight_bits": 8,
+  "balanced": false,
+  "zero_pad_embeddings": true,
+  "base_calibration_questions": 32,
+  "calibration_dataset_sha256": "4f294f218ea1da27f3efef936359389c62ea4d3973a41457732990f1d31b647c",
+  "original_input_limits": {
+    "max_len": 1024,
+    "head_max_len": 256
+  },
+  "long_calibration_questions": 32,
+  "calibration_valid_lengths": [
+    166,
+    169,
+    174,
+    177,
+    159,
+    162,
+    184,
+    187,
+    287,
+    261,
+    516,
+    459,
+    595,
+    538,
+    212,
+    155,
+    380,
+    353,
+    379,
+    352,
+    421,
+    394,
+    367,
+    342,
+    375,
+    347,
+    335,
+    307,
+    325,
+    297,
+    275,
+    274,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024
+  ],
+  "calibration_question_identities": [
+    [
+      0,
+      "action"
+    ],
+    [
+      0,
+      "outcome"
+    ],
+    [
+      25,
+      "action"
+    ],
+    [
+      25,
+      "outcome"
+    ],
+    [
+      50,
+      "action"
+    ],
+    [
+      50,
+      "outcome"
+    ],
+    [
+      75,
+      "action"
+    ],
+    [
+      75,
+      "outcome"
+    ],
+    [
+      100,
+      "action"
+    ],
+    [
+      100,
+      "churn_risk"
+    ],
+    [
+      125,
+      "action"
+    ],
+    [
+      125,
+      "needs_human"
+    ],
+    [
+      150,
+      "action"
+    ],
+    [
+      150,
+      "needs_human"
+    ],
+    [
+      175,
+      "action"
+    ],
+    [
+      175,
+      "needs_human"
+    ],
+    [
+      200,
+      "discrepancy_severity"
+    ],
+    [
+      200,
+      "matches_order"
+    ],
+    [
+      225,
+      "discrepancy_severity"
+    ],
+    [
+      225,
+      "matches_order"
+    ],
+    [
+      250,
+      "discrepancy_severity"
+    ],
+    [
+      250,
+      "matches_order"
+    ],
+    [
+      275,
+      "disposition"
+    ],
+    [
+      275,
+      "matches_order"
+    ],
+    [
+      300,
+      "disposition"
+    ],
+    [
+      300,
+      "true_positive"
+    ],
+    [
+      325,
+      "disposition"
+    ],
+    [
+      325,
+      "true_positive"
+    ],
+    [
+      350,
+      "disposition"
+    ],
+    [
+      350,
+      "true_positive"
+    ],
+    [
+      375,
+      "disposition"
+    ],
+    [
+      375,
+      "urgency"
+    ],
+    [
+      0,
+      "action/repeated-state"
+    ],
+    [
+      0,
+      "outcome/repeated-state"
+    ],
+    [
+      25,
+      "action/repeated-state"
+    ],
+    [
+      25,
+      "outcome/repeated-state"
+    ],
+    [
+      50,
+      "action/repeated-state"
+    ],
+    [
+      50,
+      "outcome/repeated-state"
+    ],
+    [
+      75,
+      "action/repeated-state"
+    ],
+    [
+      75,
+      "outcome/repeated-state"
+    ],
+    [
+      100,
+      "action/repeated-state"
+    ],
+    [
+      100,
+      "churn_risk/repeated-state"
+    ],
+    [
+      125,
+      "action/repeated-state"
+    ],
+    [
+      125,
+      "needs_human/repeated-state"
+    ],
+    [
+      150,
+      "action/repeated-state"
+    ],
+    [
+      150,
+      "needs_human/repeated-state"
+    ],
+    [
+      175,
+      "action/repeated-state"
+    ],
+    [
+      175,
+      "needs_human/repeated-state"
+    ],
+    [
+      200,
+      "discrepancy_severity/repeated-state"
+    ],
+    [
+      200,
+      "matches_order/repeated-state"
+    ],
+    [
+      225,
+      "discrepancy_severity/repeated-state"
+    ],
+    [
+      225,
+      "matches_order/repeated-state"
+    ],
+    [
+      250,
+      "discrepancy_severity/repeated-state"
+    ],
+    [
+      250,
+      "matches_order/repeated-state"
+    ],
+    [
+      275,
+      "disposition/repeated-state"
+    ],
+    [
+      275,
+      "matches_order/repeated-state"
+    ],
+    [
+      300,
+      "disposition/repeated-state"
+    ],
+    [
+      300,
+      "true_positive/repeated-state"
+    ],
+    [
+      325,
+      "disposition/repeated-state"
+    ],
+    [
+      325,
+      "true_positive/repeated-state"
+    ],
+    [
+      350,
+      "disposition/repeated-state"
+    ],
+    [
+      350,
+      "true_positive/repeated-state"
+    ],
+    [
+      375,
+      "disposition/repeated-state"
+    ],
+    [
+      375,
+      "urgency/repeated-state"
+    ]
+  ],
+  "norm_folding": {
+    "folded_norms": 43,
+    "folded_projections": 43,
+    "changes": [
+      {
+        "name": "layers.0.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.0.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.1.attn_norm",
+        "projections": [
+          {
+            "name": "layers.1.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.1.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.1.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.2.attn_norm",
+        "projections": [
+          {
+            "name": "layers.2.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.2.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.2.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.3.attn_norm",
+        "projections": [
+          {
+            "name": "layers.3.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.3.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.3.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.4.attn_norm",
+        "projections": [
+          {
+            "name": "layers.4.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.4.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.4.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.5.attn_norm",
+        "projections": [
+          {
+            "name": "layers.5.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.5.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.5.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.6.attn_norm",
+        "projections": [
+          {
+            "name": "layers.6.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.6.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.6.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.7.attn_norm",
+        "projections": [
+          {
+            "name": "layers.7.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.7.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.7.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.8.attn_norm",
+        "projections": [
+          {
+            "name": "layers.8.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.8.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.8.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.9.attn_norm",
+        "projections": [
+          {
+            "name": "layers.9.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.9.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.9.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.10.attn_norm",
+        "projections": [
+          {
+            "name": "layers.10.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.10.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.10.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.11.attn_norm",
+        "projections": [
+          {
+            "name": "layers.11.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.11.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.11.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.12.attn_norm",
+        "projections": [
+          {
+            "name": "layers.12.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.12.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.12.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.13.attn_norm",
+        "projections": [
+          {
+            "name": "layers.13.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.13.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.13.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.14.attn_norm",
+        "projections": [
+          {
+            "name": "layers.14.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.14.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.14.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.15.attn_norm",
+        "projections": [
+          {
+            "name": "layers.15.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.15.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.15.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.16.attn_norm",
+        "projections": [
+          {
+            "name": "layers.16.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.16.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.16.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.17.attn_norm",
+        "projections": [
+          {
+            "name": "layers.17.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.17.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.17.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.18.attn_norm",
+        "projections": [
+          {
+            "name": "layers.18.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.18.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.18.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.19.attn_norm",
+        "projections": [
+          {
+            "name": "layers.19.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.19.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.19.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.20.attn_norm",
+        "projections": [
+          {
+            "name": "layers.20.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.20.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.20.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.21.attn_norm",
+        "projections": [
+          {
+            "name": "layers.21.attn.Wqkv",
+            "created_bias": false
+          }
+        ]
+      },
+      {
+        "name": "layers.21.mlp_norm",
+        "projections": [
+          {
+            "name": "layers.21.mlp.Wi",
+            "created_bias": false
+          }
+        ]
+      }
+    ],
+    "skipped": [
+      {
+        "name": "layers.0.attn_norm",
+        "reason": "identity"
+      }
+    ],
+    "preserved": [
+      "embeddings.norm",
+      "final_norm"
+    ]
+  },
+  "groups": [
+    {
+      "groups": 2,
+      "group_sizes": [
+        1151,
+        1
+      ],
+      "activation_max": 25.73760223388672
+    },
+    {
+      "groups": 2,
+      "group_sizes": [
+        1151,
+        1
+      ],
+      "activation_max": 19.795669555664062
+    },
+    {
+      "groups": 2,
+      "group_sizes": [
+        1151,
+        1
+      ],
+      "activation_max": 23.37265396118164
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 11.42878532409668
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 18.616086959838867
+    },
+    {
+      "groups": 2,
+      "group_sizes": [
+        1151,
+        1
+      ],
+      "activation_max": 37.290470123291016
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 27.848142623901367
+    },
+    {
+      "groups": 2,
+      "group_sizes": [
+        1151,
+        1
+      ],
+      "activation_max": 81.08047485351562
+    },
+    {
+      "groups": 2,
+      "group_sizes": [
+        1151,
+        1
+      ],
+      "activation_max": 78.44902801513672
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 28.716968536376953
+    },
+    {
+      "groups": 3,
+      "group_sizes": [
+        1150,
+        1,
+        1
+      ],
+      "activation_max": 97.76905822753906
+    },
+    {
+      "groups": 3,
+      "group_sizes": [
+        1150,
+        1,
+        1
+      ],
+      "activation_max": 36101.50390625
+    },
+    {
+      "groups": 3,
+      "group_sizes": [
+        1150,
+        1,
+        1
+      ],
+      "activation_max": 6603.25390625
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 35.097373962402344
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 32.71141052246094
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 27.212764739990234
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 41.782875061035156
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 54.699195861816406
+    },
+    {
+      "groups": 3,
+      "group_sizes": [
+        1150,
+        1,
+        1
+      ],
+      "activation_max": 363.133544921875
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 61.62897872924805
+    },
+    {
+      "groups": 2,
+      "group_sizes": [
+        1151,
+        1
+      ],
+      "activation_max": 162.28683471679688
+    },
+    {
+      "groups": 1,
+      "group_sizes": [
+        1152
+      ],
+      "activation_max": 51.888492584228516
+    }
+  ],
+  "conv_linear_replacements": 155,
+  "torch_export_error": [
+    {
+      "mean_abs": 1.3290655260789208e-06,
+      "max_abs": 0.0002048015594482422
+    },
+    {
+      "mean_abs": 1.0732393320722622e-06,
+      "max_abs": 3.4332275390625e-05
+    },
+    {
+      "mean_abs": 1.333980321760464e-06,
+      "max_abs": 0.0004458427429199219
+    },
+    {
+      "mean_abs": 1.2166038914074306e-06,
+      "max_abs": 7.295608520507812e-05
+    }
+  ],
+  "onnx_export_error": [
+    {
+      "mean_abs": 1.3749692016062909e-06,
+      "max_abs": 0.00010418891906738281
+    },
+    {
+      "mean_abs": 1.1984504908468807e-06,
+      "max_abs": 4.264619201421738e-05
+    },
+    {
+      "mean_abs": 1.4732364661540487e-06,
+      "max_abs": 0.0007219314575195312
+    },
+    {
+      "mean_abs": 1.2797212320947438e-06,
+      "max_abs": 0.00011420249938964844
+    }
+  ],
+  "calibration_memory": "no CPU arena/pattern; exact MinMax merge every sample",
+  "matmul_rhs_refinement": {
+    "refined_matmuls": 44,
+    "nodes": [
+      {
+        "node": "/attn/MatMul",
+        "rhs16_range": [
+          -9.629369666799903,
+          17.86783038172871
+        ],
+        "high8_range": [
+          -9.62937019765377,
+          17.960398346185684
+        ],
+        "existing_high8_range": [
+          -9.597061894834042,
+          17.900137916207314
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.05411471426486969,
+          0.05411471426486969
+        ],
+        "residual_scale": 0.0004261001304257661,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 794.9371337890625,
+        "partial_output_scale": 0.001323176547884941,
+        "partial_output_bound": 43.35784912109375,
+        "high_output_range": [
+          -464.1309760371223,
+          487.8524834662676
+        ]
+      },
+      {
+        "node": "/attn/MatMul_1",
+        "rhs16_range": [
+          -10.396806113305502,
+          17.856415342801483
+        ],
+        "high8_range": [
+          -10.425485223531723,
+          17.856416180729866
+        ],
+        "existing_high8_range": [
+          -5.034288112074137,
+          4.917211644351482
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.05547173693776131,
+          0.05547173693776131
+        ],
+        "residual_scale": 0.00043678536894731224,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.7366377278449363e-06,
+        "partial_output_bound": 0.05690614506602287,
+        "high_output_range": [
+          -3.208654580237635,
+          3.649542409941205
+        ]
+      },
+      {
+        "node": "/attn_1/MatMul",
+        "rhs16_range": [
+          -9.02418105941615,
+          8.583813275559805
+        ],
+        "high8_range": [
+          -9.068384014070034,
+          8.58381387591362
+        ],
+        "existing_high8_range": [
+          -9.045675791800022,
+          8.562319070100784
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.034620802849531174,
+          0.034620802849531174
+        ],
+        "residual_scale": 0.00027260478236712515,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 804.633716410026,
+        "partial_output_scale": 0.0008568504126742482,
+        "partial_output_bound": 28.077274322509766,
+        "high_output_range": [
+          -254.55444061942399,
+          169.77850097883493
+        ]
+      },
+      {
+        "node": "/attn_1/MatMul_1",
+        "rhs16_range": [
+          -11.874061223468743,
+          11.528037966956617
+        ],
+        "high8_range": [
+          -11.874061837792397,
+          11.59792086482048
+        ],
+        "existing_high8_range": [
+          -5.100361123681068,
+          4.981748074293137
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.04603482037782669,
+          0.04603482037782669
+        ],
+        "residual_scale": 0.0003624789242167026,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.441198833163071e-06,
+        "partial_output_bound": 0.04722520336508751,
+        "high_output_range": [
+          -4.587826430724817,
+          4.181699750915868
+        ]
+      },
+      {
+        "node": "/attn_2/MatMul",
+        "rhs16_range": [
+          -11.205167573323706,
+          11.228787668107543
+        ],
+        "high8_range": [
+          -11.20516823232174,
+          11.293397903442383
+        ],
+        "existing_high8_range": [
+          -11.172990001738071,
+          11.260966300964355
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.04412560537457466,
+          0.04412560537457466
+        ],
+        "residual_scale": 0.0003474457480479032,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 622.2807807512581,
+        "partial_output_scale": 0.0008445915300399065,
+        "partial_output_bound": 27.675575256347656,
+        "high_output_range": [
+          -268.51835179980844,
+          149.7292639533989
+        ]
+      },
+      {
+        "node": "/attn_2/MatMul_1",
+        "rhs16_range": [
+          -9.520579070958775,
+          10.189771566074342
+        ],
+        "high8_range": [
+          -9.520580179989338,
+          10.217207998037338
+        ],
+        "existing_high8_range": [
+          -4.532601609826088,
+          5.262427292764187
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.038711290806531906,
+          0.038711290806531906
+        ],
+        "residual_scale": 0.0003048133512493223,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.211923290611594e-06,
+        "partial_output_bound": 0.03971230238676071,
+        "high_output_range": [
+          -3.80935832450632,
+          4.5807037758640945
+        ]
+      },
+      {
+        "node": "/attn_3/MatMul",
+        "rhs16_range": [
+          -14.418332998175174,
+          14.543398536043242
+        ],
+        "high8_range": [
+          -14.42977949976921,
+          14.543399810791016
+        ],
+        "existing_high8_range": [
+          -14.424077555537224,
+          14.537652969360352
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.05682402476668358,
+          0.05682402476668358
+        ],
+        "residual_scale": 0.00044743329635821283,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 843.11027549766,
+        "partial_output_scale": 0.0014736216980963945,
+        "partial_output_bound": 48.287635803222656,
+        "high_output_range": [
+          -364.27483782172203,
+          266.86201602220535
+        ]
+      },
+      {
+        "node": "/attn_3/MatMul_1",
+        "rhs16_range": [
+          -14.448763597523794,
+          14.542104149819352
+        ],
+        "high8_range": [
+          -14.44876453280449,
+          14.56253433227539
+        ],
+        "existing_high8_range": [
+          -5.948425903916359,
+          5.719640292227268
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.05689878761768341,
+          0.05689878761768341
+        ],
+        "residual_scale": 0.0004480219795368612,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.781313926585426e-06,
+        "partial_output_bound": 0.05837009474635124,
+        "high_output_range": [
+          -4.299887740009581,
+          4.67470199347008
+        ]
+      },
+      {
+        "node": "/attn_4/MatMul",
+        "rhs16_range": [
+          -7.969876681978349,
+          8.24979502640781
+        ],
+        "high8_range": [
+          -7.969877682626247,
+          8.288672789931297
+        ],
+        "existing_high8_range": [
+          -7.950819097459316,
+          8.268851861357689
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.031887415796518326,
+          0.031887415796518326
+        ],
+        "residual_scale": 0.00025108203408308327,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 675.6132890284061,
+        "partial_output_scale": 0.0006626545218750834,
+        "partial_output_bound": 21.713863372802734,
+        "high_output_range": [
+          -282.2280126786791,
+          179.4171342300251
+        ]
+      },
+      {
+        "node": "/attn_4/MatMul_1",
+        "rhs16_range": [
+          -9.24444524149294,
+          10.628761873522308
+        ],
+        "high8_range": [
+          -9.3001679033041,
+          10.628763318061829
+        ],
+        "existing_high8_range": [
+          -6.332989931106567,
+          5.718595385551453
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.0390864722430706,
+          0.0390864722430706
+        ],
+        "residual_scale": 0.00030776753555983305,
+        "residual_zero_point": 127,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.2236690736244782e-06,
+        "partial_output_bound": 0.0400971882045269,
+        "high_output_range": [
+          -4.691987523401622,
+          4.366471818066202
+        ]
+      },
+      {
+        "node": "/attn_5/MatMul",
+        "rhs16_range": [
+          -7.558724310685648,
+          7.872121047883411
+        ],
+        "high8_range": [
+          -7.569347508251667,
+          7.872121408581734
+        ],
+        "existing_high8_range": [
+          -7.564140018075705,
+          7.866705618798733
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.030284898355603218,
+          0.030284898355603218
+        ],
+        "residual_scale": 0.0002384637773502618,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 593.3780628591776,
+        "partial_output_scale": 0.0005527480971068144,
+        "partial_output_bound": 18.112449645996094,
+        "high_output_range": [
+          -265.17503401543945,
+          128.12252299813554
+        ]
+      },
+      {
+        "node": "/attn_5/MatMul_1",
+        "rhs16_range": [
+          -7.463346120086499,
+          8.27683499531122
+        ],
+        "high8_range": [
+          -7.4738589227199554,
+          8.276835501194
+        ],
+        "existing_high8_range": [
+          -4.6508792489767075,
+          4.266220062971115
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.03089160844683647,
+          0.03089160844683647
+        ],
+        "residual_scale": 0.00024324102560058236,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 9.671147154222126e-07,
+        "partial_output_bound": 0.03169041499495506,
+        "high_output_range": [
+          -4.256991394795477,
+          3.824756318354048
+        ]
+      },
+      {
+        "node": "/attn_6/MatMul",
+        "rhs16_range": [
+          -14.568675864749821,
+          17.173010122030973
+        ],
+        "high8_range": [
+          -14.568676561117172,
+          17.183567225933075
+        ],
+        "existing_high8_range": [
+          -14.56383242458105,
+          17.177853628993034
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.06227568909525871,
+          0.06227568909525871
+        ],
+        "residual_scale": 0.000490359787363559,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 905.2575893327594,
+        "partial_output_scale": 0.0017340448684990406,
+        "partial_output_bound": 56.82118225097656,
+        "high_output_range": [
+          -423.9672882258892,
+          313.04685628414154
+        ]
+      },
+      {
+        "node": "/attn_6/MatMul_1",
+        "rhs16_range": [
+          -14.533820634591393,
+          17.200501191488
+        ],
+        "high8_range": [
+          -14.583034627139568,
+          17.20050238072872
+        ],
+        "existing_high8_range": [
+          -6.865361239761114,
+          7.139975689351559
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.06233706325292587,
+          0.06233706325292587
+        ],
+        "residual_scale": 0.0004908430855721235,
+        "residual_zero_point": 127,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0256249022111297,
+        "partial_output_scale": 1.9665480976982508e-06,
+        "partial_output_bound": 0.06443984806537628,
+        "high_output_range": [
+          -6.55983905919129,
+          7.171445364729152
+        ]
+      },
+      {
+        "node": "/attn_7/MatMul",
+        "rhs16_range": [
+          -8.38809916502214,
+          8.485165170277469
+        ],
+        "high8_range": [
+          -8.418876186013222,
+          8.485166549682617
+        ],
+        "existing_high8_range": [
+          -8.40354736149311,
+          8.469717025756836
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.03315327316522598,
+          0.03315327316522598
+        ],
+        "residual_scale": 0.00026104942662641406,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 534.4466236382723,
+        "partial_output_scale": 0.0005450049065984786,
+        "partial_output_bound": 17.858720779418945,
+        "high_output_range": [
+          -220.27472767792642,
+          178.10545441647992
+        ]
+      },
+      {
+        "node": "/attn_7/MatMul_1",
+        "rhs16_range": [
+          -8.257028122257907,
+          8.998762495815754
+        ],
+        "high8_range": [
+          -8.257029235363007,
+          9.001515477895737
+        ],
+        "existing_high8_range": [
+          -5.823757290840149,
+          5.8696136474609375
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.03384886682033539,
+          0.03384886682033539
+        ],
+        "residual_scale": 0.0002665265346877277,
+        "residual_zero_point": 127,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.0596968422760256e-06,
+        "partial_output_bound": 0.034724146127700806,
+        "high_output_range": [
+          -5.379565124167129,
+          4.101148058543913
+        ]
+      },
+      {
+        "node": "/attn_8/MatMul",
+        "rhs16_range": [
+          -9.263517555955332,
+          8.692253607296152
+        ],
+        "high8_range": [
+          -9.328272968530655,
+          8.692254357039928
+        ],
+        "existing_high8_range": [
+          -9.294752150774002,
+          8.661019049584866
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.03534326329827309,
+          0.03534326329827309
+        ],
+        "residual_scale": 0.0002782934461720288,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 709.8542959429324,
+        "partial_output_scale": 0.0007716947002336383,
+        "partial_output_bound": 25.28689193725586,
+        "high_output_range": [
+          -256.76922030653805,
+          168.22878072364256
+        ]
+      },
+      {
+        "node": "/attn_8/MatMul_1",
+        "rhs16_range": [
+          -11.335606645268854,
+          9.504851793200942
+        ],
+        "high8_range": [
+          -11.389435648918152,
+          9.504852771759033
+        ],
+        "existing_high8_range": [
+          -9.566111326217651,
+          6.377407550811768
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.040980055928230286,
+          0.040980055928230286
+        ],
+        "residual_scale": 0.0003226776316296309,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.2829508477807394e-06,
+        "partial_output_bound": 0.04203973338007927,
+        "high_output_range": [
+          -9.631592036836082,
+          6.048995833538356
+        ]
+      },
+      {
+        "node": "/attn_9/MatMul",
+        "rhs16_range": [
+          -16.774630024447106,
+          18.842586196260527
+        ],
+        "high8_range": [
+          -16.77463173866272,
+          18.87146070599556
+        ],
+        "existing_high8_range": [
+          -16.761043667793274,
+          18.856174126267433
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.06991229951381683,
+          0.06991229951381683
+        ],
+        "residual_scale": 0.0005504906293936074,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 1209.0839522592723,
+        "partial_output_scale": 0.002600038191303611,
+        "partial_output_bound": 85.19805145263672,
+        "high_output_range": [
+          -637.4874447621405,
+          392.1803151946515
+        ]
+      },
+      {
+        "node": "/attn_9/MatMul_1",
+        "rhs16_range": [
+          -16.770072566752788,
+          18.920724226743914
+        ],
+        "high8_range": [
+          -16.8184232711792,
+          18.9207261800766
+        ],
+        "existing_high8_range": [
+          -9.109867572784424,
+          7.02218958735466
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.07009480893611908,
+          0.07009480893611908
+        ],
+        "residual_scale": 0.0005519276601262391,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0256252337619662,
+        "partial_output_scale": 2.2112822080089245e-06,
+        "partial_output_bound": 0.07245929539203644,
+        "high_output_range": [
+          -8.864211179403355,
+          6.754331586693297
+        ]
+      },
+      {
+        "node": "/attn_10/MatMul",
+        "rhs16_range": [
+          -8.56062832113821,
+          8.886760172899812
+        ],
+        "high8_range": [
+          -8.560629561543465,
+          8.903054744005203
+        ],
+        "existing_high8_range": [
+          -8.552640676498413,
+          8.89474630355835
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.03425100818276405,
+          0.03425100818276405
+        ],
+        "residual_scale": 0.00026969300233758986,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 528.0838664285839,
+        "partial_output_scale": 0.0005563471931964159,
+        "partial_output_bound": 18.230384826660156,
+        "high_output_range": [
+          -219.163759755902,
+          181.69856219785288
+        ]
+      },
+      {
+        "node": "/attn_10/MatMul_1",
+        "rhs16_range": [
+          -8.600729425437748,
+          9.455677638121415
+        ],
+        "high8_range": [
+          -8.600730389356613,
+          9.524775803089142
+        ],
+        "existing_high8_range": [
+          -6.294743366539478,
+          9.442115049809217
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.03554929047822952,
+          0.03554929047822952
+        ],
+        "residual_scale": 0.0002799156936816871,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.1129313861601986e-06,
+        "partial_output_bound": 0.03646853566169739,
+        "high_output_range": [
+          -6.297384863210027,
+          9.273228870442836
+        ]
+      },
+      {
+        "node": "/attn_11/MatMul",
+        "rhs16_range": [
+          -11.448479525715811,
+          10.455473579640966
+        ],
+        "high8_range": [
+          -11.448480434715748,
+          10.50161363184452
+        ],
+        "existing_high8_range": [
+          -11.424414776265621,
+          10.47953836619854
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.04305031895637512,
+          0.04305031895637512
+        ],
+        "residual_scale": 0.0003389789198990911,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 722.3811129182577,
+        "partial_output_scale": 0.0009565603686496615,
+        "partial_output_bound": 31.34457015991211,
+        "high_output_range": [
+          -233.37974606780335,
+          189.8814040236175
+        ]
+      },
+      {
+        "node": "/attn_11/MatMul_1",
+        "rhs16_range": [
+          -10.808568063745042,
+          9.874689099146053
+        ],
+        "high8_range": [
+          -10.808569364249706,
+          9.91462753713131
+        ],
+        "existing_high8_range": [
+          -10.199263349175453,
+          6.261573068797588
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.040644027292728424,
+          0.040644027292728424
+        ],
+        "residual_scale": 0.00032003174419514835,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.2724309499390074e-06,
+        "partial_output_bound": 0.041695017367601395,
+        "high_output_range": [
+          -10.083767097690725,
+          5.248584280401701
+        ]
+      },
+      {
+        "node": "/attn_12/MatMul",
+        "rhs16_range": [
+          -17.97141049290076,
+          16.551713841035962
+        ],
+        "high8_range": [
+          -18.0440830886364,
+          16.551715314388275
+        ],
+        "existing_high8_range": [
+          -18.00617814064026,
+          16.516945362091064
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.06785210967063904,
+          0.06785210967063904
+        ],
+        "residual_scale": 0.0005342686199583113,
+        "residual_zero_point": 127,
+        "contraction_length": 64,
+        "lhs_l1_bound": 1149.8907158374786,
+        "partial_output_scale": 0.0023998802062124014,
+        "partial_output_bound": 78.63927459716797,
+        "high_output_range": [
+          -410.18364288378507,
+          498.431703960523
+        ]
+      },
+      {
+        "node": "/attn_12/MatMul_1",
+        "rhs16_range": [
+          -17.958894504001364,
+          18.432563747745007
+        ],
+        "high8_range": [
+          -18.003900468349457,
+          18.43256476521492
+        ],
+        "existing_high8_range": [
+          -12.876751452684402,
+          13.183340772986412
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.07146162539720535,
+          0.07146162539720535
+        ],
+        "residual_scale": 0.0005626900237984955,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 2.2372287276084535e-06,
+        "partial_output_bound": 0.0733095109462738,
+        "high_output_range": [
+          -12.54807866353076,
+          13.190210388565902
+        ]
+      },
+      {
+        "node": "/attn_13/MatMul",
+        "rhs16_range": [
+          -11.594599408679642,
+          12.669421291531762
+        ],
+        "high8_range": [
+          -11.621575683355331,
+          12.669422671198845
+        ],
+        "existing_high8_range": [
+          -11.608669206500053,
+          12.655352495610714
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.047641489654779434,
+          0.047641489654779434
+        ],
+        "residual_scale": 0.00037512986455112696,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 720.405580220744,
+        "partial_output_scale": 0.0010556794004514813,
+        "partial_output_bound": 34.59250259399414,
+        "high_output_range": [
+          -286.952201962471,
+          166.14659708365798
+        ]
+      },
+      {
+        "node": "/attn_13/MatMul_1",
+        "rhs16_range": [
+          -11.59330216201488,
+          12.786336433404358
+        ],
+        "high8_range": [
+          -11.593303427100182,
+          12.838864952325821
+        ],
+        "existing_high8_range": [
+          -8.861118450760841,
+          8.930891036987305
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.04791845753788948,
+          0.04791845753788948
+        ],
+        "residual_scale": 0.00037731073098257184,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.5001694464444881e-06,
+        "partial_output_bound": 0.04915755242109299,
+        "high_output_range": [
+          -8.018403315421892,
+          7.5317420187057
+        ]
+      },
+      {
+        "node": "/attn_14/MatMul",
+        "rhs16_range": [
+          -10.427921280264854,
+          12.22651819139719
+        ],
+        "high8_range": [
+          -10.427922248840332,
+          12.299600601196289
+        ],
+        "existing_high8_range": [
+          -10.394389875233173,
+          12.260049596428871
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.04457550123333931,
+          0.04457550123333931
+        ],
+        "residual_scale": 0.00035098823718726635,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 706.063200250268,
+        "partial_output_scale": 0.0009680759976617992,
+        "partial_output_bound": 31.721914291381836,
+        "high_output_range": [
+          -233.1432532891631,
+          168.64077701233327
+        ]
+      },
+      {
+        "node": "/attn_14/MatMul_1",
+        "rhs16_range": [
+          -10.26063722744584,
+          12.237718657881487
+        ],
+        "high8_range": [
+          -10.260638147592545,
+          12.29507502168417
+        ],
+        "existing_high8_range": [
+          -8.257973290979862,
+          9.145193561911583
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.0442386157810688,
+          0.0442386157810688
+        ],
+        "residual_scale": 0.0003483355976641178,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.3849656852471526e-06,
+        "partial_output_bound": 0.045382555574178696,
+        "high_output_range": [
+          -7.160196140568587,
+          7.040798141795676
+        ]
+      },
+      {
+        "node": "/attn_15/MatMul",
+        "rhs16_range": [
+          -21.01175410905853,
+          17.482188235153444
+        ],
+        "high8_range": [
+          -21.011755988001823,
+          17.53499060869217
+        ],
+        "existing_high8_range": [
+          -20.982971668243408,
+          17.510969161987305
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.07560189813375473,
+          0.07560189813375473
+        ],
+        "residual_scale": 0.0005952906212769449,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 1035.8462933413684,
+        "partial_output_scale": 0.0024087829515337944,
+        "partial_output_bound": 78.93099975585938,
+        "high_output_range": [
+          -483.4292437657714,
+          479.5939032398164
+        ]
+      },
+      {
+        "node": "/attn_15/MatMul_1",
+        "rhs16_range": [
+          -21.029296316206455,
+          17.464501071721315
+        ],
+        "high8_range": [
+          -21.02929750084877,
+          17.54962956905365
+        ],
+        "existing_high8_range": [
+          -11.466057747602463,
+          13.739500232040882
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.07566501200199127,
+          0.07566501200199127
+        ],
+        "residual_scale": 0.0005957875400781631,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.025625212341547,
+        "partial_output_scale": 2.387005679338472e-06,
+        "partial_output_bound": 0.07821740210056305,
+        "high_output_range": [
+          -10.59384891949594,
+          12.950233043986373
+        ]
+      },
+      {
+        "node": "/attn_16/MatMul",
+        "rhs16_range": [
+          -11.779171195928939,
+          9.873133985413006
+        ],
+        "high8_range": [
+          -11.830739639699459,
+          9.87313523888588
+        ],
+        "existing_high8_range": [
+          -11.802629515528679,
+          9.849676430225372
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.0425679013133049,
+          0.0425679013133049
+        ],
+        "residual_scale": 0.00033518034615553916,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 593.4450846835971,
+        "partial_output_scale": 0.0007770203519612551,
+        "partial_output_bound": 25.461402893066406,
+        "high_output_range": [
+          -222.57335009984672,
+          180.3198246541433
+        ]
+      },
+      {
+        "node": "/attn_16/MatMul_1",
+        "rhs16_range": [
+          -11.785499167162925,
+          9.927159326034598
+        ],
+        "high8_range": [
+          -11.785500258207321,
+          9.99205456674099
+        ],
+        "existing_high8_range": [
+          -10.636041194200516,
+          9.910856567323208
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.04271232709288597,
+          0.04271232709288597
+        ],
+        "residual_scale": 0.000336317578330636,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.3371826526054065e-06,
+        "partial_output_bound": 0.04381680116057396,
+        "high_output_range": [
+          -9.181035229121335,
+          9.460075894603506
+        ]
+      },
+      {
+        "node": "/attn_17/MatMul",
+        "rhs16_range": [
+          -13.645849190885201,
+          12.167588250653353
+        ],
+        "high8_range": [
+          -13.688537701964378,
+          12.16758906841278
+        ],
+        "existing_high8_range": [
+          -13.66593673825264,
+          12.147499322891235
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.050711341202259064,
+          0.050711341202259064
+        ],
+        "residual_scale": 0.0003993019345216453,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 673.8230888843536,
+        "partial_output_scale": 0.0010510433930903673,
+        "partial_output_bound": 34.440589904785156,
+        "high_output_range": [
+          -288.255482269451,
+          224.21869250480086
+        ]
+      },
+      {
+        "node": "/attn_17/MatMul_1",
+        "rhs16_range": [
+          -13.647603086690651,
+          12.174369609740097
+        ],
+        "high8_range": [
+          -13.696166910231113,
+          12.1743705868721
+        ],
+        "existing_high8_range": [
+          -10.180004462599754,
+          10.422385521233082
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.050739604979753494,
+          0.050739604979753494
+        ],
+        "residual_scale": 0.00039952449151314795,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.5884902495599817e-06,
+        "partial_output_bound": 0.05205164849758148,
+        "high_output_range": [
+          -8.259785171976546,
+          10.447836091043428
+        ]
+      },
+      {
+        "node": "/attn_18/MatMul",
+        "rhs16_range": [
+          -16.461108718183823,
+          17.334159595659003
+        ],
+        "high8_range": [
+          -16.461111426353455,
+          17.390367716550827
+        ],
+        "existing_high8_range": [
+          -16.43377774953842,
+          17.36149100959301
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.06639203429222107,
+          0.06639203429222107
+        ],
+        "residual_scale": 0.0005227719666436315,
+        "residual_zero_point": 127,
+        "contraction_length": 64,
+        "lhs_l1_bound": 891.0336264185607,
+        "partial_output_scale": 0.0018196158343926072,
+        "partial_output_bound": 59.62517166137695,
+        "high_output_range": [
+          -405.87988378852606,
+          352.670797329396
+        ]
+      },
+      {
+        "node": "/attn_18/MatMul_1",
+        "rhs16_range": [
+          -16.472219912626315,
+          17.318337321979925
+        ],
+        "high8_range": [
+          -16.47222191095352,
+          17.402105405926704
+        ],
+        "existing_high8_range": [
+          -8.823697105050087,
+          9.619276352226734
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.06643684208393097,
+          0.06643684208393097
+        ],
+        "residual_scale": 0.0005231248214840889,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0256252132728696,
+        "partial_output_scale": 2.0958846107532736e-06,
+        "partial_output_bound": 0.06867794692516327,
+        "high_output_range": [
+          -7.870984536464675,
+          7.518965984083479
+        ]
+      },
+      {
+        "node": "/attn_19/MatMul",
+        "rhs16_range": [
+          -11.301125030993717,
+          12.105822565674316
+        ],
+        "high8_range": [
+          -11.301125586032867,
+          12.128037214279175
+        ],
+        "existing_high8_range": [
+          -11.290409870445728,
+          12.116537421941757
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.045951101928949356,
+          0.045951101928949356
+        ],
+        "residual_scale": 0.00036181972245685756,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 738.9980581440032,
+        "partial_output_scale": 0.0010445009684190154,
+        "partial_output_bound": 34.2262077331543,
+        "high_output_range": [
+          -250.4270164296031,
+          269.75474337115884
+        ]
+      },
+      {
+        "node": "/attn_19/MatMul_1",
+        "rhs16_range": [
+          -11.730593984364532,
+          12.477885571162915
+        ],
+        "high8_range": [
+          -11.811128795146942,
+          12.477886065840721
+        ],
+        "existing_high8_range": [
+          -8.59380054473877,
+          8.526661477982998
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.047637417912483215,
+          0.047637417912483215
+        ],
+        "residual_scale": 0.0003750978212337941,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.4913709946995368e-06,
+        "partial_output_bound": 0.04886924475431442,
+        "high_output_range": [
+          -6.050981022781343,
+          7.849921326851472
+        ]
+      },
+      {
+        "node": "/attn_20/MatMul",
+        "rhs16_range": [
+          -12.103377813356929,
+          12.296611881436547
+        ],
+        "high8_range": [
+          -12.103378862142563,
+          12.391554549336433
+        ],
+        "existing_high8_range": [
+          -12.056465551257133,
+          12.343524254858494
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.048041097819805145,
+          0.048041097819805145
+        ],
+        "residual_scale": 0.00037827639607712626,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 765.4789575431496,
+        "partial_output_scale": 0.0011311386479064822,
+        "partial_output_bound": 37.06515121459961,
+        "high_output_range": [
+          -281.0943753859028,
+          230.17425137758255
+        ]
+      },
+      {
+        "node": "/attn_20/MatMul_1",
+        "rhs16_range": [
+          -12.101277598994784,
+          12.569969171890989
+        ],
+        "high8_range": [
+          -12.101278640329838,
+          12.585329785943031
+        ],
+        "existing_high8_range": [
+          -9.174479842185974,
+          9.392919838428497
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.048417117446660995,
+          0.048417117446660995
+        ],
+        "residual_scale": 0.0003812371869571507,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0178126192092896,
+        "partial_output_scale": 1.5157808093135827e-06,
+        "partial_output_bound": 0.04966910555958748,
+        "high_output_range": [
+          -7.12118139010272,
+          7.4309427882690215
+        ]
+      },
+      {
+        "node": "/attn_21/MatMul",
+        "rhs16_range": [
+          -14.626247735344805,
+          11.155272621195763
+        ],
+        "high8_range": [
+          -14.704678170382977,
+          11.155273094773293
+        ],
+        "existing_high8_range": [
+          -14.660080894827843,
+          11.121440678834915
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.05071980878710747,
+          0.05071980878710747
+        ],
+        "residual_scale": 0.0003993686113972217,
+        "residual_zero_point": 128,
+        "contraction_length": 64,
+        "lhs_l1_bound": 895.4312696009874,
+        "partial_output_scale": 0.0013969456776976585,
+        "partial_output_bound": 45.775115966796875,
+        "high_output_range": [
+          -241.38160173222423,
+          284.6190390046686
+        ]
+      },
+      {
+        "node": "/attn_21/MatMul_1",
+        "rhs16_range": [
+          -14.658180321857799,
+          13.988938856055029
+        ],
+        "high8_range": [
+          -14.658181071281433,
+          14.094404876232147
+        ],
+        "existing_high8_range": [
+          -11.282574638724327,
+          12.494752079248428
+        ],
+        "expanded_high_range": true,
+        "residual_range": [
+          -0.05639159679412842,
+          0.05639159679412842
+        ],
+        "residual_scale": 0.0004440283519215882,
+        "residual_zero_point": 128,
+        "contraction_length": 1024,
+        "lhs_l1_bound": 1.0256251210719347,
+        "partial_output_scale": 1.7789865296435892e-06,
+        "partial_output_bound": 0.05829383060336113,
+        "high_output_range": [
+          -10.070625037973514,
+          10.661898188351188
+        ]
+      }
+    ],
+    "scope": "all",
+    "pv_bounds": [
+      {
+        "node": "/attn/MatMul_1",
+        "softmax": "/attn/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_1/MatMul_1",
+        "softmax": "/attn_1/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_2/MatMul_1",
+        "softmax": "/attn_2/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_3/MatMul_1",
+        "softmax": "/attn_3/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_4/MatMul_1",
+        "softmax": "/attn_4/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_5/MatMul_1",
+        "softmax": "/attn_5/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_6/MatMul_1",
+        "softmax": "/attn_6/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5258365237968974e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05,
+          1.5258365237968974e-05
+        ],
+        "lhs_l1_bound": 1.0256249022111297
+      },
+      {
+        "node": "/attn_7/MatMul_1",
+        "softmax": "/attn_7/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_8/MatMul_1",
+        "softmax": "/attn_8/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_9/MatMul_1",
+        "softmax": "/attn_9/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259012798196636e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05,
+          1.5259012798196636e-05
+        ],
+        "lhs_l1_bound": 1.0256252337619662
+      },
+      {
+        "node": "/attn_10/MatMul_1",
+        "softmax": "/attn_10/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_11/MatMul_1",
+        "softmax": "/attn_11/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_12/MatMul_1",
+        "softmax": "/attn_12/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_13/MatMul_1",
+        "softmax": "/attn_13/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_14/MatMul_1",
+        "softmax": "/attn_14/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_15/MatMul_1",
+        "softmax": "/attn_15/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5258970961440355e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05,
+          1.5258970961440355e-05
+        ],
+        "lhs_l1_bound": 1.025625212341547
+      },
+      {
+        "node": "/attn_16/MatMul_1",
+        "softmax": "/attn_16/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_17/MatMul_1",
+        "softmax": "/attn_17/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_18/MatMul_1",
+        "softmax": "/attn_18/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5258972780429758e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05,
+          1.5258972780429758e-05
+        ],
+        "lhs_l1_bound": 1.0256252132728696
+      },
+      {
+        "node": "/attn_19/MatMul_1",
+        "softmax": "/attn_19/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_20/MatMul_1",
+        "softmax": "/attn_20/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5259021893143654e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05
+        ],
+        "lhs_l1_bound": 1.0178126192092896
+      },
+      {
+        "node": "/attn_21/MatMul_1",
+        "softmax": "/attn_21/Softmax",
+        "sequence_length": 1024,
+        "probability_scale": 1.5258792700478807e-05,
+        "probability_quantize_stages": 2,
+        "probability_rounding_scales": [
+          1.5259021893143654e-05,
+          1.5258792700478807e-05
+        ],
+        "lhs_l1_bound": 1.0256251210719347
+      }
+    ],
+    "assumptions": {
+      "pv_l1_formula": "1 + sequence_length * sum(probability_rounding_scales) / 2 + 0.01",
+      "pv_quantization": "Last-axis Softmax; matching U16 Q/DQ pairs, 0<scale<=1/65535, zero_point=0; nearest rounding; adjacent equal stages counted once; upper clipping cannot increase L1",
+      "backend_l1_margin": 0.01,
+      "backend_margin_status": "Empirical allowance; not a universal hardware error guarantee",
+      "other_l1_bound": "contraction_length * max(abs(lhs representable endpoints))",
+      "rhs_high_range": "Covers the source U16 representable range"
+    }
+  },
+  "model_sha256": "8d7a7f1fdbfd01fb58026eb5ece936d4cfb410b1e993fa97b7c3517a587da008",
+  "build_seconds": 245.12584042549133,
+  "static_unit_layernorm": {
+    "repaired_layer_norms": 86,
+    "removed_dead_parameter_nodes": 213,
+    "gamma": "static U8 code255 scale1/255 zero0; dequantized float32 value exactly1",
+    "beta": "static I32 zero; scale equals activation_scale * gamma_scale",
+    "nodes": [
+      {
+        "node": "/mlp_norm/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 1.3046881122136256e-06
+      },
+      {
+        "node": "/mlp_norm_1/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.342087327633635e-06
+      },
+      {
+        "node": "/attn_norm/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.5510380510240793e-06
+      },
+      {
+        "node": "/attn_norm_1/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 6.747351562808035e-06
+      },
+      {
+        "node": "/mlp_norm_2/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.582571823950275e-06
+      },
+      {
+        "node": "/mlp_norm_3/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 6.906107500981307e-06
+      },
+      {
+        "node": "/attn_norm_2/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.574834525148617e-06
+      },
+      {
+        "node": "/attn_norm_3/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 8.373038326681126e-06
+      },
+      {
+        "node": "/mlp_norm_4/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.5878057385853026e-06
+      },
+      {
+        "node": "/mlp_norm_5/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 8.354401870747097e-06
+      },
+      {
+        "node": "/attn_norm_4/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.723361603784724e-06
+      },
+      {
+        "node": "/attn_norm_5/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 8.266125405498315e-06
+      },
+      {
+        "node": "/mlp_norm_6/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.7332059744367143e-06
+      },
+      {
+        "node": "/mlp_norm_7/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 8.26837003842229e-06
+      },
+      {
+        "node": "/attn_norm_6/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.702235633478267e-06
+      },
+      {
+        "node": "/attn_norm_7/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 8.228293154388666e-06
+      },
+      {
+        "node": "/mlp_norm_8/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.7093572043668246e-06
+      },
+      {
+        "node": "/mlp_norm_9/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 8.208465260395315e-06
+      },
+      {
+        "node": "/attn_norm_8/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.8496265258581843e-06
+      },
+      {
+        "node": "/attn_norm_9/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 8.172475645551458e-06
+      },
+      {
+        "node": "/mlp_norm_10/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 2.8467411539168097e-06
+      },
+      {
+        "node": "/mlp_norm_11/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 8.153415365086403e-06
+      },
+      {
+        "node": "/attn_norm_10/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 4.003510639449814e-06
+      },
+      {
+        "node": "/attn_norm_11/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 7.886554158176295e-06
+      },
+      {
+        "node": "/mlp_norm_12/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 4.0559557419328485e-06
+      },
+      {
+        "node": "/mlp_norm_13/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 7.847494998713955e-06
+      },
+      {
+        "node": "/attn_norm_12/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 3.869301053782692e-06
+      },
+      {
+        "node": "/attn_norm_13/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 7.595242095703725e-06
+      },
+      {
+        "node": "/mlp_norm_14/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 3.889457730110735e-06
+      },
+      {
+        "node": "/mlp_norm_15/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 7.590262157464167e-06
+      },
+      {
+        "node": "/attn_norm_14/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 4.3226095840509515e-06
+      },
+      {
+        "node": "/attn_norm_15/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 1.0105894943990279e-05
+      },
+      {
+        "node": "/mlp_norm_16/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 4.342748070484959e-06
+      },
+      {
+        "node": "/mlp_norm_17/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 1.0131443559657782e-05
+      },
+      {
+        "node": "/attn_norm_16/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 4.875261765846517e-06
+      },
+      {
+        "node": "/attn_norm_17/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 1.2467075066524558e-05
+      },
+      {
+        "node": "/mlp_norm_18/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 4.88961677547195e-06
+      },
+      {
+        "node": "/mlp_norm_19/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 1.247798263648292e-05
+      },
+      {
+        "node": "/attn_norm_18/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 4.61531089968048e-06
+      },
+      {
+        "node": "/attn_norm_19/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 1.2302481081860606e-05
+      },
+      {
+        "node": "/mlp_norm_20/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 4.598201940098079e-06
+      },
+      {
+        "node": "/mlp_norm_21/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 1.2281447197892703e-05
+      },
+      {
+        "node": "/attn_norm_20/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 4.5530714487540536e-06
+      },
+      {
+        "node": "/attn_norm_21/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 1.4575221030099783e-05
+      },
+      {
+        "node": "/mlp_norm_22/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 4.443603756953962e-06
+      },
+      {
+        "node": "/mlp_norm_23/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 1.440786127204774e-05
+      },
+      {
+        "node": "/attn_norm_22/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010362458415329456
+      },
+      {
+        "node": "/attn_norm_23/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005453136400319636
+      },
+      {
+        "node": "/mlp_norm_24/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010362572502344847
+      },
+      {
+        "node": "/mlp_norm_25/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005453304038383067
+      },
+      {
+        "node": "/attn_norm_24/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010362631874158978
+      },
+      {
+        "node": "/attn_norm_25/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005491827032528818
+      },
+      {
+        "node": "/mlp_norm_26/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010362183675169945
+      },
+      {
+        "node": "/mlp_norm_27/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005490962066687644
+      },
+      {
+        "node": "/attn_norm_26/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.001036084839142859
+      },
+      {
+        "node": "/attn_norm_27/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005495640216395259
+      },
+      {
+        "node": "/mlp_norm_28/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010360664455220103
+      },
+      {
+        "node": "/mlp_norm_29/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005495348013937473
+      },
+      {
+        "node": "/attn_norm_28/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010359890293329954
+      },
+      {
+        "node": "/attn_norm_29/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.000549492659047246
+      },
+      {
+        "node": "/mlp_norm_30/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010360153391957283
+      },
+      {
+        "node": "/mlp_norm_31/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005495239747688174
+      },
+      {
+        "node": "/attn_norm_30/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.001035449211485684
+      },
+      {
+        "node": "/attn_norm_31/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005494638462550938
+      },
+      {
+        "node": "/mlp_norm_32/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010354508413001895
+      },
+      {
+        "node": "/mlp_norm_33/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.000549407210201025
+      },
+      {
+        "node": "/attn_norm_32/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010346864582970738
+      },
+      {
+        "node": "/attn_norm_33/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005494014476425946
+      },
+      {
+        "node": "/mlp_norm_34/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.001034727436490357
+      },
+      {
+        "node": "/mlp_norm_35/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005494308425113559
+      },
+      {
+        "node": "/attn_norm_34/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.001034596934914589
+      },
+      {
+        "node": "/attn_norm_35/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.000549398479051888
+      },
+      {
+        "node": "/mlp_norm_36/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010346570052206516
+      },
+      {
+        "node": "/mlp_norm_37/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005493956268765032
+      },
+      {
+        "node": "/attn_norm_36/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010331314988434315
+      },
+      {
+        "node": "/attn_norm_37/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005582621670328081
+      },
+      {
+        "node": "/mlp_norm_38/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010331139201298356
+      },
+      {
+        "node": "/mlp_norm_39/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005582232843153179
+      },
+      {
+        "node": "/attn_norm_38/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010330310324206948
+      },
+      {
+        "node": "/attn_norm_39/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005582067533396184
+      },
+      {
+        "node": "/mlp_norm_40/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010330787627026439
+      },
+      {
+        "node": "/mlp_norm_41/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005582301528193057
+      },
+      {
+        "node": "/attn_norm_40/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0010326891206204891
+      },
+      {
+        "node": "/attn_norm_41/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.000557807506993413
+      },
+      {
+        "node": "/mlp_norm_42/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.001032490050420165
+      },
+      {
+        "node": "/mlp_norm_43/LayerNormalization",
+        "channels": 768,
+        "gamma_scale": 0.003921568859368563,
+        "beta_scale": 0.0005576457479037344
+      }
+    ]
+  },
+  "static_unit_layernorm_source_sha256": "08979ec8f526d59bdad53a674c930f2cdca2757747a2f9fd4c924b60aeca36ff",
+  "static_unit_layernorm_seconds": 2.455439505000001
+}

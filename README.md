@@ -45,6 +45,24 @@ This creates FP32 and QDQ graphs, build metadata, and `manifest.json`. **The unc
 
 For larger buckets on memory-limited WSL, `--low-memory-calibration` disables the calibration arena and merges MinMax ranges after every sample; it does not discard samples. `--append-long-calibration` adds full-length repeated-state variants from the same selected calibration cases while retaining the originals; with `--samples 32` this means 64 sequences. It is restricted to the original maximum-length bucket. Rebuild and calibrate each bucket independently. Combine compatible corrected bucket manifests with `python -m npu.merge_manifests --output npu/fidelity/manifest.json <768-manifest> <1024-manifest>`.
 
+The separately selected 1024-token recipe also folds interior LayerNorm affine parameters into the adjacent projections. Its calibration uses the same reserved cases, including their full-length variants:
+
+```bash
+python npu/build_fidelity.py \
+  --model models/multilingual \
+  --parquet .work/dataset/all/test-00000-of-00001.parquet \
+  --length 1024 --samples 32 --threads 8 \
+  --activation-bits 16 --group-outliers --conv-linear --split-cls \
+  --zero-pad-embeddings --refine-matmul-rhs all --fold-norms \
+  --append-long-calibration --low-memory-calibration \
+  --indices 0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375 \
+  --output-dir .work/folded1024_long
+```
+
+The builder materializes folded unit LayerNorm parameters as static U8 gamma and I32 zero bias, preserving their exact dequantized values; V68 rejects the U16 gamma aliases produced by the exporter. Run the same Conv calibration workflow on this bucket's own graph. Do not reuse the 768-token correction. The [candidate declaration](reports/evaluation-plans/long-input-candidate.json) records selection before the independent long-input NPU evaluation.
+
+Use a fresh output directory for a new recipe. The builder rejects existing quantized graphs and incompatible manifests before writing. `--reuse-export` only finishes a verified FP32 export when no quantized graph exists; its sidecar must match the checkpoint, tokenizer/configuration files, calibration dataset, and requested export settings. Older sidecars without those input hashes require a fresh export.
+
 ## Evaluate on the Pi
 
 Copy the candidate directory, checkpoint, and pinned dataset to the Pi. Use the installed ARM QNN environment (currently ONNX Runtime 1.30.0 and `onnxruntime-qnn` 2.5.0). Before **every** QNN command, source `npu/env.sh`; it selects the wheel's matching backend, stub, and DSP skeleton. Mixing these with another vendor SDK caused device failures during investigation.
@@ -72,7 +90,7 @@ The benchmark records checkpoint/graph hashes, input token and marker identities
 
 ## Context cache and service status
 
-Persistent QNN context generation and strict reload have been validated on the Pi: the corrected 768 graph compiled in 419.5 seconds and reloaded in 1.62 seconds. Its embedded context contains a single QNN EPContext node. Cache publication is atomic; keys bind graph SHA256, runtime versions, backend/stub/skeleton hashes, and provider settings. A cache schema or binary change requires fresh preparation.
+Persistent QNN context generation and strict reload have been validated on the Pi: the corrected 768 graph's current schema-2 cache compiled in 442.4 seconds and reloaded in 1.43 seconds. Its embedded context contains a single QNN EPContext node, and a five-question replay exactly matches the qualified candidate's earlier outputs. Cache publication is atomic; keys bind graph SHA256, runtime versions, backend/stub/skeleton hashes, and provider settings. A cache schema or binary change requires fresh preparation.
 
 To test context precompilation after loading the QNN environment:
 
@@ -82,7 +100,7 @@ python npu/compile_contexts.py --manifest "$LAYA_NPU_MANIFEST" \
   --model-dir models/multilingual --verify-reload
 ```
 
-The CLI hashes the checkpoint without loading its tensors and compiles using only encoder configuration, reducing peak memory relative to loading the full agent first. `LAYA_NPU_CACHE_DIR` overrides the default `npu/fidelity/context_cache` directory. Compilation and cache reload are reported separately.
+The CLI hashes the checkpoint without loading its tensors and compiles using only encoder configuration, reducing peak memory relative to loading the full agent first. The measured 768-token compilation still peaked at about 5.04 GiB, so prepare caches outside the 4 GiB service cgroup before starting the service. `LAYA_NPU_CACHE_DIR` overrides the default `npu/fidelity/context_cache` directory. Compilation and cache reload are reported separately.
 
 The FastAPI entry point remains `app:app`, with `/health` and `/predict`. Service files are experimental integration scaffolding; no candidate is currently presented as a qualified replacement for original Laya. Final service validation also requires buckets covering the original input budget and measured memory use under the service limit.
 

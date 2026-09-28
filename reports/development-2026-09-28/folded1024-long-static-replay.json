@@ -1,0 +1,11 @@
+{
+  "source_before": "08979ec8f526d59bdad53a674c930f2cdca2757747a2f9fd4c924b60aeca36ff",
+  "source_after": "8d7a7f1fdbfd01fb58026eb5ece936d4cfb410b1e993fa97b7c3517a587da008",
+  "all_10_probe_api_outputs_identical": true,
+  "all_15_decision_metrics_identical": true,
+  "overall_identical": true,
+  "decisions": 15,
+  "mismatches": 0,
+  "mean_total_variation": 0.008244575065245764,
+  "scope": "CPUExecutionProvider diagnostic; no NPU qualification"
+}

@@ -1,0 +1,112 @@
+{
+  "original_u16": {
+    "cpu_vs_original": [
+      {
+        "mean_abs": 0.0,
+        "max_abs": 0.0,
+        "relative_rmse": 0.0,
+        "reference_min": -1.7016396522521973,
+        "reference_max": 1.7373696565628052,
+        "actual_min": -1.7016396522521973,
+        "actual_max": 1.7373696565628052
+      },
+      {
+        "mean_abs": 0.0,
+        "max_abs": 0.0,
+        "relative_rmse": 0.0,
+        "reference_min": 0.0,
+        "reference_max": 0.0,
+        "actual_min": 0.0,
+        "actual_max": 0.0
+      }
+    ],
+    "strict_htp_supported": false,
+    "error": "[ONNXRuntimeError] : 1 : FAIL : This session contains graph nodes that are assigned to the default CPU EP, but fallback to CPU EP has been explicitly disabled by the user."
+  },
+  "u8_code255": {
+    "cpu_vs_original": [
+      {
+        "mean_abs": 0.0,
+        "max_abs": 0.0,
+        "relative_rmse": 0.0,
+        "reference_min": -1.7016396522521973,
+        "reference_max": 1.7373696565628052,
+        "actual_min": -1.7016396522521973,
+        "actual_max": 1.7373696565628052
+      },
+      {
+        "mean_abs": 0.0,
+        "max_abs": 0.0,
+        "relative_rmse": 0.0,
+        "reference_min": 0.0,
+        "reference_max": 0.0,
+        "actual_min": 0.0,
+        "actual_max": 0.0
+      }
+    ],
+    "strict_htp_supported": true,
+    "htp_vs_cpu": [
+      {
+        "mean_abs": 2.4087451796125e-06,
+        "max_abs": 0.00044667720794677734,
+        "relative_rmse": 3.22280159459554e-05,
+        "reference_min": -1.7016396522521973,
+        "reference_max": 1.7373696565628052,
+        "actual_min": -1.7016397714614868,
+        "actual_max": 1.7373698949813843
+      },
+      {
+        "mean_abs": 0.0,
+        "max_abs": 0.0,
+        "relative_rmse": 0.0,
+        "reference_min": 0.0,
+        "reference_max": 0.0,
+        "actual_min": 0.0,
+        "actual_max": 0.0
+      }
+    ]
+  },
+  "u8_code1": {
+    "cpu_vs_original": [
+      {
+        "mean_abs": 0.0,
+        "max_abs": 0.0,
+        "relative_rmse": 0.0,
+        "reference_min": -1.7016396522521973,
+        "reference_max": 1.7373696565628052,
+        "actual_min": -1.7016396522521973,
+        "actual_max": 1.7373696565628052
+      },
+      {
+        "mean_abs": 0.0,
+        "max_abs": 0.0,
+        "relative_rmse": 0.0,
+        "reference_min": 0.0,
+        "reference_max": 0.0,
+        "actual_min": 0.0,
+        "actual_max": 0.0
+      }
+    ],
+    "strict_htp_supported": true,
+    "htp_vs_cpu": [
+      {
+        "mean_abs": 1.8275998930524413e-06,
+        "max_abs": 0.00044667720794677734,
+        "relative_rmse": 2.7910342600689916e-05,
+        "reference_min": -1.7016396522521973,
+        "reference_max": 1.7373696565628052,
+        "actual_min": -1.7016397714614868,
+        "actual_max": 1.7373698949813843
+      },
+      {
+        "mean_abs": 0.0,
+        "max_abs": 0.0,
+        "relative_rmse": 0.0,
+        "reference_min": 0.0,
+        "reference_max": 0.0,
+        "actual_min": 0.0,
+        "actual_max": 0.0
+      }
+    ]
+  }
+}

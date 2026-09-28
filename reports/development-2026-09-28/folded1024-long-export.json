@@ -1,0 +1,19 @@
+{
+  "config": {
+    "length": 1024,
+    "indices": "0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375",
+    "samples": 32,
+    "mask_penalty": -100,
+    "balance": false,
+    "group_outliers": true,
+    "outlier_ratio": 16,
+    "max_outliers": 8,
+    "conv_linear": true,
+    "split_cls": true,
+    "fold_norms": true,
+    "zero_pad_embeddings": true,
+    "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+    "append_long_calibration": true
+  },
+  "fp32_sha256": "62a4c5b0b95dcd877c7ed48c30c175785f5268e93855e96fa7c4cf1d4e25b601"
+}

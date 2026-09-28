@@ -1,0 +1,14 @@
+{
+  "selected_utc": "2026-09-28T16:51:36Z",
+  "candidate": "folded1024_long_static",
+  "prior_declaration": "long-input-candidate.json",
+  "reason_for_amendment": "The first folded graph failed strict HTP compilation before any long-input validation inference because its constant unit LayerNorm gamma was encoded as unsupported U16 aliases.",
+  "previous_uncorrected_graph_sha256": "08979ec8f526d59bdad53a674c930f2cdca2757747a2f9fd4c924b60aeca36ff",
+  "uncorrected_graph_sha256": "8d7a7f1fdbfd01fb58026eb5ece936d4cfb410b1e993fa97b7c3517a587da008",
+  "repair": "Materialize 86 LayerNorm constant-one gamma parameters as static U8 code255/scale1/255/zero0 and constant-zero beta as static I32 zero with matching activation*gamma scale. Remove 213 dead constant-parameter alias nodes. All 266 Conv nodes and 3493 original initializers remain byte-identical.",
+  "equivalence_evidence": "../development-2026-09-28/folded1024-long-static-replay.json",
+  "selection_basis": "Same fixed supplementary 15 development decisions as the prior declaration. Repaired CPU API outputs and all metrics are identical: zero decision mismatches, mean total variation 0.008244575065245764. No 80-question validation output was used.",
+  "remaining_graph_transformation": "Fresh zero-input HTP Conv calibration on this exact new source hash, followed by its measured negative-offset bias correction. Record the corrected output hash before validation inference.",
+  "validation_plan": "long-input-heldout.json",
+  "short_bucket_unchanged_sha256": "1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138"
+}

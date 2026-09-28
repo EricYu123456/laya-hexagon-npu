@@ -118,7 +118,7 @@ The helper checks the committed declaration's Git identity, dataset and input ha
 
 Follow the Python 3.12 setup, pinned checkpoint/dataset download, and corrected candidate build commands in [README.md](../README.md). Use [requirements-fidelity-build.txt](../requirements-fidelity-build.txt) for x86/WSL builds, not the target environment's requirements. Copy the graph directory and manifest together to the Pi. Keep recipes in separate directories because a manifest's bucket mapping alone is not a complete recipe description. Preserve the export sidecar and quantization metadata.
 
-For the earlier `grouped16` experiment, use only `--group-outliers --samples 16`. `clsconv16` adds `--conv-linear --split-cls --samples 32` but omits zero-padding, MatMul refinement, and measured offset correction. `--fold-norms` and `--balance` are additional experimental transformations, not part of the current corrected recipe.
+For the earlier `grouped16` experiment, use only `--group-outliers --samples 16`. `clsconv16` adds `--conv-linear --split-cls --samples 32` but omits zero-padding, MatMul refinement, and measured offset correction. The qualified 768-token recipe does not fold norms. The separately selected 1024-token recipe adds `--fold-norms` and `--append-long-calibration`; `--balance` is not part of either recipe.
 
 `npu/split_residual.py` is an unintegrated experimental alternative that separates residual feature bands and rescales before LayerNorm. Its fixed scaled epsilon is an approximation. It has CPU checks only and is not part of the measured or deployed recipe.
 
@@ -162,6 +162,27 @@ python benchmark_fidelity.py --backend npu --dataset-path "$DATA" \
 
 Use a fresh output filename for each run. The script refuses to overwrite evidence. A threshold failure returns exit code 1; inspect both the aggregate JSON and sibling `.cases.jsonl`. `selected_cases_pass` alone does not mean a full or held-out pass. Confirm `heldout_selection_pass`, complete selection, input equality, the actual provider, and zero CPU fallbacks.
 
+## Long-input validation design
+
+The public split's longest original sequence has 631 tokens, so its pass does not establish behavior at 1024 tokens. The 1024-token candidate was selected using only the fixed 15-decision Chinese/English supplementary probes. Its CPU QDQ diagnostic has zero decision differences and 0.8245% mean TV; these numbers do not qualify the NPU graph. The selected source hash and allowed zero-input HTP correction are recorded in the [candidate declaration](../reports/evaluation-plans/long-input-candidate.json).
+
+The initial folded graph failed strict HTP compilation because the exporter/quantizer represented constant-one LayerNorm gamma as U16 aliases. A [small hardware probe](../reports/development-2026-09-28/unit-layernorm-htp.json) verifies that static U8 gamma and a matching I32 zero-bias encoding are accepted, with bit-identical CPU outputs. `npu/unit_layernorm.py` materializes only those exact constant parameters; it rejects dynamic/non-unit gamma and nonzero beta. It does not alter calibration ranges, activations, or Conv weights. Whole-model NPU validation is still required after this compatibility repair.
+
+A separate [predeclared validation plan](../reports/evaluation-plans/long-input-heldout.json) selects source rows `2,27,...,377`, excluding every calibration and development row. `make_long_probe_suite.py` repeats each selected state while keeping its questions, criteria, tokenizer, sequence construction, and original budgets unchanged, until all 80 questions occupy 1024 tokens. These are synthetic stress inputs; their untransformed source rows were already present in the completed 768-token evaluation. They are not an independent natural-language dataset. Their transformed reference answers are excluded from 1024 model selection.
+
+To reproduce the additional validation with fresh output paths:
+
+```bash
+python make_long_probe_suite.py --dataset-path "$DATA" \
+  --output .work/long-validation-suite.json
+python benchmark_probes.py --suite .work/long-validation-suite.json \
+  --backend cpu --threads 4 --output .work/long-reference.json
+python benchmark_probes.py --suite .work/long-validation-suite.json \
+  --reference .work/long-reference.json --threads 4 --output .work/long-npu.json
+```
+
+For the final command, load the target QNN environment and point `LAYA_NPU_MANIFEST` at the corrected graph set. In addition to the 5% decision/mean-TV gates, the harness checks exact token/marker identities and verifies the expected NPU bucket-call increment separately for every request.
+
 ## Runtime, cache, and performance boundaries
 
 Strict NPU means the encoder runs through QNN HTP with `session.disable_cpu_ep_fallback=1`; CPU tokenization, embedding lookup, and original decision heads remain intentional parts of the API. `session.disable_fallback()` also prevents Python's provider-error retry. A CPU QDQ adapter supplied through `--module` is a distinct diagnostic and must identify its provider in the report.
@@ -170,7 +191,7 @@ Strict NPU means the encoder runs through QNN HTP with `session.disable_cpu_ep_f
 
 The manifest resolves graph paths relative to its directory and records checkpoint/graph hashes and mask policy. Loading verifies those identities. Context cache keys additionally bind runtime versions and provider options; cache entries are embedded single-file ONNX contexts published atomically. Invalid entries fail with an actionable error instead of falling back to CPU. QNN's context options are documented in [ORT's EPContext design](https://onnxruntime.ai/docs/execution-providers/EP-Context-Design.html).
 
-`npu/compile_contexts.py --manifest <path> --verify-reload` prepares buckets without loading checkpoint tensors or token embeddings, then releases the preparation adapter before reloading saved contexts. Set `LAYA_NPU_CONTEXT_CACHE=1` and optionally set `LAYA_NPU_CACHE_DIR`. Actual corrected-768 compilation took 419.5 seconds and strict reload took 1.62 seconds; the saved graph contains a single QNN EPContext. Cache schema changes require preparation again. A cache hit is not a fidelity test.
+`npu/compile_contexts.py --manifest <path> --verify-reload` prepares buckets without loading checkpoint tensors or token embeddings, then releases the preparation adapter before reloading saved contexts. Set `LAYA_NPU_CONTEXT_CACHE=1` and optionally set `LAYA_NPU_CACHE_DIR`. The initial corrected-768 cache compiled in 419.5 seconds and reloaded in 1.62 seconds. After upgrading the cache key to schema 2, preparation took 442.4 seconds and reload took 1.43 seconds; both saved graphs contain a single QNN EPContext. A [five-question equivalence replay](../reports/qualification-2026-09-29/cache-v2-equivalence.json) confirms unchanged outputs after the schema upgrade. Cache schema changes require preparation again. A cache hit alone is not a fidelity test.
 
 Latency reports include tokenization, heads, and inference but exclude model loading and warmup. Compare speed only with the same host, CPU thread count, original input contract, and measured selection. Compilation, cache reload, warm latency, bucket switching, and peak memory need separate measurements. Precompilation matters because loading full weights alongside graph compilation can exceed the service's 4 GiB memory limit; hardware memory qualification is still required.
 
