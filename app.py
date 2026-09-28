@@ -12,8 +12,11 @@ import torch
 import laya
 try:
     import laya_npu
-except ImportError:
+except ImportError as exc:
     laya_npu = None
+    _npu_import_error = exc
+else:
+    _npu_import_error = None
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field, model_validator
@@ -22,7 +25,17 @@ ROOT = Path(__file__).resolve().parent
 CHECKPOINT = os.environ.get('LAYA_CHECKPOINT', 'multilingual')
 DEVICE = os.environ.get('LAYA_DEVICE', 'npu')
 agent = None
+readiness = None
 lock = asyncio.Lock()
+
+WARMUP_STATE = {'service_check': 'ready'}
+WARMUP_QUESTIONS = {
+    'status': {
+        'type': 'choice',
+        'instructions': 'Choose the status explicitly stated in the input.',
+        'criteria': {'ready': 'The service check says ready.', 'unknown': 'The status is unavailable.'},
+    }
+}
 
 class Question(BaseModel):
     type: Literal['choice', 'score', 'noul']
@@ -56,7 +69,8 @@ class PredictRequest(BaseModel):
 
 @asynccontextmanager
 async def lifespan(app):
-    global agent
+    global agent, readiness
+    agent, readiness = None, None
     torch.set_num_threads(int(os.environ.get('LAYA_THREADS', '4')))
     torch.set_num_interop_threads(1)
     path = ROOT / 'models'
@@ -64,20 +78,50 @@ async def lifespan(app):
         path /= 'multilingual'
     elif CHECKPOINT != 'english':
         raise ValueError('LAYA_CHECKPOINT must be multilingual or english')
-    if DEVICE == 'npu' and laya_npu is not None:
-        agent = await asyncio.to_thread(laya_npu.load, str(path), device='npu')
+    if DEVICE == 'npu':
+        if laya_npu is None:
+            raise RuntimeError('LAYA_DEVICE=npu requires the strict laya_npu runtime') from _npu_import_error
+        candidate = await asyncio.to_thread(laya_npu.load, str(path), device='npu')
+        capacity = int(candidate.cfg.get('max_len', 512))
+        buckets = candidate.fidelity_metadata()['supported_buckets']
+        if not buckets or max(buckets) < capacity:
+            raise RuntimeError(
+                f'NPU buckets support at most {max(buckets, default=0)} tokens; '
+                f'the original Laya input capacity is {capacity}. Prepare a complete model set before starting the service.'
+            )
+        calls_before_warmup = candidate.npu_stats['npu_calls']
     else:
-        agent = await asyncio.to_thread(laya.load, str(path), device=DEVICE)
-    yield
+        candidate = await asyncio.to_thread(laya.load, str(path), device=DEVICE)
+        capacity = int(candidate.cfg.get('max_len', 512))
+    # Session/backend checks are lazy. An actual short prediction must succeed
+    # before publishing readiness; long-bucket qualification is done at deployment.
+    await asyncio.to_thread(candidate.predict, WARMUP_STATE, WARMUP_QUESTIONS)
+    if DEVICE == 'npu' and (candidate.npu_stats['npu_calls'] <= calls_before_warmup or candidate.npu_stats['cpu_fallbacks'] != 0):
+        raise RuntimeError('NPU startup warmup did not complete strict HTP inference')
+    readiness = {'supported_input_capacity': capacity,
+                 'encoder_provider': 'QNNExecutionProvider' if DEVICE == 'npu' else 'PyTorch',
+                 'cpu_fallbacks': 0}
+    agent = candidate
+    try:
+        yield
+    finally:
+        agent, readiness = None, None
 
 app = FastAPI(title='Laya on Rubik Pi 3', lifespan=lifespan)
 
 @app.get('/health')
 def health():
-    return {'status': 'ready', 'checkpoint': CHECKPOINT, 'device': DEVICE, 'threads': torch.get_num_threads(), 'revision': (ROOT / 'models/revision.txt').read_text().strip()}
+    if agent is None or readiness is None:
+        raise HTTPException(503, 'Model is not ready')
+    details = dict(readiness)
+    if DEVICE == 'npu':
+        details['cpu_fallbacks'] = agent.npu_stats['cpu_fallbacks']
+    return {'status': 'ready', 'checkpoint': CHECKPOINT, 'device': DEVICE, 'threads': torch.get_num_threads(), 'revision': (ROOT / 'models/revision.txt').read_text().strip(), **details}
 
 @app.post('/predict')
 async def predict(body: PredictRequest):
+    if agent is None:
+        raise HTTPException(503, 'Model is not ready')
     if lock.locked():
         raise HTTPException(503, 'Model busy; retry after current request', headers={'Retry-After': '2'})
     async with lock:

@@ -1,0 +1,1325 @@
+{
+  "refined_matmuls": 44,
+  "nodes": [
+    {
+      "node": "/attn/MatMul",
+      "rhs16_range": [
+        -9.629369666799903,
+        17.86783038172871
+      ],
+      "high8_range": [
+        -9.62937019765377,
+        17.960398346185684
+      ],
+      "existing_high8_range": [
+        -9.597061894834042,
+        17.900137916207314
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.05411471426486969,
+        0.05411471426486969
+      ],
+      "residual_scale": 0.0004261001304257661,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 794.9335327148438,
+      "partial_output_scale": 0.001323170494288206,
+      "partial_output_bound": 43.35765075683594,
+      "high_output_range": [
+        -247.65073582530022,
+        487.8605019301176
+      ]
+    },
+    {
+      "node": "/attn/MatMul_1",
+      "rhs16_range": [
+        -10.396806113305502,
+        17.856415342801483
+      ],
+      "high8_range": [
+        -10.425485223531723,
+        17.856416180729866
+      ],
+      "existing_high8_range": [
+        -5.034288112074137,
+        4.917211644351482
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.05547173693776131,
+        0.05547173693776131
+      ],
+      "residual_scale": 0.00043678536894731224,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.7333051118839649e-06,
+      "partial_output_bound": 0.05679694190621376,
+      "high_output_range": [
+        -3.2084492455614964,
+        3.2441905785308336
+      ]
+    },
+    {
+      "node": "/attn_1/MatMul",
+      "rhs16_range": [
+        -8.923519965319429,
+        8.583975796354935
+      ],
+      "high8_range": [
+        -8.92733596265316,
+        8.5839768871665
+      ],
+      "existing_high8_range": [
+        -8.925390094518661,
+        8.582105860114098
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.034344419836997986,
+        0.034344419836997986
+      ],
+      "residual_scale": 0.0002704285434447229,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 794.5366837084293,
+      "partial_output_scale": 0.0008393436437472701,
+      "partial_output_bound": 27.503612518310547,
+      "high_output_range": [
+        -237.7186114215292,
+        169.0515183340758
+      ]
+    },
+    {
+      "node": "/attn_1/MatMul_1",
+      "rhs16_range": [
+        -11.788653278665151,
+        11.254547503311187
+      ],
+      "high8_range": [
+        -11.788654178380966,
+        11.33524440228939
+      ],
+      "existing_high8_range": [
+        -5.109815087169409,
+        4.836771532893181
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.04535222053527832,
+        0.04535222053527832
+      ],
+      "residual_scale": 0.00035710411611944437,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.417104272150027e-06,
+      "partial_output_bound": 0.04643567278981209,
+      "high_output_range": [
+        -4.5694154855737,
+        4.010266600409523
+      ]
+    },
+    {
+      "node": "/attn_2/MatMul",
+      "rhs16_range": [
+        -10.547334706643596,
+        11.104022536892444
+      ],
+      "high8_range": [
+        -10.547335654497147,
+        11.142749764025211
+      ],
+      "existing_high8_range": [
+        -10.528503447771072,
+        11.122854448854923
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.042540207505226135,
+        0.042540207505226135
+      ],
+      "residual_scale": 0.0003349623002577573,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 584.2022500485182,
+      "partial_output_scale": 0.0007644207798875868,
+      "partial_output_bound": 25.048540115356445,
+      "high_output_range": [
+        -261.62064148299396,
+        147.10703896870837
+      ]
+    },
+    {
+      "node": "/attn_2/MatMul_1",
+      "rhs16_range": [
+        -9.200220908416668,
+        9.68344213248929
+      ],
+      "high8_range": [
+        -9.200222194194794,
+        9.719589576125145
+      ],
+      "existing_high8_range": [
+        -4.405777834355831,
+        5.035174667835236
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.037106938660144806,
+        0.037106938660144806
+      ],
+      "residual_scale": 0.0002921806590165943,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.1594670468184631e-06,
+      "partial_output_bound": 0.0379934161901474,
+      "high_output_range": [
+        -3.7836963962836307,
+        4.055592381511815
+      ]
+    },
+    {
+      "node": "/attn_3/MatMul",
+      "rhs16_range": [
+        -12.93401849269867,
+        14.074358448386192
+      ],
+      "high8_range": [
+        -12.934019580483437,
+        14.100201673805714
+      ],
+      "existing_high8_range": [
+        -12.921654850244522,
+        14.08672209084034
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.05302172526717186,
+        0.05302172526717186
+      ],
+      "residual_scale": 0.00041749392403289676,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 792.2634153664112,
+      "partial_output_scale": 0.0012920909794047475,
+      "partial_output_bound": 42.339237213134766,
+      "high_output_range": [
+        -358.1934927776456,
+        248.8458283804357
+      ]
+    },
+    {
+      "node": "/attn_3/MatMul_1",
+      "rhs16_range": [
+        -12.937609429936856,
+        14.07310207025148
+      ],
+      "high8_range": [
+        -12.937610015273094,
+        14.104115836322308
+      ],
+      "existing_high8_range": [
+        -5.611516579985619,
+        5.228913176804781
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.05303644388914108,
+        0.05303644388914108
+      ],
+      "residual_scale": 0.00041760981548577547,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.6572104186707293e-06,
+      "partial_output_bound": 0.05430347099900246,
+      "high_output_range": [
+        -4.082659328007139,
+        4.214198742600274
+      ]
+    },
+    {
+      "node": "/attn_4/MatMul",
+      "rhs16_range": [
+        -7.969984167139046,
+        7.90675339725567
+      ],
+      "high8_range": [
+        -7.969984531402588,
+        7.907719027251005
+      ],
+      "existing_high8_range": [
+        -7.969499588012695,
+        7.907237872481346
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.03114035353064537,
+        0.03114035353064537
+      ],
+      "residual_scale": 0.0002451996551826596,
+      "residual_zero_point": 127,
+      "contraction_length": 64,
+      "lhs_l1_bound": 630.1964043080807,
+      "partial_output_scale": 0.0006036276463419199,
+      "partial_output_bound": 19.77967071533203,
+      "high_output_range": [
+        -265.7676328085363,
+        169.77918796986341
+      ]
+    },
+    {
+      "node": "/attn_4/MatMul_1",
+      "rhs16_range": [
+        -9.096223967062542,
+        9.988810055074282
+      ],
+      "high8_range": [
+        -9.162668690085411,
+        9.988810949027538
+      ],
+      "existing_high8_range": [
+        -6.138107344508171,
+        5.719600025564432
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.03756144642829895,
+        0.03756144642829895
+      ],
+      "residual_scale": 0.000295759440632537,
+      "residual_zero_point": 127,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.1736688065866474e-06,
+      "partial_output_bound": 0.03845877945423126,
+      "high_output_range": [
+        -4.59196071808401,
+        4.364679231308401
+      ]
+    },
+    {
+      "node": "/attn_5/MatMul",
+      "rhs16_range": [
+        -7.281155855947873,
+        7.429077482098364
+      ],
+      "high8_range": [
+        -7.28115651011467,
+        7.454517379403114
+      ],
+      "existing_high8_range": [
+        -7.268585868179798,
+        7.441647436469793
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.028900587931275368,
+        0.028900587931275368
+      ],
+      "residual_scale": 0.00022756369435228407,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 566.6926136948168,
+      "partial_output_scale": 0.0005037602386437356,
+      "partial_output_bound": 16.50721549987793,
+      "high_output_range": [
+        -222.4672094276175,
+        119.98096480639651
+      ]
+    },
+    {
+      "node": "/attn_5/MatMul_1",
+      "rhs16_range": [
+        -7.274962027368019,
+        7.882076168898493
+      ],
+      "high8_range": [
+        -7.274962604045868,
+        7.930901855230331
+      ],
+      "existing_high8_range": [
+        -4.033629894256592,
+        4.002117160707712
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.02982298471033573,
+        0.02982298471033573
+      ],
+      "residual_scale": 0.0002348266716580838,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 9.318679303760291e-07,
+      "partial_output_bound": 0.030535448342561722,
+      "high_output_range": [
+        -3.6610968051536474,
+        3.610610396717675
+      ]
+    },
+    {
+      "node": "/attn_6/MatMul",
+      "rhs16_range": [
+        -13.36270126834279,
+        14.345719159464352
+      ],
+      "high8_range": [
+        -13.367602720856667,
+        14.345719993114471
+      ],
+      "existing_high8_range": [
+        -13.365237437188625,
+        14.343181639909744
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.05435353145003319,
+        0.05435353145003319
+      ],
+      "residual_scale": 0.0004279805871192366,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 905.2546756267548,
+      "partial_output_scale": 0.0015134502900764346,
+      "partial_output_bound": 49.59273910522461,
+      "high_output_range": [
+        -372.1329492945224,
+        255.99595484230667
+      ]
+    },
+    {
+      "node": "/attn_6/MatMul_1",
+      "rhs16_range": [
+        -13.348113090440165,
+        14.354600637336262
+      ],
+      "high8_range": [
+        -13.375878922641277,
+        14.35460177063942
+      ],
+      "existing_high8_range": [
+        -5.821337357163429,
+        6.346212036907673
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.054387181997299194,
+        0.054387181997299194
+      ],
+      "residual_scale": 0.0004282455483917147,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.6994164298012038e-06,
+      "partial_output_bound": 0.055686477571725845,
+      "high_output_range": [
+        -5.852932674839394,
+        6.240261815531994
+      ]
+    },
+    {
+      "node": "/attn_7/MatMul",
+      "rhs16_range": [
+        -7.949838382774033,
+        8.48526125177159
+      ],
+      "high8_range": [
+        -7.949839375913143,
+        8.531534940004349
+      ],
+      "existing_high8_range": [
+        -7.927519015967846,
+        8.507581382989883
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.03232455626130104,
+        0.03232455626130104
+      ],
+      "residual_scale": 0.00025452408590354025,
+      "residual_zero_point": 127,
+      "contraction_length": 64,
+      "lhs_l1_bound": 511.20495513267815,
+      "partial_output_scale": 0.0005082732532173395,
+      "partial_output_bound": 16.65509796142578,
+      "high_output_range": [
+        -205.82540126144886,
+        155.37767477938905
+      ]
+    },
+    {
+      "node": "/attn_7/MatMul_1",
+      "rhs16_range": [
+        -8.05496081407182,
+        8.895296288654208
+      ],
+      "high8_range": [
+        -8.054961748421192,
+        8.920370861887932
+      ],
+      "existing_high8_range": [
+        -5.822376802563667,
+        4.633299849927425
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.0332934744656086,
+        0.0332934744656086
+      ],
+      "residual_scale": 0.0002621533640194684,
+      "residual_zero_point": 127,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.040309143718332e-06,
+      "partial_output_bound": 0.034088850021362305,
+      "high_output_range": [
+        -5.378935416272725,
+        4.100413079315331
+      ]
+    },
+    {
+      "node": "/attn_8/MatMul",
+      "rhs16_range": [
+        -8.629408658947796,
+        8.393296068767086
+      ],
+      "high8_range": [
+        -8.629409909248352,
+        8.428725957870483
+      ],
+      "existing_high8_range": [
+        -8.61148589104414,
+        8.411218777298927
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.03345555439591408,
+        0.03345555439591408
+      ],
+      "residual_scale": 0.00026342959608882666,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 630.5286886096001,
+      "partial_output_scale": 0.000648847664706409,
+      "partial_output_bound": 21.26144027709961,
+      "high_output_range": [
+        -233.45107806148008,
+        158.38440409395844
+      ]
+    },
+    {
+      "node": "/attn_8/MatMul_1",
+      "rhs16_range": [
+        -9.930951192975044,
+        8.831297608674504
+      ],
+      "high8_range": [
+        -9.935210645198822,
+        8.831298351287842
+      ],
+      "existing_high8_range": [
+        -9.368642121553421,
+        6.348487753421068
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.03680654987692833,
+        0.03680654987692833
+      ],
+      "residual_scale": 0.00028981539071537554,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.1500809478093288e-06,
+      "partial_output_bound": 0.037685852497816086,
+      "high_output_range": [
+        -9.308797674544621,
+        6.044603835529415
+      ]
+    },
+    {
+      "node": "/attn_9/MatMul",
+      "rhs16_range": [
+        -15.758358987630345,
+        15.95823621074669
+      ],
+      "high8_range": [
+        -15.833562970161438,
+        15.958236694335938
+      ],
+      "existing_high8_range": [
+        -15.796107649803162,
+        15.920486450195312
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.06235207989811897,
+        0.06235207989811897
+      ],
+      "residual_scale": 0.0004909613053314388,
+      "residual_zero_point": 127,
+      "contraction_length": 64,
+      "lhs_l1_bound": 1184.3284558951855,
+      "partial_output_scale": 0.0022713954094797373,
+      "partial_output_bound": 74.42908477783203,
+      "high_output_range": [
+        -495.17346443608403,
+        381.4119756454602
+      ]
+    },
+    {
+      "node": "/attn_9/MatMul_1",
+      "rhs16_range": [
+        -15.757868086802773,
+        18.503026514372323
+      ],
+      "high8_range": [
+        -15.7578706741333,
+        18.586206436157227
+      ],
+      "existing_high8_range": [
+        -9.109867572784424,
+        7.02218958735466
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.06735905259847641,
+        0.06735905259847641
+      ],
+      "residual_scale": 0.0005303862853907049,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 2.1047437712695682e-06,
+      "partial_output_bound": 0.06896824389696121,
+      "high_output_range": [
+        -8.860484661097871,
+        6.342737370243412
+      ]
+    },
+    {
+      "node": "/attn_10/MatMul",
+      "rhs16_range": [
+        -8.213003601733362,
+        7.944027918681968
+      ],
+      "high8_range": [
+        -8.261789977550507,
+        7.944028824567795
+      ],
+      "existing_high8_range": [
+        -8.236917927861214,
+        7.920113392174244
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.031783994287252426,
+        0.031783994287252426
+      ],
+      "residual_scale": 0.00025026770890690386,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 528.0859753638506,
+      "partial_output_scale": 0.0005162770394235849,
+      "partial_output_bound": 16.91736602783203,
+      "high_output_range": [
+        -208.33552768547088,
+        145.87162239151075
+      ]
+    },
+    {
+      "node": "/attn_10/MatMul_1",
+      "rhs16_range": [
+        -8.384273087256588,
+        8.410156009951606
+      ],
+      "high8_range": [
+        -8.38427373021841,
+        8.450291633605957
+      ],
+      "existing_high8_range": [
+        -5.7021456733345985,
+        8.414816915988922
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.03301700949668884,
+        0.03301700949668884
+      ],
+      "residual_scale": 0.0002599764848127961,
+      "residual_zero_point": 127,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.0316705356672173e-06,
+      "partial_output_bound": 0.03380578011274338,
+      "high_output_range": [
+        -5.628384236639249,
+        8.39070135296788
+      ]
+    },
+    {
+      "node": "/attn_11/MatMul",
+      "rhs16_range": [
+        -11.448406950366916,
+        10.116691767470911
+      ],
+      "high8_range": [
+        -11.448408029973507,
+        10.176362693309784
+      ],
+      "existing_high8_range": [
+        -11.416816972196102,
+        10.148281753063202
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.04241243004798889,
+        0.04241243004798889
+      ],
+      "residual_scale": 0.000333956180838868,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 722.380073659122,
+      "partial_output_scale": 0.0009423854062333703,
+      "partial_output_bound": 30.880084991455078,
+      "high_output_range": [
+        -207.32440075697377,
+        189.4112141467631
+      ]
+    },
+    {
+      "node": "/attn_11/MatMul_1",
+      "rhs16_range": [
+        -10.808344209333882,
+        9.162469982577022
+      ],
+      "high8_range": [
+        -10.808345630764961,
+        9.163597382605076
+      ],
+      "existing_high8_range": [
+        -10.050941348075867,
+        6.068492889404297
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.03917098045349121,
+        0.03917098045349121
+      ],
+      "residual_scale": 0.00030843293643556535,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.2239613624842605e-06,
+      "partial_output_bound": 0.04010676592588425,
+      "high_output_range": [
+        -10.082182142257807,
+        5.180477687565144
+      ]
+    },
+    {
+      "node": "/attn_12/MatMul",
+      "rhs16_range": [
+        -15.72179831066751,
+        14.202631775289774
+      ],
+      "high8_range": [
+        -15.72853571176529,
+        14.202632993459702
+      ],
+      "existing_high8_range": [
+        -15.724995464086533,
+        14.199436202645302
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.05870356783270836,
+        0.05870356783270836
+      ],
+      "residual_scale": 0.00046223285607993603,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 1149.8905764818192,
+      "partial_output_scale": 0.002076302655041218,
+      "partial_output_bound": 68.03628540039062,
+      "high_output_range": [
+        -353.5289682811126,
+        487.8306909520179
+      ]
+    },
+    {
+      "node": "/attn_12/MatMul_1",
+      "rhs16_range": [
+        -15.713362751179375,
+        18.43264255084796
+      ],
+      "high8_range": [
+        -15.713364243507385,
+        18.533711671829224
+      ],
+      "existing_high8_range": [
+        -12.876751452684402,
+        13.183340772986412
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.06716880202293396,
+        0.06716880202293396
+      ],
+      "residual_scale": 0.0005288882530294359,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 2.098799086525105e-06,
+      "partial_output_bound": 0.06877344846725464,
+      "high_output_range": [
+        -11.965108705335297,
+        13.185912849148735
+      ]
+    },
+    {
+      "node": "/attn_13/MatMul",
+      "rhs16_range": [
+        -11.593908237642609,
+        11.890985786216334
+      ],
+      "high8_range": [
+        -11.614451721310616,
+        11.890986286103725
+      ],
+      "existing_high8_range": [
+        -11.604300767183304,
+        11.88059364259243
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.0461004339158535,
+        0.0461004339158535
+      ],
+      "residual_scale": 0.0003629955754149705,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 700.1556372325867,
+      "partial_output_scale": 0.0009928171057254076,
+      "partial_output_bound": 32.532630920410156,
+      "high_output_range": [
+        -265.11723982170224,
+        150.4899438098073
+      ]
+    },
+    {
+      "node": "/attn_13/MatMul_1",
+      "rhs16_range": [
+        -11.59280221539666,
+        11.930568165320437
+      ],
+      "high8_range": [
+        -11.653114154934883,
+        11.930569253861904
+      ],
+      "existing_high8_range": [
+        -7.973163619637489,
+        7.429538827389479
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.04625389352440834,
+        0.04625389352440834
+      ],
+      "residual_scale": 0.0003642039082478732,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.4452785990215489e-06,
+      "partial_output_bound": 0.04735888913273811,
+      "high_output_range": [
+        -6.203803402459016,
+        6.044012713828124
+      ]
+    },
+    {
+      "node": "/attn_14/MatMul",
+      "rhs16_range": [
+        -10.258373057004064,
+        11.506793942826334
+      ],
+      "high8_range": [
+        -10.25837391614914,
+        11.540670655667782
+      ],
+      "existing_high8_range": [
+        -10.24243175983429,
+        11.522735729813576
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.04275422915816307,
+        0.04275422915816307
+      ],
+      "residual_scale": 0.00033664749935269356,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 699.7162191979587,
+      "partial_output_scale": 0.000920175458304584,
+      "partial_output_bound": 30.15230941772461,
+      "high_output_range": [
+        -218.34869289956987,
+        140.347860109061
+      ]
+    },
+    {
+      "node": "/attn_14/MatMul_1",
+      "rhs16_range": [
+        -10.260627600364387,
+        11.4586950672674
+      ],
+      "high8_range": [
+        -10.260628759860992,
+        11.543207354843616
+      ],
+      "existing_high8_range": [
+        -8.294335164129734,
+        8.359644889831543
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.04276362806558609,
+        0.04276362806558609
+      ],
+      "residual_scale": 0.00033672151039354503,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.336219497716229e-06,
+      "partial_output_bound": 0.04378524050116539,
+      "high_output_range": [
+        -5.683172356293653,
+        7.03917436854681
+      ]
+    },
+    {
+      "node": "/attn_15/MatMul",
+      "rhs16_range": [
+        -16.360171450767666,
+        15.181480585772078
+      ],
+      "high8_range": [
+        -16.360172241926193,
+        15.244705952703953
+      ],
+      "existing_high8_range": [
+        -16.32744410634041,
+        15.214209280908108
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.06198595091700554,
+        0.06198595091700554
+      ],
+      "residual_scale": 0.00048807839630171657,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 932.9006376191974,
+      "partial_output_scale": 0.0017786818789318204,
+      "partial_output_bound": 58.28384780883789,
+      "high_output_range": [
+        -414.2654595337808,
+        359.60395756177604
+      ]
+    },
+    {
+      "node": "/attn_15/MatMul_1",
+      "rhs16_range": [
+        -16.35643074620748,
+        15.172444156807614
+      ],
+      "high8_range": [
+        -16.35643208026886,
+        15.24122080206871
+      ],
+      "existing_high8_range": [
+        -9.764163754880428,
+        10.154730305075645
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.06197177991271019,
+        0.06197177991271019
+      ],
+      "residual_scale": 0.00048796681221574545,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.9364097170182504e-06,
+      "partial_output_bound": 0.06345227360725403,
+      "high_output_range": [
+        -8.425649805081775,
+        10.179254672024399
+      ]
+    },
+    {
+      "node": "/attn_16/MatMul",
+      "rhs16_range": [
+        -11.779205437051132,
+        9.873162685835268
+      ],
+      "high8_range": [
+        -11.830773815512657,
+        9.873163759708405
+      ],
+      "existing_high8_range": [
+        -11.802663691341877,
+        9.849704951047897
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.04256802424788475,
+        0.04256802424788475
+      ],
+      "residual_scale": 0.0003351813356857747,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 572.797365039587,
+      "partial_output_scale": 0.0007499877247028053,
+      "partial_output_bound": 24.575597763061523,
+      "high_output_range": [
+        -221.69141150079668,
+        162.0322864735499
+      ]
+    },
+    {
+      "node": "/attn_16/MatMul_1",
+      "rhs16_range": [
+        -11.785400343680521,
+        9.871673136483878
+      ],
+      "high8_range": [
+        -11.828988388180733,
+        9.87167376279831
+      ],
+      "existing_high8_range": [
+        -9.257586792111397,
+        7.848823584616184
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.042561598122119904,
+        0.042561598122119904
+      ],
+      "residual_scale": 0.0003351307241246104,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.3299068086780608e-06,
+      "partial_output_bound": 0.043578386306762695,
+      "high_output_range": [
+        -7.9072671839094255,
+        6.712644084182102
+      ]
+    },
+    {
+      "node": "/attn_17/MatMul",
+      "rhs16_range": [
+        -13.64587439771276,
+        12.167610726814019
+      ],
+      "high8_range": [
+        -13.688562847673893,
+        12.167611420154572
+      ],
+      "existing_high8_range": [
+        -13.665961883962154,
+        12.147521674633026
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.050711434334516525,
+        0.050711434334516525
+      ],
+      "residual_scale": 0.0003993026621174067,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 588.3258320465684,
+      "partial_output_scale": 0.000917684577871114,
+      "partial_output_bound": 30.070688247680664,
+      "high_output_range": [
+        -264.8106061844155,
+        188.94568404974416
+      ]
+    },
+    {
+      "node": "/attn_17/MatMul_1",
+      "rhs16_range": [
+        -13.647629296494415,
+        12.174392990244087
+      ],
+      "high8_range": [
+        -13.696193061769009,
+        12.174393832683563
+      ],
+      "existing_high8_range": [
+        -7.56902502477169,
+        7.996308695524931
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.050739701837301254,
+        0.050739701837301254
+      ],
+      "residual_scale": 0.0003995252482127398,
+      "residual_zero_point": 127,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.5854450339247705e-06,
+      "partial_output_bound": 0.05195186287164688,
+      "high_output_range": [
+        -7.192712002492044,
+        7.5478715575591195
+      ]
+    },
+    {
+      "node": "/attn_18/MatMul",
+      "rhs16_range": [
+        -14.739803386648418,
+        14.166831408336293
+      ],
+      "high8_range": [
+        -14.739803895354271,
+        14.172888360917568
+      ],
+      "existing_high8_range": [
+        -14.736716076731682,
+        14.169919304549694
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.05670560896396637,
+        0.05670560896396637
+      ],
+      "residual_scale": 0.00044650089694187045,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 868.7639594599605,
+      "partial_output_scale": 0.0015152959385886788,
+      "partial_output_bound": 49.65321731567383,
+      "high_output_range": [
+        -337.4823829168454,
+        300.13136184215546
+      ]
+    },
+    {
+      "node": "/attn_18/MatMul_1",
+      "rhs16_range": [
+        -14.733275571779814,
+        14.16661112671136
+      ],
+      "high8_range": [
+        -14.733276665210724,
+        14.166612178087234
+      ],
+      "existing_high8_range": [
+        -8.761637568473816,
+        8.293458461761475
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.056680500507354736,
+        0.056680500507354736
+      ],
+      "residual_scale": 0.00044630319462157786,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.7710749489197042e-06,
+      "partial_output_bound": 0.05803458392620087,
+      "high_output_range": [
+        -7.860516091357567,
+        7.074943073268514
+      ]
+    },
+    {
+      "node": "/attn_19/MatMul",
+      "rhs16_range": [
+        -11.30098652720335,
+        11.539727491617668
+      ],
+      "high8_range": [
+        -11.300987854599953,
+        11.57005899399519
+      ],
+      "existing_high8_range": [
+        -11.285999402403831,
+        11.554713673889637
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.044856224209070206,
+        0.044856224209070206
+      ],
+      "residual_scale": 0.0003531986440066248,
+      "residual_zero_point": 127,
+      "contraction_length": 64,
+      "lhs_l1_bound": 738.9873728398234,
+      "partial_output_scale": 0.0010195989161729813,
+      "partial_output_bound": 33.41021728515625,
+      "high_output_range": [
+        -249.60845412872732,
+        268.93874809425324
+      ]
+    },
+    {
+      "node": "/attn_19/MatMul_1",
+      "rhs16_range": [
+        -11.52087627677247,
+        11.528965791803785
+      ],
+      "high8_range": [
+        -11.520877674221992,
+        11.611593246459961
+      ],
+      "existing_high8_range": [
+        -8.593799591064453,
+        8.526660531759262
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.04536886140704155,
+        0.04536886140704155
+      ],
+      "residual_scale": 0.00035723517066799104,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.4176243894326035e-06,
+      "partial_output_bound": 0.04645271599292755,
+      "high_output_range": [
+        -5.881263492483413,
+        5.896539501554798
+      ]
+    },
+    {
+      "node": "/attn_20/MatMul",
+      "rhs16_range": [
+        -11.52429146299255,
+        12.296697057026904
+      ],
+      "high8_range": [
+        -11.524292528629303,
+        12.367533445358276
+      ],
+      "existing_high8_range": [
+        -11.490123756229877,
+        12.330864518880844
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.04685851186513901,
+        0.04685851186513901
+      ],
+      "residual_scale": 0.00036896468373015523,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 765.4361665919423,
+      "partial_output_scale": 0.0011032326146960258,
+      "partial_output_bound": 36.150726318359375,
+      "high_output_range": [
+        -273.9732437124476,
+        229.25937286019325
+      ]
+    },
+    {
+      "node": "/attn_20/MatMul_1",
+      "rhs16_range": [
+        -11.955777414841577,
+        12.30937814048957
+      ],
+      "high8_range": [
+        -12.023114696145058,
+        12.309379331767559
+      ],
+      "existing_high8_range": [
+        -9.17448078095913,
+        9.392920799553394
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.04772251099348068,
+        0.04772251099348068
+      ],
+      "residual_scale": 0.00037576782051473856,
+      "residual_zero_point": 128,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.4911678363205283e-06,
+      "partial_output_bound": 0.04886258766055107,
+      "high_output_range": [
+        -6.794554192383657,
+        7.430315915844403
+      ]
+    },
+    {
+      "node": "/attn_21/MatMul",
+      "rhs16_range": [
+        -14.39519274327904,
+        11.085278206126532
+      ],
+      "high8_range": [
+        -14.395193696022034,
+        11.096295140683651
+      ],
+      "existing_high8_range": [
+        -14.388972043991089,
+        11.091499283909798
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.04999703913927078,
+        0.04999703913927078
+      ],
+      "residual_scale": 0.0003936775028705597,
+      "residual_zero_point": 128,
+      "contraction_length": 64,
+      "lhs_l1_bound": 887.8725950662047,
+      "partial_output_scale": 0.001365414704196155,
+      "partial_output_bound": 44.74190902709961,
+      "high_output_range": [
+        -217.20204502344131,
+        283.58377050608397
+      ]
+    },
+    {
+      "node": "/attn_21/MatMul_1",
+      "rhs16_range": [
+        -14.38726261665579,
+        13.867734553932678
+      ],
+      "high8_range": [
+        -14.422445297241211,
+        13.867735862731934
+      ],
+      "existing_high8_range": [
+        -9.637341469526291,
+        11.189116790890694
+      ],
+      "expanded_high_range": true,
+      "residual_range": [
+        -0.055484697222709656,
+        0.055484697222709656
+      ],
+      "residual_scale": 0.00043688740697689354,
+      "residual_zero_point": 127,
+      "contraction_length": 768,
+      "lhs_l1_bound": 1.0158594644083314,
+      "partial_output_scale": 1.7337100643999293e-06,
+      "partial_output_bound": 0.05681021139025688,
+      "high_output_range": [
+        -7.43027639365755,
+        9.99290821555769
+      ]
+    }
+  ]
+}

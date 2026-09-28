@@ -2,9 +2,9 @@
 
 Experimental acceleration of the multilingual [Laya decision agent](https://huggingface.co/convaiinnovations/laya) on the Qualcomm Hexagon HTP V68 in the Rubik Pi 3 (QCS6490).
 
-**The fidelity target has not been achieved.** As of 2026-09-28, the best measured hardware candidate disagrees with original Laya on **12.5% of 80 development decisions**, with **8.551% mean total variation** between output distributions. These are development results from 16 cases, not a held-out qualification or a completed deployment.
+**Development target reached; independent qualification is in progress.** As of 2026-09-28, the corrected hardware candidate disagrees with original Laya on **5.0% of 80 development decisions**, with **2.4568% mean total variation** between output distributions. These are development results from 16 cases, not a held-out qualification or a completed deployment.
 
-The goal is decision mismatch **≤5%** and mean total variation **≤5%**, with identical preprocessed inputs. See [the evaluation method](docs/fidelity-method.md) and [hardware evidence](reports/development-2026-09-28/grouped16-npu.json) for definitions, results, and remaining work.
+The goal is decision mismatch **≤5%** and mean total variation **≤5%**, with identical preprocessed inputs. See [the evaluation method](docs/fidelity-method.md) and [hardware evidence](reports/development-2026-09-28/refined32-corrected-npu.json) for definitions, results, and remaining work.
 
 ## What runs where
 
@@ -12,7 +12,7 @@ The goal is decision mismatch **≤5%** and mean total variation **≤5%**, with
 
 The checkpoint uses `max_len=1024` and `head_max_len=256`. The runtime selects a static ONNX bucket large enough for the unchanged input and rejects sequences beyond the available buckets instead of silently truncating them. Current measured candidates have a 768-token bucket; a validated set covering the complete 1024-token API budget is still pending.
 
-The new build path uses 16-bit activation quantization, 8-bit weights, native GELU, and separate GeGLU groups for extreme channels. It preserves outlier values rather than clamping them. Experimental alternatives include CLS/rest separation, per-channel convolution weights, and folding normalization affine weights into projections. CPU ONNX results are diagnostics; hardware results decide whether a candidate is acceptable.
+The current recipe uses 16-bit activations, per-channel 8-bit convolution weights, native GELU, separate GeGLU outlier channels, and separate CLS/rest residual paths. Masked padding embeddings are zeroed without changing input tokens. Dynamic attention MatMuls approximate their 16-bit right operand using two supported 8-bit terms. Finally, [zero-input HTP calibration](npu/CONV_OFFSET_CALIBRATION.md) corrects measured per-channel Conv offsets. CPU ONNX results are diagnostics; hardware results decide whether a candidate is acceptable.
 
 ## Reproduce an experimental build
 
@@ -28,19 +28,22 @@ python download.py
 python -c "from huggingface_hub import hf_hub_download; hf_hub_download('LocalLLaMA/typed-decisions', 'all/test-00000-of-00001.parquet', repo_type='dataset', revision='c76749ec58bd8c3d2ea706b31c333a9059c38f90', local_dir='.work/dataset')"
 ```
 
-Build the `grouped16` recipe used by the best hardware result currently recorded:
+Build the uncorrected `refined32` recipe:
 
 ```bash
 python npu/build_fidelity.py \
   --model models/multilingual \
   --parquet .work/dataset/all/test-00000-of-00001.parquet \
-  --length 768 --samples 16 --threads 8 \
-  --activation-bits 16 --group-outliers \
+  --length 768 --samples 32 --threads 8 \
+  --activation-bits 16 --group-outliers --conv-linear --split-cls \
+  --zero-pad-embeddings --refine-matmul-rhs all \
   --indices 0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375 \
-  --output-dir .work/grouped16
+  --output-dir .work/refined32
 ```
 
-This creates FP32 and QDQ graphs, build metadata, and `manifest.json`. It does not certify the candidate. Keep each recipe in its own output directory and retain its metadata. Large checkpoints, generated graphs, and context binaries are not stored in Git.
+This creates FP32 and QDQ graphs, build metadata, and `manifest.json`. **The uncorrected graph fails hardware fidelity.** Follow the [Conv calibration workflow](npu/CONV_OFFSET_CALIBRATION.md) on the Pi to produce a separate corrected graph and manifest before evaluation. Keep each recipe in its own output directory and retain its metadata. Large checkpoints, generated graphs, and context binaries are not stored in Git.
+
+For larger buckets on memory-limited WSL, `--low-memory-calibration` disables the calibration arena and merges MinMax ranges after every sample; it does not discard samples. Rebuild and calibrate each bucket independently. Combine compatible corrected bucket manifests with `python -m npu.merge_manifests --output npu/fidelity/manifest.json <768-manifest> <1024-manifest>`.
 
 ## Evaluate on the Pi
 
@@ -49,8 +52,8 @@ Copy the candidate directory, checkpoint, and pinned dataset to the Pi. Use the 
 ```bash
 source .venv/bin/activate
 source npu/env.sh
-export LAYA_NPU_MANIFEST="$PWD/.work/grouped16/manifest.json"
-export LAYA_NPU_CONTEXT_CACHE=0
+export LAYA_NPU_MANIFEST="$PWD/.work/corrected_768/manifest.json"
+export LAYA_NPU_CONTEXT_CACHE=1
 ```
 
 Capture unchanged Laya on the development selection, then compare the actual HTP candidate. Use new output paths for each experiment:
@@ -62,14 +65,14 @@ python benchmark_fidelity.py --backend cpu --dataset-path "$DATA" \
   --indices "$DEV" --threads 4 --output .work/reference-dev.jsonl
 python benchmark_fidelity.py --backend npu --dataset-path "$DATA" \
   --indices "$DEV" --threads 4 --reference .work/reference-dev.jsonl \
-  --output .work/grouped16-dev.json
+  --output .work/corrected-dev.json
 ```
 
-The benchmark records checkpoint/graph hashes, input token and marker identities, probability errors, decision mismatches, and runtime statistics. A failed threshold returns exit code 1. A development pass would still require the declared held-out evaluation described in [the method](docs/fidelity-method.md).
+The benchmark records checkpoint/graph hashes, input token and marker identities, probability errors, decision mismatches, and runtime statistics. A failed threshold returns exit code 1. A development pass still requires the declared held-out evaluation described in [the method](docs/fidelity-method.md). Supplementary Chinese, English, and 1024-token probes are available through `benchmark_probes.py`; capture their unchanged CPU reference before NPU comparison.
 
 ## Context cache and service status
 
-Persistent QNN context caching is implemented, with atomic publication and keys derived from graph SHA256, runtime versions, and provider settings. Its target-device generation/reload validation is pending at this milestone. The evaluation commands above disable it to keep that separate from numerical testing.
+Persistent QNN context generation and strict reload have been validated on the Pi: the corrected 768 graph compiled in 419.5 seconds and reloaded in 1.62 seconds. Its embedded context contains a single QNN EPContext node. Cache publication is atomic; keys bind graph SHA256, runtime versions, backend/stub/skeleton hashes, and provider settings. A cache schema or binary change requires fresh preparation.
 
 To test context precompilation after loading the QNN environment:
 

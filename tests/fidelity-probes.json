@@ -1,0 +1,154 @@
+[
+  {
+    "id": "refund-language-1",
+    "state": "我想了解你們的新方案價格。",
+    "questions": {
+      "refund": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    }
+  },
+  {
+    "id": "refund-language-2",
+    "state": "I only want information about pricing. I do not want a refund.",
+    "questions": {
+      "refund": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    }
+  },
+  {
+    "id": "refund-language-3",
+    "state": "我只是想查詢新方案的價格，不需要退款。",
+    "questions": {
+      "refund": {
+        "type": "noul",
+        "instructions": "使用者是否明確要求退款？"
+      }
+    }
+  },
+  {
+    "id": "refund-language-4",
+    "state": "我的信用卡被重複扣款了，請幫我退款。",
+    "questions": {
+      "refund": {
+        "type": "noul",
+        "instructions": "使用者是否明確要求退款？"
+      }
+    }
+  },
+  {
+    "id": "billing-example",
+    "state": "我的信用卡被重複扣款了，請幫我退款。",
+    "questions": {
+      "department": {
+        "type": "choice",
+        "instructions": "Which department should handle this request?",
+        "criteria": {
+          "billing": "payments, invoices, refunds",
+          "technical": "bugs, outages, system errors",
+          "sales": "pricing and new contracts"
+        }
+      },
+      "refund_requested": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    }
+  },
+  {
+    "id": "urgency-score",
+    "state": "The entire production system is down. All customers are blocked.",
+    "questions": {
+      "urgency": {
+        "type": "score",
+        "instructions": "How urgent is this issue?",
+        "criteria": [
+          "not urgent",
+          "soon",
+          "critical deadline or blocking issue"
+        ]
+      }
+    }
+  },
+  {
+    "id": "long-english-1024",
+    "state": "Customer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\nCustomer support history. The customer was charged twice and requests a refund.\n",
+    "questions": {
+      "department": {
+        "type": "choice",
+        "instructions": "Which department should handle this request?",
+        "criteria": {
+          "billing": "payments, invoices, refunds",
+          "technical": "bugs, outages, system errors",
+          "sales": "pricing and new contracts"
+        }
+      },
+      "refund_requested": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "short-after-long",
+    "state": "我的信用卡被重複扣款了，請幫我退款。",
+    "questions": {
+      "department": {
+        "type": "choice",
+        "instructions": "Which department should handle this request?",
+        "criteria": {
+          "billing": "payments, invoices, refunds",
+          "technical": "bugs, outages, system errors",
+          "sales": "pricing and new contracts"
+        }
+      },
+      "refund_requested": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    }
+  },
+  {
+    "id": "long-chinese-1024",
+    "state": "客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n客服紀錄：客戶信用卡被重複扣款，要求退回多收的款項。\n",
+    "questions": {
+      "department": {
+        "type": "choice",
+        "instructions": "Which department should handle this request?",
+        "criteria": {
+          "billing": "payments, invoices, refunds",
+          "technical": "bugs, outages, system errors",
+          "sales": "pricing and new contracts"
+        }
+      },
+      "refund_requested": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "short-after-second-long",
+    "state": "我的信用卡被重複扣款了，請幫我退款。",
+    "questions": {
+      "department": {
+        "type": "choice",
+        "instructions": "Which department should handle this request?",
+        "criteria": {
+          "billing": "payments, invoices, refunds",
+          "technical": "bugs, outages, system errors",
+          "sales": "pricing and new contracts"
+        }
+      },
+      "refund_requested": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    }
+  }
+]

@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import sys
 import time
+from contextlib import nullcontext
 
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 os.environ.setdefault("USE_TF", "0")
@@ -132,6 +133,10 @@ class Reader(CalibrationDataReader):
         self.iterator = iter(self.data)
     def get_next(self):
         return next(self.iterator, None)
+    def __len__(self):
+        return len(self.data)
+    def set_range(self, start_index, end_index):
+        self.iterator = iter(self.data[start_index:end_index])
 
 
 def fix_layernorm_bias(model):
@@ -170,19 +175,26 @@ def main():
     p.add_argument("--conv-linear", action="store_true", help="Use 1x1 convolution for per-channel weight quantization")
     p.add_argument("--split-cls", action="store_true", help="Keep CLS and other token residual quantization ranges separate")
     p.add_argument("--fold-norms", action="store_true", help="Exactly fold interior normalization affine weights into projections")
+    p.add_argument("--zero-pad-embeddings", action="store_true", help="Zero masked padding embeddings so they do not dominate calibration ranges")
+    p.add_argument("--refine-matmul-rhs", choices=["none", "pv", "all"], default="none",
+                   help="Approximate dynamic U16 RHS with two U8 MatMul terms (experimental HTP refinement)")
     p.add_argument("--export-only", action="store_true")
     p.add_argument("--reuse-export", action="store_true")
+    p.add_argument("--low-memory-calibration", action="store_true",
+                   help="Disable calibration memory arena and merge MinMax ranges after every sample")
     p.add_argument("--activation-bits", type=int, choices=[8, 16], default=16)
     args = p.parse_args()
     if args.length < 1 or args.samples < 1:
         p.error("length and samples must be positive")
+    if args.refine_matmul_rhs != "none" and args.activation_bits != 16:
+        p.error("MatMul RHS refinement requires --activation-bits 16")
     torch.set_num_threads(args.threads)
     torch.set_num_interop_threads(1)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     fp32 = args.output_dir / f"backbone_{args.length}_fp32.onnx"
     qdq = args.output_dir / f"backbone_{args.length}_a{args.activation_bits}w8.onnx"
     checkpoint_hash = sha256_file(args.model / "model.safetensors")
-    export_config = {key: getattr(args, key) for key in ("length", "indices", "samples", "mask_penalty", "balance", "group_outliers", "outlier_ratio", "max_outliers", "conv_linear", "split_cls", "fold_norms")}
+    export_config = {key: getattr(args, key) for key in ("length", "indices", "samples", "mask_penalty", "balance", "group_outliers", "outlier_ratio", "max_outliers", "conv_linear", "split_cls", "fold_norms", "zero_pad_embeddings")}
     export_config["checkpoint_sha256"] = checkpoint_hash
     export_sidecar = fp32.with_suffix(".json")
     if args.reuse_export:
@@ -202,7 +214,8 @@ def main():
     positions = np.linspace(0, len(seqs_all) - 1, min(args.samples, len(seqs_all)), dtype=int)
     seqs = [seqs_all[i] for i in positions]
     metadata = {"sequence_length": args.length, "mask_penalty": args.mask_penalty, "calibration_cases": sorted(set(i for i, _, _ in seqs)),
-                "calibration_questions": len(seqs), "activation_bits": args.activation_bits, "weight_bits": 8, "balanced": args.balance}
+                "calibration_questions": len(seqs), "activation_bits": args.activation_bits, "weight_bits": 8, "balanced": args.balance,
+                "zero_pad_embeddings": args.zero_pad_embeddings}
     # Save untouched reference outputs before any exact reparameterization.
     validation = []
     for _, _, ids in seqs[:2]:
@@ -234,7 +247,10 @@ def main():
     for _, _, ids in seqs:
         padded = ids + [agent.tok.pad_token_id] * (args.length - len(ids))
         attn, sliding = masks(args.length, len(ids), enc.config.local_attention // 2, args.mask_penalty)
-        data.append({"inputs_embeds": enc.embeddings.tok_embeddings(torch.tensor([padded])).numpy(), "attn_mask": attn, "sliding_mask": sliding})
+        embeds = enc.embeddings.tok_embeddings(torch.tensor([padded])).numpy()
+        if args.zero_pad_embeddings:
+            embeds[:, len(ids):] = 0
+        data.append({"inputs_embeds": embeds, "attn_mask": attn, "sliding_mask": sliding})
     metadata["torch_export_error"] = []
     for d, ref in zip(data[:2], validation):
         actual = wrapper(*(torch.from_numpy(d[k]) for k in ("inputs_embeds", "attn_mask", "sliding_mask")))[:, :ref.shape[1]]
@@ -284,15 +300,39 @@ def main():
         del model
         gc.collect()
         print("Calibrating and quantizing", qdq, flush=True)
-        quantize(str(fp32), str(qdq), config)
+        memory_context = nullcontext()
+        if args.low_memory_calibration:
+            sys.path.insert(0, str(ROOT))
+            from npu.calibration_memory import low_memory_calibration
+            config.extra_options["CalibStridedMinMax"] = 1
+            memory_context = low_memory_calibration(args.threads)
+            metadata["calibration_memory"] = "no CPU arena/pattern; exact MinMax merge every sample"
+        with memory_context:
+            quantize(str(fp32), str(qdq), config)
+        if args.refine_matmul_rhs != "none":
+            sys.path.insert(0, str(ROOT))
+            from npu.matmul_refinement import attention_matmul_refinement
+            model = onnx.load(qdq)
+            metadata["matmul_rhs_refinement"] = attention_matmul_refinement(model, scope=args.refine_matmul_rhs)
+            if not metadata["matmul_rhs_refinement"]["refined_matmuls"]:
+                raise RuntimeError("The requested MatMul refinement did not match any dynamic U16-to-U8 RHS")
+            onnx.checker.check_model(model)
+            onnx.save(model, qdq)
+            del model
         metadata["model_sha256"] = sha256_file(qdq)
         manifest_path = args.output_dir / "manifest.json"
         manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {
             "checkpoint_sha256": checkpoint_hash, "mask_penalty": args.mask_penalty,
-            "precision": f"a{args.activation_bits}w8", "buckets": {}, "model_sha256": {},
+            "precision": f"a{args.activation_bits}w8", "zero_pad_embeddings": args.zero_pad_embeddings,
+            "matmul_rhs_refinement": args.refine_matmul_rhs,
+            "buckets": {}, "model_sha256": {},
         }
         if manifest["checkpoint_sha256"] != checkpoint_hash or manifest["mask_penalty"] != args.mask_penalty or manifest["precision"] != f"a{args.activation_bits}w8":
             raise ValueError("Output manifest belongs to a different checkpoint/mask policy")
+        if manifest.get("zero_pad_embeddings", False) != args.zero_pad_embeddings:
+            raise ValueError("Output manifest belongs to a different padding policy")
+        if manifest.get("matmul_rhs_refinement", "none") != args.refine_matmul_rhs:
+            raise ValueError("Output manifest belongs to a different MatMul refinement policy")
         manifest["buckets"][str(args.length)] = qdq.name
         manifest["model_sha256"][str(args.length)] = metadata["model_sha256"]
         manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")

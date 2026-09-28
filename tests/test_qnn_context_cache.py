@@ -1,4 +1,5 @@
 """Persistent EPContext configuration/publication tests with a fake QNN runtime."""
+import copy
 import hashlib
 import json
 import os
@@ -11,6 +12,7 @@ from unittest.mock import patch
 import torch
 
 from laya_npu import QNNEncoder
+from npu.fidelity_runtime import qnn_backend_fingerprint
 
 
 class TinyEncoder(torch.nn.Module):
@@ -94,7 +96,9 @@ class QNNContextCacheTest(unittest.TestCase):
             path.write_text(json.dumps({"bucket": bucket}))
             self.models[bucket] = path
         self.ort = FakeOrt()
-        self.qnn = SimpleNamespace(__version__="2.5.0", get_qnn_htp_path=lambda: "/vendor/libQnnHtp.so")
+        self.backend = self.root / "libQnnHtp.so"
+        self.backend.write_bytes(b"fake HTP backend")
+        self.qnn = SimpleNamespace(__version__="2.5.0", get_qnn_htp_path=lambda: str(self.backend))
         self.runtime = patch("laya_npu._qnn_runtime", return_value=(self.ort, self.qnn))
         self.runtime.start()
 
@@ -155,7 +159,7 @@ class QNNContextCacheTest(unittest.TestCase):
                 self.assertEqual(updated.stats["context_cache_misses"], 1)
                 self.assertNotEqual(updated.stats["context_cache_paths"]["8"], original_path)
                 original_path = updated.stats["context_cache_paths"]["8"]
-        options = {"backend_path": "/vendor/libQnnHtp.so", "htp_arch": "68"}
+        options = {"backend_path": str(self.backend), "htp_arch": "68"}
         key68 = fresh._context_cache_path(8, self.ort, self.qnn, options)
         key73 = fresh._context_cache_path(8, self.ort, self.qnn, {**options, "htp_arch": "73"})
         self.assertNotEqual(key68, key73)
@@ -215,6 +219,90 @@ class QNNContextCacheTest(unittest.TestCase):
             fresh._get_session(8)
         self.assertIsInstance(caught.exception.__cause__, ValueError)
         self.assertEqual(fresh.stats["context_cache_hits"], 0)
+
+    def correction(self):
+        return {"8": {
+            "output_sha256": hashlib.sha256(self.models[8].read_bytes()).hexdigest(),
+            "runtime": qnn_backend_fingerprint("1.30.0", "2.5.0", self.backend),
+        }}
+
+    def test_corrected_graph_checks_fingerprint_with_cache_enabled_or_disabled(self):
+        correction = self.correction()
+        # Relocation is allowed: recorded file paths are informational, hashes bind bytes.
+        correction["8"]["runtime"]["backend_path"] = "/previous/installation/libQnnHtp.so"
+        for enabled in (True, False):
+            with self.subTest(cache=enabled):
+                encoder = self.encoder(cache_enabled=enabled, correction_metadata=correction)
+                encoder._get_session(8)
+                self.assertEqual(encoder.stats["correction_backend_verified_buckets"], [8])
+                self.assertEqual(encoder.stats["backend_fingerprint"]["backend_sha256"],
+                                 correction["8"]["runtime"]["backend_sha256"])
+                json.dumps(encoder.stats)
+
+    def test_wrong_backend_rejected_before_existing_cache_or_source_session(self):
+        # Populate a valid cache first; provenance must not be skipped on a hit.
+        self.encoder()._get_session(8)
+        for field, wrong in (("onnxruntime", "0.0"), ("onnxruntime_qnn", "0.0"),
+                             ("htp_arch", 73), ("backend_sha256", "0" * 64),
+                             ("stub_sha256", "0" * 64), ("skel_sha256", "0" * 64)):
+            for enabled in (True, False):
+                with self.subTest(field=field, cache=enabled):
+                    correction = self.correction()
+                    correction["8"]["runtime"][field] = wrong
+                    encoder = self.encoder(cache_enabled=enabled, correction_metadata=correction)
+                    previous = len(self.ort.calls)
+                    with self.assertRaisesRegex(RuntimeError, f"backend mismatch.*{field}"):
+                        encoder._get_session(8)
+                    self.assertEqual(len(self.ort.calls), previous)
+                    self.assertEqual(encoder.stats["context_cache_hits"], 0)
+                    self.assertEqual(encoder.stats["cpu_fallbacks"], 0)
+
+    def test_same_versions_different_binary_invalidates_cache(self):
+        previous = self.encoder()
+        previous._get_session(8)
+        previous_path = previous.stats["context_cache_paths"]["8"]
+        self.backend.write_bytes(b"different SDK binary with same package versions")
+        fresh = self.encoder()
+        fresh._get_session(8)
+        self.assertEqual(fresh.stats["context_cache_misses"], 1)
+        self.assertNotEqual(fresh.stats["context_cache_paths"]["8"], previous_path)
+
+    def test_corrected_graph_hash_is_checked_even_without_context_cache(self):
+        correction = self.correction()
+        self.models[8].write_text(json.dumps({"bucket": 8, "wrong_graph": True}))
+        encoder = self.encoder(cache_enabled=False, correction_metadata=correction)
+        with self.assertRaisesRegex(ValueError, "correction output_sha256 mismatch"):
+            encoder._get_session(8)
+        self.assertEqual(self.ort.calls, [])
+
+    def test_missing_or_invalid_correction_runtime_rejected_at_construction(self):
+        for invalid in ({}, {"8": {}}, {"8": {"runtime": {}}}, {"9": {}}):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                self.encoder(correction_metadata=invalid)
+        correction = self.correction()
+        for field in ("backend_sha256", "onnxruntime", "onnxruntime_qnn", "htp_arch", "cpu_ep_fallback"):
+            invalid = copy.deepcopy(correction)
+            del invalid["8"]["runtime"][field]
+            with self.subTest(missing=field), self.assertRaises(ValueError):
+                self.encoder(correction_metadata=invalid)
+
+    def test_auxiliary_binary_change_invalidates_cache_and_recorded_correction(self):
+        for name in ("libQnnHtpV68Stub.so", "libQnnHtpV68Skel.so"):
+            (self.root / name).write_bytes(b"original auxiliary")
+        with patch.dict(os.environ, {"LD_LIBRARY_PATH": str(self.root), "ADSP_LIBRARY_PATH": str(self.root)}):
+            correction = self.correction()
+            original = self.encoder(correction_metadata=correction)
+            original._get_session(8)
+            (self.root / "libQnnHtpV68Skel.so").write_bytes(b"changed skeleton")
+            rejected = self.encoder(correction_metadata=correction)
+            previous_calls = len(self.ort.calls)
+            with self.assertRaisesRegex(RuntimeError, "skel_sha256"):
+                rejected._get_session(8)
+            self.assertEqual(len(self.ort.calls), previous_calls)
+            uncorrected = self.encoder()
+            uncorrected._get_session(8)
+            self.assertNotEqual(uncorrected.stats["context_cache_paths"]["8"],
+                                original.stats["context_cache_paths"]["8"])
 
 
 if __name__ == "__main__":

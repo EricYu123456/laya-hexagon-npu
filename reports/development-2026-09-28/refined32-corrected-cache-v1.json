@@ -1,0 +1,68 @@
+{
+  "artifact_verification_seconds": 0.6692348269989452,
+  "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+  "event": "complete",
+  "graph_sha256": {
+    "768": "1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138"
+  },
+  "manifest": "/home/ubuntu/laya-service/.work/refined32_corrected/manifest.json",
+  "manifest_sha256": "ba04daa8fe5c4b8a5085a5fa4c788a8ef504a1e4a568cc05b431483916387e22",
+  "model_dir": "/home/ubuntu/laya-service/models/multilingual",
+  "prepare": {
+    "buckets": [
+      {
+        "bucket": 768,
+        "cache_hit": false,
+        "cache_path": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_4373653f38824980d1b3acd1cb2ea5e653bbc6d5d11a995d0c2c30f532a5c95b.onnx",
+        "event": "bucket_ready",
+        "phase": "prepare",
+        "seconds": 419.4606318999995
+      }
+    ],
+    "stats": {
+      "bucket_calls": {},
+      "context_cache_enabled": true,
+      "context_cache_errors": 0,
+      "context_cache_hits": 0,
+      "context_cache_misses": 1,
+      "context_cache_paths": {
+        "768": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_4373653f38824980d1b3acd1cb2ea5e653bbc6d5d11a995d0c2c30f532a5c95b.onnx"
+      },
+      "context_cache_writes": 1,
+      "cpu_fallbacks": 0,
+      "npu_calls": 0,
+      "session_creations": 1,
+      "session_evictions": 0,
+      "zero_pad_embeddings": false
+    }
+  },
+  "reload": {
+    "buckets": [
+      {
+        "bucket": 768,
+        "cache_hit": true,
+        "cache_path": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_4373653f38824980d1b3acd1cb2ea5e653bbc6d5d11a995d0c2c30f532a5c95b.onnx",
+        "event": "bucket_ready",
+        "phase": "reload",
+        "seconds": 1.6153449220000766
+      }
+    ],
+    "stats": {
+      "bucket_calls": {},
+      "context_cache_enabled": true,
+      "context_cache_errors": 0,
+      "context_cache_hits": 1,
+      "context_cache_misses": 0,
+      "context_cache_paths": {
+        "768": "/home/ubuntu/laya-service/npu/fidelity/context_cache/backbone_768_4373653f38824980d1b3acd1cb2ea5e653bbc6d5d11a995d0c2c30f532a5c95b.onnx"
+      },
+      "context_cache_writes": 0,
+      "cpu_fallbacks": 0,
+      "npu_calls": 0,
+      "session_creations": 1,
+      "session_evictions": 0,
+      "zero_pad_embeddings": false
+    }
+  },
+  "total_seconds": 425.5680918880007
+}

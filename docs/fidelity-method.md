@@ -1,6 +1,6 @@
 # Fidelity method and experimental status
 
-Status recorded on 2026-09-28: **the ≤5% target is not achieved**. The best measured actual-HTP candidate has 12.5% decision mismatch and 8.551% mean total variation on the development selection. No held-out pass, validated 1024-token model set, or qualified service deployment is claimed.
+Status recorded on 2026-09-28 UTC: the corrected actual-HTP candidate reaches **5.0% decision mismatch and 2.4568% mean total variation on the development selection**. Independent qualification is in progress. No held-out pass, validated 1024-token model set, or qualified service deployment is claimed yet.
 
 ## Reference and input contract
 
@@ -61,9 +61,12 @@ Every row below uses the same 16 development cases/80 decisions and identical pr
 | Candidate | Execution/report | Decision mismatch | Mean TV | Argmax mismatch |
 | --- | --- | ---: | ---: | ---: |
 | `grouped16` | [CPU QDQ diagnostic](../reports/development-2026-09-28/grouped16-cpu-diagnostic.json) | 7.50% | 5.7729% | 11.25% |
-| `grouped16` | [Actual HTP V68](../reports/development-2026-09-28/grouped16-npu.json) | **12.50%** | **8.5510%** | 13.75% |
+| `grouped16` | [Actual HTP V68](../reports/development-2026-09-28/grouped16-npu.json) | 12.50% | 8.5510% | 13.75% |
 | `clsconv16` | [CPU QDQ diagnostic](../reports/development-2026-09-28/clsconv16-cpu-diagnostic.json) | 2.50% | 2.8554% | 2.50% |
 | `clsconv16` | [Actual HTP V68](../reports/development-2026-09-28/clsconv16-npu.json) | 20.00% | 18.3522% | 28.75% |
+| `refined32`, before Conv correction | [CPU QDQ diagnostic](../reports/development-2026-09-28/refined32-cpu-diagnostic.json) | 6.25% | 2.8497% | 5.00% |
+| `refined32`, before Conv correction | [Actual HTP V68](../reports/development-2026-09-28/refined32-npu-before-offset-correction.json) | 36.25% | 27.1874% | 42.50% |
+| `refined32`, corrected | [Actual HTP V68](../reports/development-2026-09-28/refined32-corrected-npu.json) | **5.00%** | **2.4568%** | **3.75%** |
 
 `grouped16` uses a 768-token graph, U16 activations/U8 weights, grouped GeGLU, 16 calibration sequences, and no CLS split or convolution replacement. Its ONNX SHA256 is:
 
@@ -79,23 +82,29 @@ c7e56711445411599144f9c6e0f049524c7644be69032727916c95df39cc4da1
 
 See the preserved [grouped16 build metadata](../reports/development-2026-09-28/grouped16-build.json), [clsconv16 build metadata](../reports/development-2026-09-28/clsconv16-build.json), and [clsconv16 export configuration](../reports/development-2026-09-28/clsconv16-export.json).
 
-The CPU-to-HTP difference is unresolved. The lower CPU QDQ error did not predict a better hardware model. Neither candidate passes the hardware target. Absolute paths in report metadata identify the original execution environments; the recorded hashes bind the actual graphs and checkpoint. Large model binaries are not bundled with these reports.
+`refined32` adds zero masked padding embeddings and a two-term approximation of each dynamic attention MatMul's 16-bit right operand using supported 8-bit operands. Its uncorrected CPU result still failed to predict HTP behavior. Zero-input probes then found additional constant per-output-channel offsets in 239 of 266 Conv operations; the largest absolute offset was 6.60. Compact spatial-one and three original-shape controls agreed exactly. Adding the negative measured offsets to Conv biases reduced actual whole-model development mismatch from 36.25% to 5.0%. The probes use only zero inputs, not development answers.
+
+The corrected graph SHA256 is `1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138`. Its [correction provenance](../reports/development-2026-09-28/refined32-correction-provenance.json) binds the source graph and measured ORT/QNN backend. The correction intentionally changes CPU graph semantics; running that corrected graph on CPU cannot certify its NPU fidelity. See [the calibration workflow](../npu/CONV_OFFSET_CALIBRATION.md) for shape checks, limitations, and reproduction.
+
+Absolute paths in report metadata identify the original execution environments; the recorded hashes bind the actual graphs and checkpoint. Large model binaries are not bundled with these reports.
 
 An independent [reference portability check](../reports/development-2026-09-28/reference-portability.json) compared pristine ARM Pi CPU and WSL x86 CPU outputs on these 80 development decisions: zero decision mismatches and mean TV `9.4178e-7`. This supports using the captured FP32 outputs for numerical diagnostics on this selection, but says nothing about cross-host performance equivalence. The complete 400-case FP32 reference was captured in WSL; the preserved [Pi reference](../reports/development-2026-09-28/reference-pi.jsonl) covers the development cases.
 
 ## Reproduction and evaluation commands
 
-Follow the Python 3.12 setup, pinned checkpoint/dataset download, and `grouped16` build commands in [README.md](../README.md). Use [requirements-fidelity-build.txt](../requirements-fidelity-build.txt) for x86/WSL builds, not the target environment's requirements. Copy the graph directory and manifest together to the Pi. Keep recipes in separate directories because a manifest's bucket mapping alone is not a complete recipe description. Preserve the export sidecar and quantization metadata.
+Follow the Python 3.12 setup, pinned checkpoint/dataset download, and corrected candidate build commands in [README.md](../README.md). Use [requirements-fidelity-build.txt](../requirements-fidelity-build.txt) for x86/WSL builds, not the target environment's requirements. Copy the graph directory and manifest together to the Pi. Keep recipes in separate directories because a manifest's bucket mapping alone is not a complete recipe description. Preserve the export sidecar and quantization metadata.
 
-To reproduce the failed `clsconv16` experiment, use the same build command with `--samples 32 --conv-linear --split-cls` and a separate `--output-dir .work/clsconv16`. Do not deploy it based on its CPU diagnostic pass. `--fold-norms` and `--balance` are additional experimental transformations, not part of either tabled recipe.
+For the earlier `grouped16` experiment, use only `--group-outliers --samples 16`. `clsconv16` adds `--conv-linear --split-cls --samples 32` but omits zero-padding, MatMul refinement, and measured offset correction. `--fold-norms` and `--balance` are additional experimental transformations, not part of the current corrected recipe.
+
+`npu/split_residual.py` is an unintegrated experimental alternative that separates residual feature bands and rescales before LayerNorm. Its fixed scaled epsilon is an approximation. It has CPU checks only and is not part of the measured or deployed recipe.
 
 For every target QNN run:
 
 ```bash
 source .venv/bin/activate
 source npu/env.sh
-export LAYA_NPU_MANIFEST="$PWD/.work/grouped16/manifest.json"
-export LAYA_NPU_CONTEXT_CACHE=0
+export LAYA_NPU_MANIFEST="$PWD/.work/corrected_768/manifest.json"
+export LAYA_NPU_CONTEXT_CACHE=1
 DATA=.work/dataset/all/test-00000-of-00001.parquet
 DEV=1,26,51,76,101,126,151,176,201,226,251,276,301,326,351,376
 ```
@@ -137,8 +146,8 @@ Strict NPU means the encoder runs through QNN HTP with `session.disable_cpu_ep_f
 
 The manifest resolves graph paths relative to its directory and records checkpoint/graph hashes and mask policy. Loading verifies those identities. Context cache keys additionally bind runtime versions and provider options; cache entries are embedded single-file ONNX contexts published atomically. Invalid entries fail with an actionable error instead of falling back to CPU. QNN's context options are documented in [ORT's EPContext design](https://onnxruntime.ai/docs/execution-providers/EP-Context-Design.html).
 
-`npu/compile_contexts.py --manifest <path> --verify-reload` prepares buckets without loading checkpoint tensors or token embeddings, then releases the preparation adapter before reloading saved contexts. Set `LAYA_NPU_CONTEXT_CACHE=1` to test it and optionally set `LAYA_NPU_CACHE_DIR`. Cache configuration and failure handling pass mock tests; target generation/reload validation remains pending. A cache hit is not a fidelity test.
+`npu/compile_contexts.py --manifest <path> --verify-reload` prepares buckets without loading checkpoint tensors or token embeddings, then releases the preparation adapter before reloading saved contexts. Set `LAYA_NPU_CONTEXT_CACHE=1` and optionally set `LAYA_NPU_CACHE_DIR`. Actual corrected-768 compilation took 419.5 seconds and strict reload took 1.62 seconds; the saved graph contains a single QNN EPContext. Cache schema changes require preparation again. A cache hit is not a fidelity test.
 
 Latency reports include tokenization, heads, and inference but exclude model loading and warmup. Compare speed only with the same host, CPU thread count, original input contract, and measured selection. Compilation, cache reload, warm latency, bucket switching, and peak memory need separate measurements. Precompilation matters because loading full weights alongside graph compilation can exceed the service's 4 GiB memory limit; hardware memory qualification is still required.
 
-The remaining acceptance work is to resolve the CPU-QDQ/HTP numerical gap, pass independent held-out evaluation, validate buckets through the original 1024-token budget, verify context reload on hardware, and exercise the service under its actual memory limit. Historical results in `npu/REPORT.md` describe the earlier truncated/clamped implementation and do not satisfy these criteria.
+The remaining acceptance work is independent held-out evaluation, validation through the original 1024-token budget, and exercising the service under its actual memory limit. Historical results in `npu/REPORT.md` describe the earlier truncated/clamped implementation and do not satisfy these criteria.

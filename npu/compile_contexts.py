@@ -95,7 +95,9 @@ def compile_contexts(manifest_path, model_dir, verify_reload=False, emit=_emit_j
 
     def new_adapter():
         adapter = QNNEncoder(
-            encoder, bucket_paths, manifest.get("mask_penalty", -100.0), model_hashes=hashes
+            encoder, bucket_paths, manifest.get("mask_penalty", -100.0), model_hashes=hashes,
+            zero_pad_embeddings=manifest.get("zero_pad_embeddings", False),
+            correction_metadata=manifest.get("htp_conv_offset_correction"),
         )
         if not adapter.cache_enabled:
             raise ValueError("Context precompilation requires LAYA_NPU_CONTEXT_CACHE=1")

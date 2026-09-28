@@ -19,12 +19,16 @@ from typing import Any, Dict, Optional, Union
 import numpy as np
 import torch
 
-from npu.fidelity_runtime import artifact_metadata, attention_masks, load_bucket_manifest, select_bucket, sha256_file
+from npu.fidelity_runtime import (
+    artifact_metadata, attention_masks, correction_runtime_requirements, load_bucket_manifest,
+    qnn_backend_fingerprint, qnn_backend_identity, select_bucket, sha256_file,
+    validate_correction_backend,
+)
 
 
 _QNN_REGISTRATION_LOCK = threading.Lock()
 _QNN_REGISTERED = False
-_CONTEXT_CACHE_SCHEMA = 1
+_CONTEXT_CACHE_SCHEMA = 2
 
 
 def _package_version(module, distribution):
@@ -35,8 +39,8 @@ def _package_version(module, distribution):
         return importlib.metadata.version(distribution)
     except importlib.metadata.PackageNotFoundError as exc:
         raise RuntimeError(
-            f"Cannot identify {distribution} version for the QNN context cache; "
-            "install its package metadata or set LAYA_NPU_CONTEXT_CACHE=0"
+            f"Cannot identify {distribution} version for QNN backend validation; "
+            "install its package metadata before loading this encoder"
         ) from exc
 
 
@@ -61,7 +65,8 @@ class QNNEncoder(torch.nn.Module):
     """
 
     def __init__(self, encoder, bucket_paths, mask_penalty=-100.0, *, model_hashes=None,
-                 cache_dir=None, cache_enabled=None):
+                 cache_dir=None, cache_enabled=None, zero_pad_embeddings=False,
+                 correction_metadata=None):
         super().__init__()
         self.config = encoder.config
         self.tok_embeddings = encoder.get_input_embeddings()
@@ -70,6 +75,9 @@ class QNNEncoder(torch.nn.Module):
         self.local_radius = int(self.config.local_attention) // 2
         self.pad_token_id = int(self.config.pad_token_id)
         self.hidden_size = int(self.config.hidden_size)
+        if not isinstance(zero_pad_embeddings, bool):
+            raise ValueError("zero_pad_embeddings must be a boolean")
+        self.zero_pad_embeddings = zero_pad_embeddings
         self._session = None
         self._session_bucket = None
         self._lock = threading.RLock()
@@ -85,18 +93,30 @@ class QNNEncoder(torch.nn.Module):
         # NPUAgent supplies hashes already verified by artifact_metadata. Direct
         # users are hashed lazily once per bucket, never on every inference.
         self._model_hashes = {int(bucket): digest for bucket, digest in (model_hashes or {}).items()}
+        self._correction_runtimes = correction_runtime_requirements(
+            {} if correction_metadata is None else {"htp_conv_offset_correction": correction_metadata},
+            self.bucket_paths,
+        )
+        self._correction_metadata = {str(key): copy.deepcopy(value)
+                                     for key, value in (correction_metadata or {}).items()}
+        # Hash binaries once for each configured environment in this adapter.
+        # A newly constructed adapter rechecks files even if versions match.
+        self._backend_fingerprints = {}
         self.stats = {
             "npu_calls": 0,
             "cpu_fallbacks": 0,
             "session_creations": 0,
             "session_evictions": 0,
             "bucket_calls": {},
+            "zero_pad_embeddings": self.zero_pad_embeddings,
             "context_cache_enabled": self.cache_enabled,
             "context_cache_hits": 0,
             "context_cache_misses": 0,
             "context_cache_writes": 0,
             "context_cache_errors": 0,
             "context_cache_paths": {},
+            "backend_fingerprint": None,
+            "correction_backend_verified_buckets": [],
         }
 
     def get_input_embeddings(self):
@@ -118,17 +138,29 @@ class QNNEncoder(torch.nn.Module):
         options.add_provider_for_devices(devices, provider_options)
         return options
 
-    def _context_cache_path(self, bucket, ort, qnn, provider_options):
+    def _backend_fingerprint(self, ort, qnn, provider_options):
+        versions = (_package_version(ort, "onnxruntime"), _package_version(qnn, "onnxruntime-qnn"))
+        key = (*versions, str(provider_options["backend_path"]), int(provider_options["htp_arch"]),
+               os.environ.get("LD_LIBRARY_PATH", ""), os.environ.get("ADSP_LIBRARY_PATH", ""))
+        if key not in self._backend_fingerprints:
+            self._backend_fingerprints[key] = qnn_backend_fingerprint(
+                *versions, provider_options["backend_path"], int(provider_options["htp_arch"])
+            )
+        return self._backend_fingerprints[key]
+
+    def _graph_digest(self, bucket):
         if bucket not in self._model_hashes:
             self._model_hashes[bucket] = sha256_file(self.bucket_paths[bucket])
         digest = self._model_hashes[bucket]
         if not isinstance(digest, str) or len(digest) != 64 or any(c not in "0123456789abcdefABCDEF" for c in digest):
             raise ValueError(f"Invalid model SHA256 for bucket {bucket}")
+        return digest.lower()
+
+    def _context_cache_path(self, bucket, ort, qnn, provider_options):
         identity = {
             "cache_schema": _CONTEXT_CACHE_SCHEMA,
-            "model_sha256": digest.lower(),
-            "onnxruntime": _package_version(ort, "onnxruntime"),
-            "onnxruntime_qnn": _package_version(qnn, "onnxruntime-qnn"),
+            "model_sha256": self._graph_digest(bucket),
+            "backend": qnn_backend_identity(self._backend_fingerprint(ort, qnn, provider_options)),
             "provider_options": provider_options,
             "context_embed_mode": 1,
         }
@@ -169,14 +201,25 @@ class QNNEncoder(torch.nn.Module):
             gc.collect()
 
         ort, qnn = _qnn_runtime()
-        devices = [device for device in ort.get_ep_devices() if device.ep_name == "QNNExecutionProvider"]
-        if not devices:
-            raise RuntimeError("Qualcomm QNN HTP is unavailable; CPU fallback is disabled")
         provider_options = {
             "backend_path": qnn.get_qnn_htp_path(),
             "htp_arch": "68",
             "htp_performance_mode": "burst",
         }
+        if self.cache_enabled or bucket in self._correction_runtimes:
+            fingerprint = self._backend_fingerprint(ort, qnn, provider_options)
+            self.stats["backend_fingerprint"] = copy.deepcopy(fingerprint)
+            if bucket in self._correction_runtimes:
+                validate_correction_backend(self._correction_runtimes[bucket], fingerprint, bucket)
+                expected_hash = self._correction_metadata[str(bucket)]["output_sha256"].lower()
+                if self._graph_digest(bucket) != expected_hash:
+                    raise ValueError(f"HTP Conv correction output_sha256 mismatch for bucket {bucket}")
+                verified = self.stats["correction_backend_verified_buckets"]
+                if bucket not in verified:
+                    verified.append(bucket)
+        devices = [device for device in ort.get_ep_devices() if device.ep_name == "QNNExecutionProvider"]
+        if not devices:
+            raise RuntimeError("Qualcomm QNN HTP is unavailable; CPU fallback is disabled")
         if not self.cache_enabled:
             options = self._session_options(ort, devices, provider_options)
             session = self._new_session(ort, self.bucket_paths[bucket], options, bucket)
@@ -251,6 +294,11 @@ class QNNEncoder(torch.nn.Module):
                 padded = torch.full((1, bucket), self.pad_token_id, dtype=torch.long)
                 padded[0, :length] = input_ids[row, :length]
                 embeds = self.tok_embeddings(padded).float().numpy()
+                if self.zero_pad_embeddings:
+                    # Masked keys never contribute to valid tokens. Suppressing
+                    # their embeddings prevents unused padding from dominating
+                    # calibration; the manifest binds build/runtime policy.
+                    embeds[:, length:] = 0
                 global_mask, local_mask = attention_masks(
                     bucket, length, self.local_radius, self.mask_penalty
                 )
@@ -291,6 +339,8 @@ class NPUAgent:
         adapter = QNNEncoder(
             encoder, bucket_paths, metadata.get("mask_penalty", -100.0),
             model_hashes={int(bucket): info["sha256"] for bucket, info in self._fidelity_metadata["models"].items()},
+            zero_pad_embeddings=metadata.get("zero_pad_embeddings", False),
+            correction_metadata=metadata.get("htp_conv_offset_correction"),
         )
         adapter.stats.update({
             "max_len": self._agent.cfg.get("max_len", 512),

@@ -53,6 +53,25 @@ class EncoderContractTests(unittest.TestCase):
         self.assertEqual(encoder.stats["npu_calls"], 0)
         self.assertEqual(encoder.stats["cpu_fallbacks"], 0)
 
+    def test_optional_zero_padding_preserves_all_real_embeddings(self):
+        encoder = QNNEncoder(TinyEncoder(), {8: "model.onnx"}, zero_pad_embeddings=True)
+        feeds = []
+
+        def infer(_, feed):
+            feeds.append(feed)
+            return [feed["inputs_embeds"]]
+
+        encoder._get_session = Mock(return_value=SimpleNamespace(run=infer))
+        # Token ID zero can be a real token; the attention mask determines padding.
+        ids = torch.tensor([[0, 3, 0], [5, 6, 7]])
+        mask = torch.tensor([[1, 1, 0], [1, 1, 1]])
+        actual = encoder(ids, mask).last_hidden_state
+        torch.testing.assert_close(actual[0, :2], encoder.tok_embeddings(ids[0, :2]))
+        torch.testing.assert_close(actual[1], encoder.tok_embeddings(ids[1]))
+        self.assertTrue(np.all(feeds[0]["inputs_embeds"][:, 2:] == 0))
+        self.assertTrue(np.all(feeds[1]["inputs_embeds"][:, 3:] == 0))
+        self.assertTrue(encoder.stats["zero_pad_embeddings"])
+
     def test_sparse_padding_is_rejected_before_inference(self):
         encoder = QNNEncoder(TinyEncoder(), {8: "model.onnx"})
         encoder._get_session = Mock()
