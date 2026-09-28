@@ -1,0 +1,70 @@
+{
+  "kind": "laya_external_fidelity_plan",
+  "created_utc": "2026-09-28T17:53:48.391693+00:00",
+  "seed": "laya-external-2026-09-29-v1",
+  "source_lock": "reports/external-2026-09-29/sources.json",
+  "source_lock_sha256": "347b9a5a924a5bcbe5287a5b91753ff597930a03363fa37fbcb9972eb9978575",
+  "criteria": {
+    "decision_error_percent_max": 5.0,
+    "mean_total_variation_max": 0.05
+  },
+  "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+  "manifest_sha256": "95cadda20ef661ace20e2ba32ed41bef955d76219758cf6453806d8c32b986a7",
+  "graph_sha256_by_bucket": {
+    "768": "1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138",
+    "1024": "cfd85315c4ee6b5bfaeb24ced44bba3cf6ebb37ff421efb4c65ade90c571ec64"
+  },
+  "selection": {
+    "banking77-card8": "All 40 official test rows in each of the eight fixed BANKING criteria labels (320).",
+    "clinc150-domain10": "Lowest two SHA256(seed|clinc150|zero-based-test-row) per each of 150 intents; mapped using official domains.json (300). No OOS rows.",
+    "massive": "Lowest ten SHA256(seed|massive|id) per each of 18 en-US test scenarios; exact same 180 IDs in en-US, zh-TW, zh-CN (540)."
+  },
+  "scope": "Frozen external adapted choice-task fidelity; no model or calibration tuning on these results. Corpus training overlap of the original pretrained model is unknown. MASSIVE has 180 paired semantic IDs, not 540 independent semantic examples. Each suite must pass separately; small intent groups are diagnostic only. Gold-label accuracy is auxiliary and is not native BANKING77/CLINC150/MASSIVE leaderboard accuracy.",
+  "suites": [
+    {
+      "name": "banking77-card8",
+      "cases": 320,
+      "suite": "reports/external-2026-09-29/banking77-card8-suite.json",
+      "reference": "reports/external-2026-09-29/banking77-card8-reference-wsl.json",
+      "candidate": "reports/external-2026-09-29/banking77-card8-npu.json",
+      "suite_sha256": "0acdaa4c2107c1c19d74b5707fc335c0070cb5605352d925a49969ab3b891ae4",
+      "suite_file_sha256": "046a18b00bc47355a27e8f030a235b5175c2b11295e1bc14b5986300335492ec"
+    },
+    {
+      "name": "clinc150-domain10",
+      "cases": 300,
+      "suite": "reports/external-2026-09-29/clinc150-domain10-suite.json",
+      "reference": "reports/external-2026-09-29/clinc150-domain10-reference-wsl.json",
+      "candidate": "reports/external-2026-09-29/clinc150-domain10-npu.json",
+      "suite_sha256": "8ca98dfc2daa61f94eb3ac21e0810e89403aef5f3d8429f74a48aab2066ac541",
+      "suite_file_sha256": "5cf57cb7f5c66c9f835c0eb0dd66d083347af4d44c4baaa9da10de788cc4ddcc"
+    },
+    {
+      "name": "massive-en-US",
+      "cases": 180,
+      "suite": "reports/external-2026-09-29/massive-en-US-suite.json",
+      "reference": "reports/external-2026-09-29/massive-en-US-reference-wsl.json",
+      "candidate": "reports/external-2026-09-29/massive-en-US-npu.json",
+      "suite_sha256": "d17e15b4e3f488fc814f633fcb42e08e97d35f91aa6bddbfa1b5df70a138bad1",
+      "suite_file_sha256": "033e9dedc09a1b3a422e6b92d6add5039849897def8482d1d4c3151b95d200e6"
+    },
+    {
+      "name": "massive-zh-TW",
+      "cases": 180,
+      "suite": "reports/external-2026-09-29/massive-zh-TW-suite.json",
+      "reference": "reports/external-2026-09-29/massive-zh-TW-reference-wsl.json",
+      "candidate": "reports/external-2026-09-29/massive-zh-TW-npu.json",
+      "suite_sha256": "c6a8a1168873158043ecd04110c2a7432e03fd8c522f88f4c573feeeea07237e",
+      "suite_file_sha256": "d1632f2afb6c276728bff6863458f8994325b9c7f5bff79f6b1e7be6a2696a5d"
+    },
+    {
+      "name": "massive-zh-CN",
+      "cases": 180,
+      "suite": "reports/external-2026-09-29/massive-zh-CN-suite.json",
+      "reference": "reports/external-2026-09-29/massive-zh-CN-reference-wsl.json",
+      "candidate": "reports/external-2026-09-29/massive-zh-CN-npu.json",
+      "suite_sha256": "898ced7a10c058f552351e93e133fd6af3dd4e10f2311791fa292ac97f95e1a5",
+      "suite_file_sha256": "b73dbd392cdbdf1cda9258b84c186165736c27161795bce7f0a6d8787a0a4d80"
+    }
+  ]
+}

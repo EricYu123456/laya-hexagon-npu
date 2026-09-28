@@ -1,0 +1,57 @@
+{
+  "banking-test.csv": {
+    "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/test.csv",
+    "sha256": "d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d",
+    "bytes": 239961
+  },
+  "banking-categories.json": {
+    "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/categories.json",
+    "sha256": "53261da888122daf2d120d925458631d9619e15d82e56052e7a42e535ce32b63",
+    "bytes": 2036
+  },
+  "banking-LICENSE": {
+    "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/LICENSE",
+    "sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+    "bytes": 18650
+  },
+  "clinc-data_full.json": {
+    "url": "https://raw.githubusercontent.com/clinc/oos-eval/828f8093932c8fe6ca7936c3d2e52903b1c523de/data/data_full.json",
+    "sha256": "36923c3705a59e08fe9c3883d8bc2dd966ef93e22cb78ac41171782a698d56e0",
+    "bytes": 2495390
+  },
+  "clinc-domains.json": {
+    "url": "https://raw.githubusercontent.com/clinc/oos-eval/828f8093932c8fe6ca7936c3d2e52903b1c523de/data/domains.json",
+    "sha256": "b947b579d3b8e74b06f93b01083d8efaff2888b43a3e362533bd88a6e1211b3a",
+    "bytes": 3818
+  },
+  "clinc-LICENSE": {
+    "url": "https://raw.githubusercontent.com/clinc/oos-eval/828f8093932c8fe6ca7936c3d2e52903b1c523de/LICENSE",
+    "sha256": "e6bc9e9c474700b708f568bac9e5a8a9bcb2b1dad53442f5ba449fcb848b8e76",
+    "bytes": 19467
+  },
+  "massive-1.1.tar.gz": {
+    "url": "https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.1.tar.gz",
+    "sha256": "4cba5faa11c71437928e17cb1b9b3d8b8e727e7ea363a3a9a8045e19c0491577",
+    "bytes": 40251390
+  },
+  "massive-en-US.jsonl": {
+    "archive_member": "1.1/data/en-US.jsonl",
+    "sha256": "c70f75c6a543a26e249ec383df67733ad9b1066f6c0406c2e04a3f03356e407e",
+    "bytes": 3904197
+  },
+  "massive-zh-CN.jsonl": {
+    "archive_member": "1.1/data/zh-CN.jsonl",
+    "sha256": "992bf0bef3d678f08c27e514739bc851163e8f40f530bfb4d5970a2c24408ace",
+    "bytes": 11818747
+  },
+  "massive-zh-TW.jsonl": {
+    "archive_member": "1.1/data/zh-TW.jsonl",
+    "sha256": "e529feb6c56988575939fcc94cc837fd3391cfc48d5e62dd4e438e619beeabe7",
+    "bytes": 11740938
+  },
+  "massive-LICENSE": {
+    "archive_member": "1.1/LICENSE",
+    "sha256": "c2e6ea015269147de02117ebdd91f30ef09831251f5345fa8365273b1db1d435",
+    "bytes": 18704
+  }
+}
