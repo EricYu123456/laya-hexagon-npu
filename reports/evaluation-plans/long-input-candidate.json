@@ -1,0 +1,23 @@
+{
+  "selected_utc": "2026-09-28T16:37:56Z",
+  "candidate": "folded1024_long",
+  "uncorrected_graph_sha256": "08979ec8f526d59bdad53a674c930f2cdca2757747a2f9fd4c924b60aeca36ff",
+  "selection_basis": "Fixed 15-decision supplementary development probes, evaluated on CPU QDQ: zero decision mismatches and mean total variation 0.008244575. This is model selection evidence, not NPU qualification.",
+  "recipe": {
+    "length": 1024,
+    "samples": 32,
+    "append_long_calibration": true,
+    "total_calibration_sequences": 64,
+    "group_outliers": true,
+    "conv_linear": true,
+    "split_cls": true,
+    "zero_pad_embeddings": true,
+    "refine_matmul_rhs": "all",
+    "fold_norms": true,
+    "low_memory_calibration": true
+  },
+  "remaining_graph_transformation": "Measure zero-input HTP Conv offsets and apply their negative values with the committed calibrate_conv_offsets implementation. No validation inputs or reference answers enter this transformation. Record the resulting corrected graph hash before long-input NPU evaluation.",
+  "validation_plan": "long-input-heldout.json",
+  "validation_reference": "The pristine CPU reference is captured after the validation plan commit. Its outputs are not used to select this candidate.",
+  "short_bucket": "Keep the previously qualified corrected 768-token graph unchanged: 1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138."
+}
