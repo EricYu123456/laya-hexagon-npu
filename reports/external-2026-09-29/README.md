@@ -39,6 +39,50 @@ passes all 1,160 inputs, whose complete lengths range from 158 to 233 tokens.
 MASSIVE uses all eighteen scenario choices through
 the original CLI API; it is not a test of the HTTP service's twelve-option limit.
 
+## Measured results
+
+**5/5 suites pass their separately declared thresholds.** All 1,160
+decisions used actual HTP inference with zero CPU fallbacks, cache misses or cache
+errors. Complete tokens/markers and original Laya source/checkpoint identities
+match. The candidate graphs are unchanged from the preceding qualification.
+
+| Suite | Decisions | Differences | Mismatch | Mean TV | TV P95 | Max TV | Gate |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| [BANKING77, fixed eight intents](banking77-card8-npu.json) | 320 | 9 | 2.81% | 2.55% | 13.07% | 33.55% | Pass |
+| [CLINC150, ten domains](clinc150-domain10-npu.json) | 300 | 9 | 3.00% | 2.83% | 7.58% | 13.59% | Pass |
+| [MASSIVE, English](massive-en-US-npu.json) | 180 | 6 | 3.33% | 2.26% | 8.50% | 15.10% | Pass |
+| [MASSIVE, Traditional Chinese](massive-zh-TW-npu.json) | 180 | 3 | 1.67% | 2.78% | 11.17% | 19.29% | Pass |
+| [MASSIVE, Simplified Chinese](massive-zh-CN-npu.json) | 180 | 7 | 3.89% | 2.45% | 9.64% | 21.02% | Pass |
+
+The pooled descriptive result is **34/1,160 differences
+(2.9310%)**, with **2.5973% mean TV**.
+Pooling does not replace each suite's gate. The probability tails demonstrate why
+an aggregate pass is not a per-input 5% guarantee. [Raw and recomputed evidence](summary.json)
+and [post-run tail/margin diagnostics](diagnostics.json) preserve every difference.
+
+The following gold-label numbers describe these adapted tasks only. They also
+show that original Laya itself is imperfect on this setup; matching original
+Laya does not mean solving the source dataset correctly.
+
+| Adapted task | Original gold accuracy | NPU gold accuracy |
+| --- | ---: | ---: |
+| BANKING77, fixed eight intents | 67.81% | 67.19% |
+| CLINC150, ten domains | 56.00% | 55.67% |
+| MASSIVE, English | 66.67% | 67.22% |
+| MASSIVE, Traditional Chinese | 53.33% | 53.89% |
+| MASSIVE, Simplified Chinese | 62.22% | 63.33% |
+
+The evaluation contains short choice tasks (158–233 tokens), all using bucket
+768. It does not replace the earlier 1024-token or noul/score evaluations.
+
+[Execution timestamps](execution.json) retain every suite's completion and
+threshold status. The existing HTTP service was stopped for exclusive NPU
+measurement, then [restored to ready](service-restored.json) with the same
+qualified manifest. The offline evidence auditor passed [13 regression
+tests](summary-tests.txt), including rejection of incomplete inputs, changed
+original sources/models, missing execution proof, and pooled results that hide
+a failing suite.
+
 ## Sources, attribution and licenses
 
 - **BANKING77**, Casanueva et al., *Efficient Intent Detection with Dual Sentence
@@ -84,3 +128,10 @@ The original CPU runs use WSL; NPU runs use the physical Pi. These measurements
 compare numerical fidelity, not hardware speedup. The existing probe harness
 labels raw reports as supplementary; the separate frozen plan and offline
 summary establish the scope of this external evaluation.
+
+Recompute the complete summary without inference:
+
+```bash
+python summarize_external.py --plan reports/evaluation-plans/external-datasets-2026-09-29.json \
+  --output .work/external-summary-recomputed.json
+```

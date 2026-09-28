@@ -1,0 +1,18 @@
+test_changed_graph_or_reference_cannot_reuse_report (tests.test_summarize_external.ExternalSummaryTests.test_changed_graph_or_reference_cannot_reuse_report) ... ok
+test_changed_suite_or_source_lock_rejected (tests.test_summarize_external.ExternalSummaryTests.test_changed_suite_or_source_lock_rejected) ... ok
+test_complete_reports_recompute_all_metrics_and_pair_translations (tests.test_summarize_external.ExternalSummaryTests.test_complete_reports_recompute_all_metrics_and_pair_translations) ... ok
+test_cpu_and_npu_agreeing_on_changed_source_in_one_suite_still_rejected (tests.test_summarize_external.ExternalSummaryTests.test_cpu_and_npu_agreeing_on_changed_source_in_one_suite_still_rejected) ... ok
+test_missing_case_and_faked_counter_are_rejected (tests.test_summarize_external.ExternalSummaryTests.test_missing_case_and_faked_counter_are_rejected) ... ok
+test_missing_or_different_upstream_implementation_rejected (tests.test_summarize_external.ExternalSummaryTests.test_missing_or_different_upstream_implementation_rejected) ... ok
+test_numeric_tolerance_is_only_for_float_summation_noise (tests.test_summarize_external.ExternalSummaryTests.test_numeric_tolerance_is_only_for_float_summation_noise) ... ok
+test_pairing_rejects_missing_or_duplicate_semantic_locale (tests.test_summarize_external.ExternalSummaryTests.test_pairing_rejects_missing_or_duplicate_semantic_locale) ... ok
+test_plan_must_precede_reference_capture (tests.test_summarize_external.ExternalSummaryTests.test_plan_must_precede_reference_capture) ... ok
+test_pooling_cannot_hide_one_failed_suite (tests.test_summarize_external.ExternalSummaryTests.test_pooling_cannot_hide_one_failed_suite) ... ok
+test_recorded_correction_backend_and_used_bucket_proof_must_agree (tests.test_summarize_external.ExternalSummaryTests.test_recorded_correction_backend_and_used_bucket_proof_must_agree) ... ok
+test_removed_token_hash_from_both_reports_is_rejected (tests.test_summarize_external.ExternalSummaryTests.test_removed_token_hash_from_both_reports_is_rejected) ... ok
+test_tampered_metric_is_not_trusted (tests.test_summarize_external.ExternalSummaryTests.test_tampered_metric_is_not_trusted) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.304s
+
+OK

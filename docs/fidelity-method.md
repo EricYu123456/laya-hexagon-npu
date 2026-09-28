@@ -189,6 +189,25 @@ The [80-decision NPU result](../reports/qualification-2026-09-29/long-input-npu.
 
 The separate [15-decision development report](../reports/qualification-2026-09-29/supplementary-development-npu.json) retains one long-English choice difference, or **6.6667% mismatch**, with mean TV **0.9462%** and maximum TV **4.23%**. Its `passed` flag remains false. The graph was not changed after this result. The original held-out and synthetic long-input criteria remain unchanged. [The service acceptance clarification](../reports/qualification-2026-09-29/service-acceptance.md) records why exact HTTP/CLI replay is an integration check rather than another fidelity pass.
 
+## External adapted datasets
+
+A later [frozen external evaluation](../reports/evaluation-plans/external-datasets-2026-09-29.json)
+uses BANKING77 (eight fixed intents, 320 decisions), CLINC150 (ten domains, 300),
+and MASSIVE English/Traditional Chinese/Simplified Chinese (180 paired IDs per
+language). The unchanged deployed graph set passes all five suites separately:
+decision mismatch ranges from **1.6667% to 3.8889%**, and mean TV from **2.2582%
+to 2.8311%**. The pooled descriptive result is **34/1,160 (2.9310%)** mismatch and
+**2.5973% mean TV**, with exactly 1,160 NPU calls and zero CPU fallback.
+
+These are fixed subsets and adapted choice-label spaces, not the datasets'
+native leaderboard tasks. Source revisions, sampling rules, original reference
+outputs, full input-integrity checks, each suite's individual gate, paired-language
+comparisons, gold-label limitations, and error tails are documented in the
+[external report](../reports/external-2026-09-29/README.md). No calibration or model
+selection used these results. Inputs are 158–233 tokens; this supplements the
+preceding long-input and mixed-head tests. The exact plan was committed before
+either CPU or NPU inference.
+
 ## Runtime, cache, and performance boundaries
 
 Strict NPU means the encoder runs through QNN HTP with `session.disable_cpu_ep_fallback=1`; CPU tokenization, embedding lookup, and original decision heads remain intentional parts of the API. `session.disable_fallback()` also prevents Python's provider-error retry. A CPU QDQ adapter supplied through `--module` is a distinct diagnostic and must identify its provider in the report.

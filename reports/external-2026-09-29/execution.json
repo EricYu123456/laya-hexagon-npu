@@ -1,0 +1,265 @@
+{
+  "started_utc": "2026-09-28T17:57:42.486711+00:00",
+  "service_was_active": true,
+  "plan_sha256": "6522d73f2bfaa19b4a073b6f40e7300c84d1edf5f9863013fed6eb9b881c32d9",
+  "source_commit": "cc616eae1bfc21808d20c9bf9c6291def048b31c",
+  "runs": [
+    {
+      "suite": "banking77-card8",
+      "exit_code": 0,
+      "passed": true,
+      "overall": {
+        "decisions": 320,
+        "decision_mismatches": 9,
+        "decision_error_percent": 2.8125,
+        "argmax_mismatches": 9,
+        "argmax_error_percent": 2.8125,
+        "total_variation": {
+          "count": 320,
+          "mean": 0.025478113833607527,
+          "p50": 0.0017501249875012301,
+          "p95": 0.13073956809594572,
+          "max": 0.3355446355364464
+        },
+        "probability_mae": {
+          "count": 320,
+          "mean": 0.006369528458401882,
+          "p50": 0.00043753124687530753,
+          "p95": 0.03268489202398643,
+          "max": 0.0838861588841116
+        },
+        "max_probability_error": {
+          "count": 320,
+          "mean": 0.02502356420814587,
+          "p50": 0.001750084991500811,
+          "p95": 0.13073956809594567,
+          "max": 0.3355446355364464
+        },
+        "noul_abs_error": null,
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 320,
+          "mean": 0.018715625,
+          "p50": 0.004500000000000004,
+          "p95": 0.07930500000000007,
+          "max": 0.1916000000000001
+        },
+        "action_probability_abs_error": {
+          "count": 320,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "completed_utc": "2026-09-28T18:03:14.109714+00:00"
+    },
+    {
+      "suite": "clinc150-domain10",
+      "exit_code": 0,
+      "passed": true,
+      "overall": {
+        "decisions": 300,
+        "decision_mismatches": 9,
+        "decision_error_percent": 3.0,
+        "argmax_mismatches": 9,
+        "argmax_error_percent": 3.0,
+        "total_variation": {
+          "count": 300,
+          "mean": 0.028311246343235955,
+          "p50": 0.023814933506649354,
+          "p95": 0.07582656084391562,
+          "max": 0.13591931613677266
+        },
+        "probability_mae": {
+          "count": 300,
+          "mean": 0.005662249268647191,
+          "p50": 0.004762986701329871,
+          "p95": 0.015165312168783123,
+          "max": 0.02718386322735453
+        },
+        "max_probability_error": {
+          "count": 300,
+          "mean": 0.025590128723147133,
+          "p50": 0.019981981191319817,
+          "p95": 0.07538422892289234,
+          "max": 0.13591931613677266
+        },
+        "noul_abs_error": null,
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 300,
+          "mean": 0.018826666666666665,
+          "p50": 0.01154999999999997,
+          "p95": 0.06469000000000001,
+          "max": 0.10929999999999995
+        },
+        "action_probability_abs_error": {
+          "count": 300,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "completed_utc": "2026-09-28T18:08:25.529661+00:00"
+    },
+    {
+      "suite": "massive-en-US",
+      "exit_code": 0,
+      "passed": true,
+      "overall": {
+        "decisions": 180,
+        "decision_mismatches": 6,
+        "decision_error_percent": 3.3333333333333335,
+        "argmax_mismatches": 6,
+        "argmax_error_percent": 3.3333333333333335,
+        "total_variation": {
+          "count": 180,
+          "mean": 0.022581744894697466,
+          "p50": 0.011140071441766035,
+          "p95": 0.08497203777842566,
+          "max": 0.1509549845015498
+        },
+        "probability_mae": {
+          "count": 180,
+          "mean": 0.0025090827660774963,
+          "p50": 0.0012377857157517816,
+          "p95": 0.009441337530936183,
+          "max": 0.016772776055727755
+        },
+        "max_probability_error": {
+          "count": 180,
+          "mean": 0.020055121987739188,
+          "p50": 0.009338878981888829,
+          "p95": 0.08407164333486118,
+          "max": 0.15095498450154976
+        },
+        "noul_abs_error": null,
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 180,
+          "mean": 0.014271666666666669,
+          "p50": 0.005249999999999991,
+          "p95": 0.06080500000000002,
+          "max": 0.13179999999999997
+        },
+        "action_probability_abs_error": {
+          "count": 180,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "completed_utc": "2026-09-28T18:11:42.616901+00:00"
+    },
+    {
+      "suite": "massive-zh-TW",
+      "exit_code": 0,
+      "passed": true,
+      "overall": {
+        "decisions": 180,
+        "decision_mismatches": 3,
+        "decision_error_percent": 1.6666666666666667,
+        "argmax_mismatches": 3,
+        "argmax_error_percent": 1.6666666666666667,
+        "total_variation": {
+          "count": 180,
+          "mean": 0.027849120334120486,
+          "p50": 0.011778889539096699,
+          "p95": 0.11165010944344642,
+          "max": 0.1929
+        },
+        "probability_mae": {
+          "count": 180,
+          "mean": 0.003094346703791165,
+          "p50": 0.0013087655043440777,
+          "p95": 0.01240556771593849,
+          "max": 0.021433333333333332
+        },
+        "max_probability_error": {
+          "count": 180,
+          "mean": 0.025598549442003828,
+          "p50": 0.010185687317118441,
+          "p95": 0.10590196380781927,
+          "max": 0.19289999999999996
+        },
+        "noul_abs_error": null,
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 180,
+          "mean": 0.017566111111111112,
+          "p50": 0.009099999999999997,
+          "p95": 0.06325999999999984,
+          "max": 0.14280000000000004
+        },
+        "action_probability_abs_error": {
+          "count": 180,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "completed_utc": "2026-09-28T18:15:00.417925+00:00"
+    },
+    {
+      "suite": "massive-zh-CN",
+      "exit_code": 0,
+      "passed": true,
+      "overall": {
+        "decisions": 180,
+        "decision_mismatches": 7,
+        "decision_error_percent": 3.888888888888889,
+        "argmax_mismatches": 7,
+        "argmax_error_percent": 3.888888888888889,
+        "total_variation": {
+          "count": 180,
+          "mean": 0.02447176005679824,
+          "p50": 0.0104560646293618,
+          "p95": 0.09643172793404116,
+          "max": 0.2102102521021025
+        },
+        "probability_mae": {
+          "count": 180,
+          "mean": 0.0027190844507553598,
+          "p50": 0.001161784958817978,
+          "p95": 0.010714636437115684,
+          "max": 0.023356694678011387
+        },
+        "max_probability_error": {
+          "count": 180,
+          "mean": 0.02260808046753233,
+          "p50": 0.009045438770293901,
+          "p95": 0.08568533104265319,
+          "max": 0.21021025210210248
+        },
+        "noul_abs_error": null,
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 180,
+          "mean": 0.015245555555555559,
+          "p50": 0.007849999999999996,
+          "p95": 0.047909999999999946,
+          "max": 0.16179999999999994
+        },
+        "action_probability_abs_error": {
+          "count": 180,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "completed_utc": "2026-09-28T18:18:18.169729+00:00"
+    }
+  ],
+  "completed_utc": "2026-09-28T18:18:18.174935+00:00",
+  "service_restore_exit_code": 0
+}

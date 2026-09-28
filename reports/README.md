@@ -1,5 +1,7 @@
 # Recorded fidelity experiments
 
+[external-2026-09-29](external-2026-09-29/README.md) records the separately frozen 1,160-decision BANKING77/CLINC150/MASSIVE evaluation. **5/5 suites pass**; all per-suite values, paired-language results, input checks, raw outputs, gold-label limitations and probability tails are retained.
+
 [qualification-2026-09-29](qualification-2026-09-29) preserves the completed actual-NPU evaluation. The [declared held-out selection](qualification-2026-09-29/heldout.json) has **65/1,840 decision differences (3.5326%)** and **2.5021% mean TV**. The [complete public split](qualification-2026-09-29/full-public.json) has **71/2,000 differences (3.55%)**. The [predeclared synthetic 1024-token validation](qualification-2026-09-29/long-input-npu.json) has **0/80 differences and 2.0614% mean TV**. All three pass their aggregate thresholds with identical inputs and zero CPU fallbacks.
 
 The [15-decision supplementary development result](qualification-2026-09-29/supplementary-development-npu.json) has **1/15 differences (6.6667%)** and **0.9462% mean TV**; its accuracy gate remains failed. [HTTP integration](qualification-2026-09-29/service-http.json) reproduces those NPU outputs exactly and is reported separately. The service cgroup peak is **2.556 GiB** under its 4 GiB limit, with no restart/OOM or fallback. [Acceptance clarification](qualification-2026-09-29/service-acceptance.md) explains this distinction.

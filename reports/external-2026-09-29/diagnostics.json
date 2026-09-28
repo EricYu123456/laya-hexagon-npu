@@ -1,0 +1,286 @@
+{
+  "kind": "laya_external_post_run_diagnostics",
+  "created_utc": "2026-09-28T18:19:26.437151+00:00",
+  "summary_sha256": "afe2cd8c9df9804e1321f5d75c857339af7c7182dedec700b8ab98d6352746de",
+  "note": "Post-run descriptive analysis only; no new gates, model tuning or case exclusions.",
+  "suites": {
+    "banking77-card8": {
+      "decisions": 320,
+      "tv_above_5_percent": 63,
+      "tv_above_10_percent": 23,
+      "mismatches": [
+        {
+          "id": "banking77-en-156",
+          "original_choice": "transaction_charged_twice",
+          "npu_choice": "card_payment_wrong_exchange_rate",
+          "original_top_two_margin": 0.26522652265226526,
+          "total_variation": 0.13551355135513557
+        },
+        {
+          "id": "banking77-en-833",
+          "original_choice": "card_payment_fee_charged",
+          "npu_choice": "transaction_charged_twice",
+          "original_top_two_margin": 0.11278872112788717,
+          "total_variation": 0.3355446355364464
+        },
+        {
+          "id": "banking77-en-1096",
+          "original_choice": "card_payment_not_recognised",
+          "npu_choice": "transaction_charged_twice",
+          "original_top_two_margin": 0.027402740274027438,
+          "total_variation": 0.09474796479647961
+        },
+        {
+          "id": "banking77-en-1105",
+          "original_choice": "reverted_card_payment?",
+          "npu_choice": "card_payment_fee_charged",
+          "original_top_two_margin": 0.0030999999999999917,
+          "total_variation": 0.09364576457645765
+        },
+        {
+          "id": "banking77-en-1605",
+          "original_choice": "declined_card_payment",
+          "npu_choice": "card_payment_fee_charged",
+          "original_top_two_margin": 0.22549999999999998,
+          "total_variation": 0.1697
+        },
+        {
+          "id": "banking77-en-1705",
+          "original_choice": "request_refund",
+          "npu_choice": "transaction_charged_twice",
+          "original_top_two_margin": 0.09660966096609658,
+          "total_variation": 0.15881588158815876
+        },
+        {
+          "id": "banking77-en-1713",
+          "original_choice": "transaction_charged_twice",
+          "npu_choice": "card_payment_fee_charged",
+          "original_top_two_margin": 0.048904890489048905,
+          "total_variation": 0.07677337076773376
+        },
+        {
+          "id": "banking77-en-1814",
+          "original_choice": "reverted_card_payment?",
+          "npu_choice": "card_payment_fee_charged",
+          "original_top_two_margin": 0.0918091809180918,
+          "total_variation": 0.09690969096909692
+        },
+        {
+          "id": "banking77-en-2117",
+          "original_choice": "card_payment_fee_charged",
+          "npu_choice": "transaction_charged_twice",
+          "original_top_two_margin": 0.03829617038296171,
+          "total_variation": 0.030794730307947313
+        }
+      ],
+      "median_original_margin_on_mismatches": 0.0918091809180918
+    },
+    "clinc150-domain10": {
+      "decisions": 300,
+      "tv_above_5_percent": 50,
+      "tv_above_10_percent": 3,
+      "mismatches": [
+        {
+          "id": "clinc150-en-337",
+          "original_choice": "meta",
+          "npu_choice": "small_talk",
+          "original_top_two_margin": 0.05199999999999999,
+          "total_variation": 0.0282
+        },
+        {
+          "id": "clinc150-en-1104",
+          "original_choice": "credit_cards",
+          "npu_choice": "banking",
+          "original_top_two_margin": 0.07958408318336331,
+          "total_variation": 0.07673797240551887
+        },
+        {
+          "id": "clinc150-en-1707",
+          "original_choice": "kitchen_and_dining",
+          "npu_choice": "home",
+          "original_top_two_margin": 0.034099999999999964,
+          "total_variation": 0.06626522652265225
+        },
+        {
+          "id": "clinc150-en-1766",
+          "original_choice": "home",
+          "npu_choice": "banking",
+          "original_top_two_margin": 0.007099290070992896,
+          "total_variation": 0.03912297770222975
+        },
+        {
+          "id": "clinc150-en-2125",
+          "original_choice": "work",
+          "npu_choice": "utility",
+          "original_top_two_margin": 0.019001900190018992,
+          "total_variation": 0.05446880688068805
+        },
+        {
+          "id": "clinc150-en-3163",
+          "original_choice": "meta",
+          "npu_choice": "kitchen_and_dining",
+          "original_top_two_margin": 0.030000000000000027,
+          "total_variation": 0.07536234623462348
+        },
+        {
+          "id": "clinc150-en-3294",
+          "original_choice": "home",
+          "npu_choice": "work",
+          "original_top_two_margin": 0.03099690030996903,
+          "total_variation": 0.04103280671932809
+        },
+        {
+          "id": "clinc150-en-3362",
+          "original_choice": "meta",
+          "npu_choice": "work",
+          "original_top_two_margin": 0.06730000000000003,
+          "total_variation": 0.046700000000000026
+        },
+        {
+          "id": "clinc150-en-4249",
+          "original_choice": "home",
+          "npu_choice": "auto_and_commute",
+          "original_top_two_margin": 0.07560756075607561,
+          "total_variation": 0.07428266074282659
+        }
+      ],
+      "median_original_margin_on_mismatches": 0.034099999999999964
+    },
+    "massive-en-US": {
+      "decisions": 180,
+      "tv_above_5_percent": 25,
+      "tv_above_10_percent": 6,
+      "mismatches": [
+        {
+          "id": "massive-en-US-4224",
+          "original_choice": "cooking",
+          "npu_choice": "datetime",
+          "original_top_two_margin": 0.07140714071407142,
+          "total_variation": 0.1064106410641064
+        },
+        {
+          "id": "massive-en-US-6015",
+          "original_choice": "alarm",
+          "npu_choice": "iot",
+          "original_top_two_margin": 0.13462692538507698,
+          "total_variation": 0.08416285717389502
+        },
+        {
+          "id": "massive-en-US-10640",
+          "original_choice": "takeaway",
+          "npu_choice": "lists",
+          "original_top_two_margin": 0.049804980498049815,
+          "total_variation": 0.1098765776577658
+        },
+        {
+          "id": "massive-en-US-11335",
+          "original_choice": "play",
+          "npu_choice": "audio",
+          "original_top_two_margin": 0.032496750324967474,
+          "total_variation": 0.06738659334106578
+        },
+        {
+          "id": "massive-en-US-15546",
+          "original_choice": "cooking",
+          "npu_choice": "takeaway",
+          "original_top_two_margin": 0.040595940405959374,
+          "total_variation": 0.054094590540945876
+        },
+        {
+          "id": "massive-en-US-15839",
+          "original_choice": "qa",
+          "npu_choice": "iot",
+          "original_top_two_margin": 0.01780356071214241,
+          "total_variation": 0.042106841368273626
+        }
+      ],
+      "median_original_margin_on_mismatches": 0.0452004604520046
+    },
+    "massive-zh-TW": {
+      "decisions": 180,
+      "tv_above_5_percent": 41,
+      "tv_above_10_percent": 12,
+      "mismatches": [
+        {
+          "id": "massive-zh-TW-9640",
+          "original_choice": "audio",
+          "npu_choice": "play",
+          "original_top_two_margin": 0.0394881535539338,
+          "total_variation": 0.05132776440558433
+        },
+        {
+          "id": "massive-zh-TW-10571",
+          "original_choice": "qa",
+          "npu_choice": "iot",
+          "original_top_two_margin": 0.07230723072307231,
+          "total_variation": 0.05985421506743592
+        },
+        {
+          "id": "massive-zh-TW-12104",
+          "original_choice": "iot",
+          "npu_choice": "play",
+          "original_top_two_margin": 0.032006401280256024,
+          "total_variation": 0.16005702390603133
+        }
+      ],
+      "median_original_margin_on_mismatches": 0.0394881535539338
+    },
+    "massive-zh-CN": {
+      "decisions": 180,
+      "tv_above_5_percent": 25,
+      "tv_above_10_percent": 8,
+      "mismatches": [
+        {
+          "id": "massive-zh-CN-608",
+          "original_choice": "iot",
+          "npu_choice": "audio",
+          "original_top_two_margin": 0.13578642135786426,
+          "total_variation": 0.16349112163491122
+        },
+        {
+          "id": "massive-zh-CN-631",
+          "original_choice": "calendar",
+          "npu_choice": "iot",
+          "original_top_two_margin": 0.009101820364072812,
+          "total_variation": 0.06888007938554011
+        },
+        {
+          "id": "massive-zh-CN-3631",
+          "original_choice": "music",
+          "npu_choice": "play",
+          "original_top_two_margin": 0.044108821764352844,
+          "total_variation": 0.039383116623324645
+        },
+        {
+          "id": "massive-zh-CN-5707",
+          "original_choice": "social",
+          "npu_choice": "recommendation",
+          "original_top_two_margin": 0.043800000000000006,
+          "total_variation": 0.044700000000000004
+        },
+        {
+          "id": "massive-zh-CN-6683",
+          "original_choice": "qa",
+          "npu_choice": "iot",
+          "original_top_two_margin": 0.047699999999999965,
+          "total_variation": 0.046752175217521744
+        },
+        {
+          "id": "massive-zh-CN-10571",
+          "original_choice": "qa",
+          "npu_choice": "iot",
+          "original_top_two_margin": 0.07230723072307231,
+          "total_variation": 0.05985421506743592
+        },
+        {
+          "id": "massive-zh-CN-14701",
+          "original_choice": "cooking",
+          "npu_choice": "play",
+          "original_top_two_margin": 0.09290929092909289,
+          "total_variation": 0.09855197519751975
+        }
+      ],
+      "median_original_margin_on_mismatches": 0.047699999999999965
+    }
+  }
+}

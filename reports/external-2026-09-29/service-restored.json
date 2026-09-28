@@ -1,0 +1,25 @@
+{
+  "checked_utc": "2026-09-28T18:19:26.7404493Z",
+  "base_url": "http://192.168.137.127:8000",
+  "health": {
+    "status": "ready",
+    "checkpoint": "multilingual",
+    "device": "npu",
+    "threads": 4,
+    "revision": "1c5edc17a7acd8701df6fc341c0d179f1c62c982",
+    "supported_input_capacity": 1024,
+    "encoder_provider": "QNNExecutionProvider",
+    "cpu_fallbacks": 0,
+    "supported_buckets": [
+      768,
+      1024
+    ],
+    "npu_calls": 1,
+    "context_cache_hits": 1,
+    "context_cache_misses": 0,
+    "context_cache_errors": 0,
+    "bucket_calls": {
+      "768": 1
+    }
+  }
+}

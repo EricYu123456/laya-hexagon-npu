@@ -8,6 +8,8 @@ The goal is decision mismatch **≤5%** and mean total variation **≤5%**, with
 
 **Development limitation:** the separate 15-decision Chinese/English probe suite has **1 difference (6.6667%)**, despite mean TV of only **0.9462%**. Its accuracy gate remains failed in the preserved report. The service reproduces those same NPU answers exactly; [service integration is reported separately from fidelity](reports/qualification-2026-09-29/service-acceptance.md).
 
+Additional [external dataset evaluation](reports/external-2026-09-29/README.md) covers **1,160 adapted choice decisions** from BANKING77, CLINC150, and MASSIVE English/Traditional Chinese/Simplified Chinese. **5/5 suites** pass separately; pooled mismatch is **2.9310%** and mean TV is **2.5973%**. These are fixed subsets and adapted label spaces, not native leaderboard scores.
+
 ## What runs where
 
 `laya_npu.py` loads the original Laya agent and replaces only its encoder. The original tokenizer, sequence construction, decision heads, temperatures, and response formatting remain in use. Token embeddings and heads run on the CPU; the quantized encoder runs on HTP with CPU EP fallback disabled. A QNN failure is an error.
