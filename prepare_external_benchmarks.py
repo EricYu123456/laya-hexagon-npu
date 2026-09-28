@@ -105,8 +105,8 @@ def build_suites(source_dir):
         for i, r in enumerate(bank) if r['category'] in BANKING]
     assert all(sum(p['metadata']['gold_label'] == key for p in suites['banking77-card8']) == 40
                for key in BANKING)
-    clinc = json.loads((source_dir / 'clinc-data_full.json').read_text())['test']
-    domains = json.loads((source_dir / 'clinc-domains.json').read_text())
+    clinc = json.loads((source_dir / 'clinc-data_full.json').read_text(encoding='utf-8'))['test']
+    domains = json.loads((source_dir / 'clinc-domains.json').read_text(encoding='utf-8'))
     assert len(clinc) == 4500 and set(domains) == set(CLINC)
     domain_by_intent = {intent: domain for domain, intents in domains.items() for intent in intents}
     selected = []
@@ -120,7 +120,7 @@ def build_suites(source_dir):
         for i in sorted(selected)]
     by_locale = {}
     for locale in ['en-US', 'zh-TW', 'zh-CN']:
-        rows = [json.loads(line) for line in (source_dir / f'massive-{locale}.jsonl').read_text().splitlines()]
+        rows = [json.loads(line) for line in (source_dir / f'massive-{locale}.jsonl').read_text(encoding='utf-8').splitlines()]
         by_locale[locale] = {str(r['id']): r for r in rows if r['partition'] == 'test'}
         assert len(by_locale[locale]) == 2974
     en = by_locale['en-US']
@@ -150,7 +150,7 @@ def main():
     args = parser.parse_args()
     if args.plan.exists():
         parser.error('Use a fresh plan path; do not overwrite a frozen evaluation')
-    lock = json.loads(args.source_lock.read_text())
+    lock = json.loads(args.source_lock.read_text(encoding='utf-8'))
     ensure_sources(args.source_dir, lock)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     plan = {

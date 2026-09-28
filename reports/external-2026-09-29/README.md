@@ -34,7 +34,9 @@ Every row in a suite has identical question wording and option order. Only the
 raw source utterance is passed as `state`; labels and source IDs stay in metadata.
 A tokenizer-only preflight verifies complete state, instruction and option text,
 as well as markers. Merely retaining all markers would not catch semantically
-truncated option descriptions. MASSIVE uses all eighteen scenario choices through
+truncated option descriptions. The [recorded preflight](tokenizer-preflight.json)
+passes all 1,160 inputs, whose complete lengths range from 158 to 233 tokens.
+MASSIVE uses all eighteen scenario choices through
 the original CLI API; it is not a test of the HTTP service's twelve-option limit.
 
 ## Sources, attribution and licenses
