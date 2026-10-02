@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "errors": {},
+  "suites": {
+    "typed-decisions-full": {
+      "decisions": 2000,
+      "decision_error_percent": 0.6,
+      "mean_tv": 0.004885831297875068,
+      "passed": true
+    },
+    "supplementary-development": {
+      "decisions": 15,
+      "decision_error_percent": 0.0,
+      "mean_tv": 0.002204781293514475,
+      "passed": true
+    },
+    "long-input": {
+      "decisions": 80,
+      "decision_error_percent": 0.0,
+      "mean_tv": 0.004848238661569882,
+      "passed": true
+    },
+    "banking77-card8": {
+      "decisions": 320,
+      "decision_error_percent": 0.3125,
+      "mean_tv": 0.004265218989731905,
+      "passed": true
+    },
+    "clinc150-domain10": {
+      "decisions": 300,
+      "decision_error_percent": 0.3333333333333333,
+      "mean_tv": 0.006222123577491145,
+      "passed": true
+    },
+    "massive-en-US": {
+      "decisions": 180,
+      "decision_error_percent": 0.0,
+      "mean_tv": 0.004107587165113963,
+      "passed": true
+    },
+    "massive-zh-TW": {
+      "decisions": 180,
+      "decision_error_percent": 0.5555555555555556,
+      "mean_tv": 0.005205364319510112,
+      "passed": true
+    },
+    "massive-zh-CN": {
+      "decisions": 180,
+      "decision_error_percent": 0.0,
+      "mean_tv": 0.004674840972748369,
+      "passed": true
+    },
+    "legacy": {
+      "decisions": 8,
+      "decision_error_percent": 0.0,
+      "mean_tv": 0.0020871837816218448,
+      "passed": true
+    },
+    "typed-historical-heldout": {
+      "decisions": 1840,
+      "decision_error_percent": 0.5978260869565217,
+      "mean_tv": 0.004883947595516927,
+      "passed": true
+    },
+    "typed-development": {
+      "decisions": 80,
+      "decision_error_percent": 0.0,
+      "mean_tv": 0.005770128628288788,
+      "passed": true
+    },
+    "legacy-accuracy-probes": {
+      "decisions": 4,
+      "decision_error_percent": 0.0,
+      "mean_tv": 0.003324999999999996,
+      "passed": true
+    },
+    "legacy-service-requests": {
+      "decisions": 4,
+      "decision_error_percent": 0.0,
+      "mean_tv": 0.0008493675632436934,
+      "passed": true
+    }
+  }
+}
+{
+  "passed": true,
+  "error": null,
+  "cleanup_errors": [],
+  "manifest_rolled_back": null,
+  "final_service_inactive": true,
+  "memory_peak_bytes": 3858608128
+}

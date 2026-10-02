@@ -7,6 +7,7 @@ import argparse
 import gc
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import sys
@@ -278,6 +279,8 @@ def main():
     p.add_argument("--max-outliers", type=int, default=8)
     p.add_argument("--conv-linear", action="store_true", help="Use 1x1 convolution for per-channel weight quantization")
     p.add_argument("--split-cls", action="store_true", help="Keep CLS and other token residual quantization ranges separate")
+    p.add_argument("--split-features", action="store_true", help="Keep calibrated residual feature bands separate (experimental)")
+    p.add_argument("--feature-thresholds", default="100,500,2000", help="Residual magnitude bands for reserved calibration")
     p.add_argument("--fold-norms", action="store_true", help="Exactly fold interior normalization affine weights into projections")
     p.add_argument("--zero-pad-embeddings", action="store_true", help="Zero masked padding embeddings so they do not dominate calibration ranges")
     p.add_argument("--refine-matmul-rhs", choices=["none", "pv", "all"], default="none",
@@ -293,6 +296,11 @@ def main():
         p.error("length and samples must be positive")
     if args.refine_matmul_rhs != "none" and args.activation_bits != 16:
         p.error("MatMul RHS refinement requires --activation-bits 16")
+    if args.split_features:
+        thresholds = [float(x) for x in args.feature_thresholds.split(",")]
+        if (not thresholds or any(not math.isfinite(x) or x <= 0 for x in thresholds)
+                or thresholds != sorted(set(thresholds))):
+            p.error("Feature thresholds must be distinct, increasing, positive finite numbers")
     torch.set_num_threads(args.threads)
     torch.set_num_interop_threads(1)
     fp32 = args.output_dir / f"backbone_{args.length}_fp32.onnx"
@@ -300,6 +308,9 @@ def main():
     checkpoint_hash = sha256_file(args.model / "model.safetensors")
     export_config = {key: getattr(args, key) for key in ("length", "indices", "samples", "mask_penalty", "balance", "group_outliers", "outlier_ratio", "max_outliers", "conv_linear", "split_cls", "fold_norms", "zero_pad_embeddings")}
     export_config["checkpoint_sha256"] = checkpoint_hash
+    if args.split_features:
+        export_config["split_features"] = True
+        export_config["feature_thresholds"] = [float(x) for x in args.feature_thresholds.split(",")]
     export_config["input_sha256"] = export_input_hashes(args.model, args.parquet)
     if args.append_long_calibration:
         export_config["append_long_calibration"] = True
@@ -360,7 +371,6 @@ def main():
         sys.path.insert(0, str(ROOT))
         from npu.conv_linear import replace_linears_with_conv
         metadata["conv_linear_replacements"] = replace_linears_with_conv(enc)
-    wrapper = Backbone(enc, args.length, args.split_cls).eval()
     data = []
     for _, _, ids in seqs:
         padded = ids + [agent.tok.pad_token_id] * (args.length - len(ids))
@@ -369,6 +379,25 @@ def main():
         if args.zero_pad_embeddings:
             embeds[:, len(ids):] = 0
         data.append({"inputs_embeds": embeds, "attn_mask": attn, "sliding_mask": sliding})
+    if args.split_features:
+        sys.path.insert(0, str(ROOT))
+        from npu.split_residual import collect_feature_ranges, make_feature_group_plan, FeatureSplitBackbone
+        if args.reuse_export:
+            saved_transforms = json.loads(export_sidecar.read_text(encoding="utf-8")).get("feature_transforms")
+            if not saved_transforms:
+                raise ValueError("Feature export lacks its recorded feature plan; create a fresh export")
+            ranges, plan = saved_transforms["calibration"], saved_transforms["plan"]
+        else:
+            print("Collecting residual feature bands from reserved calibration", flush=True)
+            ranges = collect_feature_ranges(enc, data)
+            plan = make_feature_group_plan(ranges, thresholds=export_config["feature_thresholds"])
+        metadata["feature_calibration"] = ranges
+        metadata["feature_group_plan"] = plan
+        wrapper = FeatureSplitBackbone(enc, args.length, feature_groups=plan["groups"], split_cls=args.split_cls).eval()
+        metadata["feature_split"] = wrapper.metadata
+        print("Feature group sizes", plan["group_sizes"], flush=True)
+    else:
+        wrapper = Backbone(enc, args.length, args.split_cls).eval()
     metadata["torch_export_error"] = []
     validation_data = [data[index] for index in validation_indices]
     for d, ref in zip(validation_data, validation):
@@ -384,7 +413,11 @@ def main():
         model = onnx.load(fp32)
         fix_layernorm_bias(model)
         onnx.save(model, fp32)
-        export_sidecar.write_text(json.dumps({"config": export_config, "fp32_sha256": sha256_file(fp32)}, indent=2) + "\n")
+        sidecar = {"config": export_config, "fp32_sha256": sha256_file(fp32)}
+        if args.split_features:
+            sidecar["feature_transforms"] = {"calibration": metadata["feature_calibration"],
+                                             "plan": metadata["feature_group_plan"]}
+        export_sidecar.write_text(json.dumps(sidecar, indent=2) + "\n")
         del model
     del wrapper, enc, agent
     gc.collect()

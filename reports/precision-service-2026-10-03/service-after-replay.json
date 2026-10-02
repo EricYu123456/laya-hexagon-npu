@@ -1,0 +1,34 @@
+{
+  "created_utc": "2026-10-02T19:44:43.863294+00:00",
+  "systemd": {
+    "MainPID": "428871",
+    "Result": "success",
+    "NRestarts": "0",
+    "ExecMainCode": "0",
+    "ExecMainStatus": "0",
+    "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/laya.service",
+    "MemoryCurrent": "2172887040",
+    "MemoryPeak": "3858608128",
+    "MemoryMax": "4294967296",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/home/ubuntu/.config/systemd/user/laya.service",
+    "DropInPaths": "",
+    "InvocationID": "10a14be834b540f2989e304be57510d8"
+  },
+  "cgroup": {
+    "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/laya.service",
+    "memory.max": 4294967296,
+    "memory.current": 2172887040,
+    "memory.peak": 3858608128,
+    "memory.swap.current": 0,
+    "memory.events": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    }
+  }
+}

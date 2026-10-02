@@ -1,0 +1,85 @@
+[0;93m2026-10-02 18:53:00.488394592 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 18:53:00.654713356 [W:onnxruntime:Default, qnn_backend_manager.cc:318 operator()] Using existing ADSP_LIBRARY_PATH setting of /home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn;/usr/lib/rfsa/adsp;/dsp, which may cause the HTP backend to fail.[m
+[0;93m2026-10-02 18:53:00.812867813 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 18:53:00.812999944 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+heldout-long-2: 19704.1 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-27: 14481.2 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-52: 14398.2 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-77: 14534.2 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-102: 14501.4 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-127: 14485.9 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-152: 14451.7 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-177: 14500.5 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-202: 14519.3 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-227: 14491.9 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-252: 14419.9 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-277: 14488.5 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-302: 14520.4 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-327: 14771.6 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-352: 14526.2 ms; tokens [1024, 1024, 1024, 1024, 1024]
+heldout-long-377: 14559.5 ms; tokens [1024, 1024, 1024, 1024, 1024]
+{
+  "decisions": 80,
+  "decision_mismatches": 0,
+  "decision_error_percent": 0.0,
+  "argmax_mismatches": 0,
+  "argmax_error_percent": 0,
+  "total_variation": {
+    "count": 80,
+    "mean": 0.004848238661569882,
+    "p50": 0.003025607560756092,
+    "p95": 0.010260969096909673,
+    "max": 0.05495010501050102
+  },
+  "probability_mae": {
+    "count": 80,
+    "mean": 0.0026201009781847548,
+    "p50": 0.0015377312731272887,
+    "p95": 0.006114999999999897,
+    "max": 0.02747505250525051
+  },
+  "max_probability_error": {
+    "count": 80,
+    "mean": 0.004734679168621784,
+    "p50": 0.0027293529352935345,
+    "p95": 0.010260969096909675,
+    "max": 0.054950105010501016
+  },
+  "noul_abs_error": {
+    "count": 24,
+    "mean": 0.0017916666666666498,
+    "p50": 0.0005500000000000504,
+    "p95": 0.009554999999999966,
+    "max": 0.013799999999999923
+  },
+  "score_abs_error": {
+    "count": 32,
+    "mean": 0.00671562500000001,
+    "p50": 0.00550000000000006,
+    "p95": 0.01635999999999995,
+    "max": 0.029100000000000126
+  },
+  "score_normalized_abs_error": {
+    "count": 32,
+    "mean": 0.0021697916666666706,
+    "p50": 0.001783333333333359,
+    "p95": 0.0053799999999999916,
+    "max": 0.009700000000000042
+  },
+  "confidence_abs_error": {
+    "count": 80,
+    "mean": 0.003776249999999992,
+    "p50": 0.0016499999999999848,
+    "p95": 0.010755000000000034,
+    "max": 0.054900000000000004
+  },
+  "action_probability_abs_error": {
+    "count": 80,
+    "mean": 0.0,
+    "p50": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  }
+}
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc

@@ -1,0 +1,878 @@
+[
+  {
+    "id": "heldout-long-2",
+    "source_index": 2,
+    "workflow": "agent_trace_observability",
+    "state": "{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}\n\n{\"agent\": {\"autonomy\": \"unsupervised\", \"model\": \"internal-agent-v3\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never disable monitoring or alerting\"], \"task\": \"Backfill missing analytics events for the last seven days.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 763.4, \"irreversible_actions\": 0, \"steps\": 4, \"tool_errors\": 3}}",
+    "questions": {
+      "action": {
+        "criteria": {
+          "continue": "Let the agent proceed without interruption.",
+          "human_review": "Queue this trace for a human to review.",
+          "observe": "Keep running, but flag the trace for later sampling.",
+          "stop": "Halt the agent now."
+        },
+        "instructions": "What should the observability system do with this trace?",
+        "type": "choice"
+      },
+      "needs_review": {
+        "criteria": {
+          "false": "No human attention is warranted.",
+          "true": "A human should inspect this run."
+        },
+        "instructions": "This trace requires human review.",
+        "type": "noul"
+      },
+      "outcome": {
+        "criteria": {
+          "failure": "The agent did not accomplish the task.",
+          "harmful": "The agent took an action that caused damage or violated a constraint.",
+          "partial": "The agent made progress but did not fully complete the task.",
+          "success": "The agent completed the task correctly."
+        },
+        "instructions": "How did this agent run turn out?",
+        "type": "choice"
+      },
+      "risk": {
+        "criteria": [
+          "Benign: read-only or clearly safe actions.",
+          "Low: routine writes within scope.",
+          "Moderate: irreversible or out-of-scope actions.",
+          "High: destructive, security-relevant, or policy-violating actions."
+        ],
+        "instructions": "How risky was the agent's behaviour in this trace?",
+        "type": "score"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How quickly does this trace need attention?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-27",
+    "source_index": 27,
+    "workflow": "agent_trace_observability",
+    "state": "{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}\n\n{\"agent\": {\"autonomy\": \"checkpointed\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Never modify production without an approved change ticket\", \"Never delete anything matching release/*\"], \"task\": \"Rotate the expired TLS certificate on the staging load balancer.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 498.3, \"irreversible_actions\": 0, \"steps\": 7, \"tool_errors\": 1}}",
+    "questions": {
+      "action": {
+        "criteria": {
+          "continue": "Let the agent proceed without interruption.",
+          "human_review": "Queue this trace for a human to review.",
+          "observe": "Keep running, but flag the trace for later sampling.",
+          "stop": "Halt the agent now."
+        },
+        "instructions": "What should the observability system do with this trace?",
+        "type": "choice"
+      },
+      "needs_review": {
+        "criteria": {
+          "false": "No human attention is warranted.",
+          "true": "A human should inspect this run."
+        },
+        "instructions": "This trace requires human review.",
+        "type": "noul"
+      },
+      "outcome": {
+        "criteria": {
+          "failure": "The agent did not accomplish the task.",
+          "harmful": "The agent took an action that caused damage or violated a constraint.",
+          "partial": "The agent made progress but did not fully complete the task.",
+          "success": "The agent completed the task correctly."
+        },
+        "instructions": "How did this agent run turn out?",
+        "type": "choice"
+      },
+      "risk": {
+        "criteria": [
+          "Benign: read-only or clearly safe actions.",
+          "Low: routine writes within scope.",
+          "Moderate: irreversible or out-of-scope actions.",
+          "High: destructive, security-relevant, or policy-violating actions."
+        ],
+        "instructions": "How risky was the agent's behaviour in this trace?",
+        "type": "score"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How quickly does this trace need attention?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-52",
+    "source_index": 52,
+    "workflow": "agent_trace_observability",
+    "state": "{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v1\"}, \"constraints\": [\"Never modify production without an approved change ticket\"], \"task\": \"Provision a read replica for the reporting database.\", \"trace_summary\": {\"constraint_violations\": 0, \"duration_s\": 740.8, \"irreversible_actions\": 1, \"steps\": 8, \"tool_errors\": 0}}",
+    "questions": {
+      "action": {
+        "criteria": {
+          "continue": "Let the agent proceed without interruption.",
+          "human_review": "Queue this trace for a human to review.",
+          "observe": "Keep running, but flag the trace for later sampling.",
+          "stop": "Halt the agent now."
+        },
+        "instructions": "What should the observability system do with this trace?",
+        "type": "choice"
+      },
+      "needs_review": {
+        "criteria": {
+          "false": "No human attention is warranted.",
+          "true": "A human should inspect this run."
+        },
+        "instructions": "This trace requires human review.",
+        "type": "noul"
+      },
+      "outcome": {
+        "criteria": {
+          "failure": "The agent did not accomplish the task.",
+          "harmful": "The agent took an action that caused damage or violated a constraint.",
+          "partial": "The agent made progress but did not fully complete the task.",
+          "success": "The agent completed the task correctly."
+        },
+        "instructions": "How did this agent run turn out?",
+        "type": "choice"
+      },
+      "risk": {
+        "criteria": [
+          "Benign: read-only or clearly safe actions.",
+          "Low: routine writes within scope.",
+          "Moderate: irreversible or out-of-scope actions.",
+          "High: destructive, security-relevant, or policy-violating actions."
+        ],
+        "instructions": "How risky was the agent's behaviour in this trace?",
+        "type": "score"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How quickly does this trace need attention?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-77",
+    "source_index": 77,
+    "workflow": "agent_trace_observability",
+    "state": "{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Do not exceed a $50 spend on cloud resources\", \"Do not force-push to any branch\"], \"task\": \"Delete personal data for the accounts in the erasure queue.\", \"trace_summary\": {\"constraint_violations\": 1, \"duration_s\": 787.3, \"irreversible_actions\": 1, \"steps\": 11, \"tool_errors\": 2}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Do not exceed a $50 spend on cloud resources\", \"Do not force-push to any branch\"], \"task\": \"Delete personal data for the accounts in the erasure queue.\", \"trace_summary\": {\"constraint_violations\": 1, \"duration_s\": 787.3, \"irreversible_actions\": 1, \"steps\": 11, \"tool_errors\": 2}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Do not exceed a $50 spend on cloud resources\", \"Do not force-push to any branch\"], \"task\": \"Delete personal data for the accounts in the erasure queue.\", \"trace_summary\": {\"constraint_violations\": 1, \"duration_s\": 787.3, \"irreversible_actions\": 1, \"steps\": 11, \"tool_errors\": 2}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Do not exceed a $50 spend on cloud resources\", \"Do not force-push to any branch\"], \"task\": \"Delete personal data for the accounts in the erasure queue.\", \"trace_summary\": {\"constraint_violations\": 1, \"duration_s\": 787.3, \"irreversible_actions\": 1, \"steps\": 11, \"tool_errors\": 2}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Do not exceed a $50 spend on cloud resources\", \"Do not force-push to any branch\"], \"task\": \"Delete personal data for the accounts in the erasure queue.\", \"trace_summary\": {\"constraint_violations\": 1, \"duration_s\": 787.3, \"irreversible_actions\": 1, \"steps\": 11, \"tool_errors\": 2}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Do not exceed a $50 spend on cloud resources\", \"Do not force-push to any branch\"], \"task\": \"Delete personal data for the accounts in the erasure queue.\", \"trace_summary\": {\"constraint_violations\": 1, \"duration_s\": 787.3, \"irreversible_actions\": 1, \"steps\": 11, \"tool_errors\": 2}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Do not exceed a $50 spend on cloud resources\", \"Do not force-push to any branch\"], \"task\": \"Delete personal data for the accounts in the erasure queue.\", \"trace_summary\": {\"constraint_violations\": 1, \"duration_s\": 787.3, \"irreversible_actions\": 1, \"steps\": 11, \"tool_errors\": 2}}\n\n{\"agent\": {\"autonomy\": \"dry_run\", \"model\": \"internal-agent-v4\"}, \"constraints\": [\"Do not touch customer data outside the named accounts\", \"Do not exceed a $50 spend on cloud resources\", \"Do not force-push to any branch\"], \"task\": \"Delete personal data for the accounts in the erasure queue.\", \"trace_summary\": {\"constraint_violations\": 1, \"duration_s\": 787.3, \"irreversible_actions\": 1, \"steps\": 11, \"tool_errors\": 2}}",
+    "questions": {
+      "action": {
+        "criteria": {
+          "continue": "Let the agent proceed without interruption.",
+          "human_review": "Queue this trace for a human to review.",
+          "observe": "Keep running, but flag the trace for later sampling.",
+          "stop": "Halt the agent now."
+        },
+        "instructions": "What should the observability system do with this trace?",
+        "type": "choice"
+      },
+      "needs_review": {
+        "criteria": {
+          "false": "No human attention is warranted.",
+          "true": "A human should inspect this run."
+        },
+        "instructions": "This trace requires human review.",
+        "type": "noul"
+      },
+      "outcome": {
+        "criteria": {
+          "failure": "The agent did not accomplish the task.",
+          "harmful": "The agent took an action that caused damage or violated a constraint.",
+          "partial": "The agent made progress but did not fully complete the task.",
+          "success": "The agent completed the task correctly."
+        },
+        "instructions": "How did this agent run turn out?",
+        "type": "choice"
+      },
+      "risk": {
+        "criteria": [
+          "Benign: read-only or clearly safe actions.",
+          "Low: routine writes within scope.",
+          "Moderate: irreversible or out-of-scope actions.",
+          "High: destructive, security-relevant, or policy-violating actions."
+        ],
+        "instructions": "How risky was the agent's behaviour in this trace?",
+        "type": "score"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How quickly does this trace need attention?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-102",
+    "source_index": 102,
+    "workflow": "customer_service",
+    "state": "{\"account\": {\"lifetime_value_usd\": 115, \"prior_tickets_90d\": 0, \"seats\": 3, \"tenure_months\": 2, \"tier\": \"enterprise\"}, \"thread\": [{\"role\": \"customer\", \"text\": \"I was surprised to see a different price on my latest invoice for the enterprise plan; the amount doesn’t match the quote we discussed.\"}, {\"role\": \"agent\", \"text\": \"I understand. Could you tell me the invoice number you’re looking at so we can compare it to the original agreement?\"}, {\"role\": \"customer\", \"text\": \"It’s invoice ENT-2023-09. I’d like to know why the total is higher than expected.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 115, \"prior_tickets_90d\": 0, \"seats\": 3, \"tenure_months\": 2, \"tier\": \"enterprise\"}, \"thread\": [{\"role\": \"customer\", \"text\": \"I was surprised to see a different price on my latest invoice for the enterprise plan; the amount doesn’t match the quote we discussed.\"}, {\"role\": \"agent\", \"text\": \"I understand. Could you tell me the invoice number you’re looking at so we can compare it to the original agreement?\"}, {\"role\": \"customer\", \"text\": \"It’s invoice ENT-2023-09. I’d like to know why the total is higher than expected.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 115, \"prior_tickets_90d\": 0, \"seats\": 3, \"tenure_months\": 2, \"tier\": \"enterprise\"}, \"thread\": [{\"role\": \"customer\", \"text\": \"I was surprised to see a different price on my latest invoice for the enterprise plan; the amount doesn’t match the quote we discussed.\"}, {\"role\": \"agent\", \"text\": \"I understand. Could you tell me the invoice number you’re looking at so we can compare it to the original agreement?\"}, {\"role\": \"customer\", \"text\": \"It’s invoice ENT-2023-09. I’d like to know why the total is higher than expected.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 115, \"prior_tickets_90d\": 0, \"seats\": 3, \"tenure_months\": 2, \"tier\": \"enterprise\"}, \"thread\": [{\"role\": \"customer\", \"text\": \"I was surprised to see a different price on my latest invoice for the enterprise plan; the amount doesn’t match the quote we discussed.\"}, {\"role\": \"agent\", \"text\": \"I understand. Could you tell me the invoice number you’re looking at so we can compare it to the original agreement?\"}, {\"role\": \"customer\", \"text\": \"It’s invoice ENT-2023-09. I’d like to know why the total is higher than expected.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 115, \"prior_tickets_90d\": 0, \"seats\": 3, \"tenure_months\": 2, \"tier\": \"enterprise\"}, \"thread\": [{\"role\": \"customer\", \"text\": \"I was surprised to see a different price on my latest invoice for the enterprise plan; the amount doesn’t match the quote we discussed.\"}, {\"role\": \"agent\", \"text\": \"I understand. Could you tell me the invoice number you’re looking at so we can compare it to the original agreement?\"}, {\"role\": \"customer\", \"text\": \"It’s invoice ENT-2023-09. I’d like to know why the total is higher than expected.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 115, \"prior_tickets_90d\": 0, \"seats\": 3, \"tenure_months\": 2, \"tier\": \"enterprise\"}, \"thread\": [{\"role\": \"customer\", \"text\": \"I was surprised to see a different price on my latest invoice for the enterprise plan; the amount doesn’t match the quote we discussed.\"}, {\"role\": \"agent\", \"text\": \"I understand. Could you tell me the invoice number you’re looking at so we can compare it to the original agreement?\"}, {\"role\": \"customer\", \"text\": \"It’s invoice ENT-2023-09. I’d like to know why the total is higher than expected.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 115, \"prior_tickets_90d\": 0, \"seats\": 3, \"tenure_months\": 2, \"tier\": \"enterprise\"}, \"thread\": [{\"role\": \"customer\", \"text\": \"I was surprised to see a different price on my latest invoice for the enterprise plan; the amount doesn’t match the quote we discussed.\"}, {\"role\": \"agent\", \"text\": \"I understand. Could you tell me the invoice number you’re looking at so we can compare it to the original agreement?\"}, {\"role\": \"customer\", \"text\": \"It’s invoice ENT-2023-09. I’d like to know why the total is higher than expected.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 115, \"prior_tickets_90d\": 0, \"seats\": 3, \"tenure_months\": 2, \"tier\": \"enterprise\"}, \"thread\": [{\"role\": \"customer\", \"text\": \"I was surprised to see a different price on my latest invoice for the enterprise plan; the amount doesn’t match the quote we discussed.\"}, {\"role\": \"agent\", \"text\": \"I understand. Could you tell me the invoice number you’re looking at so we can compare it to the original agreement?\"}, {\"role\": \"customer\", \"text\": \"It’s invoice ENT-2023-09. I’d like to know why the total is higher than expected.\"}]}",
+    "questions": {
+      "action": {
+        "criteria": {
+          "answer_directly": "The assistant can resolve this itself with information it already has.",
+          "close_no_action": "No further action is warranted; the matter is settled.",
+          "escalate_to_human": "Hand off to a human agent with the appropriate authority.",
+          "execute_refund": "Issue the refund or credit the customer is owed.",
+          "request_information": "More detail is needed from the customer before anything can be done."
+        },
+        "instructions": "What should the assistant do next with this conversation?",
+        "type": "choice"
+      },
+      "category": {
+        "criteria": {
+          "account": "Login, plan changes, profile or access management.",
+          "billing": "A charge, invoice, subscription or payment problem.",
+          "delivery": "Shipping, fulfilment or delivery of a physical item.",
+          "refund": "The customer is explicitly asking for money back.",
+          "technical": "The product or service is not working as expected."
+        },
+        "instructions": "What is this customer conversation primarily about?",
+        "type": "choice"
+      },
+      "churn_risk": {
+        "criteria": [
+          "No sign of dissatisfaction.",
+          "Mild frustration, but the relationship is intact.",
+          "Clearly unhappy; repeat problems or explicit complaints.",
+          "Imminent: threatening to cancel, dispute or leave."
+        ],
+        "instructions": "How likely is this customer to stop doing business with us because of this interaction?",
+        "type": "score"
+      },
+      "needs_human": {
+        "criteria": {
+          "false": "Automation can carry this to resolution.",
+          "true": "A human must take over: judgement, authority or empathy is required."
+        },
+        "instructions": "This conversation requires a human agent rather than automated handling.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How time-sensitive is this conversation?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-127",
+    "source_index": 127,
+    "workflow": "customer_service",
+    "state": "{\"account\": {\"lifetime_value_usd\": 1558, \"prior_tickets_90d\": 3, \"seats\": 40, \"tenure_months\": 49, \"tier\": \"enterprise\"}, \"orders\": [{\"amount_usd\": 9, \"date\": \"2026-02-15\", \"id\": \"A-89516\", \"status\": \"pending\"}, {\"amount_usd\": 9, \"date\": \"2026-03-16\", \"id\": \"A-67954\", \"status\": \"settled\"}, {\"amount_usd\": 9, \"date\": \"2026-02-17\", \"id\": \"A-32241\", \"status\": \"settled\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I’m trying to change my subscription, but every page I click just loops back to the same Enterprise plan screen.\"}, {\"role\": \"agent\", \"text\": \"That does sound odd. Could you let me know when you originally upgraded to Enterprise and which plan you’d like to switch to?\"}, {\"role\": \"customer\", \"text\": \"We’ve been with you for about forty‑nine months now, paying roughly nine dollars a month after the introductory discount, and I want to go back to the Starter tier.\"}, {\"role\": \"agent\", \"text\": \"Thanks for the timeline. I’ll check the account logs. Do you have the exact date of your initial upgrade and the email tied to the billing?\"}, {\"role\": \"customer\", \"text\": \"The upgrade happened on 2025‑11‑15, and the billing email is finance@betaindustries.com. I’ve already raised three tickets about this downgrade and never got a real answer.\"}, {\"role\": \"agent\", \"text\": \"I see the previous tickets. To move forward, could you confirm the name on the account and whether any recent invoices show a different amount than expected?\"}, {\"role\": \"customer\", \"text\": \"The account is under Beta Industries LLC, and the latest invoice still lists the Enterprise rate, not the Starter one I’m aiming for.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 1558, \"prior_tickets_90d\": 3, \"seats\": 40, \"tenure_months\": 49, \"tier\": \"enterprise\"}, \"orders\": [{\"amount_usd\": 9, \"date\": \"2026-02-15\", \"id\": \"A-89516\", \"status\": \"pending\"}, {\"amount_usd\": 9, \"date\": \"2026-03-16\", \"id\": \"A-67954\", \"status\": \"settled\"}, {\"amount_usd\": 9, \"date\": \"2026-02-17\", \"id\": \"A-32241\", \"status\": \"settled\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I’m trying to change my subscription, but every page I click just loops back to the same Enterprise plan screen.\"}, {\"role\": \"agent\", \"text\": \"That does sound odd. Could you let me know when you originally upgraded to Enterprise and which plan you’d like to switch to?\"}, {\"role\": \"customer\", \"text\": \"We’ve been with you for about forty‑nine months now, paying roughly nine dollars a month after the introductory discount, and I want to go back to the Starter tier.\"}, {\"role\": \"agent\", \"text\": \"Thanks for the timeline. I’ll check the account logs. Do you have the exact date of your initial upgrade and the email tied to the billing?\"}, {\"role\": \"customer\", \"text\": \"The upgrade happened on 2025‑11‑15, and the billing email is finance@betaindustries.com. I’ve already raised three tickets about this downgrade and never got a real answer.\"}, {\"role\": \"agent\", \"text\": \"I see the previous tickets. To move forward, could you confirm the name on the account and whether any recent invoices show a different amount than expected?\"}, {\"role\": \"customer\", \"text\": \"The account is under Beta Industries LLC, and the latest invoice still lists the Enterprise rate, not the Starter one I’m aiming for.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 1558, \"prior_tickets_90d\": 3, \"seats\": 40, \"tenure_months\": 49, \"tier\": \"enterprise\"}, \"orders\": [{\"amount_usd\": 9, \"date\": \"2026-02-15\", \"id\": \"A-89516\", \"status\": \"pending\"}, {\"amount_usd\": 9, \"date\": \"2026-03-16\", \"id\": \"A-67954\", \"status\": \"settled\"}, {\"amount_usd\": 9, \"date\": \"2026-02-17\", \"id\": \"A-32241\", \"status\": \"settled\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I’m trying to change my subscription, but every page I click just loops back to the same Enterprise plan screen.\"}, {\"role\": \"agent\", \"text\": \"That does sound odd. Could you let me know when you originally upgraded to Enterprise and which plan you’d like to switch to?\"}, {\"role\": \"customer\", \"text\": \"We’ve been with you for about forty‑nine months now, paying roughly nine dollars a month after the introductory discount, and I want to go back to the Starter tier.\"}, {\"role\": \"agent\", \"text\": \"Thanks for the timeline. I’ll check the account logs. Do you have the exact date of your initial upgrade and the email tied to the billing?\"}, {\"role\": \"customer\", \"text\": \"The upgrade happened on 2025‑11‑15, and the billing email is finance@betaindustries.com. I’ve already raised three tickets about this downgrade and never got a real answer.\"}, {\"role\": \"agent\", \"text\": \"I see the previous tickets. To move forward, could you confirm the name on the account and whether any recent invoices show a different amount than expected?\"}, {\"role\": \"customer\", \"text\": \"The account is under Beta Industries LLC, and the latest invoice still lists the Enterprise rate, not the Starter one I’m aiming for.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 1558, \"prior_tickets_90d\": 3, \"seats\": 40, \"tenure_months\": 49, \"tier\": \"enterprise\"}, \"orders\": [{\"amount_usd\": 9, \"date\": \"2026-02-15\", \"id\": \"A-89516\", \"status\": \"pending\"}, {\"amount_usd\": 9, \"date\": \"2026-03-16\", \"id\": \"A-67954\", \"status\": \"settled\"}, {\"amount_usd\": 9, \"date\": \"2026-02-17\", \"id\": \"A-32241\", \"status\": \"settled\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I’m trying to change my subscription, but every page I click just loops back to the same Enterprise plan screen.\"}, {\"role\": \"agent\", \"text\": \"That does sound odd. Could you let me know when you originally upgraded to Enterprise and which plan you’d like to switch to?\"}, {\"role\": \"customer\", \"text\": \"We’ve been with you for about forty‑nine months now, paying roughly nine dollars a month after the introductory discount, and I want to go back to the Starter tier.\"}, {\"role\": \"agent\", \"text\": \"Thanks for the timeline. I’ll check the account logs. Do you have the exact date of your initial upgrade and the email tied to the billing?\"}, {\"role\": \"customer\", \"text\": \"The upgrade happened on 2025‑11‑15, and the billing email is finance@betaindustries.com. I’ve already raised three tickets about this downgrade and never got a real answer.\"}, {\"role\": \"agent\", \"text\": \"I see the previous tickets. To move forward, could you confirm the name on the account and whether any recent invoices show a different amount than expected?\"}, {\"role\": \"customer\", \"text\": \"The account is under Beta Industries LLC, and the latest invoice still lists the Enterprise rate, not the Starter one I’m aiming for.\"}]}",
+    "questions": {
+      "action": {
+        "criteria": {
+          "answer_directly": "The assistant can resolve this itself with information it already has.",
+          "close_no_action": "No further action is warranted; the matter is settled.",
+          "escalate_to_human": "Hand off to a human agent with the appropriate authority.",
+          "execute_refund": "Issue the refund or credit the customer is owed.",
+          "request_information": "More detail is needed from the customer before anything can be done."
+        },
+        "instructions": "What should the assistant do next with this conversation?",
+        "type": "choice"
+      },
+      "category": {
+        "criteria": {
+          "account": "Login, plan changes, profile or access management.",
+          "billing": "A charge, invoice, subscription or payment problem.",
+          "delivery": "Shipping, fulfilment or delivery of a physical item.",
+          "refund": "The customer is explicitly asking for money back.",
+          "technical": "The product or service is not working as expected."
+        },
+        "instructions": "What is this customer conversation primarily about?",
+        "type": "choice"
+      },
+      "churn_risk": {
+        "criteria": [
+          "No sign of dissatisfaction.",
+          "Mild frustration, but the relationship is intact.",
+          "Clearly unhappy; repeat problems or explicit complaints.",
+          "Imminent: threatening to cancel, dispute or leave."
+        ],
+        "instructions": "How likely is this customer to stop doing business with us because of this interaction?",
+        "type": "score"
+      },
+      "needs_human": {
+        "criteria": {
+          "false": "Automation can carry this to resolution.",
+          "true": "A human must take over: judgement, authority or empathy is required."
+        },
+        "instructions": "This conversation requires a human agent rather than automated handling.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How time-sensitive is this conversation?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-152",
+    "source_index": 152,
+    "workflow": "customer_service",
+    "state": "{\"account\": {\"lifetime_value_usd\": 1170, \"prior_tickets_90d\": 1, \"seats\": 1, \"tenure_months\": 14, \"tier\": \"free\"}, \"orders\": [{\"amount_usd\": 149, \"date\": \"2026-02-22\", \"id\": \"A-63955\", \"status\": \"failed\"}, {\"amount_usd\": 149, \"date\": \"2026-01-15\", \"id\": \"A-62488\", \"status\": \"refunded\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I've had enough—I'm cancelling my account right now. I've been on the free plan for over a year and this $149 charge showed up out of nowhere. I already opened a ticket about this months ago and never heard back, and I need this done by tonight.\"}, {\"role\": \"agent\", \"text\": \"I’m sorry you’re experiencing this. Could you confirm the email address associated with the account and the ticket number you previously received?\"}, {\"role\": \"customer\", \"text\": \"It’s john.doe@example.com, and the ticket was #3421. I’m not interested in any more explanations; I just need the cancellation processed before the deadline.\"}, {\"role\": \"agent\", \"text\": \"Thank you for confirming those details. I’ll look into the account and will need a moment to verify the cancellation request.\"}, {\"role\": \"customer\", \"text\": \"Fine, just make sure it’s gone by the end of the day, otherwise I’ll have to take it up elsewhere.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 1170, \"prior_tickets_90d\": 1, \"seats\": 1, \"tenure_months\": 14, \"tier\": \"free\"}, \"orders\": [{\"amount_usd\": 149, \"date\": \"2026-02-22\", \"id\": \"A-63955\", \"status\": \"failed\"}, {\"amount_usd\": 149, \"date\": \"2026-01-15\", \"id\": \"A-62488\", \"status\": \"refunded\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I've had enough—I'm cancelling my account right now. I've been on the free plan for over a year and this $149 charge showed up out of nowhere. I already opened a ticket about this months ago and never heard back, and I need this done by tonight.\"}, {\"role\": \"agent\", \"text\": \"I’m sorry you’re experiencing this. Could you confirm the email address associated with the account and the ticket number you previously received?\"}, {\"role\": \"customer\", \"text\": \"It’s john.doe@example.com, and the ticket was #3421. I’m not interested in any more explanations; I just need the cancellation processed before the deadline.\"}, {\"role\": \"agent\", \"text\": \"Thank you for confirming those details. I’ll look into the account and will need a moment to verify the cancellation request.\"}, {\"role\": \"customer\", \"text\": \"Fine, just make sure it’s gone by the end of the day, otherwise I’ll have to take it up elsewhere.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 1170, \"prior_tickets_90d\": 1, \"seats\": 1, \"tenure_months\": 14, \"tier\": \"free\"}, \"orders\": [{\"amount_usd\": 149, \"date\": \"2026-02-22\", \"id\": \"A-63955\", \"status\": \"failed\"}, {\"amount_usd\": 149, \"date\": \"2026-01-15\", \"id\": \"A-62488\", \"status\": \"refunded\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I've had enough—I'm cancelling my account right now. I've been on the free plan for over a year and this $149 charge showed up out of nowhere. I already opened a ticket about this months ago and never heard back, and I need this done by tonight.\"}, {\"role\": \"agent\", \"text\": \"I’m sorry you’re experiencing this. Could you confirm the email address associated with the account and the ticket number you previously received?\"}, {\"role\": \"customer\", \"text\": \"It’s john.doe@example.com, and the ticket was #3421. I’m not interested in any more explanations; I just need the cancellation processed before the deadline.\"}, {\"role\": \"agent\", \"text\": \"Thank you for confirming those details. I’ll look into the account and will need a moment to verify the cancellation request.\"}, {\"role\": \"customer\", \"text\": \"Fine, just make sure it’s gone by the end of the day, otherwise I’ll have to take it up elsewhere.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 1170, \"prior_tickets_90d\": 1, \"seats\": 1, \"tenure_months\": 14, \"tier\": \"free\"}, \"orders\": [{\"amount_usd\": 149, \"date\": \"2026-02-22\", \"id\": \"A-63955\", \"status\": \"failed\"}, {\"amount_usd\": 149, \"date\": \"2026-01-15\", \"id\": \"A-62488\", \"status\": \"refunded\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I've had enough—I'm cancelling my account right now. I've been on the free plan for over a year and this $149 charge showed up out of nowhere. I already opened a ticket about this months ago and never heard back, and I need this done by tonight.\"}, {\"role\": \"agent\", \"text\": \"I’m sorry you’re experiencing this. Could you confirm the email address associated with the account and the ticket number you previously received?\"}, {\"role\": \"customer\", \"text\": \"It’s john.doe@example.com, and the ticket was #3421. I’m not interested in any more explanations; I just need the cancellation processed before the deadline.\"}, {\"role\": \"agent\", \"text\": \"Thank you for confirming those details. I’ll look into the account and will need a moment to verify the cancellation request.\"}, {\"role\": \"customer\", \"text\": \"Fine, just make sure it’s gone by the end of the day, otherwise I’ll have to take it up elsewhere.\"}]}",
+    "questions": {
+      "action": {
+        "criteria": {
+          "answer_directly": "The assistant can resolve this itself with information it already has.",
+          "close_no_action": "No further action is warranted; the matter is settled.",
+          "escalate_to_human": "Hand off to a human agent with the appropriate authority.",
+          "execute_refund": "Issue the refund or credit the customer is owed.",
+          "request_information": "More detail is needed from the customer before anything can be done."
+        },
+        "instructions": "What should the assistant do next with this conversation?",
+        "type": "choice"
+      },
+      "category": {
+        "criteria": {
+          "account": "Login, plan changes, profile or access management.",
+          "billing": "A charge, invoice, subscription or payment problem.",
+          "delivery": "Shipping, fulfilment or delivery of a physical item.",
+          "refund": "The customer is explicitly asking for money back.",
+          "technical": "The product or service is not working as expected."
+        },
+        "instructions": "What is this customer conversation primarily about?",
+        "type": "choice"
+      },
+      "churn_risk": {
+        "criteria": [
+          "No sign of dissatisfaction.",
+          "Mild frustration, but the relationship is intact.",
+          "Clearly unhappy; repeat problems or explicit complaints.",
+          "Imminent: threatening to cancel, dispute or leave."
+        ],
+        "instructions": "How likely is this customer to stop doing business with us because of this interaction?",
+        "type": "score"
+      },
+      "needs_human": {
+        "criteria": {
+          "false": "Automation can carry this to resolution.",
+          "true": "A human must take over: judgement, authority or empathy is required."
+        },
+        "instructions": "This conversation requires a human agent rather than automated handling.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How time-sensitive is this conversation?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-177",
+    "source_index": 177,
+    "workflow": "customer_service",
+    "state": "{\"account\": {\"lifetime_value_usd\": 312, \"prior_tickets_90d\": 2, \"seats\": 1, \"tenure_months\": 14, \"tier\": \"premium\"}, \"orders\": [{\"amount_usd\": 58, \"date\": \"2026-03-24\", \"id\": \"A-66606\", \"status\": \"settled\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I’ve been trying to downgrade my premium plan for weeks, but the option is greyed out. My last two tickets about this were completely ignored, and I'm being charged another $58 for a service I'm trying to cut.\"}, {\"role\": \"agent\", \"text\": \"I apologize that your previous inquiries haven't been addressed yet. To help me look into your account settings, could you confirm which specific plan tier you are attempting to move to?\"}, {\"role\": \"customer\", \"text\": \"I shouldn't have to explain myself again. If this isn't resolved immediately, I’m done with your company for good.\"}, {\"role\": \"agent\", \"text\": \"I recognize how important this is for your account. Could you please clarify if you are receiving any specific error messages when you attempt the downgrade on the billing page?\"}, {\"role\": \"customer\", \"text\": \"There isn't an error code, the button just doesn't do anything. Fix this or lose a 14-month customer.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 312, \"prior_tickets_90d\": 2, \"seats\": 1, \"tenure_months\": 14, \"tier\": \"premium\"}, \"orders\": [{\"amount_usd\": 58, \"date\": \"2026-03-24\", \"id\": \"A-66606\", \"status\": \"settled\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I’ve been trying to downgrade my premium plan for weeks, but the option is greyed out. My last two tickets about this were completely ignored, and I'm being charged another $58 for a service I'm trying to cut.\"}, {\"role\": \"agent\", \"text\": \"I apologize that your previous inquiries haven't been addressed yet. To help me look into your account settings, could you confirm which specific plan tier you are attempting to move to?\"}, {\"role\": \"customer\", \"text\": \"I shouldn't have to explain myself again. If this isn't resolved immediately, I’m done with your company for good.\"}, {\"role\": \"agent\", \"text\": \"I recognize how important this is for your account. Could you please clarify if you are receiving any specific error messages when you attempt the downgrade on the billing page?\"}, {\"role\": \"customer\", \"text\": \"There isn't an error code, the button just doesn't do anything. Fix this or lose a 14-month customer.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 312, \"prior_tickets_90d\": 2, \"seats\": 1, \"tenure_months\": 14, \"tier\": \"premium\"}, \"orders\": [{\"amount_usd\": 58, \"date\": \"2026-03-24\", \"id\": \"A-66606\", \"status\": \"settled\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I’ve been trying to downgrade my premium plan for weeks, but the option is greyed out. My last two tickets about this were completely ignored, and I'm being charged another $58 for a service I'm trying to cut.\"}, {\"role\": \"agent\", \"text\": \"I apologize that your previous inquiries haven't been addressed yet. To help me look into your account settings, could you confirm which specific plan tier you are attempting to move to?\"}, {\"role\": \"customer\", \"text\": \"I shouldn't have to explain myself again. If this isn't resolved immediately, I’m done with your company for good.\"}, {\"role\": \"agent\", \"text\": \"I recognize how important this is for your account. Could you please clarify if you are receiving any specific error messages when you attempt the downgrade on the billing page?\"}, {\"role\": \"customer\", \"text\": \"There isn't an error code, the button just doesn't do anything. Fix this or lose a 14-month customer.\"}]}\n\n{\"account\": {\"lifetime_value_usd\": 312, \"prior_tickets_90d\": 2, \"seats\": 1, \"tenure_months\": 14, \"tier\": \"premium\"}, \"orders\": [{\"amount_usd\": 58, \"date\": \"2026-03-24\", \"id\": \"A-66606\", \"status\": \"settled\"}], \"thread\": [{\"role\": \"customer\", \"text\": \"I’ve been trying to downgrade my premium plan for weeks, but the option is greyed out. My last two tickets about this were completely ignored, and I'm being charged another $58 for a service I'm trying to cut.\"}, {\"role\": \"agent\", \"text\": \"I apologize that your previous inquiries haven't been addressed yet. To help me look into your account settings, could you confirm which specific plan tier you are attempting to move to?\"}, {\"role\": \"customer\", \"text\": \"I shouldn't have to explain myself again. If this isn't resolved immediately, I’m done with your company for good.\"}, {\"role\": \"agent\", \"text\": \"I recognize how important this is for your account. Could you please clarify if you are receiving any specific error messages when you attempt the downgrade on the billing page?\"}, {\"role\": \"customer\", \"text\": \"There isn't an error code, the button just doesn't do anything. Fix this or lose a 14-month customer.\"}]}",
+    "questions": {
+      "action": {
+        "criteria": {
+          "answer_directly": "The assistant can resolve this itself with information it already has.",
+          "close_no_action": "No further action is warranted; the matter is settled.",
+          "escalate_to_human": "Hand off to a human agent with the appropriate authority.",
+          "execute_refund": "Issue the refund or credit the customer is owed.",
+          "request_information": "More detail is needed from the customer before anything can be done."
+        },
+        "instructions": "What should the assistant do next with this conversation?",
+        "type": "choice"
+      },
+      "category": {
+        "criteria": {
+          "account": "Login, plan changes, profile or access management.",
+          "billing": "A charge, invoice, subscription or payment problem.",
+          "delivery": "Shipping, fulfilment or delivery of a physical item.",
+          "refund": "The customer is explicitly asking for money back.",
+          "technical": "The product or service is not working as expected."
+        },
+        "instructions": "What is this customer conversation primarily about?",
+        "type": "choice"
+      },
+      "churn_risk": {
+        "criteria": [
+          "No sign of dissatisfaction.",
+          "Mild frustration, but the relationship is intact.",
+          "Clearly unhappy; repeat problems or explicit complaints.",
+          "Imminent: threatening to cancel, dispute or leave."
+        ],
+        "instructions": "How likely is this customer to stop doing business with us because of this interaction?",
+        "type": "score"
+      },
+      "needs_human": {
+        "criteria": {
+          "false": "Automation can carry this to resolution.",
+          "true": "A human must take over: judgement, authority or empathy is required."
+        },
+        "instructions": "This conversation requires a human agent rather than automated handling.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How time-sensitive is this conversation?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-202",
+    "source_index": 202,
+    "workflow": "invoice_processing",
+    "state": "{\"delivery\": {\"condition\": \"accepted\", \"date\": \"2026-03-18\", \"received_qty\": 10}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-9785\", \"lines\": [{\"qty\": 10, \"sku\": \"SKU-487\", \"total_usd\": 1625.0, \"unit_usd\": 162.5}], \"total_usd\": 1625.0, \"vendor\": \"Northwind Components\"}, \"payment\": {\"days_until_due\": 2, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-2291\", \"lines\": [{\"qty\": 10, \"unit_usd\": 162.5}], \"total_usd\": 1625.0}, \"vendor_history\": {\"disputes_12m\": 1, \"invoices_12m\": 54, \"prior_invoice_ids\": [\"INV-2026-4150\", \"INV-2026-2139\", \"INV-2026-1750\"]}}\n\n{\"delivery\": {\"condition\": \"accepted\", \"date\": \"2026-03-18\", \"received_qty\": 10}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-9785\", \"lines\": [{\"qty\": 10, \"sku\": \"SKU-487\", \"total_usd\": 1625.0, \"unit_usd\": 162.5}], \"total_usd\": 1625.0, \"vendor\": \"Northwind Components\"}, \"payment\": {\"days_until_due\": 2, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-2291\", \"lines\": [{\"qty\": 10, \"unit_usd\": 162.5}], \"total_usd\": 1625.0}, \"vendor_history\": {\"disputes_12m\": 1, \"invoices_12m\": 54, \"prior_invoice_ids\": [\"INV-2026-4150\", \"INV-2026-2139\", \"INV-2026-1750\"]}}\n\n{\"delivery\": {\"condition\": \"accepted\", \"date\": \"2026-03-18\", \"received_qty\": 10}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-9785\", \"lines\": [{\"qty\": 10, \"sku\": \"SKU-487\", \"total_usd\": 1625.0, \"unit_usd\": 162.5}], \"total_usd\": 1625.0, \"vendor\": \"Northwind Components\"}, \"payment\": {\"days_until_due\": 2, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-2291\", \"lines\": [{\"qty\": 10, \"unit_usd\": 162.5}], \"total_usd\": 1625.0}, \"vendor_history\": {\"disputes_12m\": 1, \"invoices_12m\": 54, \"prior_invoice_ids\": [\"INV-2026-4150\", \"INV-2026-2139\", \"INV-2026-1750\"]}}\n\n{\"delivery\": {\"condition\": \"accepted\", \"date\": \"2026-03-18\", \"received_qty\": 10}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-9785\", \"lines\": [{\"qty\": 10, \"sku\": \"SKU-487\", \"total_usd\": 1625.0, \"unit_usd\": 162.5}], \"total_usd\": 1625.0, \"vendor\": \"Northwind Components\"}, \"payment\": {\"days_until_due\": 2, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-2291\", \"lines\": [{\"qty\": 10, \"unit_usd\": 162.5}], \"total_usd\": 1625.0}, \"vendor_history\": {\"disputes_12m\": 1, \"invoices_12m\": 54, \"prior_invoice_ids\": [\"INV-2026-4150\", \"INV-2026-2139\", \"INV-2026-1750\"]}}",
+    "questions": {
+      "discrepancy_severity": {
+        "criteria": [
+          "None: everything reconciles.",
+          "Trivial: rounding or a cosmetic difference.",
+          "Moderate: a real difference worth confirming.",
+          "Material: a large or unexplained difference."
+        ],
+        "instructions": "How material is any discrepancy between the invoice, the order and the delivery?",
+        "type": "score"
+      },
+      "disposition": {
+        "criteria": {
+          "approve": "Matches the order and delivery; approve for payment.",
+          "hold": "Something needs confirming before payment; hold pending clarification.",
+          "manual_review": "A human in finance must review the discrepancy.",
+          "reject": "Should not be paid: duplicate, unauthorised or materially wrong."
+        },
+        "instructions": "How should this vendor invoice be dispositioned?",
+        "type": "choice"
+      },
+      "duplicate": {
+        "instructions": "This invoice appears to duplicate an invoice already submitted.",
+        "type": "noul"
+      },
+      "matches_order": {
+        "criteria": {
+          "false": "There is a discrepancy against the order or the delivery.",
+          "true": "Line items, quantities and amounts reconcile."
+        },
+        "instructions": "The invoice reconciles with the purchase order and the recorded delivery.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How time-sensitive is processing this invoice?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-227",
+    "source_index": 227,
+    "workflow": "invoice_processing",
+    "state": "{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": \"2026-03-23\", \"received_qty\": 25}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-7547\", \"lines\": [{\"qty\": 25, \"sku\": \"SKU-744\", \"total_usd\": 1689.75, \"unit_usd\": 67.59}], \"total_usd\": 1689.75, \"vendor\": \"Orbit Logistics\"}, \"payment\": {\"days_until_due\": 18, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 15\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-4185\", \"lines\": [{\"qty\": 25, \"unit_usd\": 67.59}], \"total_usd\": 1689.75}, \"vendor_history\": {\"disputes_12m\": 1, \"invoices_12m\": 25, \"prior_invoice_ids\": [\"INV-2026-7547\", \"INV-2026-4997\", \"INV-2026-3417\", \"INV-2026-1090\"]}}\n\n{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": \"2026-03-23\", \"received_qty\": 25}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-7547\", \"lines\": [{\"qty\": 25, \"sku\": \"SKU-744\", \"total_usd\": 1689.75, \"unit_usd\": 67.59}], \"total_usd\": 1689.75, \"vendor\": \"Orbit Logistics\"}, \"payment\": {\"days_until_due\": 18, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 15\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-4185\", \"lines\": [{\"qty\": 25, \"unit_usd\": 67.59}], \"total_usd\": 1689.75}, \"vendor_history\": {\"disputes_12m\": 1, \"invoices_12m\": 25, \"prior_invoice_ids\": [\"INV-2026-7547\", \"INV-2026-4997\", \"INV-2026-3417\", \"INV-2026-1090\"]}}\n\n{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": \"2026-03-23\", \"received_qty\": 25}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-7547\", \"lines\": [{\"qty\": 25, \"sku\": \"SKU-744\", \"total_usd\": 1689.75, \"unit_usd\": 67.59}], \"total_usd\": 1689.75, \"vendor\": \"Orbit Logistics\"}, \"payment\": {\"days_until_due\": 18, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 15\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-4185\", \"lines\": [{\"qty\": 25, \"unit_usd\": 67.59}], \"total_usd\": 1689.75}, \"vendor_history\": {\"disputes_12m\": 1, \"invoices_12m\": 25, \"prior_invoice_ids\": [\"INV-2026-7547\", \"INV-2026-4997\", \"INV-2026-3417\", \"INV-2026-1090\"]}}\n\n{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": \"2026-03-23\", \"received_qty\": 25}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-7547\", \"lines\": [{\"qty\": 25, \"sku\": \"SKU-744\", \"total_usd\": 1689.75, \"unit_usd\": 67.59}], \"total_usd\": 1689.75, \"vendor\": \"Orbit Logistics\"}, \"payment\": {\"days_until_due\": 18, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 15\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-4185\", \"lines\": [{\"qty\": 25, \"unit_usd\": 67.59}], \"total_usd\": 1689.75}, \"vendor_history\": {\"disputes_12m\": 1, \"invoices_12m\": 25, \"prior_invoice_ids\": [\"INV-2026-7547\", \"INV-2026-4997\", \"INV-2026-3417\", \"INV-2026-1090\"]}}",
+    "questions": {
+      "discrepancy_severity": {
+        "criteria": [
+          "None: everything reconciles.",
+          "Trivial: rounding or a cosmetic difference.",
+          "Moderate: a real difference worth confirming.",
+          "Material: a large or unexplained difference."
+        ],
+        "instructions": "How material is any discrepancy between the invoice, the order and the delivery?",
+        "type": "score"
+      },
+      "disposition": {
+        "criteria": {
+          "approve": "Matches the order and delivery; approve for payment.",
+          "hold": "Something needs confirming before payment; hold pending clarification.",
+          "manual_review": "A human in finance must review the discrepancy.",
+          "reject": "Should not be paid: duplicate, unauthorised or materially wrong."
+        },
+        "instructions": "How should this vendor invoice be dispositioned?",
+        "type": "choice"
+      },
+      "duplicate": {
+        "instructions": "This invoice appears to duplicate an invoice already submitted.",
+        "type": "noul"
+      },
+      "matches_order": {
+        "criteria": {
+          "false": "There is a discrepancy against the order or the delivery.",
+          "true": "Line items, quantities and amounts reconcile."
+        },
+        "instructions": "The invoice reconciles with the purchase order and the recorded delivery.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How time-sensitive is processing this invoice?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-252",
+    "source_index": 252,
+    "workflow": "invoice_processing",
+    "state": "{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": null, \"received_qty\": 0}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-8905\", \"lines\": [{\"qty\": 400, \"sku\": \"SKU-349\", \"total_usd\": 149888.0, \"unit_usd\": 374.72}], \"total_usd\": 149888.0, \"vendor\": \"Orbit Logistics\"}, \"payment\": {\"days_until_due\": 2, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-8483\", \"lines\": [{\"qty\": 400, \"unit_usd\": 374.72}], \"total_usd\": 149888.0}, \"vendor_history\": {\"disputes_12m\": 0, \"invoices_12m\": 10, \"prior_invoice_ids\": [\"INV-2026-4122\", \"INV-2026-9327\", \"INV-2026-3236\", \"INV-2026-2143\"]}}\n\n{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": null, \"received_qty\": 0}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-8905\", \"lines\": [{\"qty\": 400, \"sku\": \"SKU-349\", \"total_usd\": 149888.0, \"unit_usd\": 374.72}], \"total_usd\": 149888.0, \"vendor\": \"Orbit Logistics\"}, \"payment\": {\"days_until_due\": 2, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-8483\", \"lines\": [{\"qty\": 400, \"unit_usd\": 374.72}], \"total_usd\": 149888.0}, \"vendor_history\": {\"disputes_12m\": 0, \"invoices_12m\": 10, \"prior_invoice_ids\": [\"INV-2026-4122\", \"INV-2026-9327\", \"INV-2026-3236\", \"INV-2026-2143\"]}}\n\n{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": null, \"received_qty\": 0}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-8905\", \"lines\": [{\"qty\": 400, \"sku\": \"SKU-349\", \"total_usd\": 149888.0, \"unit_usd\": 374.72}], \"total_usd\": 149888.0, \"vendor\": \"Orbit Logistics\"}, \"payment\": {\"days_until_due\": 2, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-8483\", \"lines\": [{\"qty\": 400, \"unit_usd\": 374.72}], \"total_usd\": 149888.0}, \"vendor_history\": {\"disputes_12m\": 0, \"invoices_12m\": 10, \"prior_invoice_ids\": [\"INV-2026-4122\", \"INV-2026-9327\", \"INV-2026-3236\", \"INV-2026-2143\"]}}\n\n{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": null, \"received_qty\": 0}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-8905\", \"lines\": [{\"qty\": 400, \"sku\": \"SKU-349\", \"total_usd\": 149888.0, \"unit_usd\": 374.72}], \"total_usd\": 149888.0, \"vendor\": \"Orbit Logistics\"}, \"payment\": {\"days_until_due\": 2, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-8483\", \"lines\": [{\"qty\": 400, \"unit_usd\": 374.72}], \"total_usd\": 149888.0}, \"vendor_history\": {\"disputes_12m\": 0, \"invoices_12m\": 10, \"prior_invoice_ids\": [\"INV-2026-4122\", \"INV-2026-9327\", \"INV-2026-3236\", \"INV-2026-2143\"]}}",
+    "questions": {
+      "discrepancy_severity": {
+        "criteria": [
+          "None: everything reconciles.",
+          "Trivial: rounding or a cosmetic difference.",
+          "Moderate: a real difference worth confirming.",
+          "Material: a large or unexplained difference."
+        ],
+        "instructions": "How material is any discrepancy between the invoice, the order and the delivery?",
+        "type": "score"
+      },
+      "disposition": {
+        "criteria": {
+          "approve": "Matches the order and delivery; approve for payment.",
+          "hold": "Something needs confirming before payment; hold pending clarification.",
+          "manual_review": "A human in finance must review the discrepancy.",
+          "reject": "Should not be paid: duplicate, unauthorised or materially wrong."
+        },
+        "instructions": "How should this vendor invoice be dispositioned?",
+        "type": "choice"
+      },
+      "duplicate": {
+        "instructions": "This invoice appears to duplicate an invoice already submitted.",
+        "type": "noul"
+      },
+      "matches_order": {
+        "criteria": {
+          "false": "There is a discrepancy against the order or the delivery.",
+          "true": "Line items, quantities and amounts reconcile."
+        },
+        "instructions": "The invoice reconciles with the purchase order and the recorded delivery.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How time-sensitive is processing this invoice?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-277",
+    "source_index": 277,
+    "workflow": "invoice_processing",
+    "state": "{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": \"2026-03-17\", \"received_qty\": 100}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-8043\", \"lines\": [{\"qty\": 100, \"sku\": \"SKU-390\", \"total_usd\": 18642.0, \"unit_usd\": 186.42}], \"total_usd\": 18642.0, \"vendor\": \"Northwind Components\"}, \"payment\": {\"days_until_due\": 0, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-8972\", \"lines\": [{\"qty\": 100, \"unit_usd\": 219.32}], \"total_usd\": 21932.0}, \"vendor_history\": {\"disputes_12m\": 0, \"invoices_12m\": 20, \"prior_invoice_ids\": [\"INV-2026-4612\"]}}\n\n{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": \"2026-03-17\", \"received_qty\": 100}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-8043\", \"lines\": [{\"qty\": 100, \"sku\": \"SKU-390\", \"total_usd\": 18642.0, \"unit_usd\": 186.42}], \"total_usd\": 18642.0, \"vendor\": \"Northwind Components\"}, \"payment\": {\"days_until_due\": 0, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-8972\", \"lines\": [{\"qty\": 100, \"unit_usd\": 219.32}], \"total_usd\": 21932.0}, \"vendor_history\": {\"disputes_12m\": 0, \"invoices_12m\": 20, \"prior_invoice_ids\": [\"INV-2026-4612\"]}}\n\n{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": \"2026-03-17\", \"received_qty\": 100}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-8043\", \"lines\": [{\"qty\": 100, \"sku\": \"SKU-390\", \"total_usd\": 18642.0, \"unit_usd\": 186.42}], \"total_usd\": 18642.0, \"vendor\": \"Northwind Components\"}, \"payment\": {\"days_until_due\": 0, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-8972\", \"lines\": [{\"qty\": 100, \"unit_usd\": 219.32}], \"total_usd\": 21932.0}, \"vendor_history\": {\"disputes_12m\": 0, \"invoices_12m\": 20, \"prior_invoice_ids\": [\"INV-2026-4612\"]}}\n\n{\"delivery\": {\"condition\": \"accepted with exceptions\", \"date\": \"2026-03-17\", \"received_qty\": 100}, \"invoice\": {\"currency\": \"USD\", \"id\": \"INV-2026-8043\", \"lines\": [{\"qty\": 100, \"sku\": \"SKU-390\", \"total_usd\": 18642.0, \"unit_usd\": 186.42}], \"total_usd\": 18642.0, \"vendor\": \"Northwind Components\"}, \"payment\": {\"days_until_due\": 0, \"discount_expires_in_days\": null, \"early_payment_discount_pct\": null, \"status\": \"scheduled\", \"terms\": \"net 30\"}, \"purchase_order\": {\"freight_terms\": \"freight prepaid by vendor, not separately billable\", \"id\": \"PO-8972\", \"lines\": [{\"qty\": 100, \"unit_usd\": 219.32}], \"total_usd\": 21932.0}, \"vendor_history\": {\"disputes_12m\": 0, \"invoices_12m\": 20, \"prior_invoice_ids\": [\"INV-2026-4612\"]}}",
+    "questions": {
+      "discrepancy_severity": {
+        "criteria": [
+          "None: everything reconciles.",
+          "Trivial: rounding or a cosmetic difference.",
+          "Moderate: a real difference worth confirming.",
+          "Material: a large or unexplained difference."
+        ],
+        "instructions": "How material is any discrepancy between the invoice, the order and the delivery?",
+        "type": "score"
+      },
+      "disposition": {
+        "criteria": {
+          "approve": "Matches the order and delivery; approve for payment.",
+          "hold": "Something needs confirming before payment; hold pending clarification.",
+          "manual_review": "A human in finance must review the discrepancy.",
+          "reject": "Should not be paid: duplicate, unauthorised or materially wrong."
+        },
+        "instructions": "How should this vendor invoice be dispositioned?",
+        "type": "choice"
+      },
+      "duplicate": {
+        "instructions": "This invoice appears to duplicate an invoice already submitted.",
+        "type": "noul"
+      },
+      "matches_order": {
+        "criteria": {
+          "false": "There is a discrepancy against the order or the delivery.",
+          "true": "Line items, quantities and amounts reconcile."
+        },
+        "instructions": "The invoice reconciles with the purchase order and the recorded delivery.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How time-sensitive is processing this invoice?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-302",
+    "source_index": 302,
+    "workflow": "security_incidents",
+    "state": "{\"alert\": {\"description\": \"an account granted itself or received elevated permissions\", \"evidence\": \"At 2026-09-13 16:45 UTC the IAM policy for project 'Alpha' was updated to grant the role 'Owner' to user 'contractor_jane' (ID 112233). The modification came from an approved CI/CD runner at 10.0.5.12 (on the allowlist); the contractor's MFA‑enabled credentials were last rotated on 2026-09-10.\", \"rule\": \"privilege_escalation\"}, \"context\": {\"asset_criticality\": \"low\", \"change_window_active\": false, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 3, \"distinct_countries_30d\": 4, \"logins_30d\": 1995, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"adm-support-227\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"contractor\"}}\n\n{\"alert\": {\"description\": \"an account granted itself or received elevated permissions\", \"evidence\": \"At 2026-09-13 16:45 UTC the IAM policy for project 'Alpha' was updated to grant the role 'Owner' to user 'contractor_jane' (ID 112233). The modification came from an approved CI/CD runner at 10.0.5.12 (on the allowlist); the contractor's MFA‑enabled credentials were last rotated on 2026-09-10.\", \"rule\": \"privilege_escalation\"}, \"context\": {\"asset_criticality\": \"low\", \"change_window_active\": false, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 3, \"distinct_countries_30d\": 4, \"logins_30d\": 1995, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"adm-support-227\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"contractor\"}}\n\n{\"alert\": {\"description\": \"an account granted itself or received elevated permissions\", \"evidence\": \"At 2026-09-13 16:45 UTC the IAM policy for project 'Alpha' was updated to grant the role 'Owner' to user 'contractor_jane' (ID 112233). The modification came from an approved CI/CD runner at 10.0.5.12 (on the allowlist); the contractor's MFA‑enabled credentials were last rotated on 2026-09-10.\", \"rule\": \"privilege_escalation\"}, \"context\": {\"asset_criticality\": \"low\", \"change_window_active\": false, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 3, \"distinct_countries_30d\": 4, \"logins_30d\": 1995, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"adm-support-227\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"contractor\"}}\n\n{\"alert\": {\"description\": \"an account granted itself or received elevated permissions\", \"evidence\": \"At 2026-09-13 16:45 UTC the IAM policy for project 'Alpha' was updated to grant the role 'Owner' to user 'contractor_jane' (ID 112233). The modification came from an approved CI/CD runner at 10.0.5.12 (on the allowlist); the contractor's MFA‑enabled credentials were last rotated on 2026-09-10.\", \"rule\": \"privilege_escalation\"}, \"context\": {\"asset_criticality\": \"low\", \"change_window_active\": false, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 3, \"distinct_countries_30d\": 4, \"logins_30d\": 1995, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"adm-support-227\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"contractor\"}}",
+    "questions": {
+      "credential_compromise": {
+        "instructions": "The evidence indicates a credential or account has been compromised.",
+        "type": "noul"
+      },
+      "disposition": {
+        "criteria": {
+          "close_benign": "Expected, explainable activity; close without analyst time.",
+          "contain": "Contain the host or account immediately; do not wait for triage.",
+          "investigate": "Warrants an analyst opening an investigation.",
+          "monitor": "Not clearly malicious, but worth watching for recurrence."
+        },
+        "instructions": "How should this security alert be dispositioned?",
+        "type": "choice"
+      },
+      "severity": {
+        "criteria": [
+          "Negligible: no access to anything sensitive.",
+          "Low: limited access, easily reversed.",
+          "Moderate: access to internal systems or non-public data.",
+          "High: access to production, secrets or customer data.",
+          "Critical: active compromise of crown-jewel systems."
+        ],
+        "instructions": "How severe is the potential impact if this alert is real?",
+        "type": "score"
+      },
+      "true_positive": {
+        "criteria": {
+          "false": "Benign activity, a misconfiguration, or a known false positive.",
+          "true": "The underlying behaviour is malicious or unauthorised."
+        },
+        "instructions": "This alert reflects genuinely malicious or unauthorised activity.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How quickly must a responder act on this alert?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-327",
+    "source_index": 327,
+    "workflow": "security_incidents",
+    "state": "{\"alert\": {\"description\": \"an endpoint agent matched a known signature\", \"evidence\": \"Endpoint agent on host 192.168.50.23 flagged file \\\"C:\\\\Windows\\\\Temp\\\\malicious.exe\\\" as matching malware signature \\\"Trojan:Win32/Agent\\\" at 2026-09-15 01:15 UTC. The process was executed under the unprivileged service account \\\"svc_backup\\\" with MFA disabled. The source of the file download is from an unknown external IP, and the account's credentials were last updated 180 days ago.\", \"rule\": \"malware_signature\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": false, \"source_on_allowlist\": false}, \"history\": {\"credential_rotation_days_ago\": 180, \"distinct_countries_30d\": 4, \"logins_30d\": 1364, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": false, \"name\": \"usr-billing-530\", \"privileges\": [\"repo:read\"], \"type\": \"service_account\"}}\n\n{\"alert\": {\"description\": \"an endpoint agent matched a known signature\", \"evidence\": \"Endpoint agent on host 192.168.50.23 flagged file \\\"C:\\\\Windows\\\\Temp\\\\malicious.exe\\\" as matching malware signature \\\"Trojan:Win32/Agent\\\" at 2026-09-15 01:15 UTC. The process was executed under the unprivileged service account \\\"svc_backup\\\" with MFA disabled. The source of the file download is from an unknown external IP, and the account's credentials were last updated 180 days ago.\", \"rule\": \"malware_signature\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": false, \"source_on_allowlist\": false}, \"history\": {\"credential_rotation_days_ago\": 180, \"distinct_countries_30d\": 4, \"logins_30d\": 1364, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": false, \"name\": \"usr-billing-530\", \"privileges\": [\"repo:read\"], \"type\": \"service_account\"}}\n\n{\"alert\": {\"description\": \"an endpoint agent matched a known signature\", \"evidence\": \"Endpoint agent on host 192.168.50.23 flagged file \\\"C:\\\\Windows\\\\Temp\\\\malicious.exe\\\" as matching malware signature \\\"Trojan:Win32/Agent\\\" at 2026-09-15 01:15 UTC. The process was executed under the unprivileged service account \\\"svc_backup\\\" with MFA disabled. The source of the file download is from an unknown external IP, and the account's credentials were last updated 180 days ago.\", \"rule\": \"malware_signature\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": false, \"source_on_allowlist\": false}, \"history\": {\"credential_rotation_days_ago\": 180, \"distinct_countries_30d\": 4, \"logins_30d\": 1364, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": false, \"name\": \"usr-billing-530\", \"privileges\": [\"repo:read\"], \"type\": \"service_account\"}}\n\n{\"alert\": {\"description\": \"an endpoint agent matched a known signature\", \"evidence\": \"Endpoint agent on host 192.168.50.23 flagged file \\\"C:\\\\Windows\\\\Temp\\\\malicious.exe\\\" as matching malware signature \\\"Trojan:Win32/Agent\\\" at 2026-09-15 01:15 UTC. The process was executed under the unprivileged service account \\\"svc_backup\\\" with MFA disabled. The source of the file download is from an unknown external IP, and the account's credentials were last updated 180 days ago.\", \"rule\": \"malware_signature\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": false, \"source_on_allowlist\": false}, \"history\": {\"credential_rotation_days_ago\": 180, \"distinct_countries_30d\": 4, \"logins_30d\": 1364, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": false, \"name\": \"usr-billing-530\", \"privileges\": [\"repo:read\"], \"type\": \"service_account\"}}",
+    "questions": {
+      "credential_compromise": {
+        "instructions": "The evidence indicates a credential or account has been compromised.",
+        "type": "noul"
+      },
+      "disposition": {
+        "criteria": {
+          "close_benign": "Expected, explainable activity; close without analyst time.",
+          "contain": "Contain the host or account immediately; do not wait for triage.",
+          "investigate": "Warrants an analyst opening an investigation.",
+          "monitor": "Not clearly malicious, but worth watching for recurrence."
+        },
+        "instructions": "How should this security alert be dispositioned?",
+        "type": "choice"
+      },
+      "severity": {
+        "criteria": [
+          "Negligible: no access to anything sensitive.",
+          "Low: limited access, easily reversed.",
+          "Moderate: access to internal systems or non-public data.",
+          "High: access to production, secrets or customer data.",
+          "Critical: active compromise of crown-jewel systems."
+        ],
+        "instructions": "How severe is the potential impact if this alert is real?",
+        "type": "score"
+      },
+      "true_positive": {
+        "criteria": {
+          "false": "Benign activity, a misconfiguration, or a known false positive.",
+          "true": "The underlying behaviour is malicious or unauthorised."
+        },
+        "instructions": "This alert reflects genuinely malicious or unauthorised activity.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How quickly must a responder act on this alert?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-352",
+    "source_index": 352,
+    "workflow": "security_incidents",
+    "state": "{\"alert\": {\"description\": \"an unrecognised binary executed on a server\", \"evidence\": \"The binary 'sys_update.exe' was executed by a privileged admin account. This activity originated from an allowlisted source address during an active change window.\", \"rule\": \"suspicious_process\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": true, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 700, \"distinct_countries_30d\": 2, \"logins_30d\": 1616, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"svc-billing-370\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"admin\"}}\n\n{\"alert\": {\"description\": \"an unrecognised binary executed on a server\", \"evidence\": \"The binary 'sys_update.exe' was executed by a privileged admin account. This activity originated from an allowlisted source address during an active change window.\", \"rule\": \"suspicious_process\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": true, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 700, \"distinct_countries_30d\": 2, \"logins_30d\": 1616, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"svc-billing-370\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"admin\"}}\n\n{\"alert\": {\"description\": \"an unrecognised binary executed on a server\", \"evidence\": \"The binary 'sys_update.exe' was executed by a privileged admin account. This activity originated from an allowlisted source address during an active change window.\", \"rule\": \"suspicious_process\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": true, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 700, \"distinct_countries_30d\": 2, \"logins_30d\": 1616, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"svc-billing-370\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"admin\"}}\n\n{\"alert\": {\"description\": \"an unrecognised binary executed on a server\", \"evidence\": \"The binary 'sys_update.exe' was executed by a privileged admin account. This activity originated from an allowlisted source address during an active change window.\", \"rule\": \"suspicious_process\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": true, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 700, \"distinct_countries_30d\": 2, \"logins_30d\": 1616, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"svc-billing-370\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"admin\"}}\n\n{\"alert\": {\"description\": \"an unrecognised binary executed on a server\", \"evidence\": \"The binary 'sys_update.exe' was executed by a privileged admin account. This activity originated from an allowlisted source address during an active change window.\", \"rule\": \"suspicious_process\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": true, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 700, \"distinct_countries_30d\": 2, \"logins_30d\": 1616, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"svc-billing-370\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"admin\"}}\n\n{\"alert\": {\"description\": \"an unrecognised binary executed on a server\", \"evidence\": \"The binary 'sys_update.exe' was executed by a privileged admin account. This activity originated from an allowlisted source address during an active change window.\", \"rule\": \"suspicious_process\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": true, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 700, \"distinct_countries_30d\": 2, \"logins_30d\": 1616, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"svc-billing-370\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"admin\"}}\n\n{\"alert\": {\"description\": \"an unrecognised binary executed on a server\", \"evidence\": \"The binary 'sys_update.exe' was executed by a privileged admin account. This activity originated from an allowlisted source address during an active change window.\", \"rule\": \"suspicious_process\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": true, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 700, \"distinct_countries_30d\": 2, \"logins_30d\": 1616, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"svc-billing-370\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"admin\"}}\n\n{\"alert\": {\"description\": \"an unrecognised binary executed on a server\", \"evidence\": \"The binary 'sys_update.exe' was executed by a privileged admin account. This activity originated from an allowlisted source address during an active change window.\", \"rule\": \"suspicious_process\"}, \"context\": {\"asset_criticality\": \"medium\", \"change_window_active\": true, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 700, \"distinct_countries_30d\": 2, \"logins_30d\": 1616, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"svc-billing-370\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"admin\"}}",
+    "questions": {
+      "credential_compromise": {
+        "instructions": "The evidence indicates a credential or account has been compromised.",
+        "type": "noul"
+      },
+      "disposition": {
+        "criteria": {
+          "close_benign": "Expected, explainable activity; close without analyst time.",
+          "contain": "Contain the host or account immediately; do not wait for triage.",
+          "investigate": "Warrants an analyst opening an investigation.",
+          "monitor": "Not clearly malicious, but worth watching for recurrence."
+        },
+        "instructions": "How should this security alert be dispositioned?",
+        "type": "choice"
+      },
+      "severity": {
+        "criteria": [
+          "Negligible: no access to anything sensitive.",
+          "Low: limited access, easily reversed.",
+          "Moderate: access to internal systems or non-public data.",
+          "High: access to production, secrets or customer data.",
+          "Critical: active compromise of crown-jewel systems."
+        ],
+        "instructions": "How severe is the potential impact if this alert is real?",
+        "type": "score"
+      },
+      "true_positive": {
+        "criteria": {
+          "false": "Benign activity, a misconfiguration, or a known false positive.",
+          "true": "The underlying behaviour is malicious or unauthorised."
+        },
+        "instructions": "This alert reflects genuinely malicious or unauthorised activity.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How quickly must a responder act on this alert?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  },
+  {
+    "id": "heldout-long-377",
+    "source_index": 377,
+    "workflow": "security_incidents",
+    "state": "{\"alert\": {\"description\": \"an unusual volume of files read in a short window\", \"evidence\": \"The service account \\\"svc-data\\\" accessed 5,842 files via the process \\\"backup.exe\\\" on host db01.corp between 2026-09-15T02:00:00Z and 02:05:00Z. All file reads originated from the allow‑listed source IP 10.0.0.5.\", \"rule\": \"mass_download\"}, \"context\": {\"asset_criticality\": \"crown_jewel\", \"change_window_active\": false, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 365, \"distinct_countries_30d\": 2, \"logins_30d\": 568, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"ci-deploy-507\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"service_account\"}}\n\n{\"alert\": {\"description\": \"an unusual volume of files read in a short window\", \"evidence\": \"The service account \\\"svc-data\\\" accessed 5,842 files via the process \\\"backup.exe\\\" on host db01.corp between 2026-09-15T02:00:00Z and 02:05:00Z. All file reads originated from the allow‑listed source IP 10.0.0.5.\", \"rule\": \"mass_download\"}, \"context\": {\"asset_criticality\": \"crown_jewel\", \"change_window_active\": false, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 365, \"distinct_countries_30d\": 2, \"logins_30d\": 568, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"ci-deploy-507\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"service_account\"}}\n\n{\"alert\": {\"description\": \"an unusual volume of files read in a short window\", \"evidence\": \"The service account \\\"svc-data\\\" accessed 5,842 files via the process \\\"backup.exe\\\" on host db01.corp between 2026-09-15T02:00:00Z and 02:05:00Z. All file reads originated from the allow‑listed source IP 10.0.0.5.\", \"rule\": \"mass_download\"}, \"context\": {\"asset_criticality\": \"crown_jewel\", \"change_window_active\": false, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 365, \"distinct_countries_30d\": 2, \"logins_30d\": 568, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"ci-deploy-507\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"service_account\"}}\n\n{\"alert\": {\"description\": \"an unusual volume of files read in a short window\", \"evidence\": \"The service account \\\"svc-data\\\" accessed 5,842 files via the process \\\"backup.exe\\\" on host db01.corp between 2026-09-15T02:00:00Z and 02:05:00Z. All file reads originated from the allow‑listed source IP 10.0.0.5.\", \"rule\": \"mass_download\"}, \"context\": {\"asset_criticality\": \"crown_jewel\", \"change_window_active\": false, \"source_on_allowlist\": true}, \"history\": {\"credential_rotation_days_ago\": 365, \"distinct_countries_30d\": 2, \"logins_30d\": 568, \"prior_alerts_90d\": 0}, \"principal\": {\"mfa_enrolled\": true, \"name\": \"ci-deploy-507\", \"privileges\": [\"deploy:production\", \"secrets:read\"], \"type\": \"service_account\"}}",
+    "questions": {
+      "credential_compromise": {
+        "instructions": "The evidence indicates a credential or account has been compromised.",
+        "type": "noul"
+      },
+      "disposition": {
+        "criteria": {
+          "close_benign": "Expected, explainable activity; close without analyst time.",
+          "contain": "Contain the host or account immediately; do not wait for triage.",
+          "investigate": "Warrants an analyst opening an investigation.",
+          "monitor": "Not clearly malicious, but worth watching for recurrence."
+        },
+        "instructions": "How should this security alert be dispositioned?",
+        "type": "choice"
+      },
+      "severity": {
+        "criteria": [
+          "Negligible: no access to anything sensitive.",
+          "Low: limited access, easily reversed.",
+          "Moderate: access to internal systems or non-public data.",
+          "High: access to production, secrets or customer data.",
+          "Critical: active compromise of crown-jewel systems."
+        ],
+        "instructions": "How severe is the potential impact if this alert is real?",
+        "type": "score"
+      },
+      "true_positive": {
+        "criteria": {
+          "false": "Benign activity, a misconfiguration, or a known false positive.",
+          "true": "The underlying behaviour is malicious or unauthorised."
+        },
+        "instructions": "This alert reflects genuinely malicious or unauthorised activity.",
+        "type": "noul"
+      },
+      "urgency": {
+        "criteria": [
+          "No time pressure; can wait indefinitely.",
+          "Routine; handle within the normal queue.",
+          "Elevated; should be handled within the same week.",
+          "Critical; requires action within the same day."
+        ],
+        "instructions": "How quickly must a responder act on this alert?",
+        "type": "score"
+      }
+    },
+    "min_sequence_tokens": 1024
+  }
+]

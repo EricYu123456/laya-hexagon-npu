@@ -1,0 +1,428 @@
+#!/usr/bin/env python3
+"""REVIEW BEFORE RUNNING: concrete temporary service acceptance on rubikpi3.
+
+This script DOES change the default manifest, copy prepared cache files, and
+temporarily start laya.service when executed on the Pi. It never compiles a
+model, creates swap, enables a unit, or changes a qualified harness/runtime.
+
+Run only after all nine suites have independently passed the strict 1% audit:
+  .venv/bin/python .work/deploy_one_percent_service.py \
+    --qualification reports/qualification-2026-10-03 \
+    --independent-audit reports/qualification-2026-10-03/independent-audit.json \
+    --output-dir reports/one-percent-service-2026-10-03
+
+The exact stable manifest is npu/fidelity/manifest.one-percent-2026-10-03.json.
+On success its exact bytes remain at the default manifest, with service stopped.
+On failure the old default manifest is restored, with service stopped. SIGINT
+and SIGTERM trigger cleanup; SIGKILL, power loss, and host failure cannot do so.
+"""
+import argparse
+from datetime import datetime, timezone
+import gc
+import hashlib
+import importlib.metadata
+import json
+import os
+from pathlib import Path
+import shutil
+import signal
+import stat
+import subprocess
+import sys
+import tempfile
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+import qualify_one_percent as qualification
+from summarize_external import numeric_equal
+
+UNIT = "laya.service"
+EXPECTED_ROOT = Path("/home/ubuntu/laya-service")
+DEFAULT_MANIFEST = ROOT / "npu/fidelity/manifest.json"
+STABLE_MANIFEST = ROOT / "npu/fidelity/manifest.one-percent-2026-10-03.json"
+CACHE_DIR = ROOT / "npu/fidelity/context_cache"
+TEMP_SWAP = [ROOT / ".work/one-percent-build.swap", ROOT / ".work/one-percent-build-extra.swap"]
+PROPERTIES = ("ActiveState", "SubState", "MainPID", "InvocationID", "NRestarts", "MemoryMax", "MemoryPeak",
+              "MemoryCurrent", "ControlGroup", "FragmentPath", "DropInPaths", "Result", "ExecMainStatus", "ExecMainCode")
+MEMORY_LIMIT = 4 * 1024**3
+
+
+def require(condition, message):
+    if not condition:
+        raise RuntimeError(message)
+
+
+def utc_now():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def read_json(path):
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def write_json(path, data):
+    with Path(path).open("x", encoding="utf-8", newline="\n") as stream:
+        json.dump(data, stream, ensure_ascii=False, indent=2, allow_nan=False)
+        stream.write("\n")
+
+
+def identity(path):
+    path = Path(path).resolve()
+    return {"path": path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path),
+            "sha256": qualification.sha256_file(path), "bytes": path.stat().st_size}
+
+
+def systemctl(*args, timeout=150):
+    return subprocess.run(["systemctl", "--user", *args], cwd=ROOT, check=True,
+                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=timeout).stdout
+
+
+def service_snapshot():
+    raw = systemctl("show", UNIT, "--property=" + ",".join(PROPERTIES))
+    values = dict(line.split("=", 1) for line in raw.splitlines() if "=" in line)
+    result = {"created_utc": utc_now(), "systemd": values}
+    control = values.get("ControlGroup", "")
+    if control:
+        base = Path("/sys/fs/cgroup").resolve()
+        group = (base / control.lstrip("/")).resolve()
+        require(group.is_relative_to(base), "Systemd returned an invalid cgroup path")
+        result["cgroup"] = {"path": str(group)}
+        for filename in ("memory.max", "memory.current", "memory.peak", "memory.swap.current", "memory.events"):
+            value = (group / filename).read_text(encoding="ascii").strip()
+            if filename == "memory.events":
+                value = {key: int(count) for key, count in (line.split() for line in value.splitlines())}
+            elif value != "max":
+                value = int(value)
+            result["cgroup"][filename] = value
+    return result
+
+
+def require_inactive(snapshot):
+    status = snapshot["systemd"]
+    require(status.get("ActiveState") == "inactive" and status.get("SubState") == "dead"
+            and status.get("MainPID") == "0", "This script requires the initial service state inactive/dead with PID 0")
+
+
+def swap_snapshot():
+    lines = Path("/proc/swaps").read_text(encoding="ascii").splitlines()
+    active = [line.split()[0] for line in lines[1:] if line.strip()]
+    for path in TEMP_SWAP:
+        require(str(path) not in active and not path.exists() and not path.is_symlink(),
+                f"Root must first swapoff AND remove temporary swap: {path}")
+    return {"created_utc": utc_now(), "proc_swaps": lines, "required_absent": [str(path) for path in TEMP_SWAP]}
+
+
+def validate_service_configuration(snapshot):
+    env = {}
+    for raw in (ROOT / "service.env").read_text(encoding="utf-8").splitlines():
+        raw = raw.strip()
+        if raw and not raw.startswith("#"):
+            key, value = raw.split("=", 1)
+            env[key] = value
+    expected = {"LAYA_CHECKPOINT": "multilingual", "LAYA_DEVICE": "npu", "LAYA_THREADS": "4",
+                "LAYA_NPU_MANIFEST": str(DEFAULT_MANIFEST), "LAYA_NPU_CACHE_DIR": str(CACHE_DIR),
+                "LAYA_NPU_CONTEXT_CACHE": "1"}
+    require(all(env.get(key) == value for key, value in expected.items()), "Actual service.env differs from this concrete deployment")
+    status = snapshot["systemd"]
+    require(status.get("MemoryMax") == str(MEMORY_LIMIT), "Service must retain its 4 GiB MemoryMax")
+    require(not status.get("DropInPaths"), "Unexpected service drop-ins require review")
+    unit_path = Path(status["FragmentPath"])
+    require(unit_path == Path("/home/ubuntu/.config/systemd/user/laya.service"), "Unexpected installed unit path")
+    require(qualification.sha256_file(unit_path) == qualification.sha256_file(ROOT / "systemd/laya.service"),
+            "Installed service unit differs from the reviewed repository unit")
+    return unit_path
+
+
+def backend_identity(fingerprint):
+    return {key: fingerprint[key] for key in ("onnxruntime", "onnxruntime_qnn", "htp_arch", "backend_sha256",
+                                            "stub_sha256", "skel_sha256") if key in fingerprint}
+
+
+def validate_backend(fingerprint):
+    require(fingerprint.get("cpu_ep_fallback") is False and fingerprint.get("htp_arch") == 68,
+            "Qualification did not use strict HTP V68")
+    for distribution, key in (("onnxruntime", "onnxruntime"), ("onnxruntime-qnn", "onnxruntime_qnn")):
+        require(importlib.metadata.version(distribution) == fingerprint[key], f"Installed {distribution} changed since qualification")
+    for label in ("backend", "stub", "skel"):
+        path = Path(fingerprint[f"{label}_path"])
+        require(qualification.sha256_file(path) == fingerprint[f"{label}_sha256"], f"Installed QNN {label} changed since qualification")
+
+
+def prepared_caches(plan, supplementary):
+    stats = supplementary["accelerator_stats_after_measurement"]
+    fingerprint = stats["backend_fingerprint"]
+    validate_backend(fingerprint)
+    require(stats.get("context_cache_enabled") is True and stats.get("context_cache_misses") == 0
+            and stats.get("context_cache_errors") == 0 and stats.get("context_cache_writes") == 0,
+            "Supplementary qualification must have used already prepared contexts without cache writes/misses/errors")
+    paths = stats.get("context_cache_paths", {})
+    require(set(paths) == {"768", "1024"}, "Qualification does not identify both prepared contexts")
+    output = {}
+    for bucket in (768, 1024):
+        key = str(bucket)
+        cache_identity = {"cache_schema": 2, "model_sha256": plan["graph_sha256_by_bucket"][key],
+                          "backend": backend_identity(fingerprint), "provider_options": {
+                              "backend_path": fingerprint["backend_path"], "htp_arch": "68", "htp_performance_mode": "burst"},
+                          "context_embed_mode": 1}
+        digest = hashlib.sha256(json.dumps(cache_identity, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+        source = Path(paths[key]).resolve()
+        require(source.is_file() and source.name == f"backbone_{bucket}_{digest}.onnx", "Prepared context filename does not match qualified graph/backend identity")
+        require(source.stat().st_mtime <= datetime.fromisoformat(supplementary["created_utc"]).timestamp(),
+                "A prepared context changed after supplementary qualification began")
+        # Read-only ONNX structure inspection; no runtime/session/provider import.
+        import onnx
+        graph = onnx.load(source, load_external_data=False)
+        require(len(graph.graph.node) == 1 and graph.graph.node[0].op_type == "EPContext", "Prepared cache is not a single EPContext")
+        embed_mode = next((onnx.helper.get_attribute_value(a) for a in graph.graph.node[0].attribute if a.name == "embed_mode"), None)
+        require(embed_mode == 1, "Prepared cache must embed its context; external .bin files are unsupported here")
+        require(not any(t.data_location == onnx.TensorProto.EXTERNAL for t in graph.graph.initializer), "Prepared cache has external tensor data")
+        actual_shapes = {item.name: [d.dim_value for d in item.type.tensor_type.shape.dim] for item in graph.graph.input}
+        expected_shapes = {"inputs_embeds": [1, bucket, 768], "attn_mask": [1, 1, bucket, bucket], "sliding_mask": [1, 1, bucket, bucket]}
+        require(actual_shapes == expected_shapes, "Prepared context input shape does not match the bucket")
+        require(all(item.type.tensor_type.elem_type == onnx.TensorProto.FLOAT for item in graph.graph.input),
+                "Prepared context inputs must remain float32")
+        del graph
+        gc.collect()
+        output[key] = {"source": source, "destination": CACHE_DIR / source.name,
+                       "sha256": qualification.sha256_file(source), "cache_identity": cache_identity}
+    return output
+
+
+def validate_pre_run_caches(path, plan, caches):
+    evidence = read_json(path)
+    require(evidence.get("kind") == "laya_compiled_cache_before_qualification",
+            "Missing precise pre-qualification cache evidence")
+    require(datetime.fromisoformat(evidence["created_utc"]) <= datetime.fromisoformat(plan["frozen_utc"]),
+            "Cache byte evidence was recorded after the qualification plan froze")
+    require(evidence.get("manifest_sha256") == plan["manifest_sha256"],
+            "Pre-qualification cache evidence identifies a different manifest")
+    require(set(evidence.get("buckets", {})) == set(caches) == {"768", "1024"},
+            "Pre-qualification cache evidence must contain both precise buckets")
+    for bucket, item in caches.items():
+        recorded = evidence["buckets"][bucket]
+        require(recorded.get("cache_path") == str(item["source"])
+                and recorded.get("cache_sha256") == item["sha256"]
+                and recorded.get("cache_bytes") == item["source"].stat().st_size
+                and recorded.get("graph_sha256") == plan["graph_sha256_by_bucket"][bucket],
+                f"Prepared {bucket} context differs from its pre-qualification cache evidence")
+
+
+def atomic_copy(source, destination, expected_sha256):
+    source, destination = Path(source), Path(destination)
+    require(qualification.sha256_file(source) == expected_sha256, f"Source changed before copy: {source}")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(prefix=".laya-deploy-", dir=destination.parent, delete=False) as stream:
+            temporary = Path(stream.name)
+            with source.open("rb") as incoming:
+                shutil.copyfileobj(incoming, stream, length=8 * 1024 * 1024)
+            stream.flush()
+            os.fsync(stream.fileno())
+        temporary.chmod(stat.S_IMODE(source.stat().st_mode))
+        require(qualification.sha256_file(temporary) == expected_sha256, "Staged copy hash differs")
+        os.replace(temporary, destination)
+        temporary = None
+        directory_fd = os.open(destination.parent, os.O_RDONLY)
+        try:
+            os.fsync(directory_fd)
+        finally:
+            os.close(directory_fd)
+        require(qualification.sha256_file(destination) == expected_sha256, "Installed copy hash differs")
+    finally:
+        if temporary is not None and temporary.exists():
+            temporary.unlink()
+
+
+def validate_running_pair(before, after):
+    first, last = before["systemd"], after["systemd"]
+    require(first["ActiveState"] == last["ActiveState"] == "active"
+            and first["MainPID"] == last["MainPID"] and first["MainPID"] != "0"
+            and first["InvocationID"] == last["InvocationID"] and first["InvocationID"], "Service restarted or changed invocation during replay")
+    require(first["NRestarts"] == last["NRestarts"] == "0", "Service restart was observed")
+    require(first["ControlGroup"] == last["ControlGroup"], "Service cgroup changed during replay")
+    for snapshot in (before, after):
+        group = snapshot["cgroup"]
+        require(group["memory.max"] == MEMORY_LIMIT and group["memory.peak"] < MEMORY_LIMIT, "Service exceeded its memory acceptance limit")
+        require(group["memory.swap.current"] == 0, "Service used swap during acceptance")
+        require(all(group["memory.events"].get(key, 0) == 0 for key in ("max", "oom", "oom_kill", "oom_group_kill")),
+                "Service cgroup recorded a memory-limit or OOM event")
+
+
+def stop_owned_service():
+    try:
+        systemctl("stop", UNIT)
+    except (subprocess.SubprocessError, OSError):
+        # Only the initially inactive service started by this script is targeted.
+        systemctl("kill", "--kill-whom=all", "--signal=SIGKILL", UNIT, timeout=30)
+        systemctl("stop", UNIT)
+    final = service_snapshot()
+    require_inactive(final)
+    return final
+
+
+def interrupted(signum, _frame):
+    raise InterruptedError(f"Deployment interrupted by signal {signum}")
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--qualification", type=Path, required=True)
+    parser.add_argument("--independent-audit", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    args = parser.parse_args(argv)
+    require(ROOT == EXPECTED_ROOT and sys.platform == "linux", "Execution is restricted to the inspected Pi checkout")
+    require(Path(sys.executable).resolve() == (ROOT / ".venv/bin/python").resolve(), "Use this checkout's .venv/bin/python")
+    args.qualification, args.independent_audit, args.output_dir = (p.resolve() for p in (args.qualification, args.independent_audit, args.output_dir))
+    require(not args.output_dir.exists(), "Choose a new deployment evidence directory")
+    independent = read_json(args.independent_audit)
+    plan_path = args.qualification / "qualification-plan.json"
+    plan_digest = qualification.sha256_file(plan_path)
+    require(independent.get("kind") == "laya_one_percent_audit" and independent.get("passed") is True
+            and not independent.get("evidence_errors") and independent.get("criteria") == qualification.THRESHOLDS
+            and independent.get("plan_sha256") == plan_digest, "Independent 1% audit has not passed for this exact frozen plan")
+    args.output_dir.mkdir(parents=True)
+    report = {"kind": "laya_temporary_deployment_acceptance", "created_utc": utc_now(), "passed": False,
+              "qualification_plan": identity(plan_path), "independent_audit": identity(args.independent_audit),
+              "script": identity(__file__), "service_unit": UNIT, "events": [], "cleanup_errors": [],
+              "note": "Successful verification leaves the selected default manifest on disk and restores inactive service state. Failure restores the original default manifest."}
+    activation_attempted, service_start_attempted, verification_passed = False, False, False
+    backup, original_digest = args.output_dir / "manifest.before.json", None
+    for signum in (signal.SIGINT, signal.SIGTERM):
+        signal.signal(signum, interrupted)
+    try:
+        plan = qualification.validate_plan(args.qualification)
+        qualification.validate_live_assets(plan)
+        recomputed = qualification.audit(args.qualification, args.output_dir / "qualification-recomputed.json")
+        require(recomputed["passed"] is True and recomputed.get("plan_sha256") == plan_digest,
+                "Independent fresh 1% recomputation failed or frozen plan changed")
+        required_names = set(qualification.SUITE_NAMES) | set(plan["subsets"])
+        require(set(independent.get("suites_and_subsets", {})) == required_names, "Independent audit omits a required suite/subset")
+        for name in required_names:
+            saved, checked = independent["suites_and_subsets"][name], recomputed["suites_and_subsets"][name]
+            require(saved.get("passes_one_percent") is True and numeric_equal(saved.get("fidelity"), checked["fidelity"]), "Independent audit metrics disagree with current evidence")
+            if name in qualification.SUITE_NAMES:
+                require(saved.get("report_sha256") == checked["report_sha256"], "Independent audit refers to a changed hardware report")
+        shutil.copyfile(args.independent_audit, args.output_dir / "independent-audit.json")
+        shutil.copyfile(plan_path, args.output_dir / "qualification-plan.json")
+        require(STABLE_MANIFEST.parent == DEFAULT_MANIFEST.parent, "Stable/default manifests must share their relative-path base")
+        require(STABLE_MANIFEST.read_bytes() == (args.qualification / plan["manifest_evidence"]).read_bytes(), "Stable manifest bytes differ from frozen qualified snapshot")
+        require(qualification.sha256_file(STABLE_MANIFEST) == plan["manifest_sha256"], "Stable manifest hash differs")
+        manifest = read_json(STABLE_MANIFEST)
+        graph_proofs = {}
+        for bucket, relative in manifest["buckets"].items():
+            path = (STABLE_MANIFEST.parent / relative).resolve()
+            require(path.is_relative_to(ROOT / "npu/fidelity"), "Selected graph must be installed in stable npu/fidelity storage")
+            require(qualification.sha256_file(path) == plan["graph_sha256_by_bucket"][bucket], "Stable graph bytes differ from qualification")
+            graph_proofs[bucket] = identity(path)
+        initial = service_snapshot()
+        require_inactive(initial)
+        unit_path = validate_service_configuration(initial)
+        write_json(args.output_dir / "service-initial.json", initial)
+        report["swaps_before"] = swap_snapshot()
+        report["stable_manifest"], report["graphs"] = identity(STABLE_MANIFEST), graph_proofs
+        report["configuration"] = {"environment": identity(ROOT / "service.env"), "unit": identity(unit_path),
+                                   "service_wrapper": identity(ROOT / "systemd/run-laya.sh"), "npu_environment": identity(ROOT / "npu/env.sh"),
+                                   "http_verifier": identity(ROOT / "verify_service.py")}
+        shutil.copyfile(ROOT / "service.env", args.output_dir / "service.env")
+        shutil.copyfile(unit_path, args.output_dir / "laya.service")
+        entry = next(e for e in plan["suites"] if e["name"] == "supplementary-development")
+        expected_path = args.qualification / entry["candidate"]
+        caches = prepared_caches(plan, read_json(expected_path))
+        cache_evidence = args.qualification / "context-cache-before-run.json"
+        validate_pre_run_caches(cache_evidence, plan, caches)
+        report["context_cache_before_run"] = identity(cache_evidence)
+        atomic_copy(cache_evidence, args.output_dir / cache_evidence.name, report["context_cache_before_run"]["sha256"])
+        original_digest = qualification.sha256_file(DEFAULT_MANIFEST)
+        shutil.copy2(DEFAULT_MANIFEST, backup)
+        require(qualification.sha256_file(backup) == original_digest, "Default manifest backup failed hash verification")
+        report["original_manifest"] = {"sha256": original_digest, "backup": backup.name}
+        report["caches"] = {}
+        for bucket, item in caches.items():
+            destination = item["destination"]
+            if destination.exists():
+                require(qualification.sha256_file(destination) == item["sha256"], "Existing prepared-cache destination has different bytes; refusing overwrite")
+            else:
+                atomic_copy(item["source"], destination, item["sha256"])
+            report["caches"][bucket] = {"source": identity(item["source"]), "installed": identity(destination), "identity": item["cache_identity"]}
+        report["swaps_before_start"] = swap_snapshot()
+        require_inactive(service_snapshot())
+        activation_attempted = True
+        atomic_copy(STABLE_MANIFEST, DEFAULT_MANIFEST, plan["manifest_sha256"])
+        report["events"].append({"event": "manifest_activated", "utc": utc_now()})
+        service_start_attempted = True
+        systemctl("start", UNIT)
+        before = service_snapshot()
+        write_json(args.output_dir / "service-before-replay.json", before)
+        command = [str(ROOT / ".venv/bin/python"), str(ROOT / "verify_service.py"),
+                   "--suite", str(args.qualification / entry["suite"]),
+                   "--reference", str(args.qualification / entry["reference"]), "--expected-npu", str(expected_path),
+                   "--output", str(args.output_dir / "service-http.json"), "--ready-timeout", "300", "--timeout", "180"]
+        report["http_verification_command"] = command
+        with (args.output_dir / "service-http.log").open("x", encoding="utf-8") as log:
+            completed = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, timeout=1800)
+        after = service_snapshot()
+        write_json(args.output_dir / "service-after-replay.json", after)
+        validate_running_pair(before, after)
+        require(completed.returncode == 0, "HTTP verifier failed; see service-http.json/log")
+        http = read_json(args.output_dir / "service-http.json")
+        require(http.get("integration_passed") is True and http.get("runtime_checks_passed") is True
+                and len(http.get("records", [])) == 10 and all(r.get("standalone_npu_outputs_equal") is True for r in http["records"]),
+                "HTTP replay did not reproduce all qualified supplementary outputs")
+        require(http["expected_npu_sha256"] == qualification.sha256_file(expected_path)
+                and http["overall"]["decision_error_percent"] <= 1 and http["overall"]["total_variation"]["mean"] <= .01,
+                "HTTP replay reference identity or strict 1% supplementary gate failed")
+        require(qualification.sha256_file(DEFAULT_MANIFEST) == plan["manifest_sha256"], "Active manifest changed during service replay")
+        report["swaps_after"] = swap_snapshot()
+        report["http_report"] = identity(args.output_dir / "service-http.json")
+        report["memory_peak_bytes"] = after["cgroup"]["memory.peak"]
+        verification_passed = True
+    except BaseException as error:
+        report["error"] = f"{type(error).__name__}: {error}"
+    finally:
+        # A second terminal signal cannot interrupt ordinary rollback midway.
+        for signum in (signal.SIGINT, signal.SIGTERM):
+            signal.signal(signum, signal.SIG_IGN)
+        if service_start_attempted:
+            try:
+                # Retain cgroup peak/restart evidence even when replay timed out.
+                write_json(args.output_dir / "service-before-stop.json", service_snapshot())
+            except BaseException as error:
+                report["cleanup_errors"].append(f"capture before stop: {type(error).__name__}: {error}")
+            try:
+                final = stop_owned_service()
+                write_json(args.output_dir / "service-final.json", final)
+                report["final_service_inactive"] = True
+            except BaseException as error:
+                report["cleanup_errors"].append(f"stop service: {type(error).__name__}: {error}")
+        try:
+            journal = subprocess.run(["journalctl", "--user", "-u", UNIT, "--since", report["created_utc"], "--no-pager"],
+                                     stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=30, check=True)
+            (args.output_dir / "service-journal.txt").write_text(journal.stdout, encoding="utf-8")
+        except BaseException as error:
+            report["cleanup_errors"].append(f"capture journal evidence: {type(error).__name__}: {error}")
+        try:
+            report["final_default_manifest"] = identity(DEFAULT_MANIFEST)
+        except BaseException as error:
+            report["cleanup_errors"].append(f"capture final manifest evidence: {type(error).__name__}: {error}")
+        if activation_attempted and (not verification_passed or report["cleanup_errors"]):
+            try:
+                atomic_copy(backup, DEFAULT_MANIFEST, original_digest)
+                report["manifest_rolled_back"] = True
+                report["final_default_manifest"] = identity(DEFAULT_MANIFEST)
+            except BaseException as error:
+                report["cleanup_errors"].append(f"restore manifest: {type(error).__name__}: {error}")
+        report["passed"] = verification_passed and not report["cleanup_errors"] and report.get("final_service_inactive") is True
+        report["completed_utc"] = utc_now()
+        try:
+            write_json(args.output_dir / "deployment.json", report)
+        except BaseException:
+            if activation_attempted and not report.get("manifest_rolled_back"):
+                atomic_copy(backup, DEFAULT_MANIFEST, original_digest)
+            raise
+    print(json.dumps({key: report.get(key) for key in ("passed", "error", "cleanup_errors", "manifest_rolled_back", "final_service_inactive", "memory_peak_bytes")}, indent=2))
+    return 0 if report["passed"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

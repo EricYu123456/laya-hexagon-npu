@@ -1,0 +1,34 @@
+#!/bin/bash
+set -euo pipefail
+cd /home/ubuntu/laya-service
+while kill -0 27215 2>/dev/null; do sleep 10; done
+for length in 768 1024; do
+  test -f ".work/features32_precision16_${length}_corrected/complete.txt"
+done
+source npu/env.sh
+stable=npu/fidelity/precision-2026-10-03
+test ! -e "$stable"
+for length in 768 1024; do
+  corrected=".work/features32_precision16_${length}_corrected"
+  source=".work/features32_precision16_${length}"
+  mkdir -p "$stable/$length/provenance"
+  cp "$corrected/backbone_${length}_a16w8.onnx" "$corrected/backbone_${length}_a16w8.offsets.json" "$corrected/manifest.json" "$stable/$length/"
+  cp "$source/"*.json "$stable/$length/provenance/"
+  cp "$source/offset-probes/calibration_results.json" "$stable/$length/provenance/"
+done
+manifest=npu/fidelity/manifest.one-percent-2026-10-03.json
+.venv/bin/python -m npu.merge_manifests --output "$manifest" "$stable/768/manifest.json" "$stable/1024/manifest.json"
+for name in one-percent-build.swap one-percent-build-extra.swap; do
+  swapfile="/home/ubuntu/laya-service/.work/$name"
+  if test -f "$swapfile"; then
+    test "$(readlink -f "$swapfile")" = "/home/ubuntu/laya-service/.work/$name"
+    sudo -n swapoff "$swapfile"
+    sudo -n rm -- "$swapfile"
+  fi
+done
+export LAYA_NPU_CACHE_DIR="$PWD/.work/one-percent-context-cache"
+.venv/bin/python .work/record_qualification_caches.py
+.venv/bin/python qualify_one_percent.py prepare --output-dir reports/qualification-2026-10-03 --dataset-path .work/typed-decisions.parquet --legacy-reference .work/legacy-reference.json --manifest "$manifest"
+cp .work/one-percent-cache-before-qualification.json reports/qualification-2026-10-03/context-cache-before-run.json
+.venv/bin/python qualify_one_percent.py run --output-dir reports/qualification-2026-10-03
+printf 'completed\n' > .work/full-qualification-complete.txt

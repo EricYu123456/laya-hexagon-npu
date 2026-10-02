@@ -1,0 +1,1121 @@
+{
+  "kind": "laya_one_percent_audit",
+  "created_utc": "2026-10-02T19:34:55.458873+00:00",
+  "plan_sha256": "459f4c82420c4abab534e910cf0c1a5a95f852e0d8084a328fcd1fb1b3e03942",
+  "criteria": {
+    "decision_mismatch_max": 0.01,
+    "mean_total_variation_max": 0.01
+  },
+  "scope": "Historical regression; not a new independent held-out evaluation. All gates are required separately.",
+  "passed": true,
+  "suites_and_subsets": {
+    "typed-decisions-full": {
+      "fidelity": {
+        "decisions": 2000,
+        "decision_mismatches": 12,
+        "decision_error_percent": 0.6,
+        "argmax_mismatches": 17,
+        "argmax_error_percent": 0.8500000000000001,
+        "total_variation": {
+          "count": 2000,
+          "mean": 0.004885831297875068,
+          "p50": 0.0033999999999999777,
+          "p95": 0.014699999999999984,
+          "max": 0.10159999999999991
+        },
+        "probability_mae": {
+          "count": 2000,
+          "mean": 0.0027928370599003723,
+          "p50": 0.0018321853218218572,
+          "p95": 0.009240500000000004,
+          "max": 0.10159999999999991
+        },
+        "max_probability_error": {
+          "count": 2000,
+          "mean": 0.004722077003698204,
+          "p50": 0.0031999999999999806,
+          "p95": 0.01450233226677333,
+          "max": 0.10159999999999991
+        },
+        "noul_abs_error": {
+          "count": 600,
+          "mean": 0.002985166666666665,
+          "p50": 0.0012999999999999678,
+          "p95": 0.01189999999999997,
+          "max": 0.10159999999999991
+        },
+        "score_abs_error": {
+          "count": 800,
+          "mean": 0.006559374999999994,
+          "p50": 0.0041999999999999815,
+          "p95": 0.01980000000000004,
+          "max": 0.06610000000000005
+        },
+        "score_normalized_abs_error": {
+          "count": 800,
+          "mean": 0.002118697916666665,
+          "p50": 0.001399999999999994,
+          "p95": 0.006535000000000015,
+          "max": 0.020266666666666728
+        },
+        "confidence_abs_error": {
+          "count": 2000,
+          "mean": 0.003511449999999999,
+          "p50": 0.0019000000000000128,
+          "p95": 0.012599999999999945,
+          "max": 0.10159999999999991
+        },
+        "action_probability_abs_error": {
+          "count": 2000,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true,
+      "cases": 400,
+      "report_sha256": "f3924a533c2dcb291b724c05c7353ad8c528abdd556b5a1b975729f21d481cc5",
+      "accelerator_stats": {
+        "npu_calls": 2000,
+        "cpu_fallbacks": 0,
+        "session_creations": 1,
+        "session_evictions": 0,
+        "bucket_calls": {
+          "768": 2000
+        },
+        "zero_pad_embeddings": true,
+        "context_cache_enabled": true,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_writes": 0,
+        "context_cache_errors": 0,
+        "context_cache_paths": {
+          "768": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx"
+        },
+        "backend_fingerprint": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+          "htp_arch": 68,
+          "cpu_ep_fallback": false,
+          "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "correction_backend_verified_buckets": [
+          768
+        ],
+        "max_len": 1024,
+        "head_max_len": 256
+      }
+    },
+    "supplementary-development": {
+      "fidelity": {
+        "decisions": 15,
+        "decision_mismatches": 0,
+        "decision_error_percent": 0.0,
+        "argmax_mismatches": 0,
+        "argmax_error_percent": 0,
+        "total_variation": {
+          "count": 15,
+          "mean": 0.002204781293514475,
+          "p50": 0.0005975202479752079,
+          "p95": 0.008949861986198557,
+          "max": 0.009532873287328686
+        },
+        "probability_mae": {
+          "count": 15,
+          "mean": 0.0019342986401207612,
+          "p50": 0.0003983468319834719,
+          "p95": 0.007058674200753364,
+          "max": 0.00869999999999993
+        },
+        "max_probability_error": {
+          "count": 15,
+          "mean": 0.002204781293514482,
+          "p50": 0.000597520247975214,
+          "p95": 0.008949861986198564,
+          "max": 0.009532873287328714
+        },
+        "noul_abs_error": {
+          "count": 9,
+          "mean": 0.0023222222222222207,
+          "p50": 0.00010000000000000005,
+          "p95": 0.0070599999999999535,
+          "max": 0.00869999999999993
+        },
+        "score_abs_error": {
+          "count": 1,
+          "mean": 0.0004999999999999449,
+          "p50": 0.0004999999999999449,
+          "p95": 0.0004999999999999449,
+          "max": 0.0004999999999999449
+        },
+        "score_normalized_abs_error": {
+          "count": 1,
+          "mean": 0.00024999999999997247,
+          "p50": 0.00024999999999997247,
+          "p95": 0.00024999999999997247,
+          "max": 0.00024999999999997247
+        },
+        "confidence_abs_error": {
+          "count": 15,
+          "mean": 0.0019466666666666614,
+          "p50": 0.0013999999999999568,
+          "p95": 0.005830000000000009,
+          "max": 0.00869999999999993
+        },
+        "action_probability_abs_error": {
+          "count": 15,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true,
+      "cases": 10,
+      "report_sha256": "0f2916e1465ec520ac5db781d5c3ed61ebd4a5d1a826a7d12f41dad38872b665",
+      "accelerator_stats": {
+        "npu_calls": 15,
+        "cpu_fallbacks": 0,
+        "session_creations": 5,
+        "session_evictions": 4,
+        "bucket_calls": {
+          "768": 11,
+          "1024": 4
+        },
+        "zero_pad_embeddings": true,
+        "context_cache_enabled": true,
+        "context_cache_hits": 5,
+        "context_cache_misses": 0,
+        "context_cache_writes": 0,
+        "context_cache_errors": 0,
+        "context_cache_paths": {
+          "768": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx",
+          "1024": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_1024_70f31241dece6cacc252064408bb24e233ab9e456fce659965722527d31f0d3a.onnx"
+        },
+        "backend_fingerprint": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+          "htp_arch": 68,
+          "cpu_ep_fallback": false,
+          "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "correction_backend_verified_buckets": [
+          768,
+          1024
+        ],
+        "max_len": 1024,
+        "head_max_len": 256
+      }
+    },
+    "long-input": {
+      "fidelity": {
+        "decisions": 80,
+        "decision_mismatches": 0,
+        "decision_error_percent": 0.0,
+        "argmax_mismatches": 0,
+        "argmax_error_percent": 0,
+        "total_variation": {
+          "count": 80,
+          "mean": 0.004848238661569882,
+          "p50": 0.003025607560756092,
+          "p95": 0.010260969096909673,
+          "max": 0.05495010501050102
+        },
+        "probability_mae": {
+          "count": 80,
+          "mean": 0.0026201009781847548,
+          "p50": 0.0015377312731272887,
+          "p95": 0.006114999999999897,
+          "max": 0.02747505250525051
+        },
+        "max_probability_error": {
+          "count": 80,
+          "mean": 0.004734679168621784,
+          "p50": 0.0027293529352935345,
+          "p95": 0.010260969096909675,
+          "max": 0.054950105010501016
+        },
+        "noul_abs_error": {
+          "count": 24,
+          "mean": 0.0017916666666666498,
+          "p50": 0.0005500000000000504,
+          "p95": 0.009554999999999966,
+          "max": 0.013799999999999923
+        },
+        "score_abs_error": {
+          "count": 32,
+          "mean": 0.00671562500000001,
+          "p50": 0.00550000000000006,
+          "p95": 0.01635999999999995,
+          "max": 0.029100000000000126
+        },
+        "score_normalized_abs_error": {
+          "count": 32,
+          "mean": 0.0021697916666666706,
+          "p50": 0.001783333333333359,
+          "p95": 0.0053799999999999916,
+          "max": 0.009700000000000042
+        },
+        "confidence_abs_error": {
+          "count": 80,
+          "mean": 0.003776249999999992,
+          "p50": 0.0016499999999999848,
+          "p95": 0.010755000000000034,
+          "max": 0.054900000000000004
+        },
+        "action_probability_abs_error": {
+          "count": 80,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true,
+      "cases": 16,
+      "report_sha256": "a6a4c8bbde08d0432f503ad5039a9bc26cb4cf0a0ecea9619889887330e5a7a5",
+      "accelerator_stats": {
+        "npu_calls": 80,
+        "cpu_fallbacks": 0,
+        "session_creations": 1,
+        "session_evictions": 0,
+        "bucket_calls": {
+          "1024": 80
+        },
+        "zero_pad_embeddings": true,
+        "context_cache_enabled": true,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_writes": 0,
+        "context_cache_errors": 0,
+        "context_cache_paths": {
+          "1024": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_1024_70f31241dece6cacc252064408bb24e233ab9e456fce659965722527d31f0d3a.onnx"
+        },
+        "backend_fingerprint": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+          "htp_arch": 68,
+          "cpu_ep_fallback": false,
+          "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "correction_backend_verified_buckets": [
+          1024
+        ],
+        "max_len": 1024,
+        "head_max_len": 256
+      }
+    },
+    "banking77-card8": {
+      "fidelity": {
+        "decisions": 320,
+        "decision_mismatches": 1,
+        "decision_error_percent": 0.3125,
+        "argmax_mismatches": 1,
+        "argmax_error_percent": 0.3125,
+        "total_variation": {
+          "count": 320,
+          "mean": 0.004265218989731905,
+          "p50": 0.0003996900169968837,
+          "p95": 0.01748165033006603,
+          "max": 0.06639999999999996
+        },
+        "probability_mae": {
+          "count": 320,
+          "mean": 0.0010663047474329763,
+          "p50": 9.992250424922092e-05,
+          "p95": 0.004370412582516508,
+          "max": 0.01659999999999999
+        },
+        "max_probability_error": {
+          "count": 320,
+          "mean": 0.004191379123247997,
+          "p50": 0.0003995050254950172,
+          "p95": 0.017481650330066066,
+          "max": 0.0663999999999999
+        },
+        "noul_abs_error": null,
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 320,
+          "mean": 0.0034012499999999998,
+          "p50": 0.0006000000000000449,
+          "p95": 0.01533999999999999,
+          "max": 0.0474
+        },
+        "action_probability_abs_error": {
+          "count": 320,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true,
+      "cases": 320,
+      "report_sha256": "abd75c60189ead6e5513f901438537219132636acb18aa43a9048f6c8a734afd",
+      "accelerator_stats": {
+        "npu_calls": 320,
+        "cpu_fallbacks": 0,
+        "session_creations": 1,
+        "session_evictions": 0,
+        "bucket_calls": {
+          "768": 320
+        },
+        "zero_pad_embeddings": true,
+        "context_cache_enabled": true,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_writes": 0,
+        "context_cache_errors": 0,
+        "context_cache_paths": {
+          "768": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx"
+        },
+        "backend_fingerprint": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+          "htp_arch": 68,
+          "cpu_ep_fallback": false,
+          "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "correction_backend_verified_buckets": [
+          768
+        ],
+        "max_len": 1024,
+        "head_max_len": 256
+      }
+    },
+    "clinc150-domain10": {
+      "fidelity": {
+        "decisions": 300,
+        "decision_mismatches": 1,
+        "decision_error_percent": 0.3333333333333333,
+        "argmax_mismatches": 1,
+        "argmax_error_percent": 0.33333333333333337,
+        "total_variation": {
+          "count": 300,
+          "mean": 0.006222123577491145,
+          "p50": 0.0050766076607660655,
+          "p95": 0.01741816218378161,
+          "max": 0.07150715071507156
+        },
+        "probability_mae": {
+          "count": 300,
+          "mean": 0.0012444247154982289,
+          "p50": 0.001015321532153213,
+          "p95": 0.003483632436756322,
+          "max": 0.01430143014301431
+        },
+        "max_probability_error": {
+          "count": 300,
+          "mean": 0.005617793275616732,
+          "p50": 0.004350435043504408,
+          "p95": 0.01625884335748837,
+          "max": 0.07120712071207125
+        },
+        "noul_abs_error": null,
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 300,
+          "mean": 0.0036953333333333326,
+          "p50": 0.0025000000000000022,
+          "p95": 0.011705000000000017,
+          "max": 0.03239999999999993
+        },
+        "action_probability_abs_error": {
+          "count": 300,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true,
+      "cases": 300,
+      "report_sha256": "0105e28066ebd2fd2cb7408eed9f420e1ed85c7a288c8d43d54883d8e6c79d1a",
+      "accelerator_stats": {
+        "npu_calls": 300,
+        "cpu_fallbacks": 0,
+        "session_creations": 1,
+        "session_evictions": 0,
+        "bucket_calls": {
+          "768": 300
+        },
+        "zero_pad_embeddings": true,
+        "context_cache_enabled": true,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_writes": 0,
+        "context_cache_errors": 0,
+        "context_cache_paths": {
+          "768": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx"
+        },
+        "backend_fingerprint": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+          "htp_arch": 68,
+          "cpu_ep_fallback": false,
+          "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "correction_backend_verified_buckets": [
+          768
+        ],
+        "max_len": 1024,
+        "head_max_len": 256
+      }
+    },
+    "massive-en-US": {
+      "fidelity": {
+        "decisions": 180,
+        "decision_mismatches": 0,
+        "decision_error_percent": 0.0,
+        "argmax_mismatches": 0,
+        "argmax_error_percent": 0,
+        "total_variation": {
+          "count": 180,
+          "mean": 0.004107587165113963,
+          "p50": 0.0018583754418717963,
+          "p95": 0.013981986139819845,
+          "max": 0.023900000000000036
+        },
+        "probability_mae": {
+          "count": 180,
+          "mean": 0.00045639857390155145,
+          "p50": 0.0002064861602079774,
+          "p95": 0.0015535540155355383,
+          "max": 0.00265555555555556
+        },
+        "max_probability_error": {
+          "count": 180,
+          "mean": 0.0036628146694097793,
+          "p50": 0.0016034309972305372,
+          "p95": 0.01358764421837641,
+          "max": 0.023900000000000032
+        },
+        "noul_abs_error": null,
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 180,
+          "mean": 0.002987777777777781,
+          "p50": 0.0013000000000000789,
+          "p95": 0.01029999999999998,
+          "max": 0.01980000000000004
+        },
+        "action_probability_abs_error": {
+          "count": 180,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true,
+      "cases": 180,
+      "report_sha256": "9a4a6f7024f3138f3614fb070c683a511565b0f8fd8fb72d282675cf6df0198e",
+      "accelerator_stats": {
+        "npu_calls": 180,
+        "cpu_fallbacks": 0,
+        "session_creations": 1,
+        "session_evictions": 0,
+        "bucket_calls": {
+          "768": 180
+        },
+        "zero_pad_embeddings": true,
+        "context_cache_enabled": true,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_writes": 0,
+        "context_cache_errors": 0,
+        "context_cache_paths": {
+          "768": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx"
+        },
+        "backend_fingerprint": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+          "htp_arch": 68,
+          "cpu_ep_fallback": false,
+          "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "correction_backend_verified_buckets": [
+          768
+        ],
+        "max_len": 1024,
+        "head_max_len": 256
+      }
+    },
+    "massive-zh-TW": {
+      "fidelity": {
+        "decisions": 180,
+        "decision_mismatches": 1,
+        "decision_error_percent": 0.5555555555555556,
+        "argmax_mismatches": 1,
+        "argmax_error_percent": 0.5555555555555556,
+        "total_variation": {
+          "count": 180,
+          "mean": 0.005205364319510112,
+          "p50": 0.0026816118388161064,
+          "p95": 0.01750666266626663,
+          "max": 0.05421084216843361
+        },
+        "probability_mae": {
+          "count": 180,
+          "mean": 0.0005783738132789013,
+          "p50": 0.0002979568709795674,
+          "p95": 0.001945184740696292,
+          "max": 0.0060234269076037345
+        },
+        "max_probability_error": {
+          "count": 180,
+          "mean": 0.004826759011223402,
+          "p50": 0.002395695454457003,
+          "p95": 0.01434651065106507,
+          "max": 0.054210842168433526
+        },
+        "noul_abs_error": null,
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 180,
+          "mean": 0.003842777777777776,
+          "p50": 0.0019000000000000128,
+          "p95": 0.012814999999999922,
+          "max": 0.058599999999999985
+        },
+        "action_probability_abs_error": {
+          "count": 180,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true,
+      "cases": 180,
+      "report_sha256": "5055dc1834dc634936d2282428fb9079901853e1e25edffa3ff4c971eb4b69a7",
+      "accelerator_stats": {
+        "npu_calls": 180,
+        "cpu_fallbacks": 0,
+        "session_creations": 1,
+        "session_evictions": 0,
+        "bucket_calls": {
+          "768": 180
+        },
+        "zero_pad_embeddings": true,
+        "context_cache_enabled": true,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_writes": 0,
+        "context_cache_errors": 0,
+        "context_cache_paths": {
+          "768": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx"
+        },
+        "backend_fingerprint": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+          "htp_arch": 68,
+          "cpu_ep_fallback": false,
+          "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "correction_backend_verified_buckets": [
+          768
+        ],
+        "max_len": 1024,
+        "head_max_len": 256
+      }
+    },
+    "massive-zh-CN": {
+      "fidelity": {
+        "decisions": 180,
+        "decision_mismatches": 0,
+        "decision_error_percent": 0.0,
+        "argmax_mismatches": 0,
+        "argmax_error_percent": 0,
+        "total_variation": {
+          "count": 180,
+          "mean": 0.004674840972748369,
+          "p50": 0.002254779132191167,
+          "p95": 0.017859715923830177,
+          "max": 0.029330536946305375
+        },
+        "probability_mae": {
+          "count": 180,
+          "mean": 0.0005194267747498188,
+          "p50": 0.0002505310146879075,
+          "p95": 0.001984412880425575,
+          "max": 0.003258948549589486
+        },
+        "max_probability_error": {
+          "count": 180,
+          "mean": 0.00432150707783268,
+          "p50": 0.001914311450143119,
+          "p95": 0.016697699016517395,
+          "max": 0.027342435756424366
+        },
+        "noul_abs_error": null,
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 180,
+          "mean": 0.0031705555555555536,
+          "p50": 0.0013500000000000179,
+          "p95": 0.011305000000000086,
+          "max": 0.027500000000000024
+        },
+        "action_probability_abs_error": {
+          "count": 180,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true,
+      "cases": 180,
+      "report_sha256": "97abc73cbb62f08081e74a175faca4d4df7777f4ebfc75601213153bfc6612fb",
+      "accelerator_stats": {
+        "npu_calls": 180,
+        "cpu_fallbacks": 0,
+        "session_creations": 1,
+        "session_evictions": 0,
+        "bucket_calls": {
+          "768": 180
+        },
+        "zero_pad_embeddings": true,
+        "context_cache_enabled": true,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_writes": 0,
+        "context_cache_errors": 0,
+        "context_cache_paths": {
+          "768": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx"
+        },
+        "backend_fingerprint": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+          "htp_arch": 68,
+          "cpu_ep_fallback": false,
+          "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "correction_backend_verified_buckets": [
+          768
+        ],
+        "max_len": 1024,
+        "head_max_len": 256
+      }
+    },
+    "legacy": {
+      "fidelity": {
+        "decisions": 8,
+        "decision_mismatches": 0,
+        "decision_error_percent": 0.0,
+        "argmax_mismatches": 0,
+        "argmax_error_percent": 0,
+        "total_variation": {
+          "count": 8,
+          "mean": 0.0020871837816218448,
+          "p50": 0.0005487351264873469,
+          "p95": 0.0072299999999999726,
+          "max": 0.00869999999999993
+        },
+        "probability_mae": {
+          "count": 8,
+          "mean": 0.0020414558544145658,
+          "p50": 0.0003658234176582313,
+          "p95": 0.0072299999999999726,
+          "max": 0.00869999999999993
+        },
+        "max_probability_error": {
+          "count": 8,
+          "mean": 0.002087183781621848,
+          "p50": 0.0005487351264873569,
+          "p95": 0.0072299999999999726,
+          "max": 0.00869999999999993
+        },
+        "noul_abs_error": {
+          "count": 6,
+          "mean": 0.0026000000000000116,
+          "p50": 0.0012000000000000398,
+          "p95": 0.007649999999999962,
+          "max": 0.00869999999999993
+        },
+        "score_abs_error": {
+          "count": 1,
+          "mean": 0.0004999999999999449,
+          "p50": 0.0004999999999999449,
+          "p95": 0.0004999999999999449,
+          "max": 0.0004999999999999449
+        },
+        "score_normalized_abs_error": {
+          "count": 1,
+          "mean": 0.00024999999999997247,
+          "p50": 0.00024999999999997247,
+          "p95": 0.00024999999999997247,
+          "max": 0.00024999999999997247
+        },
+        "confidence_abs_error": {
+          "count": 8,
+          "mean": 0.0023999999999999994,
+          "p50": 0.0017999999999999683,
+          "p95": 0.0072299999999999726,
+          "max": 0.00869999999999993
+        },
+        "action_probability_abs_error": {
+          "count": 8,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true,
+      "cases": 7,
+      "report_sha256": "1cd42e30dfc408e74add6f0854f6e100541b37d75b5411e852c132d726a61080",
+      "accelerator_stats": {
+        "npu_calls": 8,
+        "cpu_fallbacks": 0,
+        "session_creations": 1,
+        "session_evictions": 0,
+        "bucket_calls": {
+          "768": 8
+        },
+        "zero_pad_embeddings": true,
+        "context_cache_enabled": true,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_writes": 0,
+        "context_cache_errors": 0,
+        "context_cache_paths": {
+          "768": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx"
+        },
+        "backend_fingerprint": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39",
+          "htp_arch": 68,
+          "cpu_ep_fallback": false,
+          "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "correction_backend_verified_buckets": [
+          768
+        ],
+        "max_len": 1024,
+        "head_max_len": 256
+      }
+    },
+    "typed-historical-heldout": {
+      "fidelity": {
+        "decisions": 1840,
+        "decision_mismatches": 11,
+        "decision_error_percent": 0.5978260869565217,
+        "argmax_mismatches": 16,
+        "argmax_error_percent": 0.8695652173913043,
+        "total_variation": {
+          "count": 1840,
+          "mean": 0.004883947595516927,
+          "p50": 0.0033999999999999586,
+          "p95": 0.014712822007478255,
+          "max": 0.10159999999999991
+        },
+        "probability_mae": {
+          "count": 1840,
+          "mean": 0.002781950775090977,
+          "p50": 0.0018101425181014474,
+          "p95": 0.009101000000000048,
+          "max": 0.10159999999999991
+        },
+        "max_probability_error": {
+          "count": 1840,
+          "mean": 0.0047197757788639905,
+          "p50": 0.003168936893689342,
+          "p95": 0.014552459883374539,
+          "max": 0.10159999999999991
+        },
+        "noul_abs_error": {
+          "count": 552,
+          "mean": 0.0029184782608695638,
+          "p50": 0.0012000000000000066,
+          "p95": 0.011279999999999976,
+          "max": 0.10159999999999991
+        },
+        "score_abs_error": {
+          "count": 736,
+          "mean": 0.006641032608695644,
+          "p50": 0.004249999999999976,
+          "p95": 0.01987500000000003,
+          "max": 0.06610000000000005
+        },
+        "score_normalized_abs_error": {
+          "count": 736,
+          "mean": 0.002143104619565215,
+          "p50": 0.001399999999999994,
+          "p95": 0.00657499999999996,
+          "max": 0.020266666666666728
+        },
+        "confidence_abs_error": {
+          "count": 1840,
+          "mean": 0.0035080978260869557,
+          "p50": 0.0019000000000000128,
+          "p95": 0.012704999999999987,
+          "max": 0.10159999999999991
+        },
+        "action_probability_abs_error": {
+          "count": 1840,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true
+    },
+    "typed-development": {
+      "fidelity": {
+        "decisions": 80,
+        "decision_mismatches": 0,
+        "decision_error_percent": 0.0,
+        "argmax_mismatches": 0,
+        "argmax_error_percent": 0,
+        "total_variation": {
+          "count": 80,
+          "mean": 0.005770128628288788,
+          "p50": 0.003999795020497967,
+          "p95": 0.014512485748574864,
+          "max": 0.045704570457045714
+        },
+        "probability_mae": {
+          "count": 80,
+          "mean": 0.003412663467826636,
+          "p50": 0.002165655065506562,
+          "p95": 0.012251919491949214,
+          "max": 0.018281828182818285
+        },
+        "max_probability_error": {
+          "count": 80,
+          "mean": 0.005555337233878377,
+          "p50": 0.003749815018498137,
+          "p95": 0.014512485748574867,
+          "max": 0.04470447044704473
+        },
+        "noul_abs_error": {
+          "count": 24,
+          "mean": 0.004437500000000003,
+          "p50": 0.002850000000000019,
+          "p95": 0.012384999999999967,
+          "max": 0.012499999999999956
+        },
+        "score_abs_error": {
+          "count": 32,
+          "mean": 0.006765625000000039,
+          "p50": 0.005750000000000033,
+          "p95": 0.02137000000000014,
+          "max": 0.026699999999999946
+        },
+        "score_normalized_abs_error": {
+          "count": 32,
+          "mean": 0.0022098958333333463,
+          "p50": 0.0018000000000000238,
+          "p95": 0.007123333333333379,
+          "max": 0.008899999999999983
+        },
+        "confidence_abs_error": {
+          "count": 80,
+          "mean": 0.004197499999999999,
+          "p50": 0.0023000000000000034,
+          "p95": 0.012504999999999955,
+          "max": 0.0354000000000001
+        },
+        "action_probability_abs_error": {
+          "count": 80,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true
+    },
+    "legacy-accuracy-probes": {
+      "fidelity": {
+        "decisions": 4,
+        "decision_mismatches": 0,
+        "decision_error_percent": 0.0,
+        "argmax_mismatches": 0,
+        "argmax_error_percent": 0,
+        "total_variation": {
+          "count": 4,
+          "mean": 0.003324999999999996,
+          "p50": 0.0023000000000000273,
+          "p95": 0.008069999999999949,
+          "max": 0.00869999999999993
+        },
+        "probability_mae": {
+          "count": 4,
+          "mean": 0.003324999999999996,
+          "p50": 0.0023000000000000273,
+          "p95": 0.008069999999999949,
+          "max": 0.00869999999999993
+        },
+        "max_probability_error": {
+          "count": 4,
+          "mean": 0.0033249999999999972,
+          "p50": 0.0023000000000000295,
+          "p95": 0.008069999999999949,
+          "max": 0.00869999999999993
+        },
+        "noul_abs_error": {
+          "count": 4,
+          "mean": 0.0033249999999999972,
+          "p50": 0.0023000000000000295,
+          "p95": 0.008069999999999949,
+          "max": 0.00869999999999993
+        },
+        "score_abs_error": null,
+        "score_normalized_abs_error": null,
+        "confidence_abs_error": {
+          "count": 4,
+          "mean": 0.0033249999999999946,
+          "p50": 0.0023000000000000242,
+          "p95": 0.008069999999999949,
+          "max": 0.00869999999999993
+        },
+        "action_probability_abs_error": {
+          "count": 4,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true
+    },
+    "legacy-service-requests": {
+      "fidelity": {
+        "decisions": 4,
+        "decision_mismatches": 0,
+        "decision_error_percent": 0.0,
+        "argmax_mismatches": 0,
+        "argmax_error_percent": 0,
+        "total_variation": {
+          "count": 4,
+          "mean": 0.0008493675632436934,
+          "p50": 0.0005487351264873469,
+          "p95": 0.002044628037196348,
+          "max": 0.0023000000000000798
+        },
+        "probability_mae": {
+          "count": 4,
+          "mean": 0.0007579117088291356,
+          "p50": 0.0003658234176582313,
+          "p95": 0.002014752024797588,
+          "max": 0.0023000000000000798
+        },
+        "max_probability_error": {
+          "count": 4,
+          "mean": 0.0008493675632436984,
+          "p50": 0.0005487351264873569,
+          "p95": 0.002044628037196349,
+          "max": 0.0023000000000000798
+        },
+        "noul_abs_error": {
+          "count": 2,
+          "mean": 0.0011500000000000399,
+          "p50": 0.0011500000000000399,
+          "p95": 0.0021850000000000758,
+          "max": 0.0023000000000000798
+        },
+        "score_abs_error": {
+          "count": 1,
+          "mean": 0.0004999999999999449,
+          "p50": 0.0004999999999999449,
+          "p95": 0.0004999999999999449,
+          "max": 0.0004999999999999449
+        },
+        "score_normalized_abs_error": {
+          "count": 1,
+          "mean": 0.00024999999999997247,
+          "p50": 0.00024999999999997247,
+          "p95": 0.00024999999999997247,
+          "max": 0.00024999999999997247
+        },
+        "confidence_abs_error": {
+          "count": 4,
+          "mean": 0.001475000000000004,
+          "p50": 0.0017999999999999683,
+          "p95": 0.0022850000000000648,
+          "max": 0.0023000000000000798
+        },
+        "action_probability_abs_error": {
+          "count": 4,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "passes_one_percent": true
+    }
+  },
+  "evidence_errors": {},
+  "notes": [
+    "Each full suite and declared historical subset must pass; pooling cannot hide failures.",
+    "Overlapping typed subsets and MASSIVE translations are not independent examples.",
+    "The 1% limits apply to decision mismatch and mean TV, not every individual probability.",
+    "This historical regression audit makes no new independent held-out generalization claim."
+  ]
+}

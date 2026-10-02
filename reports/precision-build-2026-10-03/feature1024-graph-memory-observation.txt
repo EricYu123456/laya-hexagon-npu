@@ -1,0 +1,6 @@
+/home/ubuntu/laya-service/.work/features32_precision16_1024_corrected/backbone_1024_a16w8.onnx 236302473
+2026-10-02T17:52:56Z
+               total        used        free      shared  buff/cache   available
+Mem:      7638835200  3941531648  1764610048     2641920  2084659200  3697303552
+Swap:              0           0           0
+Filename				Type		Size		Used		Priority

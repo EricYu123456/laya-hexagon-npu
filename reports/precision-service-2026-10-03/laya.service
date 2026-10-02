@@ -1,0 +1,18 @@
+[Unit]
+Description=Laya decision API on Rubik Pi 3
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/ubuntu/laya-service
+EnvironmentFile=/home/ubuntu/laya-service/service.env
+ExecStart=/bin/bash /home/ubuntu/laya-service/systemd/run-laya.sh
+Restart=on-failure
+RestartSec=10
+CPUAccounting=true
+MemoryAccounting=true
+MemoryMax=4G
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

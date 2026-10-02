@@ -1,0 +1,86 @@
+[
+  {
+    "id": "accuracy-probe-1",
+    "state": "我想了解你們的新方案價格。",
+    "questions": {
+      "test_q": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    }
+  },
+  {
+    "id": "accuracy-probe-2",
+    "state": "I only want information about pricing. I do not want a refund.",
+    "questions": {
+      "test_q": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    }
+  },
+  {
+    "id": "accuracy-probe-3",
+    "state": "我只是想查詢新方案的價格，不需要退款。",
+    "questions": {
+      "test_q": {
+        "type": "noul",
+        "instructions": "使用者是否明確要求退款？"
+      }
+    }
+  },
+  {
+    "id": "accuracy-probe-4",
+    "state": "我的信用卡被重複扣款了，請幫我退款。",
+    "questions": {
+      "test_q": {
+        "type": "noul",
+        "instructions": "使用者是否明確要求退款？"
+      }
+    }
+  },
+  {
+    "id": "verify-example",
+    "state": "我的信用卡被重複扣款了，請幫我退款。",
+    "questions": {
+      "department": {
+        "type": "choice",
+        "instructions": "Which department should handle this request?",
+        "criteria": {
+          "billing": "payments, invoices, refunds",
+          "technical": "bugs, outages, system errors",
+          "sales": "pricing and new contracts"
+        }
+      },
+      "refund_requested": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    }
+  },
+  {
+    "id": "verify-negative",
+    "state": "我只是想查詢新方案的價格，不需要退款。",
+    "questions": {
+      "refund_requested": {
+        "type": "noul",
+        "instructions": "Does the user explicitly request a refund?"
+      }
+    }
+  },
+  {
+    "id": "verify-score",
+    "state": "The entire production system is down. All customers are blocked.",
+    "questions": {
+      "urgency": {
+        "type": "score",
+        "instructions": "How urgent is this issue?",
+        "criteria": [
+          "not urgent",
+          "soon",
+          "critical deadline or blocking issue"
+        ]
+      }
+    }
+  }
+]

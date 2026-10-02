@@ -1,0 +1,83 @@
+{
+  "format_version": 1,
+  "kind": "completed_build_evidence_only",
+  "full_nine_suite_qualification": "PASSED; see linked qualification evidence",
+  "inventory_excludes_itself": true,
+  "files": [
+    {
+      "path": "features32_1024_pipeline.txt",
+      "sha256": "5a313216943dc3c61d5aa2f62df36dee172df2120be8aca6405058d1dc44e27e",
+      "bytes": 123633,
+      "source_path": ".work/features32_1024_pipeline.log",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "one-percent-cache-before-qualification.json",
+      "sha256": "5c717fff8e0214e5cdbf9e5afbd63963bf392027b297827acfc48ffed1c9db25",
+      "bytes": 11223,
+      "source_path": ".work/one-percent-cache-before-qualification.json",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "feature1024-graph-memory-observation.txt",
+      "sha256": "b9a5d2cd37fac64576d3697a42dac1912e7ea7c218e30e67efa48abaf67f7206",
+      "bytes": 372,
+      "source_path": ".work/feature1024-graph-memory-observation.txt",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "queue_full_qualification.txt",
+      "sha256": "a9a99fbabfde71e2ae8c5722091634c079f7e488ed5043f8e036f7ef92139497",
+      "bytes": 1835,
+      "source_path": ".work/queue_full_qualification.sh",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "1024compile-summary.json",
+      "sha256": "ee6d6048dceceade3f77a1ab339c4a5567736f3b7967fbe2476257ec68934675",
+      "bytes": 10921,
+      "copy_mode": "generated build summary/documentation"
+    },
+    {
+      "path": "README.md",
+      "sha256": "cc559072a1b79aebf33824695b2a079b9c29fd9f19a14c4b71b14aca29ffc9be",
+      "bytes": 2838,
+      "copy_mode": "generated build summary/documentation"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "0ba84d6904618ed7e07e4bc1fd31ba46ec63d82395c31e2d1239034fb98c31da",
+      "bytes": 87,
+      "copy_mode": "generated build summary/documentation"
+    }
+  ],
+  "source_name_aliases": {
+    "features32_1024_pipeline.log": "features32_1024_pipeline.txt",
+    "queue_full_qualification.sh": "queue_full_qualification.txt"
+  },
+  "validation": {
+    "original_copies_byte_identical": true,
+    "both_before_run_cache_log_hashes_match_local_logs": true,
+    "1024_complete_event_matches_before_run_cache_record": true,
+    "strict_compile_and_reload_succeeded": true,
+    "new_inference_runs": 0,
+    "new_remote_writes": 0
+  },
+  "notes": [
+    "No qualification outputs were read to construct this bundle.",
+    "Original machine paths are preserved as provenance; local file aliases are listed above.",
+    "Configured swap capacity is based on operator session evidence; peak swap is unknown."
+  ],
+  "qualification_evidence": {
+    "directory": "../qualification-2026-10-03/",
+    "audit": "../qualification-2026-10-03/one-percent-audit.json",
+    "manifest": "../qualification-2026-10-03/candidate-manifest.json",
+    "suites": 9,
+    "additional_declared_subsets": 4,
+    "highest_decision_mismatch_percent": 0.6,
+    "highest_mean_tv_percent": 0.6222123577491144,
+    "scope": "Historical regression; not a new independent held-out evaluation. All gates are required separately.",
+    "relationship": "This bundle records an earlier development/build stage; full qualification results are stored separately."
+  },
+  "preserved_build_snapshot_status": "1024compile-summary.json retains its original build-time PENDING status; its bytes are unchanged."
+}

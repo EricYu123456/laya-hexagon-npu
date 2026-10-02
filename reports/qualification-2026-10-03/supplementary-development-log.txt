@@ -1,0 +1,99 @@
+[0;93m2026-10-02 18:51:39.703636114 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 18:51:39.850043114 [W:onnxruntime:Default, qnn_backend_manager.cc:318 operator()] Using existing ADSP_LIBRARY_PATH setting of /home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn;/usr/lib/rfsa/adsp;/dsp, which may cause the HTP backend to fail.[m
+[0;93m2026-10-02 18:51:40.006899293 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 18:51:40.007013508 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+refund-language-1: 5969.0 ms; tokens [42]
+refund-language-2: 1736.9 ms; tokens [48]
+refund-language-3: 1728.5 ms; tokens [45]
+refund-language-4: 1716.2 ms; tokens [46]
+billing-example: 3394.2 ms; tokens [51, 47]
+urgency-score: 1732.4 ms; tokens [48]
+[0;93m2026-10-02 18:51:56.469273146 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 18:51:56.783375226 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 18:51:56.783460588 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+long-english-1024: 10918.0 ms; tokens [1024, 1024]
+[0;93m2026-10-02 18:52:06.900656544 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 18:52:07.190912601 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 18:52:07.191036139 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+short-after-long: 7447.4 ms; tokens [51, 47]
+[0;93m2026-10-02 18:52:14.562615898 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 18:52:14.877164624 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 18:52:14.877278370 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+long-chinese-1024: 10730.1 ms; tokens [1024, 1024]
+[0;93m2026-10-02 18:52:25.303328947 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 18:52:25.598232134 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 18:52:25.598319787 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+short-after-second-long: 7607.5 ms; tokens [51, 47]
+{
+  "decisions": 15,
+  "decision_mismatches": 0,
+  "decision_error_percent": 0.0,
+  "argmax_mismatches": 0,
+  "argmax_error_percent": 0,
+  "total_variation": {
+    "count": 15,
+    "mean": 0.002204781293514475,
+    "p50": 0.0005975202479752079,
+    "p95": 0.008949861986198557,
+    "max": 0.009532873287328686
+  },
+  "probability_mae": {
+    "count": 15,
+    "mean": 0.0019342986401207612,
+    "p50": 0.0003983468319834719,
+    "p95": 0.007058674200753364,
+    "max": 0.00869999999999993
+  },
+  "max_probability_error": {
+    "count": 15,
+    "mean": 0.002204781293514482,
+    "p50": 0.000597520247975214,
+    "p95": 0.008949861986198564,
+    "max": 0.009532873287328714
+  },
+  "noul_abs_error": {
+    "count": 9,
+    "mean": 0.0023222222222222207,
+    "p50": 0.00010000000000000005,
+    "p95": 0.0070599999999999535,
+    "max": 0.00869999999999993
+  },
+  "score_abs_error": {
+    "count": 1,
+    "mean": 0.0004999999999999449,
+    "p50": 0.0004999999999999449,
+    "p95": 0.0004999999999999449,
+    "max": 0.0004999999999999449
+  },
+  "score_normalized_abs_error": {
+    "count": 1,
+    "mean": 0.00024999999999997247,
+    "p50": 0.00024999999999997247,
+    "p95": 0.00024999999999997247,
+    "max": 0.00024999999999997247
+  },
+  "confidence_abs_error": {
+    "count": 15,
+    "mean": 0.0019466666666666614,
+    "p50": 0.0013999999999999568,
+    "p95": 0.005830000000000009,
+    "max": 0.00869999999999993
+  },
+  "action_probability_abs_error": {
+    "count": 15,
+    "mean": 0.0,
+    "p50": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  }
+}
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc

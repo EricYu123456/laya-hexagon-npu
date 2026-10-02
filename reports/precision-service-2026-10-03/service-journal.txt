@@ -1,0 +1,234 @@
+Oct 02 19:43:28 ubuntu systemd[1818]: Started laya.service - Laya decision API on Rubik Pi 3.
+Oct 02 19:43:30 ubuntu bash[428871]: INFO:     Started server process [428871]
+Oct 02 19:43:30 ubuntu bash[428871]: INFO:     Waiting for application startup.
+Oct 02 19:43:50 ubuntu bash[428871]: 2026-10-02 19:43:50.157967157 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default
+Oct 02 19:43:50 ubuntu bash[428871]: 2026-10-02 19:43:50.300858364 [W:onnxruntime:Default, qnn_backend_manager.cc:318 operator()] Using existing ADSP_LIBRARY_PATH setting of /home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn;/usr/lib/rfsa/adsp;/dsp, which may cause the HTP backend to fail.
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/rpcmem_android.c:209: set up allocator 0xffff5f518c90 for DMA buf heap system, ION heap system, heap mask 0x2000000, flags 0x1, legacy flags 0x1
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_config.c:336: Reading configuration file: python.debugconfig
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_config.c:367: fastrpc_config_init: Couldn't find file python.debugconfig, errno (No such file or directory) at /home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn, /usr/lib/rfsa/adsp, /usr/lib/rfsa/adsp, /usr/lib/dsp//cdsp, /usr/lib/dsp/,
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:4933: fastrpc_apps_user_init done  with default domain:3 and &fastrpc_trace:0xffff70205960
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:5047: multidsplib_env_init: libcdsprpc.so loaded
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2534: Error 0xe: remote_handle_control_domain failed for request ID 2 on domain 3 (errno No such file or directory)
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2547: Error 0xe: remote_handle_control failed for request ID 2 (errno Success) (user err 0xe)
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2861: remote_session_control Unsigned PD enable 1 request for domain 3
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2844: remote_session_control DSP info request for domain 3, thread priority -1, stack size 17408
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3825: Successfully opened /usr/lib/dsp/cdsp/fastrpc_shell_unsigned_3, domain 3
+Oct 02 19:43:50 ubuntu python[428871]:  I DMABUFHEAPS Using DMA-BUF heap named: system
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3924: Created user PD on domain 3, dbg_trace 0x0, enabled attr=> RPC timeout:0, Dbg Mode:N, CRC:N, Unsigned:Y, Signed:N, Adapt QOS:N, PD dump: (Config:N, Dbg:N), Perf: (Kernel:N, DSP:N), Iregion:N, QTF:N, UAF:N userPD initmem len:0x500000, Log pkt: N
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1466: Error 0x80000600: remote_handle64_invoke failed for handle 0xfffee0000b70, interface NA method 5 on domain 3 (sc 0x5000000) (errno Success) (user err 0x80000600)
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1466: Error 0x80000600: remote_handle64_invoke failed for handle 0xfffee0000d00, interface NA method 5 on domain 3 (sc 0x5020000) (errno Success) (user err 0x80000600)
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:697: Warning 0x80000600: fastrpc_set_remote_uthread_params: remotectl1 domains not supported for domain 3
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:717: Successfully set remote user thread priority to 192 and stack size to 17408 for domain 3
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/listener_android.c:119: listener thread starting
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_perf.c:292: fastrpc_perf_init: enabled systrace 0x0 and RPC traces (kernel 0, dsp 0) with frequency 1000
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:360: file_watcher_thread starting for domain 3
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:380:file_watcher_thread: Couldn't find file python.farf, errno (No such file or directory) at ;/usr/lib/rfsa/adsp;/dsp;/usr/lib/dsp/;
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:701: open_mod_table_open_from_static: reverse module apps_std opened with handle 0x702086d0 (idx 0)
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libQnnHtpV68Skel.so
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:701: open_mod_table_open_from_static: reverse module apps_mem opened with handle 0x702087d0 (idx 1)
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libc++.so.1
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libc++abi.so.1
+Oct 02 19:43:50 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1782: remote_handle64_open: opened handle 0xffff46dbda00 (remote 0xe8f7c0) for file:///libQnnHtpV68Skel.so?qnn_2_49_40_skel_handle_invoke&_modver=1.0&_dom=cdsp on domain 3 (spawn time 28472 us, load time 115677 us), refs 1
+Oct 02 19:43:50 ubuntu bash[428871]: 2026-10-02 19:43:50.462650366 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.
+Oct 02 19:43:50 ubuntu bash[428871]: 2026-10-02 19:43:50.462786717 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     Application startup complete.
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55192 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55198 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55206 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55212 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55220 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55236 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55250 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55254 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55270 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55282 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55298 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55314 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55320 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55330 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55332 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55348 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:55 ubuntu bash[428871]: INFO:     127.0.0.1:55360 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:57 ubuntu bash[428871]: INFO:     127.0.0.1:55368 - "POST /predict HTTP/1.1" 200 OK
+Oct 02 19:43:57 ubuntu bash[428871]: INFO:     127.0.0.1:55378 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:57 ubuntu bash[428871]: INFO:     127.0.0.1:55382 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:59 ubuntu bash[428871]: INFO:     127.0.0.1:55390 - "POST /predict HTTP/1.1" 200 OK
+Oct 02 19:43:59 ubuntu bash[428871]: INFO:     127.0.0.1:55406 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:43:59 ubuntu bash[428871]: INFO:     127.0.0.1:55412 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:01 ubuntu bash[428871]: INFO:     127.0.0.1:55416 - "POST /predict HTTP/1.1" 200 OK
+Oct 02 19:44:01 ubuntu bash[428871]: INFO:     127.0.0.1:55868 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:01 ubuntu bash[428871]: INFO:     127.0.0.1:55884 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:02 ubuntu bash[428871]: INFO:     127.0.0.1:55898 - "POST /predict HTTP/1.1" 200 OK
+Oct 02 19:44:02 ubuntu bash[428871]: INFO:     127.0.0.1:55908 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:03 ubuntu bash[428871]: INFO:     127.0.0.1:55912 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:06 ubuntu bash[428871]: INFO:     127.0.0.1:55918 - "POST /predict HTTP/1.1" 200 OK
+Oct 02 19:44:06 ubuntu bash[428871]: INFO:     127.0.0.1:55932 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:06 ubuntu bash[428871]: INFO:     127.0.0.1:55942 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:08 ubuntu bash[428871]: INFO:     127.0.0.1:55958 - "POST /predict HTTP/1.1" 200 OK
+Oct 02 19:44:08 ubuntu bash[428871]: INFO:     127.0.0.1:55972 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:08 ubuntu bash[428871]: INFO:     127.0.0.1:55984 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:08 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3480: domain_deinit for domain 3: dev 11
+Oct 02 19:44:08 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:394:Warning: file_watcher_thread received exit for domain 3, file python.farf
+Oct 02 19:44:08 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:446: file_watcher_thread exiting for domain 3
+Oct 02 19:44:08 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:792: open_mod_table_close: closed reverse module apps_mem with handle 0x702087d0
+Oct 02 19:44:08 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:792: open_mod_table_close: closed reverse module apps_std with handle 0x702086d0
+Oct 02 19:44:08 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:44:08 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3523: domain_deinit: closed device 11 on domain 3 (kill time 17129 us)
+Oct 02 19:44:08 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1897: remote_handle64_close: closed handle 0xffff46dbda00 remote handle 0xe8f7c0 name libQnnHtpV68Skel.so, refs 0
+Oct 02 19:44:08 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1673: List of open handles on domain 3:
+Oct 02 19:44:09 ubuntu bash[428871]: 2026-10-02 19:44:09.487044166 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2534: Error 0xe: remote_handle_control_domain failed for request ID 2 on domain 3 (errno No such file or directory)
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2547: Error 0xe: remote_handle_control failed for request ID 2 (errno No such file or directory) (user err 0xe)
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2861: remote_session_control Unsigned PD enable 1 request for domain 3
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2844: remote_session_control DSP info request for domain 3, thread priority -1, stack size 17408
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3825: Successfully opened /usr/lib/dsp/cdsp/fastrpc_shell_unsigned_3, domain 3
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3924: Created user PD on domain 3, dbg_trace 0x0, enabled attr=> RPC timeout:0, Dbg Mode:N, CRC:N, Unsigned:Y, Signed:N, Adapt QOS:N, PD dump: (Config:N, Dbg:N), Perf: (Kernel:N, DSP:N), Iregion:N, QTF:N, UAF:N userPD initmem len:0x500000, Log pkt: N
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1466: Error 0x80000600: remote_handle64_invoke failed for handle 0xfffef4000b70, interface NA method 5 on domain 3 (sc 0x5000000) (errno Success) (user err 0x80000600)
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1466: Error 0x80000600: remote_handle64_invoke failed for handle 0xfffef4000d00, interface NA method 5 on domain 3 (sc 0x5020000) (errno Success) (user err 0x80000600)
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:697: Warning 0x80000600: fastrpc_set_remote_uthread_params: remotectl1 domains not supported for domain 3
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:717: Successfully set remote user thread priority to 192 and stack size to 17408 for domain 3
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/listener_android.c:119: listener thread starting
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_perf.c:292: fastrpc_perf_init: enabled systrace 0x0 and RPC traces (kernel 0, dsp 0) with frequency 1000
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:360: file_watcher_thread starting for domain 3
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:380:file_watcher_thread: Couldn't find file python.farf, errno (No such file or directory) at ;/usr/lib/rfsa/adsp;/dsp;/usr/lib/dsp/;
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:701: open_mod_table_open_from_static: reverse module apps_std opened with handle 0x702086d0 (idx 0)
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libQnnHtpV68Skel.so
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:701: open_mod_table_open_from_static: reverse module apps_mem opened with handle 0x702087d0 (idx 1)
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libc++.so.1
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libc++abi.so.1
+Oct 02 19:44:09 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1782: remote_handle64_open: opened handle 0xffff46e40f20 (remote 0xe8f7c0) for file:///libQnnHtpV68Skel.so?qnn_2_49_40_skel_handle_invoke&_modver=1.0&_dom=cdsp on domain 3 (spawn time 30259 us, load time 137550 us), refs 1
+Oct 02 19:44:09 ubuntu bash[428871]: 2026-10-02 19:44:09.831504709 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.
+Oct 02 19:44:09 ubuntu bash[428871]: 2026-10-02 19:44:09.831610748 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.
+Oct 02 19:44:18 ubuntu bash[428871]: INFO:     127.0.0.1:55992 - "POST /predict HTTP/1.1" 200 OK
+Oct 02 19:44:18 ubuntu bash[428871]: INFO:     127.0.0.1:51998 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:18 ubuntu bash[428871]: INFO:     127.0.0.1:52008 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:18 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3480: domain_deinit for domain 3: dev 11
+Oct 02 19:44:18 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:394:Warning: file_watcher_thread received exit for domain 3, file python.farf
+Oct 02 19:44:18 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:446: file_watcher_thread exiting for domain 3
+Oct 02 19:44:18 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:792: open_mod_table_close: closed reverse module apps_mem with handle 0x702087d0
+Oct 02 19:44:18 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:792: open_mod_table_close: closed reverse module apps_std with handle 0x702086d0
+Oct 02 19:44:18 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:44:18 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3523: domain_deinit: closed device 11 on domain 3 (kill time 15458 us)
+Oct 02 19:44:18 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1897: remote_handle64_close: closed handle 0xffff46e40f20 remote handle 0xe8f7c0 name libQnnHtpV68Skel.so, refs 0
+Oct 02 19:44:18 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1673: List of open handles on domain 3:
+Oct 02 19:44:19 ubuntu bash[428871]: 2026-10-02 19:44:19.648204631 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2534: Error 0xe: remote_handle_control_domain failed for request ID 2 on domain 3 (errno No such file or directory)
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2547: Error 0xe: remote_handle_control failed for request ID 2 (errno No such file or directory) (user err 0xe)
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2861: remote_session_control Unsigned PD enable 1 request for domain 3
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2844: remote_session_control DSP info request for domain 3, thread priority -1, stack size 17408
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3825: Successfully opened /usr/lib/dsp/cdsp/fastrpc_shell_unsigned_3, domain 3
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3924: Created user PD on domain 3, dbg_trace 0x0, enabled attr=> RPC timeout:0, Dbg Mode:N, CRC:N, Unsigned:Y, Signed:N, Adapt QOS:N, PD dump: (Config:N, Dbg:N), Perf: (Kernel:N, DSP:N), Iregion:N, QTF:N, UAF:N userPD initmem len:0x500000, Log pkt: N
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1466: Error 0x80000600: remote_handle64_invoke failed for handle 0xfffeec000b70, interface NA method 5 on domain 3 (sc 0x5000000) (errno Success) (user err 0x80000600)
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1466: Error 0x80000600: remote_handle64_invoke failed for handle 0xfffeec000d00, interface NA method 5 on domain 3 (sc 0x5020000) (errno Success) (user err 0x80000600)
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:697: Warning 0x80000600: fastrpc_set_remote_uthread_params: remotectl1 domains not supported for domain 3
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:717: Successfully set remote user thread priority to 192 and stack size to 17408 for domain 3
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/listener_android.c:119: listener thread starting
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_perf.c:292: fastrpc_perf_init: enabled systrace 0x0 and RPC traces (kernel 0, dsp 0) with frequency 1000
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:360: file_watcher_thread starting for domain 3
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:380:file_watcher_thread: Couldn't find file python.farf, errno (No such file or directory) at ;/usr/lib/rfsa/adsp;/dsp;/usr/lib/dsp/;
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:701: open_mod_table_open_from_static: reverse module apps_std opened with handle 0x702086d0 (idx 0)
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libQnnHtpV68Skel.so
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:701: open_mod_table_open_from_static: reverse module apps_mem opened with handle 0x702087d0 (idx 1)
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libc++.so.1
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libc++abi.so.1
+Oct 02 19:44:19 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1782: remote_handle64_open: opened handle 0xffff4775b910 (remote 0xe8f7c0) for file:///libQnnHtpV68Skel.so?qnn_2_49_40_skel_handle_invoke&_modver=1.0&_dom=cdsp on domain 3 (spawn time 23359 us, load time 120236 us), refs 1
+Oct 02 19:44:19 ubuntu bash[428871]: 2026-10-02 19:44:19.948623804 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.
+Oct 02 19:44:19 ubuntu bash[428871]: 2026-10-02 19:44:19.948708438 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.
+Oct 02 19:44:25 ubuntu bash[428871]: INFO:     127.0.0.1:52020 - "POST /predict HTTP/1.1" 200 OK
+Oct 02 19:44:25 ubuntu bash[428871]: INFO:     127.0.0.1:58250 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:26 ubuntu bash[428871]: INFO:     127.0.0.1:58264 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:26 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3480: domain_deinit for domain 3: dev 11
+Oct 02 19:44:26 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:394:Warning: file_watcher_thread received exit for domain 3, file python.farf
+Oct 02 19:44:26 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:446: file_watcher_thread exiting for domain 3
+Oct 02 19:44:26 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:792: open_mod_table_close: closed reverse module apps_mem with handle 0x702087d0
+Oct 02 19:44:26 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:792: open_mod_table_close: closed reverse module apps_std with handle 0x702086d0
+Oct 02 19:44:26 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:44:26 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3523: domain_deinit: closed device 11 on domain 3 (kill time 14706 us)
+Oct 02 19:44:26 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1897: remote_handle64_close: closed handle 0xffff4775b910 remote handle 0xe8f7c0 name libQnnHtpV68Skel.so, refs 0
+Oct 02 19:44:26 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1673: List of open handles on domain 3:
+Oct 02 19:44:27 ubuntu bash[428871]: 2026-10-02 19:44:27.317648184 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2534: Error 0xe: remote_handle_control_domain failed for request ID 2 on domain 3 (errno No such file or directory)
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2547: Error 0xe: remote_handle_control failed for request ID 2 (errno No such file or directory) (user err 0xe)
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2861: remote_session_control Unsigned PD enable 1 request for domain 3
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2844: remote_session_control DSP info request for domain 3, thread priority -1, stack size 17408
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3825: Successfully opened /usr/lib/dsp/cdsp/fastrpc_shell_unsigned_3, domain 3
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3924: Created user PD on domain 3, dbg_trace 0x0, enabled attr=> RPC timeout:0, Dbg Mode:N, CRC:N, Unsigned:Y, Signed:N, Adapt QOS:N, PD dump: (Config:N, Dbg:N), Perf: (Kernel:N, DSP:N), Iregion:N, QTF:N, UAF:N userPD initmem len:0x500000, Log pkt: N
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1466: Error 0x80000600: remote_handle64_invoke failed for handle 0xfffef0000b70, interface NA method 5 on domain 3 (sc 0x5000000) (errno Success) (user err 0x80000600)
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1466: Error 0x80000600: remote_handle64_invoke failed for handle 0xfffef0000d00, interface NA method 5 on domain 3 (sc 0x5020000) (errno Success) (user err 0x80000600)
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:697: Warning 0x80000600: fastrpc_set_remote_uthread_params: remotectl1 domains not supported for domain 3
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:717: Successfully set remote user thread priority to 192 and stack size to 17408 for domain 3
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/listener_android.c:119: listener thread starting
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_perf.c:292: fastrpc_perf_init: enabled systrace 0x0 and RPC traces (kernel 0, dsp 0) with frequency 1000
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:360: file_watcher_thread starting for domain 3
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:380:file_watcher_thread: Couldn't find file python.farf, errno (No such file or directory) at ;/usr/lib/rfsa/adsp;/dsp;/usr/lib/dsp/;
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:701: open_mod_table_open_from_static: reverse module apps_std opened with handle 0x702086d0 (idx 0)
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libQnnHtpV68Skel.so
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:701: open_mod_table_open_from_static: reverse module apps_mem opened with handle 0x702087d0 (idx 1)
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libc++.so.1
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libc++abi.so.1
+Oct 02 19:44:27 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1782: remote_handle64_open: opened handle 0xffff5f8994d0 (remote 0xe8f7c0) for file:///libQnnHtpV68Skel.so?qnn_2_49_40_skel_handle_invoke&_modver=1.0&_dom=cdsp on domain 3 (spawn time 24531 us, load time 113531 us), refs 1
+Oct 02 19:44:27 ubuntu bash[428871]: 2026-10-02 19:44:27.646745629 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.
+Oct 02 19:44:27 ubuntu bash[428871]: 2026-10-02 19:44:27.646840106 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.
+Oct 02 19:44:36 ubuntu bash[428871]: INFO:     127.0.0.1:58274 - "POST /predict HTTP/1.1" 200 OK
+Oct 02 19:44:36 ubuntu bash[428871]: INFO:     127.0.0.1:59342 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:36 ubuntu bash[428871]: INFO:     127.0.0.1:59350 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:36 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3480: domain_deinit for domain 3: dev 11
+Oct 02 19:44:36 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:394:Warning: file_watcher_thread received exit for domain 3, file python.farf
+Oct 02 19:44:36 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:446: file_watcher_thread exiting for domain 3
+Oct 02 19:44:36 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:792: open_mod_table_close: closed reverse module apps_mem with handle 0x702087d0
+Oct 02 19:44:36 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:792: open_mod_table_close: closed reverse module apps_std with handle 0x702086d0
+Oct 02 19:44:36 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:44:36 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3523: domain_deinit: closed device 11 on domain 3 (kill time 16440 us)
+Oct 02 19:44:36 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1897: remote_handle64_close: closed handle 0xffff5f8994d0 remote handle 0xe8f7c0 name libQnnHtpV68Skel.so, refs 0
+Oct 02 19:44:36 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1673: List of open handles on domain 3:
+Oct 02 19:44:37 ubuntu bash[428871]: 2026-10-02 19:44:37.475694697 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2534: Error 0xe: remote_handle_control_domain failed for request ID 2 on domain 3 (errno No such file or directory)
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2547: Error 0xe: remote_handle_control failed for request ID 2 (errno No such file or directory) (user err 0xe)
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2861: remote_session_control Unsigned PD enable 1 request for domain 3
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:2844: remote_session_control DSP info request for domain 3, thread priority -1, stack size 17408
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3825: Successfully opened /usr/lib/dsp/cdsp/fastrpc_shell_unsigned_3, domain 3
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3924: Created user PD on domain 3, dbg_trace 0x0, enabled attr=> RPC timeout:0, Dbg Mode:N, CRC:N, Unsigned:Y, Signed:N, Adapt QOS:N, PD dump: (Config:N, Dbg:N), Perf: (Kernel:N, DSP:N), Iregion:N, QTF:N, UAF:N userPD initmem len:0x500000, Log pkt: N
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1466: Error 0x80000600: remote_handle64_invoke failed for handle 0xfffed4000b70, interface NA method 5 on domain 3 (sc 0x5000000) (errno Success) (user err 0x80000600)
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1466: Error 0x80000600: remote_handle64_invoke failed for handle 0xfffed4000d00, interface NA method 5 on domain 3 (sc 0x5020000) (errno Success) (user err 0x80000600)
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:697: Warning 0x80000600: fastrpc_set_remote_uthread_params: remotectl1 domains not supported for domain 3
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:717: Successfully set remote user thread priority to 192 and stack size to 17408 for domain 3
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/listener_android.c:119: listener thread starting
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_perf.c:292: fastrpc_perf_init: enabled systrace 0x0 and RPC traces (kernel 0, dsp 0) with frequency 1000
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:360: file_watcher_thread starting for domain 3
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:380:file_watcher_thread: Couldn't find file python.farf, errno (No such file or directory) at ;/usr/lib/rfsa/adsp;/dsp;/usr/lib/dsp/;
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:701: open_mod_table_open_from_static: reverse module apps_std opened with handle 0x702086d0 (idx 0)
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libQnnHtpV68Skel.so
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:701: open_mod_table_open_from_static: reverse module apps_mem opened with handle 0x702087d0 (idx 1)
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libc++.so.1
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/apps_std_imp.c:1043: Successfully opened file libc++abi.so.1
+Oct 02 19:44:37 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1782: remote_handle64_open: opened handle 0xffff46fb1500 (remote 0xe8f7c0) for file:///libQnnHtpV68Skel.so?qnn_2_49_40_skel_handle_invoke&_modver=1.0&_dom=cdsp on domain 3 (spawn time 23621 us, load time 114520 us), refs 1
+Oct 02 19:44:37 ubuntu bash[428871]: 2026-10-02 19:44:37.768951315 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.
+Oct 02 19:44:37 ubuntu bash[428871]: 2026-10-02 19:44:37.769039178 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.
+Oct 02 19:44:43 ubuntu bash[428871]: INFO:     127.0.0.1:59356 - "POST /predict HTTP/1.1" 200 OK
+Oct 02 19:44:43 ubuntu bash[428871]: INFO:     127.0.0.1:52452 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:43 ubuntu bash[428871]: INFO:     127.0.0.1:52468 - "GET /health HTTP/1.1" 200 OK
+Oct 02 19:44:43 ubuntu systemd[1818]: Stopping laya.service - Laya decision API on Rubik Pi 3...
+Oct 02 19:44:43 ubuntu bash[428871]: INFO:     Shutting down
+Oct 02 19:44:44 ubuntu bash[428871]: INFO:     Waiting for application shutdown.
+Oct 02 19:44:44 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3480: domain_deinit for domain 3: dev 11
+Oct 02 19:44:44 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:394:Warning: file_watcher_thread received exit for domain 3, file python.farf
+Oct 02 19:44:44 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/log_config.c:446: file_watcher_thread exiting for domain 3
+Oct 02 19:44:44 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:792: open_mod_table_close: closed reverse module apps_mem with handle 0x702087d0
+Oct 02 19:44:44 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/mod_table.c:792: open_mod_table_close: closed reverse module apps_std with handle 0x702086d0
+Oct 02 19:44:44 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3682: close_device_node: closed dev 11 on domain 3
+Oct 02 19:44:44 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:3523: domain_deinit: closed device 11 on domain 3 (kill time 9962 us)
+Oct 02 19:44:44 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1897: remote_handle64_close: closed handle 0xffff46fb1500 remote handle 0xe8f7c0 name libQnnHtpV68Skel.so, refs 0
+Oct 02 19:44:44 ubuntu python[428871]: /usr/src/debug/fastrpc/15.0.qcom-r0/adsprpc/src/fastrpc_apps_user.c:1673: List of open handles on domain 3:
+Oct 02 19:44:44 ubuntu bash[428871]: INFO:     Application shutdown complete.
+Oct 02 19:44:44 ubuntu bash[428871]: INFO:     Finished server process [428871]
+Oct 02 19:44:44 ubuntu systemd[1818]: Stopped laya.service - Laya decision API on Rubik Pi 3.
+Oct 02 19:44:44 ubuntu systemd[1818]: laya.service: Consumed 1min 5.645s CPU time, 3.5G memory peak, 0B memory swap peak.

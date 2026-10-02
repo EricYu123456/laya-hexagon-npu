@@ -1,0 +1,89 @@
+{
+  "kind": "laya_historical_one_percent_inventory",
+  "criteria": {
+    "decision_mismatch_max": 0.01,
+    "mean_total_variation_max": 0.01
+  },
+  "typed_dataset_sha256": "4f294f218ea1da27f3efef936359389c62ea4d3973a41457732990f1d31b647c",
+  "scope": "Fixed historical regression inventory. These previously observed corpora are not fresh independent validation. No case may be excluded after observing candidate outputs.",
+  "suites": [
+    {
+      "name": "typed-decisions-full",
+      "cases": 400,
+      "decisions": 2000,
+      "reference": "reports/qualification-2026-09-29/reference-wsl.jsonl",
+      "reference_sha256": "112c482ae5b2f7b88dfb2784375409484a115d75b39d3e08f671f20bd013233e"
+    },
+    {
+      "name": "supplementary-development",
+      "cases": 10,
+      "decisions": 15,
+      "suite": "tests/fidelity-probes.json",
+      "suite_sha256": "0560dd1fd2c4970c07c6644a7cd702e4b39ec24ef1388b3ec70f727265df7849",
+      "reference": "reports/development-2026-09-28/probe-reference-wsl.json",
+      "reference_sha256": "a6655ba00e625a46e598b03b92cdcc7c2e3480d3cca8a72869270022e058c543"
+    },
+    {
+      "name": "long-input",
+      "cases": 16,
+      "decisions": 80,
+      "suite": "reports/qualification-2026-09-29/long-input-suite.json",
+      "suite_sha256": "ec4741521cc3f801c6515a03df3ab9d2ccf0951eb86f2096fac9494e3490c35f",
+      "reference": "reports/qualification-2026-09-29/long-input-reference-wsl.json",
+      "reference_sha256": "10c4dcef1ecfc53841a73d1fc8a2328a1e50b1a54bc90b11a82bcb9216264109"
+    },
+    {
+      "name": "banking77-card8",
+      "cases": 320,
+      "decisions": 320,
+      "suite": "reports/external-2026-09-29/banking77-card8-suite.json",
+      "suite_sha256": "046a18b00bc47355a27e8f030a235b5175c2b11295e1bc14b5986300335492ec",
+      "reference": "reports/external-2026-09-29/banking77-card8-reference-wsl.json",
+      "reference_sha256": "d54618d731701a2ee75b8430f68fbbe5fc8eb655bac859f75ceb2ff3277bf117"
+    },
+    {
+      "name": "clinc150-domain10",
+      "cases": 300,
+      "decisions": 300,
+      "suite": "reports/external-2026-09-29/clinc150-domain10-suite.json",
+      "suite_sha256": "5cf57cb7f5c66c9f835c0eb0dd66d083347af4d44c4baaa9da10de788cc4ddcc",
+      "reference": "reports/external-2026-09-29/clinc150-domain10-reference-wsl.json",
+      "reference_sha256": "fa98c492a20729cc297c6adc68261c04c0ed775f3f2597d4e4b458cfbcf507d2"
+    },
+    {
+      "name": "massive-en-US",
+      "cases": 180,
+      "decisions": 180,
+      "suite": "reports/external-2026-09-29/massive-en-US-suite.json",
+      "suite_sha256": "033e9dedc09a1b3a422e6b92d6add5039849897def8482d1d4c3151b95d200e6",
+      "reference": "reports/external-2026-09-29/massive-en-US-reference-wsl.json",
+      "reference_sha256": "dd84fd740c3ab2bcebe434a45b4d84a0f41dafee144733f75471da1405fba1ed"
+    },
+    {
+      "name": "massive-zh-TW",
+      "cases": 180,
+      "decisions": 180,
+      "suite": "reports/external-2026-09-29/massive-zh-TW-suite.json",
+      "suite_sha256": "d1632f2afb6c276728bff6863458f8994325b9c7f5bff79f6b1e7be6a2696a5d",
+      "reference": "reports/external-2026-09-29/massive-zh-TW-reference-wsl.json",
+      "reference_sha256": "68667096bb13938c76b902ce0326854085f3e63646c143e45f5d4030f843e9b7"
+    },
+    {
+      "name": "massive-zh-CN",
+      "cases": 180,
+      "decisions": 180,
+      "suite": "reports/external-2026-09-29/massive-zh-CN-suite.json",
+      "suite_sha256": "b73dbd392cdbdf1cda9258b84c186165736c27161795bce7f0a6d8787a0a4d80",
+      "reference": "reports/external-2026-09-29/massive-zh-CN-reference-wsl.json",
+      "reference_sha256": "85f31f14d685617521d8a809798053cbf869fb90b7767efa244174b4433a1105"
+    },
+    {
+      "name": "legacy",
+      "cases": 7,
+      "decisions": 8,
+      "suite": "tests/legacy-fidelity-probes.json",
+      "suite_sha256": "50542d2d5c4ace820c153367ff1bf080699ea968804312f1ab9811008baf9262",
+      "reference_note": "Capture unchanged original untruncated Laya CPU on this suite; freeze its complete output before NPU inference."
+    }
+  ]
+}

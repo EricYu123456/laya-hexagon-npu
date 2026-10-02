@@ -1,0 +1,168 @@
+{
+  "kind": "laya_historical_probe_byte_format_provenance",
+  "created_utc": "2026-10-02T17:52:27.548437+00:00",
+  "source_commit": "a79fde89fcf7054cd1a4ab3ecafd4c6408553742",
+  "suite_path": "tests/fidelity-probes.json",
+  "previous_git_lf": {
+    "git_blob_oid": "efad39f17eaa0019422ea1b7de5f0bbd850a20cc",
+    "sha256": "d68b881588124c0ca3408052e8ec5728c1f003365e9d9a5849b51fcc7bc2a85a",
+    "bytes": 20337,
+    "lf_count": 154
+  },
+  "historical_crlf": {
+    "sha256": "0560dd1fd2c4970c07c6644a7cd702e4b39ec24ef1388b3ec70f727265df7849",
+    "bytes": 20491,
+    "crlf_count": 154,
+    "matches_original_reference_suite_file_sha256": true,
+    "matches_pinned_inventory": true
+  },
+  "reference": {
+    "path": "reports/development-2026-09-28/probe-reference-wsl.json",
+    "sha256": "a6655ba00e625a46e598b03b92cdcc7c2e3480d3cca8a72869270022e058c543"
+  },
+  "inventory": {
+    "path": "reports/evaluation-plans/one-percent-historical-inventory.json",
+    "sha256": "bcb526b9a1fda46b5f296bc905f7a4de8e15d8a2fb02d4e80dd94b0c5be3eee8"
+  },
+  "only_crlf_to_lf_difference": true,
+  "semantic_sha256": "467d2f9514b1a43c8d4f9171e62e8fefa03cbaaf8a321d309eaa990ce24e5865",
+  "semantic_hash_method": "benchmark_fidelity.json_hash: UTF-8, ensure_ascii=False, separators=(',', ':'), preserves mapping order",
+  "identical_requests": 10,
+  "identical_decisions": 15,
+  "inputs": [
+    {
+      "id": "refund-language-1",
+      "input_sha256": "b1c1fc324fc7e9794c3440f4796cc7be84d506942342d056cbe5c53a5748bea1",
+      "matches_git_lf_and_original_reference": true
+    },
+    {
+      "id": "refund-language-2",
+      "input_sha256": "61bacded7c7c4780c27c874e53630cd2c16a41797ffccdc5dc49c3d23290dcd6",
+      "matches_git_lf_and_original_reference": true
+    },
+    {
+      "id": "refund-language-3",
+      "input_sha256": "d4995aa9bc5960a4a073ccb6f528c604ad6eecc5c2750b99332e7d3482d1e9bd",
+      "matches_git_lf_and_original_reference": true
+    },
+    {
+      "id": "refund-language-4",
+      "input_sha256": "e6573878ce56cf3668ba01239dca4e5045fdf5c006ceed85c703bed49fd1f596",
+      "matches_git_lf_and_original_reference": true
+    },
+    {
+      "id": "billing-example",
+      "input_sha256": "fc476957f2beffdc7751961403a7e079012c9a5af53bac19a30174b6e3338d75",
+      "matches_git_lf_and_original_reference": true
+    },
+    {
+      "id": "urgency-score",
+      "input_sha256": "78d3f947b9c750e7710f7ef5a31625ddd96c6d6b8248d0e63c84351e77c11b2b",
+      "matches_git_lf_and_original_reference": true
+    },
+    {
+      "id": "long-english-1024",
+      "input_sha256": "dd9d1aaf13a93532a34c1a013cc3f22b39c6069bd924b600d5892d318730ceaa",
+      "matches_git_lf_and_original_reference": true
+    },
+    {
+      "id": "short-after-long",
+      "input_sha256": "fc476957f2beffdc7751961403a7e079012c9a5af53bac19a30174b6e3338d75",
+      "matches_git_lf_and_original_reference": true
+    },
+    {
+      "id": "long-chinese-1024",
+      "input_sha256": "074706c2a48d1072bb88b75eb80410c55645c8cd8eb27d2256b11d73ad9391b5",
+      "matches_git_lf_and_original_reference": true
+    },
+    {
+      "id": "short-after-second-long",
+      "input_sha256": "fc476957f2beffdc7751961403a7e079012c9a5af53bac19a30174b6e3338d75",
+      "matches_git_lf_and_original_reference": true
+    }
+  ],
+  "all_other_inventory_files_match": true,
+  "other_inventory_file_checks": [
+    {
+      "path": "reports/qualification-2026-09-29/reference-wsl.jsonl",
+      "sha256": "112c482ae5b2f7b88dfb2784375409484a115d75b39d3e08f671f20bd013233e",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/development-2026-09-28/probe-reference-wsl.json",
+      "sha256": "a6655ba00e625a46e598b03b92cdcc7c2e3480d3cca8a72869270022e058c543",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/qualification-2026-09-29/long-input-suite.json",
+      "sha256": "ec4741521cc3f801c6515a03df3ab9d2ccf0951eb86f2096fac9494e3490c35f",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/qualification-2026-09-29/long-input-reference-wsl.json",
+      "sha256": "10c4dcef1ecfc53841a73d1fc8a2328a1e50b1a54bc90b11a82bcb9216264109",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/external-2026-09-29/banking77-card8-suite.json",
+      "sha256": "046a18b00bc47355a27e8f030a235b5175c2b11295e1bc14b5986300335492ec",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/external-2026-09-29/banking77-card8-reference-wsl.json",
+      "sha256": "d54618d731701a2ee75b8430f68fbbe5fc8eb655bac859f75ceb2ff3277bf117",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/external-2026-09-29/clinc150-domain10-suite.json",
+      "sha256": "5cf57cb7f5c66c9f835c0eb0dd66d083347af4d44c4baaa9da10de788cc4ddcc",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/external-2026-09-29/clinc150-domain10-reference-wsl.json",
+      "sha256": "fa98c492a20729cc297c6adc68261c04c0ed775f3f2597d4e4b458cfbcf507d2",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/external-2026-09-29/massive-en-US-suite.json",
+      "sha256": "033e9dedc09a1b3a422e6b92d6add5039849897def8482d1d4c3151b95d200e6",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/external-2026-09-29/massive-en-US-reference-wsl.json",
+      "sha256": "dd84fd740c3ab2bcebe434a45b4d84a0f41dafee144733f75471da1405fba1ed",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/external-2026-09-29/massive-zh-TW-suite.json",
+      "sha256": "d1632f2afb6c276728bff6863458f8994325b9c7f5bff79f6b1e7be6a2696a5d",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/external-2026-09-29/massive-zh-TW-reference-wsl.json",
+      "sha256": "68667096bb13938c76b902ce0326854085f3e63646c143e45f5d4030f843e9b7",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/external-2026-09-29/massive-zh-CN-suite.json",
+      "sha256": "b73dbd392cdbdf1cda9258b84c186165736c27161795bce7f0a6d8787a0a4d80",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "reports/external-2026-09-29/massive-zh-CN-reference-wsl.json",
+      "sha256": "85f31f14d685617521d8a809798053cbf869fb90b7767efa244174b4433a1105",
+      "matches_pinned_inventory": true
+    },
+    {
+      "path": "tests/legacy-fidelity-probes.json",
+      "sha256": "50542d2d5c4ace820c153367ff1bf080699ea968804312f1ab9811008baf9262",
+      "matches_pinned_inventory": true
+    }
+  ],
+  "typed_parquet_check": {
+    "path": ".work/typed-decisions.parquet",
+    "sha256": "4f294f218ea1da27f3efef936359389c62ea4d3973a41457732990f1d31b647c",
+    "matches_pinned_inventory": true
+  },
+  "preservation": "Keep historical CRLF bytes via specific tests/fidelity-probes.json -text attribute; do not alter the pinned inventory or original CPU reference. No inference is performed by this verification."
+}

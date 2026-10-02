@@ -162,7 +162,12 @@ class SplitResidualTests(unittest.TestCase):
         with torch.no_grad():
             expected = encoder(inputs_embeds=x, attention_mask=valid).last_hidden_state[:, :6]
             actual = wrapper(x, *masks)[:, :6]
+            split = FeatureSplitBackbone(encoder, 8, feature_groups=self.groups, split_cls=True)
+            split_actual = split(x, *masks)[:, :6]
         torch.testing.assert_close(actual, expected, atol=1e-4, rtol=1e-4)
+        torch.testing.assert_close(split_actual, expected, atol=1e-4, rtol=1e-4)
+        torch.testing.assert_close(split_actual, actual, atol=1e-5, rtol=1e-5)
+        self.assertTrue(split.metadata["split_cls"])
         self.assertTrue(wrapper.normalization_stats())
         wrapper.train()
         with self.assertRaises(RuntimeError):

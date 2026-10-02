@@ -1,0 +1,231 @@
+[0;93m2026-10-02 19:28:42.874409552 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 19:28:43.019828800 [W:onnxruntime:Default, qnn_backend_manager.cc:318 operator()] Using existing ADSP_LIBRARY_PATH setting of /home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn;/usr/lib/rfsa/adsp;/dsp, which may cause the HTP backend to fail.[m
+[0;93m2026-10-02 19:28:43.175015080 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 19:28:43.175127367 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+massive-zh-CN-0: 5750.4 ms; tokens [164]
+massive-zh-CN-85: 1779.0 ms; tokens [162]
+massive-zh-CN-103: 1808.3 ms; tokens [164]
+massive-zh-CN-158: 1802.8 ms; tokens [161]
+massive-zh-CN-286: 1803.8 ms; tokens [163]
+massive-zh-CN-299: 1782.0 ms; tokens [161]
+massive-zh-CN-608: 1789.7 ms; tokens [164]
+massive-zh-CN-631: 1802.5 ms; tokens [165]
+massive-zh-CN-730: 1795.6 ms; tokens [162]
+massive-zh-CN-761: 1786.3 ms; tokens [163]
+massive-zh-CN-768: 1791.7 ms; tokens [165]
+massive-zh-CN-1121: 1778.8 ms; tokens [165]
+massive-zh-CN-1266: 1809.9 ms; tokens [170]
+massive-zh-CN-1372: 1805.1 ms; tokens [165]
+massive-zh-CN-1374: 1798.3 ms; tokens [164]
+massive-zh-CN-1401: 1778.0 ms; tokens [162]
+massive-zh-CN-1474: 1809.2 ms; tokens [163]
+massive-zh-CN-1537: 1802.9 ms; tokens [164]
+massive-zh-CN-1639: 1809.2 ms; tokens [164]
+massive-zh-CN-1646: 1781.4 ms; tokens [165]
+massive-zh-CN-1683: 1783.0 ms; tokens [163]
+massive-zh-CN-1710: 1788.9 ms; tokens [166]
+massive-zh-CN-1830: 1815.1 ms; tokens [164]
+massive-zh-CN-2164: 1790.4 ms; tokens [162]
+massive-zh-CN-2167: 1798.5 ms; tokens [163]
+massive-zh-CN-2205: 1792.1 ms; tokens [162]
+massive-zh-CN-2206: 1786.4 ms; tokens [163]
+massive-zh-CN-2320: 1790.0 ms; tokens [164]
+massive-zh-CN-2386: 1791.4 ms; tokens [162]
+massive-zh-CN-2447: 1798.8 ms; tokens [174]
+massive-zh-CN-2545: 1777.6 ms; tokens [161]
+massive-zh-CN-2610: 1791.3 ms; tokens [167]
+massive-zh-CN-3020: 1780.7 ms; tokens [165]
+massive-zh-CN-3213: 1795.6 ms; tokens [166]
+massive-zh-CN-3329: 1808.0 ms; tokens [162]
+massive-zh-CN-3361: 1777.3 ms; tokens [163]
+massive-zh-CN-3413: 1797.3 ms; tokens [167]
+massive-zh-CN-3435: 1783.6 ms; tokens [163]
+massive-zh-CN-3590: 1789.1 ms; tokens [161]
+massive-zh-CN-3603: 1797.4 ms; tokens [165]
+massive-zh-CN-3631: 1787.6 ms; tokens [168]
+massive-zh-CN-3674: 1786.8 ms; tokens [169]
+massive-zh-CN-3741: 1810.3 ms; tokens [164]
+massive-zh-CN-3761: 1803.1 ms; tokens [163]
+massive-zh-CN-3771: 1802.1 ms; tokens [163]
+massive-zh-CN-3915: 1807.2 ms; tokens [171]
+massive-zh-CN-4026: 1788.5 ms; tokens [160]
+massive-zh-CN-4125: 1798.2 ms; tokens [168]
+massive-zh-CN-4224: 1787.5 ms; tokens [163]
+massive-zh-CN-4236: 1803.0 ms; tokens [160]
+massive-zh-CN-4241: 1800.7 ms; tokens [161]
+massive-zh-CN-4248: 1788.2 ms; tokens [164]
+massive-zh-CN-4309: 1807.6 ms; tokens [167]
+massive-zh-CN-4362: 1786.4 ms; tokens [161]
+massive-zh-CN-4375: 1786.4 ms; tokens [163]
+massive-zh-CN-4391: 1783.8 ms; tokens [166]
+massive-zh-CN-4428: 1785.5 ms; tokens [161]
+massive-zh-CN-4461: 1785.2 ms; tokens [168]
+massive-zh-CN-4550: 1794.3 ms; tokens [163]
+massive-zh-CN-4710: 1789.1 ms; tokens [164]
+massive-zh-CN-4776: 1789.3 ms; tokens [165]
+massive-zh-CN-4848: 1785.4 ms; tokens [163]
+massive-zh-CN-4882: 1776.4 ms; tokens [163]
+massive-zh-CN-4887: 1820.1 ms; tokens [166]
+massive-zh-CN-5037: 1804.9 ms; tokens [163]
+massive-zh-CN-5085: 1790.0 ms; tokens [163]
+massive-zh-CN-5127: 1811.0 ms; tokens [172]
+massive-zh-CN-5128: 1786.9 ms; tokens [166]
+massive-zh-CN-5261: 1778.3 ms; tokens [166]
+massive-zh-CN-5296: 1806.4 ms; tokens [167]
+massive-zh-CN-5396: 1803.7 ms; tokens [162]
+massive-zh-CN-5465: 1787.6 ms; tokens [165]
+massive-zh-CN-5615: 1792.4 ms; tokens [167]
+massive-zh-CN-5671: 1789.4 ms; tokens [165]
+massive-zh-CN-5707: 1792.9 ms; tokens [163]
+massive-zh-CN-5812: 1798.8 ms; tokens [164]
+massive-zh-CN-5823: 1785.2 ms; tokens [163]
+massive-zh-CN-5952: 1809.1 ms; tokens [166]
+massive-zh-CN-5966: 1791.6 ms; tokens [165]
+massive-zh-CN-6014: 1791.0 ms; tokens [162]
+massive-zh-CN-6015: 1808.8 ms; tokens [163]
+massive-zh-CN-6159: 1803.4 ms; tokens [161]
+massive-zh-CN-6166: 1785.8 ms; tokens [163]
+massive-zh-CN-6289: 1790.4 ms; tokens [164]
+massive-zh-CN-6319: 1805.7 ms; tokens [167]
+massive-zh-CN-6517: 1791.2 ms; tokens [160]
+massive-zh-CN-6559: 1810.0 ms; tokens [167]
+massive-zh-CN-6617: 1798.1 ms; tokens [163]
+massive-zh-CN-6646: 1798.2 ms; tokens [165]
+massive-zh-CN-6683: 1778.3 ms; tokens [161]
+massive-zh-CN-6918: 1809.0 ms; tokens [164]
+massive-zh-CN-6928: 1819.6 ms; tokens [163]
+massive-zh-CN-7044: 1797.8 ms; tokens [167]
+massive-zh-CN-7170: 1797.4 ms; tokens [167]
+massive-zh-CN-8230: 1799.7 ms; tokens [166]
+massive-zh-CN-8260: 1805.3 ms; tokens [168]
+massive-zh-CN-8520: 1785.4 ms; tokens [165]
+massive-zh-CN-9112: 1800.7 ms; tokens [166]
+massive-zh-CN-9121: 1799.3 ms; tokens [163]
+massive-zh-CN-9236: 1791.4 ms; tokens [163]
+massive-zh-CN-9542: 1804.9 ms; tokens [170]
+massive-zh-CN-9640: 1802.8 ms; tokens [166]
+massive-zh-CN-9678: 1796.1 ms; tokens [164]
+massive-zh-CN-9760: 1790.4 ms; tokens [161]
+massive-zh-CN-9918: 1785.8 ms; tokens [163]
+massive-zh-CN-9924: 1807.0 ms; tokens [162]
+massive-zh-CN-9942: 1796.1 ms; tokens [164]
+massive-zh-CN-9979: 1796.6 ms; tokens [163]
+massive-zh-CN-10078: 1799.1 ms; tokens [164]
+massive-zh-CN-10090: 1783.1 ms; tokens [166]
+massive-zh-CN-10164: 1804.3 ms; tokens [164]
+massive-zh-CN-10177: 1794.8 ms; tokens [163]
+massive-zh-CN-10197: 1793.2 ms; tokens [166]
+massive-zh-CN-10220: 1771.5 ms; tokens [165]
+massive-zh-CN-10285: 1772.8 ms; tokens [162]
+massive-zh-CN-10433: 1763.0 ms; tokens [162]
+massive-zh-CN-10571: 1817.1 ms; tokens [159]
+massive-zh-CN-10590: 1793.4 ms; tokens [163]
+massive-zh-CN-10600: 1810.3 ms; tokens [175]
+massive-zh-CN-10640: 1790.0 ms; tokens [169]
+massive-zh-CN-10755: 1792.7 ms; tokens [165]
+massive-zh-CN-10846: 1804.3 ms; tokens [178]
+massive-zh-CN-10931: 1780.8 ms; tokens [163]
+massive-zh-CN-11098: 1801.8 ms; tokens [166]
+massive-zh-CN-11215: 1786.3 ms; tokens [160]
+massive-zh-CN-11335: 1814.9 ms; tokens [166]
+massive-zh-CN-11600: 1786.4 ms; tokens [169]
+massive-zh-CN-11664: 1803.9 ms; tokens [169]
+massive-zh-CN-11733: 1789.2 ms; tokens [166]
+massive-zh-CN-11782: 1785.8 ms; tokens [165]
+massive-zh-CN-11796: 1806.6 ms; tokens [169]
+massive-zh-CN-11858: 1799.9 ms; tokens [164]
+massive-zh-CN-11903: 1790.5 ms; tokens [161]
+massive-zh-CN-11915: 1784.2 ms; tokens [162]
+massive-zh-CN-12008: 1788.4 ms; tokens [165]
+massive-zh-CN-12104: 1784.8 ms; tokens [163]
+massive-zh-CN-12254: 1772.1 ms; tokens [163]
+massive-zh-CN-12376: 1792.4 ms; tokens [170]
+massive-zh-CN-12452: 1795.2 ms; tokens [164]
+massive-zh-CN-12623: 1826.5 ms; tokens [171]
+massive-zh-CN-12724: 1797.3 ms; tokens [162]
+massive-zh-CN-12800: 1789.8 ms; tokens [162]
+massive-zh-CN-12802: 1783.5 ms; tokens [162]
+massive-zh-CN-12869: 1803.8 ms; tokens [160]
+massive-zh-CN-12982: 1788.7 ms; tokens [162]
+massive-zh-CN-13077: 1820.3 ms; tokens [167]
+massive-zh-CN-13122: 1806.7 ms; tokens [163]
+massive-zh-CN-13177: 1797.4 ms; tokens [166]
+massive-zh-CN-13524: 1791.0 ms; tokens [165]
+massive-zh-CN-13604: 1798.4 ms; tokens [169]
+massive-zh-CN-13619: 1812.1 ms; tokens [165]
+massive-zh-CN-13681: 1809.2 ms; tokens [166]
+massive-zh-CN-13798: 1808.0 ms; tokens [166]
+massive-zh-CN-13869: 1785.8 ms; tokens [170]
+massive-zh-CN-14315: 1809.0 ms; tokens [169]
+massive-zh-CN-14646: 1823.7 ms; tokens [172]
+massive-zh-CN-14701: 1792.1 ms; tokens [162]
+massive-zh-CN-14817: 1796.5 ms; tokens [164]
+massive-zh-CN-14933: 1799.1 ms; tokens [165]
+massive-zh-CN-15124: 1811.8 ms; tokens [165]
+massive-zh-CN-15155: 1799.3 ms; tokens [170]
+massive-zh-CN-15177: 1803.9 ms; tokens [165]
+massive-zh-CN-15185: 1797.1 ms; tokens [160]
+massive-zh-CN-15208: 1777.9 ms; tokens [164]
+massive-zh-CN-15345: 1807.7 ms; tokens [162]
+massive-zh-CN-15457: 1798.2 ms; tokens [171]
+massive-zh-CN-15546: 1800.2 ms; tokens [165]
+massive-zh-CN-15565: 1806.2 ms; tokens [168]
+massive-zh-CN-15598: 1798.7 ms; tokens [164]
+massive-zh-CN-15736: 1797.7 ms; tokens [166]
+massive-zh-CN-15796: 1783.7 ms; tokens [163]
+massive-zh-CN-15839: 1785.7 ms; tokens [160]
+massive-zh-CN-15890: 1807.1 ms; tokens [167]
+massive-zh-CN-15995: 1791.6 ms; tokens [167]
+massive-zh-CN-16410: 1808.1 ms; tokens [162]
+massive-zh-CN-16437: 1796.0 ms; tokens [167]
+massive-zh-CN-16438: 1804.0 ms; tokens [165]
+massive-zh-CN-16496: 1794.7 ms; tokens [161]
+massive-zh-CN-16891: 1782.8 ms; tokens [164]
+massive-zh-CN-17081: 1842.1 ms; tokens [173]
+{
+  "decisions": 180,
+  "decision_mismatches": 0,
+  "decision_error_percent": 0.0,
+  "argmax_mismatches": 0,
+  "argmax_error_percent": 0,
+  "total_variation": {
+    "count": 180,
+    "mean": 0.004674840972748369,
+    "p50": 0.002254779132191167,
+    "p95": 0.017859715923830177,
+    "max": 0.029330536946305375
+  },
+  "probability_mae": {
+    "count": 180,
+    "mean": 0.0005194267747498188,
+    "p50": 0.0002505310146879075,
+    "p95": 0.001984412880425575,
+    "max": 0.003258948549589486
+  },
+  "max_probability_error": {
+    "count": 180,
+    "mean": 0.00432150707783268,
+    "p50": 0.001914311450143119,
+    "p95": 0.016697699016517395,
+    "max": 0.027342435756424366
+  },
+  "noul_abs_error": null,
+  "score_abs_error": null,
+  "score_normalized_abs_error": null,
+  "confidence_abs_error": {
+    "count": 180,
+    "mean": 0.0031705555555555536,
+    "p50": 0.0013500000000000179,
+    "p95": 0.011305000000000086,
+    "max": 0.027500000000000024
+  },
+  "action_probability_abs_error": {
+    "count": 180,
+    "mean": 0.0,
+    "p50": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  }
+}
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc

@@ -319,19 +319,38 @@ class _FeatureSplitLayer(nn.Module):
         mlp = self.mlp(self.mlp_norm(streams))
         return tuple(a + b for a, b in zip(streams, mlp))
 
+    def forward_split(self, cls, rest, attn_mask, sliding_mask, position_embeddings):
+        normalized = torch.cat((self.attn_norm(cls), self.attn_norm(rest)), dim=1)
+        context = self.attention_context(
+            normalized, attention_mask=attn_mask,
+            sliding_window_mask=sliding_mask, position_ids=None,
+            position_embeddings=position_embeddings,
+        )[0]
+        attention = self.attention_output(context)
+        cls = tuple(a + b[:, :1] for a, b in zip(cls, attention))
+        rest = tuple(a + b[:, 1:] for a, b in zip(rest, attention))
+        cls_mlp = self.mlp(self.mlp_norm(cls))
+        rest_mlp = self.mlp(self.mlp_norm(rest))
+        return (tuple(a + b for a, b in zip(cls, cls_mlp)),
+                tuple(a + b for a, b in zip(rest, rest_mlp)))
+
 
 class FeatureSplitBackbone(nn.Module):
     """Drop-in three-input export wrapper; does not modify the source encoder.
 
 Use after any norm-affine folding or GroupedGeGLU replacement. Projection
 conversion to ConvLinear may happen before OR after constructing this wrapper.
-Only inference with dropout disabled is supported. It supersedes CLS splitting.
+Only inference with dropout disabled is supported. Optional CLS splitting keeps
+the activation sink separate within every feature band.
 """
     def __init__(self, encoder, length: int, *, outlier_features=(488, 580),
-                 feature_groups=None, epsilon=1e-12, collect_stats=False):
+                 feature_groups=None, epsilon=1e-12, collect_stats=False, split_cls=False):
         super().__init__()
         if length < 1:
             raise ValueError("length must be positive")
+        if split_cls and length < 2:
+            raise ValueError("CLS splitting requires at least two token positions")
+        self.split_cls = bool(split_cls)
         hidden_size = encoder.config.hidden_size
         self.feature_groups = feature_partition(hidden_size, outlier_features=outlier_features,
                                                 feature_groups=feature_groups)
@@ -353,6 +372,7 @@ Only inference with dropout disabled is supported. It supersedes CLS splitting.
         self.metadata = {
             "feature_groups": [list(group) for group in self.feature_groups],
             "feature_group_sizes": [len(group) for group in self.feature_groups],
+            "split_cls": self.split_cls,
             "scaled_layernorm_epsilon": float(epsilon),
             "approximation": "fixed scaled LayerNorm epsilon replaces original epsilon / per-token scale squared",
             "suggested_fp32_max_abs_error_gate": 0.01,
@@ -371,6 +391,14 @@ Only inference with dropout disabled is supported. It supersedes CLS splitting.
         hidden = self.embeddings_norm(inputs_embeds)
         streams = tuple(hidden.index_select(-1, getattr(self, f"feature_indices_{i}"))
                         for i in range(len(self.feature_groups)))
+        if self.split_cls:
+            cls = tuple(stream[:, :1] for stream in streams)
+            rest = tuple(stream[:, 1:] for stream in streams)
+            for layer in self.layers:
+                cls, rest = layer.forward_split(cls, rest, attn_mask, sliding_mask,
+                                               (getattr(self, "cos_" + layer.attention_type),
+                                                getattr(self, "sin_" + layer.attention_type)))
+            return torch.cat((self.final_norm(cls), self.final_norm(rest)), dim=1)
         for layer in self.layers:
             streams = layer(streams, attn_mask, sliding_mask,
                             (getattr(self, "cos_" + layer.attention_type), getattr(self, "sin_" + layer.attention_type)))

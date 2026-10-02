@@ -8,7 +8,7 @@
 
 Deploy the multilingual [Laya decision agent](https://huggingface.co/convaiinnovations/laya) on the **Qualcomm Hexagon HTP V68** in the **Rubik Pi 3 (QCS6490)**. The service provides structured routing, boolean decisions and ordinal scores through a local web interface and FastAPI.
 
-The current implementation prioritizes agreement with original Laya: **3.53% decision mismatch on 1,840 held-out decisions**, and **2.93% across 1,160 additional external decisions**, with actual NPU execution and zero CPU EP fallbacks.
+The qualified graph set meets **≤1% decision mismatch and ≤1% mean total variation on all nine historical test suites**, with actual NPU execution, identical input tokens and zero CPU EP fallbacks. The complete typed-decisions split has **12/2,000 differences (0.60%)**; the highest suite mean TV is **0.6222%**. The [completed qualification](reports/qualification-2026-10-03/README.md) passes both the Pi audit and a [separate local recomputation](reports/qualification-2026-10-03/independent-audit.json).
 
 ## Highlights
 
@@ -16,7 +16,7 @@ The current implementation prioritizes agreement with original Laya: **3.53% dec
 - **Original input capacity:** preserves Laya's 1024-token sequence and 256-token question/head budgets, using 768- and 1024-token graphs without imposing extra truncation.
 - **Multilingual structured decisions:** supports `choice`, `noul` and `score`, including English, Traditional Chinese and Simplified Chinese evaluation.
 - **Ready-to-use API and UI:** browser demo at `/`, interactive API documentation at `/docs`, and `/health` with readiness, bucket usage and NPU counters.
-- **Deployment controls:** persistent QNN context caches, graph/backend hash verification, one active bucket session, and a systemd user service with a 4 GiB memory limit. Measured service peak: **2.56 GiB**.
+- **Deployment controls:** persistent QNN context caches, graph/backend hash verification, one active bucket session, and a systemd user service with a 4 GiB memory limit. Fresh acceptance measured a **3.594 GiB cgroup peak** with no restart or OOM.
 
 ## Quickstart Guide
 
@@ -55,7 +55,7 @@ Git contains source code and evaluation reports. **The corrected ONNX graphs and
 | Combined deployment manifest | `npu/fidelity/manifest.json` | Included with the prepared set; [merge and activate](docs/deployment.md) when building a new set |
 | Compiled QNN contexts | `npu/fidelity/context_cache/` | Prepare on the Pi in the next step |
 
-Keep graph paths relative to their manifests intact when copying. The configured Pi stores its corrected buckets under `npu/fidelity/qualified-2026-09-29/{768,1024}/`. Each graph is about 112 MiB; the original weights are about 614 MiB, in addition to tokenizer/configuration files.
+Keep graph paths relative to their manifests intact when copying. The qualified precision graphs use `npu/fidelity/precision-2026-10-03/{768,1024}/`. The corrected graphs are **225.25 MiB and 225.36 MiB**, respectively; the original weights are about 614 MiB, in addition to tokenizer/configuration files. Retain build/export metadata, weight and affine refinement records, and Conv-offset provenance with the prepared set.
 
 `download_models.sh`, `build_clamped_22l.py` and the v1.0.0 model asset belong to the older 64-token/clamped implementation. Use the build guide above for the current model set; no ARM cross compiler is required.
 
@@ -74,7 +74,7 @@ python npu/compile_contexts.py \
   --manifest "$LAYA_NPU_MANIFEST" --verify-reload
 ```
 
-Initial context preparation takes several minutes and must run **outside the service's 4 GiB cgroup**. The 768 build peaked near 5 GiB; the 1024 build needed temporary swap on the tested board. Cached inference runs without that swap. See [deployment preparation and rollback](docs/deployment.md) for the memory requirements and validation steps.
+Initial context preparation must run **outside the service's 4 GiB cgroup**. The measured compile-and-reload commands took about 21 minutes for 768 and 83 minutes for 1024, with peak process RSS of **6.54 GiB and 6.59 GiB**. The 1024 build used temporary swap; it was removed before qualification. These are compilation measurements, not steady service memory. See [deployment preparation and rollback](docs/deployment.md).
 
 Always source `npu/env.sh` before direct QNN commands. It selects matching backend, stub and DSP skeleton libraries from the installed QNN wheel. Cache keys bind the graph, runtime and QNN binaries; changing these requires fresh preparation and validation.
 
@@ -138,7 +138,7 @@ Only the encoder is replaced. Tokenization, input construction, embeddings, deci
 ## Implementation
 
 1. **Preserve the model's input contract.** Select a static bucket large enough for the original collated sequence, with the original local/global attention pattern and head budgets.
-2. **Reduce quantization loss.** Use 16-bit activations, per-channel 8-bit projection weights, native GELU, separate GeGLU outlier channels and CLS/rest paths, plus refined attention MatMuls. The 1024 graph also folds LayerNorm affine parameters and materializes compatible static parameters for HTP.
+2. **Reduce quantization loss.** Both buckets split residual features into calibrated bands, with separate CLS/rest paths within each band, and fold compatible LayerNorm affines. Projection weights use two per-channel INT8 Conv terms; the remaining three learned LayerNorm affines use U16 elementwise arithmetic. Native GELU, GeGLU outlier grouping and refined attention MatMuls remain. Scaling before LayerNorm introduces an epsilon approximation that must pass the FP32 export check.
 3. **Correct measured hardware offsets.** Zero-input probes measure per-channel HTP Conv offsets; corrected biases and backend fingerprints are saved with each graph. The final outputs are validated on the physical NPU against unchanged FP32 Laya.
 
 See the [build recipes](docs/build-fidelity.md) and [Conv calibration method](npu/CONV_OFFSET_CALIBRATION.md) for implementation details.
@@ -147,41 +147,44 @@ See the [build recipes](docs/build-fidelity.md) and [Conv calibration method](np
 
 ### Fidelity to Original Laya
 
-The acceptance target is **decision mismatch ≤5% and mean total variation (TV) ≤5%**, with identical tokens and markers. TV measures probability-distribution differences; these are fidelity metrics, **not accuracy against dataset labels**.
+The acceptance target is **decision mismatch ≤1% and mean total variation (TV) ≤0.01 for every required suite and subset**, with identical tokens/markers and strict HTP encoder execution. TV measures probability-distribution differences; these are fidelity metrics, **not accuracy against dataset labels**. The [auditor](docs/one-percent-qualification.md) recomputes the criteria from raw answers rather than accepting older reports' 5% pass flags.
 
 | Evaluation | Decisions | Decision mismatch | Mean TV |
 | --- | ---: | ---: | ---: |
-| [Typed-decisions held-out](reports/qualification-2026-09-29/heldout.json) | 1,840 | **3.53%** | **2.50%** |
-| [Typed-decisions complete public split](reports/qualification-2026-09-29/full-public.json) | 2,000 | 3.55% | 2.50% |
-| [Synthetic 1024-token inputs](reports/qualification-2026-09-29/long-input-npu.json) | 80 | **0.00%** | **2.06%** |
-| [BANKING77: eight fixed intents](reports/external-2026-09-29/banking77-card8-npu.json) | 320 | **2.81%** | **2.55%** |
-| [CLINC150: ten domains](reports/external-2026-09-29/clinc150-domain10-npu.json) | 300 | **3.00%** | **2.83%** |
-| [MASSIVE: English](reports/external-2026-09-29/massive-en-US-npu.json) | 180 | **3.33%** | **2.26%** |
-| [MASSIVE: Traditional Chinese](reports/external-2026-09-29/massive-zh-TW-npu.json) | 180 | **1.67%** | **2.78%** |
-| [MASSIVE: Simplified Chinese](reports/external-2026-09-29/massive-zh-CN-npu.json) | 180 | **3.89%** | **2.45%** |
-| [External suites combined](reports/external-2026-09-29/summary.json) | 1,160 | **2.93%** | **2.60%** |
+| [Typed-decisions complete public split](reports/qualification-2026-10-03/typed-decisions-full-npu.json) | 2,000 | 12/2,000 (**0.6000%**) | **0.4886%** |
+| [Supplementary multilingual/long/switching probes](reports/qualification-2026-10-03/supplementary-development-npu.json) | 15 | 0/15 (**0.0000%**) | **0.2205%** |
+| [Synthetic 1024-token inputs](reports/qualification-2026-10-03/long-input-npu.json) | 80 | 0/80 (**0.0000%**) | **0.4848%** |
+| [BANKING77: eight fixed intents](reports/qualification-2026-10-03/banking77-card8-npu.json) | 320 | 1/320 (**0.3125%**) | **0.4265%** |
+| [CLINC150: ten domains](reports/qualification-2026-10-03/clinc150-domain10-npu.json) | 300 | 1/300 (**0.3333%**) | **0.6222%** |
+| [MASSIVE: English](reports/qualification-2026-10-03/massive-en-US-npu.json) | 180 | 0/180 (**0.0000%**) | **0.4108%** |
+| [MASSIVE: Traditional Chinese](reports/qualification-2026-10-03/massive-zh-TW-npu.json) | 180 | 1/180 (**0.5556%**) | **0.5205%** |
+| [MASSIVE: Simplified Chinese](reports/qualification-2026-10-03/massive-zh-CN-npu.json) | 180 | 0/180 (**0.0000%**) | **0.4675%** |
+| [Legacy accuracy and service requests](reports/qualification-2026-10-03/legacy-npu.json) | 8 | 0/8 (**0.0000%**) | **0.2087%** |
 
-All runs above used actual HTP inference with zero CPU EP fallbacks. The 1,840 held-out decisions are a subset of the 2,000-decision public split, excluding calibration/development cases. External tasks use fixed subsets and adapted label spaces; MASSIVE's 540 decisions across three languages share 180 paired IDs. They are not native dataset leaderboard scores. Long-input cases are synthetic extensions of source cases, not another independent natural corpus.
+All nine suites pass separately: **3,263 decisions in 1,593 requests**. The overlapping historical typed held-out subset also passes with **11/1,840 differences (0.5978%) and 0.4884% mean TV**; typed development and both legacy subsets pass their own gates. These are historical regression tests, not a new independent generalization evaluation. External tasks use fixed subsets and adapted label spaces; MASSIVE's three languages share 180 paired IDs. Synthetic long inputs derive from typed source cases. Subsets and translations are not additional independent corpora.
 
-**Remaining limitations:** a separate [15-decision development suite](reports/qualification-2026-09-29/supplementary-development-npu.json) has **1/15 differences (6.67%)** and **0.95% mean TV**, so its decision gate fails. Aggregate passes also do not guarantee a ≤5% error on every input: 204/1,160 external decisions have TV above 5%, with a maximum of 33.55%. Full splits, gold-label results and per-case errors are in the [evaluation method](docs/fidelity-method.md) and [external report](reports/external-2026-09-29/README.md).
+**Scope of the result:** the 1% thresholds apply to aggregate decision mismatch and mean TV, not every probability or answer. Typed-decisions TV has a **1.47% P95 and 10.16% maximum**. The [evaluation method](docs/fidelity-method.md) explains the metrics and preserved historical baselines; the [external dataset report](reports/external-2026-09-29/README.md) documents adaptation and source licenses.
 
 ### Measured Latency and Memory
 
-| Workload on the Pi | Median | P95 |
+| Same 16 development cases / 80 decisions on the Pi | Mean case latency | Corrected 768 graph |
 | --- | ---: | ---: |
-| [External choice tasks](reports/external-2026-09-29/README.md): one question, 768 bucket | **947.6 ms** | **1,008.0 ms** |
-| [Typed-decisions](reports/qualification-2026-09-29/full-public.json): five questions per call | **4,764.4 ms** | **5,121.7 ms** |
+| September 29 baseline | 4.764 s | 111.36 MiB |
+| Qualified precision recipe | **8.782 s** | **225.25 MiB** |
 
-These are complete `agent.predict` timings with four CPU threads, including tokenization, CPU heads and NPU inference, not isolated encoder/kernel timings or HTTP round trips. External timings retain each process's first cached-session load. Original CPU references ran in WSL, so these results do not establish a same-host speedup.
+Improved fidelity costs **84.3% more mean case latency (1.84×)** on this matched development workload and approximately doubles projection storage. The [development evidence](reports/precision-development-2026-10-03/README.md) uses four CPU threads, one warmup case and cached contexts. Timings include tokenization, CPU heads and NPU inference; they are not kernel or HTTP timings. Original CPU references ran in WSL and do not establish a CPU-versus-NPU speedup.
 
-| Deployment measurement | Result |
+| Build / deployment measurement | Result |
 | --- | --- |
-| QNN cached session load, 768 / 1024 | **1.43 s / 2.19 s** |
-| Service cgroup peak / configured limit | **2.56 GiB / 4 GiB** |
-| HTTP replay | 15/15 outputs exactly match standalone NPU results |
-| Observed service restarts / OOMs / CPU fallbacks during verification | **0 / 0 / 0** |
+| Verified cached reload, 768 / 1024 | **9.75 s / 12.59 s** |
+| Compile-and-reload peak process RSS, 768 / 1024 | **6.54 GiB / 6.59 GiB** |
+| Service cgroup peak / configured limit | **3.594 GiB / 4 GiB** |
+| HTTP replay | **10 requests / 15 decisions**, exact match to standalone NPU |
+| Service restarts / OOMs / memory-limit events | **0 / 0 / 0** |
 
-Session-load times are separate from inference latency and full service startup. [Service evidence](reports/qualification-2026-09-29/deployment.json), [768 cache measurements](reports/qualification-2026-09-29/cache-v2-768.json) and [1024 cache measurements](reports/qualification-2026-09-29/cache-v2-1024.json) preserve the measured conditions. HTTP replay verifies integration; it does not turn the failed 15-decision fidelity gate into a pass.
+Session reload, compilation, steady inference and service startup are separate measurements. The [768 development bundle](reports/precision-development-2026-10-03/README.md) and [1024 build bundle](reports/precision-build-2026-10-03/README.md) preserve compiler evidence. Fresh [service acceptance](reports/precision-service-2026-10-03/deployment.json) retained the same PID/invocation through replay, with zero CPU fallbacks or cache misses/errors/writes. Swap was zero at the recorded snapshots, and the temporary build swap files were absent; no peak swap usage is claimed.
+
+The selected precision manifest is installed as the default. Acceptance temporarily started the service and then restored its original **inactive/dead** state; use the service commands above when ready to run it. The [HTTP report](reports/precision-service-2026-10-03/service-http.json) and cgroup snapshots document this tested workload, not a guarantee for every future request.
 
 ## API Reference
 
@@ -224,6 +227,7 @@ The HTTP API accepts **1–4 questions**, **2–12 options for choice/score**, a
 - [Build and calibration recipes](docs/build-fidelity.md)
 - [Deployment, verification and rollback](docs/deployment.md)
 - [Fidelity methodology and reproducible evaluations](docs/fidelity-method.md)
+- [One-percent historical qualification](docs/one-percent-qualification.md)
 - [Recorded reports and raw outputs](reports/README.md)
 - [Historical technical report](npu/REPORT.md) — describes the earlier truncated/clamped model; its latency and accuracy claims do not apply to this version.
 

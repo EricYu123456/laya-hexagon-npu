@@ -1,0 +1,166 @@
+{
+  "format_version": 1,
+  "kind": "completed_768_NPU_development_evidence",
+  "full_nine_suite_qualification": "PASSED; see linked qualification evidence",
+  "includes_1024_hardware_qualification": false,
+  "contains_new_inference": false,
+  "includes_CPU_diagnostic_results": false,
+  "inventory_excludes_itself": true,
+  "files": [
+    {
+      "path": "baseline-dev.json",
+      "bytes": 100887,
+      "sha256": "4032ffaaa5767890afd3dbf8f75fdd7202095c2a2cad64e4c346a142232e2079",
+      "source_path": ".work/baseline-dev.json",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "baseline-dev.cases.jsonl",
+      "bytes": 147948,
+      "sha256": "9fedf80ae4b905c5e3620d4343c9f8c3d403cd3c4abd25ecc6ca7f59272b94b0",
+      "source_path": ".work/baseline-dev.cases.jsonl",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "weight16-npu-dev.json",
+      "bytes": 99666,
+      "sha256": "2aeb44c22267c521c17b055975fa33fc591c0729c2c6e01eb242c4473a808fee",
+      "source_path": ".work/weight16-npu-dev.json",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "weight16-npu-dev.cases.jsonl",
+      "bytes": 147280,
+      "sha256": "d3f8f87d59f4f3597581f5f0a81755373e47064b49158ca7537e0deec8f55390",
+      "source_path": ".work/weight16-npu-dev.cases.jsonl",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "features32-npu-dev.json",
+      "bytes": 165190,
+      "sha256": "85b8ef5097aa2e48442411800291277bb045579c980f89b90b64e5ba0ef59a22",
+      "source_path": ".work/features32-npu-dev.json",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "features32-npu-dev.cases.jsonl",
+      "bytes": 181891,
+      "sha256": "948f51296a9970436f21ec7f06f76f70e3e5c0a947176825a0128d153cb5f8f6",
+      "source_path": ".work/features32-npu-dev.cases.jsonl",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "reference-wsl.jsonl",
+      "bytes": 937508,
+      "sha256": "112c482ae5b2f7b88dfb2784375409484a115d75b39d3e08f671f20bd013233e",
+      "source_path": "reports/qualification-2026-09-29/reference-wsl.jsonl",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "feature768-compile-summary.json",
+      "bytes": 7573,
+      "sha256": "b0c225037875d4eab87afa508e7f5f1c864d99c0671b6c0724651f68f355ffe2",
+      "source_path": ".work/feature768-compile-summary.json",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "features32_768_pipeline.txt",
+      "bytes": 124114,
+      "sha256": "432c971841f01b79cce3aba9646104b2ba842f218c94fda2b36287fac82cb172",
+      "source_path": ".work/features32_768_pipeline.log",
+      "copy_mode": "exact bytes"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4654,
+      "sha256": "40743e6c68780cb5774c9f25a892759fcb3c7ce02c0e79b6c5b5fdf239ff359d",
+      "copy_mode": "generated bundle documentation"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 129,
+      "sha256": "3d260323115652c7c48f3768a4601cd175e92ca22e2536d3f4e8c6be6ca43c7a",
+      "copy_mode": "generated bundle documentation"
+    }
+  ],
+  "source_name_aliases": {
+    "features32_768_pipeline.log": "features32_768_pipeline.txt"
+  },
+  "weight_cases_source_origin": "Read-only copy of /home/ubuntu/laya-service/.work/weight16_768_corrected/npu-dev.cases.jsonl on Rubik Pi 3",
+  "same_selection_validation": {
+    "cases": 16,
+    "decisions": 80,
+    "indices": [
+      1,
+      26,
+      51,
+      76,
+      101,
+      126,
+      151,
+      176,
+      201,
+      226,
+      251,
+      276,
+      301,
+      326,
+      351,
+      376
+    ],
+    "dataset_checkpoint_tokenizer_equal": true,
+    "case_inputs_original_FP32_answers_and_tokens_equal": true,
+    "same_NPU_host_backend_threads_warmup": true,
+    "CPU_encoder_fallbacks": 0,
+    "per_case_metrics_match_report_aggregates": true,
+    "reference_cache_sha256": "112c482ae5b2f7b88dfb2784375409484a115d75b39d3e08f671f20bd013233e"
+  },
+  "measured_comparison": {
+    "mean_tv_reduction_fraction": 0.7651429615032951,
+    "mean_case_latency_ratio": 1.8434686071762365,
+    "corrected_graph_size_ratio": 2.02279110432584,
+    "models": [
+      {
+        "label": "September 29 baseline",
+        "corrected_graph_bytes": 116765338,
+        "corrected_graph_sha256": "1bbade0d26358f6f3950b2928bb8e4344a170a240fed86e9ef50542c0ab5c138",
+        "decision_mismatches": 4,
+        "mean_tv": 0.024568685125311854,
+        "mean_case_latency_ms": 4763.981313812494
+      },
+      {
+        "label": "Two-term Conv weights",
+        "corrected_graph_bytes": 231415594,
+        "corrected_graph_sha256": "e0c50b5c3d0e39531642098132e777e77e423fdc5bc378ec9059950ca833663a",
+        "decision_mismatches": 2,
+        "mean_tv": 0.025244205210028233,
+        "mean_case_latency_ms": 6107.664712312527
+      },
+      {
+        "label": "Feature bands + weights + affine refinement",
+        "corrected_graph_bytes": 236191887,
+        "corrected_graph_sha256": "a3ba4ac988f726d61d06543e723612e63c3047fe53d9133b8a7b5858a7365003",
+        "decision_mismatches": 0,
+        "mean_tv": 0.005770128628288788,
+        "mean_case_latency_ms": 8782.249997187535
+      }
+    ]
+  },
+  "notes": [
+    "All listed evidence copies preserve original bytes; directory-local Git attributes prevent text normalization.",
+    "Original JSON pass flags use prior 5% criteria and are preserved unchanged.",
+    "Corrected graph sizes originate from earlier read-only stat of the exact recorded Pi files; model files omitted.",
+    "NPU development results are not full historical qualification."
+  ],
+  "qualification_evidence": {
+    "directory": "../qualification-2026-10-03/",
+    "audit": "../qualification-2026-10-03/one-percent-audit.json",
+    "manifest": "../qualification-2026-10-03/candidate-manifest.json",
+    "suites": 9,
+    "additional_declared_subsets": 4,
+    "highest_decision_mismatch_percent": 0.6,
+    "highest_mean_tv_percent": 0.6222123577491144,
+    "scope": "Historical regression; not a new independent held-out evaluation. All gates are required separately.",
+    "relationship": "This bundle records an earlier development/build stage; full qualification results are stored separately."
+  }
+}

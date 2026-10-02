@@ -1,6 +1,28 @@
 # Fidelity method and experimental status
 
-Status recorded on 2026-09-29 Asia/Taipei: the corrected actual-HTP candidate passes the declared held-out selection with **3.5326% decision mismatch and 2.5021% mean total variation**. The predeclared synthetic 1024-token validation passes with **0/80 decision differences and 2.0614% mean TV**. HTTP integration and the 4 GiB service memory check pass. A separate 15-decision development suite retains **1/15 differences (6.6667%)** and fails its accuracy gate; this limitation is not hidden by the service result.
+Status recorded on 2026-10-03 Asia/Taipei: the precision graph set passes **all nine historical NPU regression suites and every required subset**, each with decision mismatch <=1% and mean total variation <=0.01. The [completed audit](../reports/qualification-2026-10-03/one-percent-audit.json) verifies unchanged inputs, the original checkpoint and strict HTP encoder execution with zero CPU fallback. Fresh [HTTP integration and service cgroup acceptance](../reports/precision-service-2026-10-03/deployment.json) also pass, with a 3.593609 GiB peak below 4 GiB. The selected default manifest remains installed; the service was restored to its original inactive/dead state after testing.
+
+## Current historical-regression qualification
+
+The frozen [qualification plan](../reports/qualification-2026-10-03/qualification-plan.json) covers 1,593 requests and 3,263 decisions. A [separate local audit](../reports/qualification-2026-10-03/independent-audit.json) reproduces the Pi audit's pass for all nine suites and four overlapping subsets, including the same frozen plan and 3,263 NPU calls. The [one-percent method](one-percent-qualification.md) fixes the complete historical inventory and recomputes errors from original and candidate answers. Older low-level reports' 5% pass flags do not determine acceptance.
+
+| Required suite | Decision differences | Mean TV |
+| --- | ---: | ---: |
+| [Typed-decisions complete public split](../reports/qualification-2026-10-03/typed-decisions-full-npu.json) | 12/2,000 (0.6000%) | 0.4886% |
+| [Supplementary multilingual/long/switching](../reports/qualification-2026-10-03/supplementary-development-npu.json) | 0/15 | 0.2205% |
+| [Synthetic 1024-token validation](../reports/qualification-2026-10-03/long-input-npu.json) | 0/80 | 0.4848% |
+| [BANKING77, eight intents](../reports/qualification-2026-10-03/banking77-card8-npu.json) | 1/320 (0.3125%) | 0.4265% |
+| [CLINC150, ten domains](../reports/qualification-2026-10-03/clinc150-domain10-npu.json) | 1/300 (0.3333%) | 0.6222% |
+| [MASSIVE en-US](../reports/qualification-2026-10-03/massive-en-US-npu.json) | 0/180 | 0.4108% |
+| [MASSIVE zh-TW](../reports/qualification-2026-10-03/massive-zh-TW-npu.json) | 1/180 (0.5556%) | 0.5205% |
+| [MASSIVE zh-CN](../reports/qualification-2026-10-03/massive-zh-CN-npu.json) | 0/180 | 0.4675% |
+| [Legacy accuracy/service requests](../reports/qualification-2026-10-03/legacy-npu.json) | 0/8 | 0.2087% |
+
+The overlapping historical typed held-out subset separately passes with **11/1,840 differences (0.5978%) and 0.4884% mean TV**. Typed development has 0/80 differences and 0.5770% mean TV; each four-decision legacy subset has zero differences. Subsets are not counted again in the executed total. The five external suites have a descriptive pooled 3/1,160 differences and 0.4956% mean TV, but each individual gate remains required.
+
+This is a re-evaluation of historical inputs, **not a fresh independent generalization claim**. MASSIVE languages share 180 semantic IDs, and synthetic long inputs derive from typed source cases. The recipe was selected on reserved development inputs before these final runs. Aggregate passes do not bound every answer: full typed TV has P95 1.47% and maximum 10.16%.
+
+The [frozen manifest](../reports/qualification-2026-10-03/candidate-manifest.json) binds corrected graphs `a3ba4ac988f726d61d06543e723612e63c3047fe53d9133b8a7b5858a7365003` (768) and `85ce822364a7645a450c0925e5e6ead066edeac8e298d14e22caf31575938843` (1024), including their HTP correction provenance. Large graph/context binaries are not included in Git.
 
 ## Reference and input contract
 
@@ -12,9 +34,9 @@ The reference is unchanged multilingual Laya from checkpoint revision `1c5edc17a
 
 Its configuration specifies `max_len=1024` and `head_max_len=256`. The accelerated agent delegates tokenization, question conversion, sequence construction, marker placement, heads, temperatures, and formatting to the installed original Laya implementation. Only its encoder is replaced. Global attention and local attention remain distinct; the latter uses radius 64, including the boundary. The export uses a finite additive mask penalty of -100, whose effect is checked against original FP32 outputs rather than assumed to be exact for arbitrary logits.
 
-Static buckets add right padding without removing input tokens. The runtime selects a bucket at least as long as the original collated sequence, validates the three float32 ONNX inputs, and fails if no bucket fits. A 768-token graph covers the public split; the deployed set also includes a separately calibrated and validated 1024-token graph for the full original API capacity.
+Static buckets add right padding without removing input tokens. The runtime selects a bucket at least as long as the original collated sequence, validates the three float32 ONNX inputs, and fails if no bucket fits. A 768-token graph covers the public split; the qualified set also includes a separately calibrated and validated 1024-token graph for the full original API capacity.
 
-The old runtime imposed 64-token sequence and head budgets and clamped GeGLU values to ±50. These changes invalidate a claim of equivalence with the original model. The new grouped representation preserves every channel and weight: it separates gate, value, and output projections for outlier channels and sums their contributions. Mathematical equivalence is checked before quantization. Those FP32 checks do not imply that HTP's quantized implementation will agree with CPU QDQ.
+The old runtime imposed 64-token sequence and head budgets and clamped GeGLU values to ±50. These changes invalidate a claim of equivalence with the original model. The current representation retains all channels and original projection contributions, separates GeGLU outliers and CLS/rest residual feature bands, folds compatible norms, and refines weights using two INT8 terms. Three remaining learned LayerNorm affines use U16 elementwise arithmetic. Per-token scaling before LayerNorm uses a fixed epsilon approximation, so the builder requires maximum FP32 export error below 0.01 before quantization. Those checks do not imply HTP agreement with CPU QDQ; whole-model NPU qualification remains required.
 
 ## Dataset and fixed selections
 
@@ -36,25 +58,26 @@ The required parquet SHA256 is:
 | --- | --- | ---: | ---: |
 | Calibration | `i % 25 == 0` | 16 | 80 available |
 | Development/model selection | `i % 25 == 1` | 16 | 80 |
-| Declared held-out evaluation | All other rows | 368 | 1,840 |
+| Historical held-out evaluation | All other rows | 368 | 1,840 |
 
-The builder's `--samples` counts calibration **question sequences**, not cases. `grouped16` used 16 complete sequences spread across the calibration cases; `clsconv16` used 32. A bucket excludes calibration sequences that do not fit rather than truncating them. Per-build metadata records the actual selected cases and sample count.
+The builder's `--samples` counts calibration **question sequences**, not cases. The current 768 recipe uses the same 32 reserved sequences as `refined32`; 1024 retains those originals and appends 32 full-length variants from the same cases. The earlier `grouped16` used 16 sequences and `clsconv16` used 32. A bucket excludes sequences that do not fit rather than truncating them. Per-build metadata records exact identities and sample counts.
 
-Development data may guide changes. Held-out outputs must not guide calibration, graph changes, or model selection. Freeze the recipe before evaluating all 368 held-out cases. If results are used for further tuning, disclose that reuse and obtain a fresh independent validation set before making a held-out claim. A full-public-split report includes calibration and development cases and is labeled separately.
+Development data may guide changes. Final evaluation outputs must not guide calibration, graph changes, or model selection. The historical held-out name records the original split; the present re-run is a regression test. If evaluation results guide further tuning, disclose that reuse and obtain a fresh independent dataset before making an independent validation claim. A full-public-split report includes calibration and development cases and is labeled separately.
 
 ## Pass criteria and reported errors
 
-The intended gate requires all three conditions on the complete declared held-out selection:
+The current gate requires all conditions on every complete historical suite and required subset:
 
-1. Decision mismatch at most 5%.
-2. Mean total variation at most 0.05.
+1. Decision mismatch at most 1%.
+2. Mean total variation at most 0.01.
 3. Identical original and candidate token sequences and marker positions for every question.
+4. Verified original model/input identity and strict HTP execution with zero CPU fallback.
 
-Decision mismatch follows the API's output semantics: exact choice label, `noul > 0.5`, or Python `round()` of the expected score. Argmax mismatch is also reported, separately from expected-score decisions. Total variation is `0.5 * sum(abs(reference_probability - candidate_probability))` per question, averaged over decisions. For `noul`, the distribution is `[1-p, p]`. API-rounded distributions are normalized before comparison. Here “5% TV” means 0.05 of probability mass, not relative error divided by a possibly tiny reference probability.
+Decision mismatch follows the API's output semantics: exact choice label, `noul > 0.5`, or Python `round()` of the expected score. Argmax mismatch is also reported, separately from expected-score decisions. Total variation is `0.5 * sum(abs(reference_probability - candidate_probability))` per question, averaged over decisions. For `noul`, the distribution is `[1-p, p]`. API-rounded distributions are normalized before comparison. Here “1% TV” means 0.01 of probability mass, not relative error divided by a possibly tiny reference probability. Historical September reports retain their original 5% criteria.
 
 Reports include per-type and per-workflow results, tail probability errors, normalized score error, confidence/action-probability errors, artifact hashes, source hashes, and accelerator counters. This evaluates fidelity to Laya, not correctness against gold labels. Passing a finite test selection is not a guarantee for every possible input.
 
-## Measured development results
+## Historical September 28 development results
 
 Every row below uses the same 16 development cases/80 decisions and identical preprocessed inputs. CPU QDQ runs use ONNX Runtime's `CPUExecutionProvider`; they are diagnostic results and cannot qualify an NPU candidate. Links point to the preserved reports, with sibling `.cases.jsonl` files containing per-case evidence.
 
@@ -90,7 +113,7 @@ Absolute paths in report metadata identify the original execution environments; 
 
 An independent [reference portability check](../reports/development-2026-09-28/reference-portability.json) compared pristine ARM Pi CPU and WSL x86 CPU outputs on these 80 development decisions: zero decision mismatches and mean TV `9.4178e-7`. This supports using the captured FP32 outputs for numerical diagnostics on this selection, but says nothing about cross-host performance equivalence. The complete 400-case FP32 reference was captured in WSL; the preserved [Pi reference](../reports/development-2026-09-28/reference-pi.jsonl) covers the development cases.
 
-## Independent hardware qualification
+## Historical September 29 hardware qualification
 
 The frozen corrected-768 graph ran all 400 cases on the Pi. The [full report](../reports/qualification-2026-09-29/full-public.json) records 2,005 NPU calls including five warmup questions, one cached QNN session, zero CPU fallbacks, and identical input sequences/markers for all cases. The [held-out report](../reports/qualification-2026-09-29/heldout.json) is derived offline from those exact outputs using the exclusion list committed before the run; no additional inference or selection by observed errors is involved.
 
@@ -118,9 +141,9 @@ The helper checks the committed declaration's Git identity, dataset and input ha
 
 Follow the Python 3.12 setup, pinned checkpoint/dataset download, and corrected candidate build commands in [the build guide](build-fidelity.md). Use [requirements-fidelity-build.txt](../requirements-fidelity-build.txt) for x86/WSL builds, not the target environment's requirements. Copy the graph directory and manifest together to the Pi. Keep recipes in separate directories because a manifest's bucket mapping alone is not a complete recipe description. Preserve the export sidecar and quantization metadata.
 
-For the earlier `grouped16` experiment, use only `--group-outliers --samples 16`. `clsconv16` adds `--conv-linear --split-cls --samples 32` but omits zero-padding, MatMul refinement, and measured offset correction. The qualified 768-token recipe does not fold norms. The separately selected 1024-token recipe adds `--fold-norms` and `--append-long-calibration`; `--balance` is not part of either recipe.
+The selected precision recipe uses `--split-cls --split-features --feature-thresholds 100,500,2000 --fold-norms` on both buckets, then the permanent weight and affine refinement CLIs before graph-specific HTP Conv-offset calibration. Its feature groups contain 631, 127, 6 and 4 channels. The 1024 build additionally uses `--append-long-calibration`; `--balance` and experimental alternative feature partitions are not selected. Follow the complete command sequence in the build guide.
 
-`npu/split_residual.py` is an unintegrated experimental alternative that separates residual feature bands and rescales before LayerNorm. Its fixed scaled epsilon is an approximation. It has CPU checks only and is not part of the measured or deployed recipe.
+`npu/split_residual.py` is integrated into this recipe. It retains feature order and full attention while separating residual quantization ranges, including distinct CLS/rest paths within each feature band. Its scaled-epsilon approximation passes the builder's FP32 gate, and the complete refined graph is qualified on actual HTP. The [precision development bundle](../reports/precision-development-2026-10-03/README.md) records the selected 768 result and its performance tradeoff; it was captured while full qualification was still pending.
 
 For every target QNN run:
 
@@ -151,7 +174,7 @@ python benchmark_fidelity.py --backend npu --dataset-path "$DATA" \
   --output .work/candidate-development.json
 ```
 
-After freezing a new hardware candidate, run the full declared held-out selection. The result above used a full-split run followed by the verified offline derivation; this command evaluates only the declared held-out cases directly:
+After freezing a new candidate, use the [complete one-percent prepare/run/audit workflow](one-percent-qualification.md). A typed-only run cannot establish all-suite acceptance. The following command reproduces just the historical typed held-out subset:
 
 ```bash
 EXCLUDED=0,1,25,26,50,51,75,76,100,101,125,126,150,151,175,176,200,201,225,226,250,251,275,276,300,301,325,326,350,351,375,376
@@ -160,9 +183,11 @@ python benchmark_fidelity.py --backend npu --dataset-path "$DATA" \
   --threads 4 --output .work/candidate-heldout.json
 ```
 
-Use a fresh output filename for each run. The script refuses to overwrite evidence. A threshold failure returns exit code 1; inspect both the aggregate JSON and sibling `.cases.jsonl`. `selected_cases_pass` alone does not mean a full or held-out pass. Confirm `heldout_selection_pass`, complete selection, input equality, the actual provider, and zero CPU fallbacks.
+Use a fresh output filename for each run. The script refuses to overwrite evidence. Low-level benchmark pass flags retain their own thresholds; only the complete one-percent audit establishes current acceptance. Confirm exact coverage, original reference and graph identities, input equality, the actual provider, and zero CPU fallbacks.
 
-## Long-input validation design
+## Long-input design and historical September 29 result
+
+The current precision 1024 graph retains the original 1024/256-token budgets and passes the same synthetic suite with 0/80 decision differences and 0.4848% mean TV. The current supplementary suite passes 0/15 with 0.2205% mean TV. The following selection history and old results describe the earlier graph, not the current candidate.
 
 The public split's longest original sequence has 631 tokens, so its pass does not establish behavior at 1024 tokens. The 1024-token candidate was selected using only the fixed 15-decision Chinese/English supplementary probes. Its CPU QDQ diagnostic has zero decision differences and 0.8245% mean TV; these numbers do not qualify the NPU graph. The selected source hash and allowed zero-input HTP correction are recorded in the [candidate declaration](../reports/evaluation-plans/long-input-candidate-static-gamma.json).
 
@@ -189,7 +214,9 @@ The [80-decision NPU result](../reports/qualification-2026-09-29/long-input-npu.
 
 The separate [15-decision development report](../reports/qualification-2026-09-29/supplementary-development-npu.json) retains one long-English choice difference, or **6.6667% mismatch**, with mean TV **0.9462%** and maximum TV **4.23%**. Its `passed` flag remains false. The graph was not changed after this result. The original held-out and synthetic long-input criteria remain unchanged. [The service acceptance clarification](../reports/qualification-2026-09-29/service-acceptance.md) records why exact HTTP/CLI replay is an integration check rather than another fidelity pass.
 
-## External adapted datasets
+## External adaptation and historical September 29 result
+
+The current regression re-evaluation of these same five suites passes each 1% gate; the individual values and artifact hashes are in the current qualification section above. The following evidence describes their original September evaluation and preserves its original thresholds.
 
 A later [frozen external evaluation](../reports/evaluation-plans/external-datasets-2026-09-29.json)
 uses BANKING77 (eight fixed intents, 320 decisions), CLINC150 (ten domains, 300),
@@ -216,8 +243,12 @@ Strict NPU means the encoder runs through QNN HTP with `session.disable_cpu_ep_f
 
 The manifest resolves graph paths relative to its directory and records checkpoint/graph hashes and mask policy. Loading verifies those identities. Context cache keys additionally bind runtime versions and provider options; cache entries are embedded single-file ONNX contexts published atomically. Invalid entries fail with an actionable error instead of falling back to CPU. QNN's context options are documented in [ORT's EPContext design](https://onnxruntime.ai/docs/execution-providers/EP-Context-Design.html).
 
-`npu/compile_contexts.py --manifest <path> --verify-reload` prepares buckets without loading checkpoint tensors or token embeddings, then releases the preparation adapter before reloading saved contexts. Set `LAYA_NPU_CONTEXT_CACHE=1` and optionally set `LAYA_NPU_CACHE_DIR`. The initial corrected-768 cache compiled in 419.5 seconds and reloaded in 1.62 seconds. After upgrading the cache key to schema 2, preparation took 442.4 seconds and reload took 1.43 seconds; both saved graphs contain a single QNN EPContext. A [five-question equivalence replay](../reports/qualification-2026-09-29/cache-v2-equivalence.json) confirms unchanged outputs after the schema upgrade. Cache schema changes require preparation again. A cache hit alone is not a fidelity test.
+`npu/compile_contexts.py --manifest <path> --verify-reload` prepares buckets without loading checkpoint tensors or token embeddings, then releases the preparation adapter before reloading saved contexts. Set `LAYA_NPU_CONTEXT_CACHE=1` and optionally set `LAYA_NPU_CACHE_DIR`. For the September 29 baseline, the initial corrected-768 cache compiled in 419.5 seconds and reloaded in 1.62 seconds. After upgrading the cache key to schema 2, preparation took 442.4 seconds and reload took 1.43 seconds; both saved graphs contain a single QNN EPContext. A [five-question equivalence replay](../reports/qualification-2026-09-29/cache-v2-equivalence.json) confirms unchanged baseline outputs after the schema upgrade. Cache schema changes require preparation again. A cache hit alone is not a fidelity test.
 
-Latency reports include tokenization, heads, and inference but exclude model loading and warmup. Compare speed only with the same host, CPU thread count, original input contract, and measured selection. Compilation, cache reload, warm latency, bucket switching, and peak memory need separate measurements. The 1024 compile exhausted physical RAM on its first attempt; the identical retry used temporary 4 GiB swap and reached 5.73 GiB peak RSS. That swap was removed before a fresh-process cache load, which took 2.19 seconds and peaked at 1.18 GiB RSS. [Cache evidence](../reports/qualification-2026-09-29/cache-v2-1024.json) preserves both the compilation and no-swap reload checks.
+Latency reports must state whether model loading and warmup are excluded. Compare speed only with the same host, CPU thread count, original input contract, and measured selection. Compilation, cache reload, warm latency, bucket switching, and peak memory need separate measurements. The September 29 baseline's 1024 compile exhausted physical RAM on its first attempt; the identical retry used temporary 4 GiB swap and reached 5.73 GiB peak RSS. That swap was removed before a fresh-process cache load, which took 2.19 seconds and peaked at 1.18 GiB RSS. Historical [cache evidence](../reports/qualification-2026-09-29/cache-v2-1024.json) preserves those checks.
 
-The deployed [HTTP verification](../reports/qualification-2026-09-29/service-http.json) passed exact replay of all 15 standalone NPU answers, five invalid-input checks, and both bucket transitions. Startup plus this workload peaked at **2,744,172,544 bytes (2.556 GiB)** in the actual 4 GiB cgroup, with the same PID/invocation and zero restarts, limit events, or OOMs. Health reported 16 NPU calls including startup warmup, five context hits, and zero fallback/cache misses/errors. The separate development-fidelity flag remains false. See [deployment instructions](deployment.md) for reproduction. Historical results in `npu/REPORT.md` describe the earlier truncated/clamped implementation and do not qualify the current graph set.
+The September 29 [HTTP verification](../reports/qualification-2026-09-29/service-http.json) passed exact replay of all 15 standalone NPU answers, five invalid-input checks, and both bucket transitions. Its **2,744,172,544-byte (2.556 GiB)** service cgroup peak, unchanged PID/invocation, zero restarts/OOMs and failed supplementary-fidelity flag all describe that baseline graph. Historical results in `npu/REPORT.md` describe the still earlier truncated/clamped implementation.
+
+For the current precision recipe, matched 80-decision Pi development measurements increased mean case latency from 4.764 s to 8.782 s (**84.3%**) and corrected 768 graph size from 111.36 MiB to 225.25 MiB. The [768 compile/reload evidence](../reports/precision-development-2026-10-03/README.md) records 6.54 GiB peak process RSS and 9.75 s verified reload; the [1024 build evidence](../reports/precision-build-2026-10-03/README.md) records 6.59 GiB and 12.59 s. Temporary build swap was removed before qualification. These measurements are not a new service cgroup peak or a cross-host CPU speed comparison.
+
+The separate [precision service acceptance](../reports/precision-service-2026-10-03/deployment.json) passed exact HTTP replay of 10 requests / 15 decisions, invalid-input checks and both bucket transitions. Peak cgroup memory was **3,858,608,128 bytes (3.593609 GiB)** under 4 GiB, with the same PID/invocation and zero restarts, OOMs or memory-limit events. NPU execution had zero CPU fallbacks or cache misses/errors/writes. Recorded swap snapshots were zero and both temporary build swap files were absent; no peak swap usage is claimed. After verification the service returned to inactive/dead, while the selected default manifest stayed installed. See [deployment instructions](deployment.md) and the [HTTP evidence](../reports/precision-service-2026-10-03/service-http.json).

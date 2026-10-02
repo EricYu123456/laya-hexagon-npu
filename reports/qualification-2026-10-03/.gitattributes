@@ -1,0 +1,3 @@
+# Frozen qualification evidence is hashed byte-for-byte, including CRLF suites.
+# Keep this file inside the published qualification directory.
+* -text

@@ -1,0 +1,80 @@
+Waiting for strict NPU readiness
+refund-language-1 bucket 768 calls 1 ms 1798.5
+refund-language-2 bucket 768 calls 1 ms 1756.1
+refund-language-3 bucket 768 calls 1 ms 1740.1
+refund-language-4 bucket 768 calls 1 ms 1710.9
+billing-example bucket 768 calls 2 ms 3415.8
+urgency-score bucket 768 calls 1 ms 1749.3
+long-english-1024 bucket 1024 calls 2 ms 10441.0
+short-after-long bucket 768 calls 2 ms 7318.3
+long-chinese-1024 bucket 1024 calls 2 ms 10463.4
+short-after-second-long bucket 768 calls 2 ms 7164.0
+{
+  "passed": true,
+  "integration_passed": true,
+  "development_fidelity_passed": true,
+  "overall": {
+    "decisions": 15,
+    "decision_mismatches": 0,
+    "decision_error_percent": 0.0,
+    "argmax_mismatches": 0,
+    "argmax_error_percent": 0,
+    "total_variation": {
+      "count": 15,
+      "mean": 0.002204781293514475,
+      "p50": 0.0005975202479752079,
+      "p95": 0.008949861986198557,
+      "max": 0.009532873287328686
+    },
+    "probability_mae": {
+      "count": 15,
+      "mean": 0.0019342986401207612,
+      "p50": 0.0003983468319834719,
+      "p95": 0.007058674200753364,
+      "max": 0.00869999999999993
+    },
+    "max_probability_error": {
+      "count": 15,
+      "mean": 0.002204781293514482,
+      "p50": 0.000597520247975214,
+      "p95": 0.008949861986198564,
+      "max": 0.009532873287328714
+    },
+    "noul_abs_error": {
+      "count": 9,
+      "mean": 0.0023222222222222207,
+      "p50": 0.00010000000000000005,
+      "p95": 0.0070599999999999535,
+      "max": 0.00869999999999993
+    },
+    "score_abs_error": {
+      "count": 1,
+      "mean": 0.0004999999999999449,
+      "p50": 0.0004999999999999449,
+      "p95": 0.0004999999999999449,
+      "max": 0.0004999999999999449
+    },
+    "score_normalized_abs_error": {
+      "count": 1,
+      "mean": 0.00024999999999997247,
+      "p50": 0.00024999999999997247,
+      "p95": 0.00024999999999997247,
+      "max": 0.00024999999999997247
+    },
+    "confidence_abs_error": {
+      "count": 15,
+      "mean": 0.0019466666666666614,
+      "p50": 0.0013999999999999568,
+      "p95": 0.005830000000000009,
+      "max": 0.00869999999999993
+    },
+    "action_probability_abs_error": {
+      "count": 15,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    }
+  },
+  "error": null
+}

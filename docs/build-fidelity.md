@@ -12,7 +12,102 @@ HF_HUB_OFFLINE=0 python download.py
 HF_HUB_OFFLINE=0 python -c "from huggingface_hub import hf_hub_download; hf_hub_download('LocalLLaMA/typed-decisions', 'all/test-00000-of-00001.parquet', repo_type='dataset', revision='c76749ec58bd8c3d2ea706b31c333a9059c38f90', local_dir='.work/dataset')"
 ```
 
-Build the uncorrected `refined32` recipe:
+## Precision refinement recipe
+
+The 2026-10-03 recipe passed all nine historical NPU suites and four declared
+subsets. The highest decision mismatch rate was **0.6%** and the highest mean
+total variation was **0.622212%**, with strict HTP execution and zero CPU encoder
+fallbacks. See the [qualification evidence](../reports/qualification-2026-10-03/)
+and [audit](../reports/qualification-2026-10-03/one-percent-audit.json). These are
+aggregate historical regression limits, not a per-example error guarantee or a
+new independent held-out evaluation.
+
+The qualified recipe separates residual features into bands using only the
+reserved calibration inputs. Ordinary features no longer share a quantization
+range with a few very large residual channels. CLS and other tokens remain
+separate within each band. Each token uses one common scale before LayerNorm;
+the scaled epsilon approximation must pass the builder's `0.01` maximum FP32
+export-error gate before quantization.
+
+Build both buckets with the same feature thresholds and projection recipe:
+
+```bash
+CAL=0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375
+for LENGTH in 768 1024; do
+  EXTRA=()
+  if [ "$LENGTH" = 1024 ]; then EXTRA+=(--append-long-calibration); fi
+  python npu/build_fidelity.py \
+    --model models/multilingual \
+    --parquet .work/dataset/all/test-00000-of-00001.parquet \
+    --length "$LENGTH" --samples 32 --threads 6 \
+    --activation-bits 16 --group-outliers --conv-linear \
+    --split-cls --split-features --feature-thresholds 100,500,2000 \
+    --zero-pad-embeddings --refine-matmul-rhs all --fold-norms \
+    --low-memory-calibration "${EXTRA[@]}" --indices "$CAL" \
+    --output-dir ".work/features32_folded${LENGTH}"
+  python -m npu.weight_refinement \
+    --source ".work/features32_folded${LENGTH}/backbone_${LENGTH}_a16w8.onnx" \
+    --fp32 ".work/features32_folded${LENGTH}/backbone_${LENGTH}_fp32.onnx" \
+    --source-manifest ".work/features32_folded${LENGTH}/manifest.json" \
+    --checkpoint models/multilingual/model.safetensors \
+    --out-dir ".work/features32_weight16_${LENGTH}"
+  python -m npu.affine_layernorm \
+    --source ".work/features32_weight16_${LENGTH}/backbone_${LENGTH}_a16w8.onnx" \
+    --fp32 ".work/features32_folded${LENGTH}/backbone_${LENGTH}_fp32.onnx" \
+    --source-manifest ".work/features32_weight16_${LENGTH}/manifest.json" \
+    --checkpoint models/multilingual/model.safetensors \
+    --expected-layernorms 3 \
+    --out-dir ".work/features32_precision16_${LENGTH}"
+done
+```
+
+The recorded feature groups contain `631, 127, 6, 4` channels for this pinned
+checkpoint and calibration selection. The group assignment, export checks and
+input hashes are saved in the build metadata and FP32 sidecar. No evaluation
+answers determine the groups. The 1024 bucket includes 32 original and 32
+full-length calibration sequences; 768 uses the original 32 sequences.
+
+The affine step refines the embedding norm and the CLS/rest final norms. It
+verifies the weight graph, checkpoint and matching FP32 sidecar, then retains
+the source build metadata, feature groups and weight provenance in its new
+output directory. Existing outputs and corrected source graphs are rejected.
+
+Next prepare and measure **fresh Conv offset probes for each bucket**, using
+the graphs under `.work/features32_precision16_${LENGTH}` as the source.
+The [weight-refinement guide](../npu/WEIGHT_REFINEMENT.md) explains
+the two-term INT8 weights, source checks and hardware calibration. Retain the
+original export, intermediate graphs and metadata so every transform can be
+audited. CPU QDQ results are diagnostic; final acceptance requires
+[all historical suites on the actual NPU](one-percent-qualification.md).
+
+The [recorded 768-token development comparison](../reports/precision-development-2026-10-03/)
+shows the complete recipe's accuracy/latency tradeoff. Two-term weights alone
+did not improve mean TV on that selection; qualification applies to the complete
+feature-band, weight, affine and Conv-offset recipe.
+
+## Measured context compilation
+
+Context preparation runs on the Pi after graph-specific Conv correction. The
+following measurements include `compile_contexts.py --verify-reload`, using
+the same QNN environment as qualification:
+
+| Bucket | Command elapsed time | First context preparation | Cached reload | Peak process RSS |
+|---|---:|---:|---:|---:|
+| 768 | 21 min 25.39 s | 1191.82 s | 9.75 s | 6.5412 GiB |
+| 1024 | 1 h 22 min 44 s | 4737.72 s | 12.59 s | 6.5901 GiB |
+
+Both commands exited successfully and verified cache reload with zero CPU
+encoder fallbacks. The 1024 build used two temporary 8 GiB swap files, 16 GiB
+configured total; both were removed before qualification. Peak process swap
+was not measured. These RSS values describe compilation, not steady service
+memory. See the [768 compile evidence](../reports/precision-development-2026-10-03/feature768-compile-summary.json)
+and [1024 build evidence](../reports/precision-build-2026-10-03/).
+
+## Historical five-percent recipes
+
+These commands reproduce the earlier `refined32` and folded-1024 candidates,
+whose reports remain under `reports/qualification-2026-09-29`. Build the
+uncorrected `refined32` recipe:
 
 ```bash
 python npu/build_fidelity.py \
@@ -80,16 +175,23 @@ source graph with separate probe/correction directories and a target such as
 `.work/corrected_1024/backbone_1024_a16w8.onnx`. Keep the ONNX file, emitted
 manifest, and adjacent `.offsets.json` together when copying to stable paths.
 
-The measured Pi deployment uses this layout:
+The qualified artifacts on the Pi use this layout:
 
 ```text
 npu/fidelity/
   manifest.json
-  qualified-2026-09-29/
+  manifest.one-percent-2026-10-03.json  # evaluated two-bucket manifest
+  precision-2026-10-03/
     768/   # corrected graph, per-bucket manifest and provenance
     1024/  # corrected graph, per-bucket manifest and provenance
-  context_cache/
+  qualified-2026-09-29/               # retained earlier model set
 ```
+
+The evaluated manifest points to `precision-2026-10-03/{768,1024}`; its exact
+contents are retained in the [qualification manifest](../reports/qualification-2026-10-03/candidate-manifest.json).
+Qualification used the contexts in `.work/one-percent-context-cache`, whose
+hashes were [recorded before the run](../reports/qualification-2026-10-03/context-cache-before-run.json).
+The active service's `manifest.json` is managed separately during deployment.
 
 Do not overwrite an active manifest while assembling another candidate. Merge
 compatible per-bucket manifests into a fresh `manifest.next.json`, prepare their

@@ -1,0 +1,5 @@
+# Preserve original evidence bytes, including raw log line endings.
+*.json -text
+*.jsonl -text
+*.txt -text
+README.md text eol=lf

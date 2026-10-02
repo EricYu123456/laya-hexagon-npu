@@ -1,0 +1,304 @@
+{
+  "kind": "laya_probe_reference",
+  "created_utc": "2026-10-02T15:05:09.916926+00:00",
+  "backend": "cpu",
+  "module": "laya",
+  "threads": 4,
+  "suite_sha256": "6f26b157eca0b16012ce9e4b2eb65059295a381103696d905568b34ea59a6242",
+  "suite_file_sha256": "50542d2d5c4ace820c153367ff1bf080699ea968804312f1ab9811008baf9262",
+  "model_files": {
+    "model.safetensors": {
+      "sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204"
+    },
+    "rl_agent_config.json": {
+      "semantic_json_sha256": "3cbac8e77bc83a1cb54a4cfa21a9806e2bb3b2b9348151b74536bad4b19be8b4"
+    },
+    "encoder/config.json": {
+      "semantic_json_sha256": "63c6ff324dca566d85b326575694184961acbe97f4f54070fdc1a0337faaba0b"
+    },
+    "tokenizer/tokenizer.json": {
+      "semantic_json_sha256": "781b8f0a0f543024c43cd95ded23081e2709b20ae6f92f986feca33ce02a4a6e"
+    },
+    "tokenizer/tokenizer_config.json": {
+      "semantic_json_sha256": "24ec1d141fc3d2ddd8b9a4cd23d95568f93713b1f5f479dbb8bd5438bc6b7a80"
+    }
+  },
+  "runtime": {
+    "python": "3.12.15",
+    "platform": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "hostname": "LAPTOP-U9RNVGB3",
+    "packages": {
+      "laya": "0.3.5",
+      "torch": "2.6.0+cpu",
+      "transformers": "5.0.0",
+      "onnxruntime": "1.30.0"
+    },
+    "laya_source_files": {
+      "__init__.py": "43e8c7d02969b37381915850cb4970e62b6ea0a328ac26c1efc9fb3fca0916d7",
+      "agent.py": "128567096446c5d39af8e4a3a7c4dd9e32a134a1b099ce5a5eed383beeff1b89",
+      "common.py": "f231d42fcec84da203222fcaa89c083b22776e00341e66e118183d754e1dcabf"
+    }
+  },
+  "candidate_assets": null,
+  "records": [
+    {
+      "id": "accuracy-probe-1",
+      "input_sha256": "58c4e3fba3a3e6a01d51e35a61b1bdc033ad33af1dd31dfa2f2846eec2b83e8d",
+      "tokens": {
+        "test_q": {
+          "sha256": "6e8dcde1381da1e8669df53a138feeb19ed5d613220a873ec13af027fef857a7",
+          "tokens": 42,
+          "markers": [
+            14,
+            24
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "test_q": {
+            "type": "noul",
+            "noul": 0.0015,
+            "confidence": 0.9985,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 42,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 122.37764799999695
+    },
+    {
+      "id": "accuracy-probe-2",
+      "input_sha256": "34aa6691d1b264fd7ae6f4e32b8128bdf286e9ba9b01d893cee91c65dca624a5",
+      "tokens": {
+        "test_q": {
+          "sha256": "c7fac6843a4cb718e66a96973d21188c24613adfb4a556b1736c2e9530d6f4ea",
+          "tokens": 48,
+          "markers": [
+            14,
+            24
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "test_q": {
+            "type": "noul",
+            "noul": 0.6914,
+            "confidence": 0.6914,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 48,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 105.74083099999854
+    },
+    {
+      "id": "accuracy-probe-3",
+      "input_sha256": "62275ee6877cf0f7826fd1f4b3077ca10bb4cd09bf225b7722bc1f6545b9de6b",
+      "tokens": {
+        "test_q": {
+          "sha256": "7f332ba887e1d0ea83bcb68ec06d6d59e917ffde31e0dc3f92f5ca0c1db9c1ea",
+          "tokens": 45,
+          "markers": [
+            13,
+            23
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "test_q": {
+            "type": "noul",
+            "noul": 0.9172,
+            "confidence": 0.9172,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 45,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 101.05669300000031
+    },
+    {
+      "id": "accuracy-probe-4",
+      "input_sha256": "5d07580834f16bfc4c77b103be75909bd7bf5f8bc42f3ef7af970f3b1258ec54",
+      "tokens": {
+        "test_q": {
+          "sha256": "f6176b06dfe85dd9768a87e1baa2376de17bac4a1532c5538b03dc9b3031619d",
+          "tokens": 46,
+          "markers": [
+            13,
+            23
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "test_q": {
+            "type": "noul",
+            "noul": 0.9945,
+            "confidence": 0.9945,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 46,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 99.17420900000096
+    },
+    {
+      "id": "verify-example",
+      "input_sha256": "fc476957f2beffdc7751961403a7e079012c9a5af53bac19a30174b6e3338d75",
+      "tokens": {
+        "department": {
+          "sha256": "38d23e5201dab6a5b67296454426a091f161992d1afede62c4ac959b78b7f62c",
+          "tokens": 51,
+          "markers": [
+            12,
+            20,
+            29
+          ]
+        },
+        "refund_requested": {
+          "sha256": "cf044b10f56e35724029b1e555c436740ac97ae40f5d3c9085ca190b167dcfc9",
+          "tokens": 47,
+          "markers": [
+            14,
+            24
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9758,
+              "technical": 0.0143,
+              "sales": 0.0099
+            },
+            "confidence": 0.8814,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.9945,
+            "confidence": 0.9945,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 98,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 181.6878889999991
+    },
+    {
+      "id": "verify-negative",
+      "input_sha256": "31d4e485bf7bd4350ce585988b245396f2e54022aebe7b04edd1e24b7d1e7527",
+      "tokens": {
+        "refund_requested": {
+          "sha256": "b57aa0ee34b851fef170b30c71a256f429d36b6971c600e2e7e153e28fe59fb8",
+          "tokens": 46,
+          "markers": [
+            14,
+            24
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.9711,
+            "confidence": 0.9711,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 46,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 107.01889399999942
+    },
+    {
+      "id": "verify-score",
+      "input_sha256": "78d3f947b9c750e7710f7ef5a31625ddd96c6d6b8248d0e63c84351e77c11b2b",
+      "tokens": {
+        "urgency": {
+          "sha256": "c6c197835d7318662db0f4387ac288beee29591699fdf87c5d35fd648a940849",
+          "tokens": 48,
+          "markers": [
+            11,
+            18,
+            24
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "urgency": {
+            "type": "score",
+            "score": 1.9554,
+            "legend": {
+              "0": "not urgent",
+              "1": "soon",
+              "2": "critical deadline or blocking issue"
+            },
+            "probabilities": {
+              "0": 0.0005,
+              "1": 0.0437,
+              "2": 0.9559
+            },
+            "confidence": 0.833,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 48,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 107.69371199999966
+    }
+  ],
+  "note": "Supplementary fixed probes; not a held-out dataset qualification. Timings include cold cache and bucket switching.",
+  "accelerator_stats_after_measurement": null
+}

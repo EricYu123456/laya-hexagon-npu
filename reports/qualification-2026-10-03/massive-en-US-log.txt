@@ -1,0 +1,231 @@
+[0;93m2026-10-02 19:16:56.205466165 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 19:16:56.352654955 [W:onnxruntime:Default, qnn_backend_manager.cc:318 operator()] Using existing ADSP_LIBRARY_PATH setting of /home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn;/usr/lib/rfsa/adsp;/dsp, which may cause the HTP backend to fail.[m
+[0;93m2026-10-02 19:16:56.511067690 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 19:16:56.511184352 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+massive-en-US-0: 5579.5 ms; tokens [166]
+massive-en-US-85: 1840.4 ms; tokens [164]
+massive-en-US-103: 1782.8 ms; tokens [164]
+massive-en-US-158: 1804.1 ms; tokens [161]
+massive-en-US-286: 1803.3 ms; tokens [165]
+massive-en-US-299: 1790.4 ms; tokens [162]
+massive-en-US-608: 1786.7 ms; tokens [160]
+massive-en-US-631: 1776.6 ms; tokens [166]
+massive-en-US-730: 1794.2 ms; tokens [162]
+massive-en-US-761: 1794.0 ms; tokens [165]
+massive-en-US-768: 1800.1 ms; tokens [165]
+massive-en-US-1121: 1798.1 ms; tokens [164]
+massive-en-US-1266: 1807.3 ms; tokens [171]
+massive-en-US-1372: 1790.2 ms; tokens [164]
+massive-en-US-1374: 1805.7 ms; tokens [164]
+massive-en-US-1401: 1800.0 ms; tokens [162]
+massive-en-US-1474: 1812.0 ms; tokens [165]
+massive-en-US-1537: 1796.6 ms; tokens [165]
+massive-en-US-1639: 1782.3 ms; tokens [163]
+massive-en-US-1646: 1788.2 ms; tokens [165]
+massive-en-US-1683: 1795.5 ms; tokens [169]
+massive-en-US-1710: 1805.4 ms; tokens [164]
+massive-en-US-1830: 1794.1 ms; tokens [165]
+massive-en-US-2164: 1790.9 ms; tokens [162]
+massive-en-US-2167: 1802.8 ms; tokens [165]
+massive-en-US-2205: 1806.1 ms; tokens [162]
+massive-en-US-2206: 1795.8 ms; tokens [162]
+massive-en-US-2320: 1791.7 ms; tokens [164]
+massive-en-US-2386: 1793.8 ms; tokens [163]
+massive-en-US-2447: 1798.0 ms; tokens [176]
+massive-en-US-2545: 1770.6 ms; tokens [162]
+massive-en-US-2610: 1799.0 ms; tokens [171]
+massive-en-US-3020: 1798.8 ms; tokens [166]
+massive-en-US-3213: 1800.2 ms; tokens [165]
+massive-en-US-3329: 1830.3 ms; tokens [164]
+massive-en-US-3361: 1798.4 ms; tokens [165]
+massive-en-US-3413: 1828.9 ms; tokens [166]
+massive-en-US-3435: 1790.1 ms; tokens [162]
+massive-en-US-3590: 1789.6 ms; tokens [160]
+massive-en-US-3603: 1792.7 ms; tokens [167]
+massive-en-US-3631: 1800.1 ms; tokens [166]
+massive-en-US-3674: 1830.3 ms; tokens [171]
+massive-en-US-3741: 1803.8 ms; tokens [164]
+massive-en-US-3761: 1800.4 ms; tokens [164]
+massive-en-US-3771: 1787.2 ms; tokens [162]
+massive-en-US-3915: 1810.1 ms; tokens [168]
+massive-en-US-4026: 1790.5 ms; tokens [160]
+massive-en-US-4125: 1786.3 ms; tokens [172]
+massive-en-US-4224: 1786.2 ms; tokens [165]
+massive-en-US-4236: 1794.8 ms; tokens [162]
+massive-en-US-4241: 1783.2 ms; tokens [161]
+massive-en-US-4248: 1812.8 ms; tokens [161]
+massive-en-US-4309: 1795.1 ms; tokens [169]
+massive-en-US-4362: 1793.7 ms; tokens [165]
+massive-en-US-4375: 1792.8 ms; tokens [161]
+massive-en-US-4391: 1792.4 ms; tokens [169]
+massive-en-US-4428: 1770.8 ms; tokens [160]
+massive-en-US-4461: 1813.5 ms; tokens [164]
+massive-en-US-4550: 1798.1 ms; tokens [168]
+massive-en-US-4710: 1798.2 ms; tokens [164]
+massive-en-US-4776: 1796.3 ms; tokens [165]
+massive-en-US-4848: 1802.6 ms; tokens [164]
+massive-en-US-4882: 1786.6 ms; tokens [165]
+massive-en-US-4887: 1798.2 ms; tokens [167]
+massive-en-US-5037: 1790.8 ms; tokens [162]
+massive-en-US-5085: 1791.5 ms; tokens [164]
+massive-en-US-5127: 1786.9 ms; tokens [172]
+massive-en-US-5128: 1813.8 ms; tokens [164]
+massive-en-US-5261: 1812.7 ms; tokens [164]
+massive-en-US-5296: 1808.8 ms; tokens [172]
+massive-en-US-5396: 1798.5 ms; tokens [162]
+massive-en-US-5465: 1786.4 ms; tokens [164]
+massive-en-US-5615: 1790.2 ms; tokens [169]
+massive-en-US-5671: 1774.8 ms; tokens [165]
+massive-en-US-5707: 1778.4 ms; tokens [162]
+massive-en-US-5812: 1789.1 ms; tokens [163]
+massive-en-US-5823: 1781.9 ms; tokens [161]
+massive-en-US-5952: 1794.5 ms; tokens [166]
+massive-en-US-5966: 1794.9 ms; tokens [166]
+massive-en-US-6014: 1779.1 ms; tokens [162]
+massive-en-US-6015: 1784.2 ms; tokens [162]
+massive-en-US-6159: 1783.0 ms; tokens [161]
+massive-en-US-6166: 1774.0 ms; tokens [163]
+massive-en-US-6289: 1767.1 ms; tokens [165]
+massive-en-US-6319: 1783.8 ms; tokens [168]
+massive-en-US-6517: 1781.9 ms; tokens [159]
+massive-en-US-6559: 1800.1 ms; tokens [166]
+massive-en-US-6617: 1808.5 ms; tokens [164]
+massive-en-US-6646: 1792.4 ms; tokens [166]
+massive-en-US-6683: 1802.0 ms; tokens [160]
+massive-en-US-6918: 1785.7 ms; tokens [162]
+massive-en-US-6928: 1779.1 ms; tokens [162]
+massive-en-US-7044: 1795.0 ms; tokens [171]
+massive-en-US-7170: 1809.4 ms; tokens [176]
+massive-en-US-8230: 1774.5 ms; tokens [167]
+massive-en-US-8260: 1789.3 ms; tokens [168]
+massive-en-US-8520: 1793.6 ms; tokens [163]
+massive-en-US-9112: 1813.2 ms; tokens [164]
+massive-en-US-9121: 1795.2 ms; tokens [164]
+massive-en-US-9236: 1799.1 ms; tokens [167]
+massive-en-US-9542: 1813.2 ms; tokens [167]
+massive-en-US-9640: 1784.9 ms; tokens [163]
+massive-en-US-9678: 1790.5 ms; tokens [164]
+massive-en-US-9760: 1792.4 ms; tokens [160]
+massive-en-US-9918: 1796.0 ms; tokens [164]
+massive-en-US-9924: 1795.5 ms; tokens [163]
+massive-en-US-9942: 1813.7 ms; tokens [166]
+massive-en-US-9979: 1781.7 ms; tokens [162]
+massive-en-US-10078: 1785.0 ms; tokens [164]
+massive-en-US-10090: 1799.1 ms; tokens [165]
+massive-en-US-10164: 1793.8 ms; tokens [166]
+massive-en-US-10177: 1821.1 ms; tokens [163]
+massive-en-US-10197: 1787.4 ms; tokens [165]
+massive-en-US-10220: 1807.5 ms; tokens [168]
+massive-en-US-10285: 1796.8 ms; tokens [163]
+massive-en-US-10433: 1780.4 ms; tokens [162]
+massive-en-US-10571: 1784.6 ms; tokens [159]
+massive-en-US-10590: 1822.9 ms; tokens [165]
+massive-en-US-10600: 1791.3 ms; tokens [170]
+massive-en-US-10640: 1792.3 ms; tokens [169]
+massive-en-US-10755: 1792.0 ms; tokens [165]
+massive-en-US-10846: 1812.2 ms; tokens [181]
+massive-en-US-10931: 1794.0 ms; tokens [163]
+massive-en-US-11098: 1790.8 ms; tokens [166]
+massive-en-US-11215: 1794.3 ms; tokens [159]
+massive-en-US-11335: 1782.0 ms; tokens [165]
+massive-en-US-11600: 1794.1 ms; tokens [170]
+massive-en-US-11664: 1798.1 ms; tokens [173]
+massive-en-US-11733: 1788.1 ms; tokens [164]
+massive-en-US-11782: 1807.3 ms; tokens [167]
+massive-en-US-11796: 1780.4 ms; tokens [168]
+massive-en-US-11858: 1768.8 ms; tokens [162]
+massive-en-US-11903: 1811.2 ms; tokens [162]
+massive-en-US-11915: 1775.9 ms; tokens [162]
+massive-en-US-12008: 1787.6 ms; tokens [166]
+massive-en-US-12104: 1801.4 ms; tokens [162]
+massive-en-US-12254: 1780.3 ms; tokens [163]
+massive-en-US-12376: 1807.6 ms; tokens [168]
+massive-en-US-12452: 1778.1 ms; tokens [163]
+massive-en-US-12623: 1777.5 ms; tokens [168]
+massive-en-US-12724: 1823.2 ms; tokens [165]
+massive-en-US-12800: 1777.5 ms; tokens [163]
+massive-en-US-12802: 1784.5 ms; tokens [165]
+massive-en-US-12869: 1784.8 ms; tokens [160]
+massive-en-US-12982: 1773.7 ms; tokens [162]
+massive-en-US-13077: 1766.3 ms; tokens [163]
+massive-en-US-13122: 1775.9 ms; tokens [164]
+massive-en-US-13177: 1801.7 ms; tokens [168]
+massive-en-US-13524: 1780.1 ms; tokens [166]
+massive-en-US-13604: 1772.9 ms; tokens [165]
+massive-en-US-13619: 1812.2 ms; tokens [168]
+massive-en-US-13681: 1794.2 ms; tokens [167]
+massive-en-US-13798: 1800.6 ms; tokens [168]
+massive-en-US-13869: 1775.1 ms; tokens [167]
+massive-en-US-14315: 1790.5 ms; tokens [169]
+massive-en-US-14646: 1809.2 ms; tokens [168]
+massive-en-US-14701: 1779.1 ms; tokens [164]
+massive-en-US-14817: 1780.6 ms; tokens [165]
+massive-en-US-14933: 1797.6 ms; tokens [167]
+massive-en-US-15124: 1792.1 ms; tokens [167]
+massive-en-US-15155: 1786.6 ms; tokens [168]
+massive-en-US-15177: 1784.6 ms; tokens [165]
+massive-en-US-15185: 1790.1 ms; tokens [160]
+massive-en-US-15208: 1791.2 ms; tokens [163]
+massive-en-US-15345: 1804.0 ms; tokens [165]
+massive-en-US-15457: 1786.0 ms; tokens [169]
+massive-en-US-15546: 1792.0 ms; tokens [166]
+massive-en-US-15565: 1803.4 ms; tokens [170]
+massive-en-US-15598: 1814.3 ms; tokens [164]
+massive-en-US-15736: 1789.8 ms; tokens [165]
+massive-en-US-15796: 1782.6 ms; tokens [160]
+massive-en-US-15839: 1777.5 ms; tokens [159]
+massive-en-US-15890: 1779.4 ms; tokens [170]
+massive-en-US-15995: 1790.8 ms; tokens [164]
+massive-en-US-16410: 1802.4 ms; tokens [160]
+massive-en-US-16437: 1789.6 ms; tokens [165]
+massive-en-US-16438: 1785.1 ms; tokens [164]
+massive-en-US-16496: 1773.7 ms; tokens [162]
+massive-en-US-16891: 1782.9 ms; tokens [163]
+massive-en-US-17081: 1782.3 ms; tokens [170]
+{
+  "decisions": 180,
+  "decision_mismatches": 0,
+  "decision_error_percent": 0.0,
+  "argmax_mismatches": 0,
+  "argmax_error_percent": 0,
+  "total_variation": {
+    "count": 180,
+    "mean": 0.004107587165113963,
+    "p50": 0.0018583754418717963,
+    "p95": 0.013981986139819845,
+    "max": 0.023900000000000036
+  },
+  "probability_mae": {
+    "count": 180,
+    "mean": 0.00045639857390155145,
+    "p50": 0.0002064861602079774,
+    "p95": 0.0015535540155355383,
+    "max": 0.00265555555555556
+  },
+  "max_probability_error": {
+    "count": 180,
+    "mean": 0.0036628146694097793,
+    "p50": 0.0016034309972305372,
+    "p95": 0.01358764421837641,
+    "max": 0.023900000000000032
+  },
+  "noul_abs_error": null,
+  "score_abs_error": null,
+  "score_normalized_abs_error": null,
+  "confidence_abs_error": {
+    "count": 180,
+    "mean": 0.002987777777777781,
+    "p50": 0.0013000000000000789,
+    "p95": 0.01029999999999998,
+    "max": 0.01980000000000004
+  },
+  "action_probability_abs_error": {
+    "count": 180,
+    "mean": 0.0,
+    "p50": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  }
+}
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc

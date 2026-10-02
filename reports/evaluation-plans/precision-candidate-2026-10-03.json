@@ -1,0 +1,52 @@
+{
+  "declared_utc": "2026-10-02T16:17:54Z",
+  "purpose": "Freeze the numerical recipe selected on the reserved development cases before replaying all historical evaluation suites.",
+  "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204",
+  "input_limits": {"max_len": 1024, "head_max_len": 256},
+  "calibration_indices": [0,25,50,75,100,125,150,175,200,225,250,275,300,325,350,375],
+  "development_indices": [1,26,51,76,101,126,151,176,201,226,251,276,301,326,351,376],
+  "recipe": {
+    "activation_bits": 16,
+    "group_outliers": true,
+    "conv_linear": true,
+    "split_cls": true,
+    "split_features": true,
+    "feature_thresholds": [100,500,2000],
+    "feature_group_sizes": [631,127,6,4],
+    "zero_pad_embeddings": true,
+    "matmul_rhs_refinement": "all",
+    "fold_norms": true,
+    "weight_refinement": "two_term_int8",
+    "layernorm_affine_refinement": "unit_ln_u16_affine",
+    "refined_layernorms_per_bucket": 3,
+    "independent_hardware_conv_offset_calibration_per_bucket": true,
+    "calibration_sequences": {"768": 32, "1024": 64},
+    "long_calibration_source": "The 1024 bucket adds repeated-state variants of the same reserved calibration cases."
+  },
+  "uncorrected_graph_sha256": {
+    "768": "845d48be4c2ee3aa5ae01134c49de1e238e7432e8cac777f69b372e3f36afcb7",
+    "1024": "3d340584c749245e8fe18ea71ba81002b02db482a41c44395533113ac222365c"
+  },
+  "development_selection_evidence": {
+    "actual_npu_report_sha256": "85b8ef5097aa2e48442411800291277bb045579c980f89b90b64e5ba0ef59a22",
+    "corrected_768_graph_sha256": "a3ba4ac988f726d61d06543e723612e63c3047fe53d9133b8a7b5858a7365003",
+    "decisions": 80,
+    "decision_mismatches": 0,
+    "mean_total_variation": 0.005770128628288788,
+    "cpu_ep_fallbacks": 0,
+    "identical_input_cases": 16,
+    "cpu_diagnostic_report_sha256": "f17ed37dc3be43fed8c707c740f5caaa33a1d03444a244c1af26f6a04e1cd7da",
+    "baseline_npu_report_sha256": "4032ffaaa5767890afd3dbf8f75fdd7202095c2a2cad64e4c346a142232e2079"
+  },
+  "qualification": {
+    "driver": "qualify_one_percent.py",
+    "historical_inventory_sha256": "bcb526b9a1fda46b5f296bc905f7a4de8e15d8a2fb02d4e80dd94b0c5be3eee8",
+    "all_suites_must_pass_separately": true,
+    "decision_mismatch_max": 0.01,
+    "mean_total_variation_max": 0.01,
+    "actual_htp_required": true,
+    "cpu_ep_fallbacks_max": 0,
+    "status_at_declaration": "768 development passed; 1024 hardware calibration in progress; full historical qualification not yet started.",
+    "interpretation": "Historical regression evidence, not a fresh independent generalization evaluation. No per-input one-percent guarantee."
+  }
+}

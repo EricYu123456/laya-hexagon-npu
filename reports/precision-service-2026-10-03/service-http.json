@@ -1,0 +1,948 @@
+{
+  "kind": "laya_http_service_verification",
+  "created_utc": "2026-10-02T19:43:28.632806+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "suite_sha256": "467d2f9514b1a43c8d4f9171e62e8fefa03cbaaf8a321d309eaa990ce24e5865",
+  "reference_sha256": "a6655ba00e625a46e598b03b92cdcc7c2e3480d3cca8a72869270022e058c543",
+  "expected_npu_sha256": "0f2916e1465ec520ac5db781d5c3ed61ebd4a5d1a826a7d12f41dad38872b665",
+  "records": [
+    {
+      "id": "refund-language-1",
+      "http_status": 200,
+      "http_elapsed_ms": 1798.5005750015262,
+      "api_elapsed_ms": 1793.0,
+      "expected_bucket": 768,
+      "accelerator_delta": {
+        "npu_calls": 1,
+        "bucket_calls": {
+          "768": 1
+        },
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "npu_execution_verified": true,
+      "reported_tokens_equal": true,
+      "standalone_npu_outputs_equal": true,
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "refund": {
+            "type": "noul",
+            "noul": 0.0014,
+            "confidence": 0.9986,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 42,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 1793.0,
+        "checkpoint": "multilingual"
+      },
+      "decisions": {
+        "refund": {
+          "total_variation": 9.999999999999452e-05,
+          "probability_mae": 9.999999999999452e-05,
+          "max_probability_error": 0.00010000000000000005,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 9.999999999998899e-05,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0,
+          "noul_abs_error": 0.00010000000000000005
+        }
+      }
+    },
+    {
+      "id": "refund-language-2",
+      "http_status": 200,
+      "http_elapsed_ms": 1756.0684780000884,
+      "api_elapsed_ms": 1750.9,
+      "expected_bucket": 768,
+      "accelerator_delta": {
+        "npu_calls": 1,
+        "bucket_calls": {
+          "768": 1
+        },
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "npu_execution_verified": true,
+      "reported_tokens_equal": true,
+      "standalone_npu_outputs_equal": true,
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "refund": {
+            "type": "noul",
+            "noul": 0.6869,
+            "confidence": 0.6869,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 48,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 1750.9,
+        "checkpoint": "multilingual"
+      },
+      "decisions": {
+        "refund": {
+          "total_variation": 0.0045000000000000595,
+          "probability_mae": 0.0045000000000000595,
+          "max_probability_error": 0.0045000000000000595,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0045000000000000595,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0,
+          "noul_abs_error": 0.0045000000000000595
+        }
+      }
+    },
+    {
+      "id": "refund-language-3",
+      "http_status": 200,
+      "http_elapsed_ms": 1740.096891997382,
+      "api_elapsed_ms": 1734.6,
+      "expected_bucket": 768,
+      "accelerator_delta": {
+        "npu_calls": 1,
+        "bucket_calls": {
+          "768": 1
+        },
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "npu_execution_verified": true,
+      "reported_tokens_equal": true,
+      "standalone_npu_outputs_equal": true,
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "refund": {
+            "type": "noul",
+            "noul": 0.9259,
+            "confidence": 0.9259,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 45,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 1734.6,
+        "checkpoint": "multilingual"
+      },
+      "decisions": {
+        "refund": {
+          "total_variation": 0.00869999999999993,
+          "probability_mae": 0.00869999999999993,
+          "max_probability_error": 0.00869999999999993,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.00869999999999993,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0,
+          "noul_abs_error": 0.00869999999999993
+        }
+      }
+    },
+    {
+      "id": "refund-language-4",
+      "http_status": 200,
+      "http_elapsed_ms": 1710.8505239993974,
+      "api_elapsed_ms": 1702.6,
+      "expected_bucket": 768,
+      "accelerator_delta": {
+        "npu_calls": 1,
+        "bucket_calls": {
+          "768": 1
+        },
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "npu_execution_verified": true,
+      "reported_tokens_equal": true,
+      "standalone_npu_outputs_equal": true,
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "refund": {
+            "type": "noul",
+            "noul": 0.9945,
+            "confidence": 0.9945,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 46,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 1702.6,
+        "checkpoint": "multilingual"
+      },
+      "decisions": {
+        "refund": {
+          "total_variation": 0.0,
+          "probability_mae": 0.0,
+          "max_probability_error": 0.0,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0,
+          "noul_abs_error": 0.0
+        }
+      }
+    },
+    {
+      "id": "billing-example",
+      "http_status": 200,
+      "http_elapsed_ms": 3415.7843369976035,
+      "api_elapsed_ms": 3403.8,
+      "expected_bucket": 768,
+      "accelerator_delta": {
+        "npu_calls": 2,
+        "bucket_calls": {
+          "768": 2
+        },
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "npu_execution_verified": true,
+      "reported_tokens_equal": true,
+      "standalone_npu_outputs_equal": true,
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9753,
+              "technical": 0.0146,
+              "sales": 0.0102
+            },
+            "confidence": 0.8792,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.9945,
+            "confidence": 0.9945,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 98,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 3403.8,
+        "checkpoint": "multilingual"
+      },
+      "decisions": {
+        "department": {
+          "total_variation": 0.0005975202479752079,
+          "probability_mae": 0.0003983468319834719,
+          "max_probability_error": 0.000597520247975214,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0021999999999999797,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0
+        },
+        "refund_requested": {
+          "total_variation": 0.0,
+          "probability_mae": 0.0,
+          "max_probability_error": 0.0,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0,
+          "noul_abs_error": 0.0
+        }
+      }
+    },
+    {
+      "id": "urgency-score",
+      "http_status": 200,
+      "http_elapsed_ms": 1749.264616999426,
+      "api_elapsed_ms": 1741.3,
+      "expected_bucket": 768,
+      "accelerator_delta": {
+        "npu_calls": 1,
+        "bucket_calls": {
+          "768": 1
+        },
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "npu_execution_verified": true,
+      "reported_tokens_equal": true,
+      "standalone_npu_outputs_equal": true,
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "urgency": {
+            "type": "score",
+            "score": 1.9549,
+            "legend": {
+              "0": "not urgent",
+              "1": "soon",
+              "2": "critical deadline or blocking issue"
+            },
+            "probabilities": {
+              "0": 0.0005,
+              "1": 0.0442,
+              "2": 0.9554
+            },
+            "confidence": 0.8316,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 48,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 1741.3,
+        "checkpoint": "multilingual"
+      },
+      "decisions": {
+        "urgency": {
+          "total_variation": 0.0004999500049994859,
+          "probability_mae": 0.00033330000333299065,
+          "max_probability_error": 0.0004999500049994998,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0013999999999999568,
+          "action_probability_abs_error": 0.0,
+          "score_abs_error": 0.0004999999999999449,
+          "score_normalized_abs_error": 0.00024999999999997247,
+          "decision_mismatch": 0
+        }
+      }
+    },
+    {
+      "id": "long-english-1024",
+      "http_status": 200,
+      "http_elapsed_ms": 10441.016112999932,
+      "api_elapsed_ms": 10433.5,
+      "expected_bucket": 1024,
+      "accelerator_delta": {
+        "npu_calls": 2,
+        "bucket_calls": {
+          "1024": 2
+        },
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "npu_execution_verified": true,
+      "reported_tokens_equal": true,
+      "standalone_npu_outputs_equal": true,
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.3213,
+              "technical": 0.3595,
+              "sales": 0.3192
+            },
+            "confidence": 0.0014,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.384,
+            "confidence": 0.616,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 2048,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 10433.5,
+        "checkpoint": "multilingual"
+      },
+      "decisions": {
+        "department": {
+          "total_variation": 0.009532873287328686,
+          "probability_mae": 0.006355248858219124,
+          "max_probability_error": 0.009532873287328714,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0
+        },
+        "refund_requested": {
+          "total_variation": 0.004600000000000021,
+          "probability_mae": 0.004600000000000021,
+          "max_probability_error": 0.0046000000000000485,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0046000000000000485,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0,
+          "noul_abs_error": 0.004599999999999993
+        }
+      }
+    },
+    {
+      "id": "short-after-long",
+      "http_status": 200,
+      "http_elapsed_ms": 7318.324404001032,
+      "api_elapsed_ms": 7309.9,
+      "expected_bucket": 768,
+      "accelerator_delta": {
+        "npu_calls": 2,
+        "bucket_calls": {
+          "768": 2
+        },
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "npu_execution_verified": true,
+      "reported_tokens_equal": true,
+      "standalone_npu_outputs_equal": true,
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9753,
+              "technical": 0.0146,
+              "sales": 0.0102
+            },
+            "confidence": 0.8792,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.9945,
+            "confidence": 0.9945,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 98,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 7309.9,
+        "checkpoint": "multilingual"
+      },
+      "decisions": {
+        "department": {
+          "total_variation": 0.0005975202479752079,
+          "probability_mae": 0.0003983468319834719,
+          "max_probability_error": 0.000597520247975214,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0021999999999999797,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0
+        },
+        "refund_requested": {
+          "total_variation": 0.0,
+          "probability_mae": 0.0,
+          "max_probability_error": 0.0,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0,
+          "noul_abs_error": 0.0
+        }
+      }
+    },
+    {
+      "id": "long-chinese-1024",
+      "http_status": 200,
+      "http_elapsed_ms": 10463.375262999762,
+      "api_elapsed_ms": 10456.8,
+      "expected_bucket": 1024,
+      "accelerator_delta": {
+        "npu_calls": 2,
+        "bucket_calls": {
+          "1024": 2
+        },
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "npu_execution_verified": true,
+      "reported_tokens_equal": true,
+      "standalone_npu_outputs_equal": true,
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.5367,
+              "technical": 0.3295,
+              "sales": 0.1339
+            },
+            "confidence": 0.118,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.6705,
+            "confidence": 0.6705,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 2048,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 10456.8,
+        "checkpoint": "multilingual"
+      },
+      "decisions": {
+        "department": {
+          "total_variation": 0.0003463353664633212,
+          "probability_mae": 0.0002308902443088808,
+          "max_probability_error": 0.00034633536646333507,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0002999999999999947,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0
+        },
+        "refund_requested": {
+          "total_variation": 0.0030000000000000027,
+          "probability_mae": 0.0030000000000000027,
+          "max_probability_error": 0.0030000000000000027,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0030000000000000027,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0,
+          "noul_abs_error": 0.0030000000000000027
+        }
+      }
+    },
+    {
+      "id": "short-after-second-long",
+      "http_status": 200,
+      "http_elapsed_ms": 7164.047913000104,
+      "api_elapsed_ms": 7154.9,
+      "expected_bucket": 768,
+      "accelerator_delta": {
+        "npu_calls": 2,
+        "bucket_calls": {
+          "768": 2
+        },
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 1,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "npu_execution_verified": true,
+      "reported_tokens_equal": true,
+      "standalone_npu_outputs_equal": true,
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9753,
+              "technical": 0.0146,
+              "sales": 0.0102
+            },
+            "confidence": 0.8792,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.9945,
+            "confidence": 0.9945,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 98,
+          "output_tokens": 0
+        },
+        "elapsed_ms": 7154.9,
+        "checkpoint": "multilingual"
+      },
+      "decisions": {
+        "department": {
+          "total_variation": 0.0005975202479752079,
+          "probability_mae": 0.0003983468319834719,
+          "max_probability_error": 0.000597520247975214,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0021999999999999797,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0
+        },
+        "refund_requested": {
+          "total_variation": 0.0,
+          "probability_mae": 0.0,
+          "max_probability_error": 0.0,
+          "argmax_mismatch": 0,
+          "confidence_abs_error": 0.0,
+          "action_probability_abs_error": 0.0,
+          "decision_mismatch": 0,
+          "noul_abs_error": 0.0
+        }
+      }
+    }
+  ],
+  "invalid_requests": [
+    {
+      "http_status": 422,
+      "elapsed_ms": 9.735546998854261,
+      "accelerator_delta": {
+        "npu_calls": 0,
+        "bucket_calls": {},
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "passed": true,
+      "response": {
+        "detail": [
+          {
+            "type": "too_short",
+            "loc": [
+              "body",
+              "questions"
+            ],
+            "msg": "Dictionary should have at least 1 item after validation, not 0",
+            "input": {},
+            "ctx": {
+              "field_type": "Dictionary",
+              "min_length": 1,
+              "actual_length": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "http_status": 422,
+      "elapsed_ms": 6.266931999562075,
+      "accelerator_delta": {
+        "npu_calls": 0,
+        "bucket_calls": {},
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "passed": true,
+      "response": {
+        "detail": [
+          {
+            "type": "value_error",
+            "loc": [
+              "body",
+              "questions",
+              "q"
+            ],
+            "msg": "Value error, choice/score require 2–12 criteria",
+            "input": {
+              "type": "choice",
+              "instructions": "Choose.",
+              "criteria": [
+                "one"
+              ]
+            },
+            "ctx": {
+              "error": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "http_status": 422,
+      "elapsed_ms": 4.3377090005378705,
+      "accelerator_delta": {
+        "npu_calls": 0,
+        "bucket_calls": {},
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "passed": true,
+      "response": {
+        "detail": [
+          {
+            "type": "value_error",
+            "loc": [
+              "body",
+              "questions",
+              "q"
+            ],
+            "msg": "Value error, score criteria must be a list",
+            "input": {
+              "type": "score",
+              "instructions": "Score.",
+              "criteria": {
+                "a": "A",
+                "b": "B"
+              }
+            },
+            "ctx": {
+              "error": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "http_status": 422,
+      "elapsed_ms": 5.302372999722138,
+      "accelerator_delta": {
+        "npu_calls": 0,
+        "bucket_calls": {},
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "passed": true,
+      "response": {
+        "detail": [
+          {
+            "type": "value_error",
+            "loc": [
+              "body"
+            ],
+            "msg": "Value error, state exceeds 16000 characters",
+            "input": {
+              "state": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "questions": {
+                "q": {
+                  "type": "noul",
+                  "instructions": "Determine."
+                }
+              }
+            },
+            "ctx": {
+              "error": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "http_status": 422,
+      "elapsed_ms": 5.061752999608871,
+      "accelerator_delta": {
+        "npu_calls": 0,
+        "bucket_calls": {},
+        "cpu_fallbacks": 0,
+        "context_cache_hits": 0,
+        "context_cache_misses": 0,
+        "context_cache_errors": 0
+      },
+      "passed": true,
+      "response": {
+        "detail": [
+          {
+            "type": "too_long",
+            "loc": [
+              "body",
+              "questions"
+            ],
+            "msg": "Dictionary should have at most 4 items after validation, not 5",
+            "input": {
+              "0": {
+                "type": "noul",
+                "instructions": "Determine."
+              },
+              "1": {
+                "type": "noul",
+                "instructions": "Determine."
+              },
+              "2": {
+                "type": "noul",
+                "instructions": "Determine."
+              },
+              "3": {
+                "type": "noul",
+                "instructions": "Determine."
+              },
+              "4": {
+                "type": "noul",
+                "instructions": "Determine."
+              }
+            },
+            "ctx": {
+              "field_type": "Dictionary",
+              "max_length": 4,
+              "actual_length": 5
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "passed": true,
+  "integration_passed": true,
+  "runtime_checks_passed": true,
+  "development_fidelity_passed": true,
+  "standalone_development_fidelity_passed": true,
+  "note": "passed is an alias for integration_passed: HTTP validation, strict NPU execution, token usage, both bucket transitions, and exact standalone NPU output replay. It is not a fidelity qualification. development_fidelity_passed separately retains the unchanged <=5% decision-error and mean-TV <=5% gates on these development probes. Separate declared evaluations qualify fidelity. Token/marker hashes are established by the standalone runtime comparison.",
+  "health_before": {
+    "status": "ready",
+    "checkpoint": "multilingual",
+    "device": "npu",
+    "threads": 4,
+    "revision": "1c5edc17a7acd8701df6fc341c0d179f1c62c982",
+    "supported_input_capacity": 1024,
+    "encoder_provider": "QNNExecutionProvider",
+    "cpu_fallbacks": 0,
+    "supported_buckets": [
+      768,
+      1024
+    ],
+    "npu_calls": 1,
+    "context_cache_hits": 1,
+    "context_cache_misses": 0,
+    "context_cache_errors": 0,
+    "bucket_calls": {
+      "768": 1
+    }
+  },
+  "long_short_transition_verified": true,
+  "overall": {
+    "decisions": 15,
+    "decision_mismatches": 0,
+    "decision_error_percent": 0.0,
+    "argmax_mismatches": 0,
+    "argmax_error_percent": 0,
+    "total_variation": {
+      "count": 15,
+      "mean": 0.002204781293514475,
+      "p50": 0.0005975202479752079,
+      "p95": 0.008949861986198557,
+      "max": 0.009532873287328686
+    },
+    "probability_mae": {
+      "count": 15,
+      "mean": 0.0019342986401207612,
+      "p50": 0.0003983468319834719,
+      "p95": 0.007058674200753364,
+      "max": 0.00869999999999993
+    },
+    "max_probability_error": {
+      "count": 15,
+      "mean": 0.002204781293514482,
+      "p50": 0.000597520247975214,
+      "p95": 0.008949861986198564,
+      "max": 0.009532873287328714
+    },
+    "noul_abs_error": {
+      "count": 9,
+      "mean": 0.0023222222222222207,
+      "p50": 0.00010000000000000005,
+      "p95": 0.0070599999999999535,
+      "max": 0.00869999999999993
+    },
+    "score_abs_error": {
+      "count": 1,
+      "mean": 0.0004999999999999449,
+      "p50": 0.0004999999999999449,
+      "p95": 0.0004999999999999449,
+      "max": 0.0004999999999999449
+    },
+    "score_normalized_abs_error": {
+      "count": 1,
+      "mean": 0.00024999999999997247,
+      "p50": 0.00024999999999997247,
+      "p95": 0.00024999999999997247,
+      "max": 0.00024999999999997247
+    },
+    "confidence_abs_error": {
+      "count": 15,
+      "mean": 0.0019466666666666614,
+      "p50": 0.0013999999999999568,
+      "p95": 0.005830000000000009,
+      "max": 0.00869999999999993
+    },
+    "action_probability_abs_error": {
+      "count": 15,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    }
+  },
+  "health_after": {
+    "status": "ready",
+    "checkpoint": "multilingual",
+    "device": "npu",
+    "threads": 4,
+    "revision": "1c5edc17a7acd8701df6fc341c0d179f1c62c982",
+    "supported_input_capacity": 1024,
+    "encoder_provider": "QNNExecutionProvider",
+    "cpu_fallbacks": 0,
+    "supported_buckets": [
+      768,
+      1024
+    ],
+    "npu_calls": 16,
+    "context_cache_hits": 5,
+    "context_cache_misses": 0,
+    "context_cache_errors": 0,
+    "bucket_calls": {
+      "768": 12,
+      "1024": 4
+    }
+  }
+}

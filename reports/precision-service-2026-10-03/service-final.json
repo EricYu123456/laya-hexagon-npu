@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-10-02T19:44:44.694057+00:00",
+  "systemd": {
+    "MainPID": "0",
+    "Result": "success",
+    "NRestarts": "0",
+    "ExecMainCode": "0",
+    "ExecMainStatus": "0",
+    "ControlGroup": "",
+    "MemoryCurrent": "[not set]",
+    "MemoryPeak": "[not set]",
+    "MemoryMax": "4294967296",
+    "ActiveState": "inactive",
+    "SubState": "dead",
+    "FragmentPath": "/home/ubuntu/.config/systemd/user/laya.service",
+    "DropInPaths": "",
+    "InvocationID": ""
+  }
+}

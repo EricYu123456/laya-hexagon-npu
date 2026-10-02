@@ -4,3 +4,9 @@
 reports/**/*.json text eol=lf
 reports/**/*.jsonl text eol=lf
 reports/**/*.txt text eol=lf
+tests/*-probes.json text eol=lf
+# The historical CPU reference fingerprints this original CRLF file verbatim.
+tests/fidelity-probes.json -text
+# Qualification pins these original CRLF input bytes as well.
+tests/legacy-fidelity-probes.json -text
+reports/evaluation-plans/one-percent-historical-inventory.json -text

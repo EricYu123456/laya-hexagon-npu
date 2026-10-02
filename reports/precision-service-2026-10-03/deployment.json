@@ -1,0 +1,203 @@
+{
+  "kind": "laya_temporary_deployment_acceptance",
+  "created_utc": "2026-10-02T19:43:19.292633+00:00",
+  "passed": true,
+  "qualification_plan": {
+    "path": "reports/qualification-2026-10-03/qualification-plan.json",
+    "sha256": "459f4c82420c4abab534e910cf0c1a5a95f852e0d8084a328fcd1fb1b3e03942",
+    "bytes": 13011
+  },
+  "independent_audit": {
+    "path": "reports/qualification-2026-10-03/independent-audit.json",
+    "sha256": "2eb39bbd801edad6be44ad7aa3802c491131bf498b16c70230c0639b450b826c",
+    "bytes": 39696
+  },
+  "script": {
+    "path": ".work/deploy_one_percent_service.py",
+    "sha256": "c05d67dcc1ad982f7ec8970721b924657dc9f4126678cacc372408255c410720",
+    "bytes": 26039
+  },
+  "service_unit": "laya.service",
+  "events": [
+    {
+      "event": "manifest_activated",
+      "utc": "2026-10-02T19:43:28.443316+00:00"
+    }
+  ],
+  "cleanup_errors": [],
+  "note": "Successful verification leaves the selected default manifest on disk and restores inactive service state. Failure restores the original default manifest.",
+  "swaps_before": {
+    "created_utc": "2026-10-02T19:43:21.373112+00:00",
+    "proc_swaps": [
+      "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority"
+    ],
+    "required_absent": [
+      "/home/ubuntu/laya-service/.work/one-percent-build.swap",
+      "/home/ubuntu/laya-service/.work/one-percent-build-extra.swap"
+    ]
+  },
+  "stable_manifest": {
+    "path": "npu/fidelity/manifest.one-percent-2026-10-03.json",
+    "sha256": "159e6f8cab13b5362c6241b27e2be1bdfc0a7d402b9521205441a50c9362951b",
+    "bytes": 224329
+  },
+  "graphs": {
+    "768": {
+      "path": "npu/fidelity/precision-2026-10-03/768/backbone_768_a16w8.onnx",
+      "sha256": "a3ba4ac988f726d61d06543e723612e63c3047fe53d9133b8a7b5858a7365003",
+      "bytes": 236191887
+    },
+    "1024": {
+      "path": "npu/fidelity/precision-2026-10-03/1024/backbone_1024_a16w8.onnx",
+      "sha256": "85ce822364a7645a450c0925e5e6ead066edeac8e298d14e22caf31575938843",
+      "bytes": 236302473
+    }
+  },
+  "configuration": {
+    "environment": {
+      "path": "service.env",
+      "sha256": "528eb5a042ad40fb32fe8543e5fd845a69ce3183a7dbbfeb97dca2d122070bb7",
+      "bytes": 301
+    },
+    "unit": {
+      "path": "/home/ubuntu/.config/systemd/user/laya.service",
+      "sha256": "2613f7857fdf1ca51adc484442ec4f87b2c6f7b6f8e4e7e57e46f01f23ca4baa",
+      "bytes": 401
+    },
+    "service_wrapper": {
+      "path": "systemd/run-laya.sh",
+      "sha256": "2997f2685d06f76c36bdf322afd93f7f30f6c9135403c3cfb8572951ef307eb4",
+      "bytes": 288
+    },
+    "npu_environment": {
+      "path": "npu/env.sh",
+      "sha256": "eb5987b0895dcc2f6e5f57bd0aed0ee0809b98bb62bb69fb272ea63873a790bd",
+      "bytes": 886
+    },
+    "http_verifier": {
+      "path": "verify_service.py",
+      "sha256": "f6ab6880ba9106dd3806bf2d6845618c3e719920e5f8dcf15cf88006af2f239b",
+      "bytes": 14699
+    }
+  },
+  "context_cache_before_run": {
+    "path": "reports/qualification-2026-10-03/context-cache-before-run.json",
+    "sha256": "5c717fff8e0214e5cdbf9e5afbd63963bf392027b297827acfc48ffed1c9db25",
+    "bytes": 11223
+  },
+  "original_manifest": {
+    "sha256": "95cadda20ef661ace20e2ba32ed41bef955d76219758cf6453806d8c32b986a7",
+    "backup": "manifest.before.json"
+  },
+  "caches": {
+    "768": {
+      "source": {
+        "path": ".work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx",
+        "sha256": "fdf520d2854bf1831bc2a953769d8864e54940f2dada6223b739f8742c12d52a",
+        "bytes": 363263962
+      },
+      "installed": {
+        "path": "npu/fidelity/context_cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx",
+        "sha256": "fdf520d2854bf1831bc2a953769d8864e54940f2dada6223b739f8742c12d52a",
+        "bytes": 363263962
+      },
+      "identity": {
+        "cache_schema": 2,
+        "model_sha256": "a3ba4ac988f726d61d06543e723612e63c3047fe53d9133b8a7b5858a7365003",
+        "backend": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "htp_arch": 68,
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "provider_options": {
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "htp_arch": "68",
+          "htp_performance_mode": "burst"
+        },
+        "context_embed_mode": 1
+      }
+    },
+    "1024": {
+      "source": {
+        "path": ".work/one-percent-context-cache/backbone_1024_70f31241dece6cacc252064408bb24e233ab9e456fce659965722527d31f0d3a.onnx",
+        "sha256": "bda62396274fdb48cf1d8b0eacf07160b07cf6eb95b17746d524690f708a6857",
+        "bytes": 409409498
+      },
+      "installed": {
+        "path": "npu/fidelity/context_cache/backbone_1024_70f31241dece6cacc252064408bb24e233ab9e456fce659965722527d31f0d3a.onnx",
+        "sha256": "bda62396274fdb48cf1d8b0eacf07160b07cf6eb95b17746d524690f708a6857",
+        "bytes": 409409498
+      },
+      "identity": {
+        "cache_schema": 2,
+        "model_sha256": "85ce822364a7645a450c0925e5e6ead066edeac8e298d14e22caf31575938843",
+        "backend": {
+          "onnxruntime": "1.30.0",
+          "onnxruntime_qnn": "2.5.0",
+          "htp_arch": 68,
+          "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182",
+          "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23",
+          "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85"
+        },
+        "provider_options": {
+          "backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so",
+          "htp_arch": "68",
+          "htp_performance_mode": "burst"
+        },
+        "context_embed_mode": 1
+      }
+    }
+  },
+  "swaps_before_start": {
+    "created_utc": "2026-10-02T19:43:28.397197+00:00",
+    "proc_swaps": [
+      "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority"
+    ],
+    "required_absent": [
+      "/home/ubuntu/laya-service/.work/one-percent-build.swap",
+      "/home/ubuntu/laya-service/.work/one-percent-build-extra.swap"
+    ]
+  },
+  "http_verification_command": [
+    "/home/ubuntu/laya-service/.venv/bin/python",
+    "/home/ubuntu/laya-service/verify_service.py",
+    "--suite",
+    "/home/ubuntu/laya-service/reports/qualification-2026-10-03/supplementary-development-suite.json",
+    "--reference",
+    "/home/ubuntu/laya-service/reports/qualification-2026-10-03/supplementary-development-reference.json",
+    "--expected-npu",
+    "/home/ubuntu/laya-service/reports/qualification-2026-10-03/supplementary-development-npu.json",
+    "--output",
+    "/home/ubuntu/laya-service/reports/precision-service-2026-10-03/service-http.json",
+    "--ready-timeout",
+    "300",
+    "--timeout",
+    "180"
+  ],
+  "swaps_after": {
+    "created_utc": "2026-10-02T19:44:43.882954+00:00",
+    "proc_swaps": [
+      "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority"
+    ],
+    "required_absent": [
+      "/home/ubuntu/laya-service/.work/one-percent-build.swap",
+      "/home/ubuntu/laya-service/.work/one-percent-build-extra.swap"
+    ]
+  },
+  "http_report": {
+    "path": "reports/precision-service-2026-10-03/service-http.json",
+    "sha256": "9bbfc067310170ee7f26990bd342504128e66cb3049805da5d7ee66685572214",
+    "bytes": 42546
+  },
+  "memory_peak_bytes": 3858608128,
+  "final_service_inactive": true,
+  "final_default_manifest": {
+    "path": "npu/fidelity/manifest.json",
+    "sha256": "159e6f8cab13b5362c6241b27e2be1bdfc0a7d402b9521205441a50c9362951b",
+    "bytes": 224329
+  },
+  "completed_utc": "2026-10-02T19:44:44.814442+00:00"
+}

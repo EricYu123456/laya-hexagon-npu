@@ -1,0 +1,2251 @@
+{
+  "kind": "laya_probe_reference",
+  "created_utc": "2026-09-28T16:36:43.739088+00:00",
+  "backend": "cpu",
+  "module": "laya",
+  "threads": 8,
+  "suite_sha256": "bb0b78a15d6804b136f95cc4abd22d3b74aedfaeadfa51aa9c3e93e4ad3786d6",
+  "suite_file_sha256": "ec4741521cc3f801c6515a03df3ab9d2ccf0951eb86f2096fac9494e3490c35f",
+  "model_files": {
+    "model.safetensors": {
+      "sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204"
+    },
+    "rl_agent_config.json": {
+      "semantic_json_sha256": "3cbac8e77bc83a1cb54a4cfa21a9806e2bb3b2b9348151b74536bad4b19be8b4"
+    },
+    "encoder/config.json": {
+      "semantic_json_sha256": "63c6ff324dca566d85b326575694184961acbe97f4f54070fdc1a0337faaba0b"
+    },
+    "tokenizer/tokenizer.json": {
+      "semantic_json_sha256": "781b8f0a0f543024c43cd95ded23081e2709b20ae6f92f986feca33ce02a4a6e"
+    },
+    "tokenizer/tokenizer_config.json": {
+      "semantic_json_sha256": "24ec1d141fc3d2ddd8b9a4cd23d95568f93713b1f5f479dbb8bd5438bc6b7a80"
+    }
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "hostname": "DESKTOP-27U9OHP",
+    "packages": {
+      "laya": "0.3.5",
+      "torch": "2.6.0+cpu",
+      "transformers": "5.0.0",
+      "onnxruntime": "1.30.0"
+    },
+    "laya_source_files": {
+      "__init__.py": "43e8c7d02969b37381915850cb4970e62b6ea0a328ac26c1efc9fb3fca0916d7",
+      "agent.py": "128567096446c5d39af8e4a3a7c4dd9e32a134a1b099ce5a5eed383beeff1b89",
+      "common.py": "f231d42fcec84da203222fcaa89c083b22776e00341e66e118183d754e1dcabf"
+    }
+  },
+  "candidate_assets": null,
+  "records": [
+    {
+      "id": "heldout-long-2",
+      "input_sha256": "b71525b3f9e39bbb7f035ff20d7c70a39fec5cd8bb4333b3b9bd46ac95d0ada8",
+      "tokens": {
+        "action": {
+          "sha256": "ea640ae27fabf95d6b7fb22c0860d784e4db0fb9ec2f33f506c98b9fc087bb1e",
+          "tokens": 1024,
+          "markers": [
+            16,
+            26,
+            40,
+            54
+          ]
+        },
+        "needs_review": {
+          "sha256": "2876c6b57a830b86a2612fb4e43ebd463933624389738a22035118fe4e2bf682",
+          "tokens": 1024,
+          "markers": [
+            12,
+            21
+          ]
+        },
+        "outcome": {
+          "sha256": "47cbf5c26024f40049437e2fa399fa92065926e8a0abdf3bdf69452c9a92398e",
+          "tokens": 1024,
+          "markers": [
+            13,
+            24,
+            40,
+            55
+          ]
+        },
+        "risk": {
+          "sha256": "c5a2fd3efc6257a392a402993d7ae053eb591c4159a1a68be30197b661a16728",
+          "tokens": 1024,
+          "markers": [
+            17,
+            33,
+            45,
+            61
+          ]
+        },
+        "urgency": {
+          "sha256": "1a562729b2bf47f09155d9e48ba84c0982ef1a1272c3b9c9b63e60a9346e8cd0",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            54
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "continue",
+            "probabilities": {
+              "continue": 0.4632,
+              "human_review": 0.0124,
+              "observe": 0.2517,
+              "stop": 0.2727
+            },
+            "confidence": 0.1975,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "needs_review": {
+            "type": "noul",
+            "noul": 0.9665,
+            "confidence": 0.9665,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "outcome": {
+            "type": "choice",
+            "choice": "failure",
+            "probabilities": {
+              "failure": 0.865,
+              "harmful": 0.0032,
+              "partial": 0.0678,
+              "success": 0.064
+            },
+            "confidence": 0.6377,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "risk": {
+            "type": "score",
+            "score": 2.0103,
+            "legend": {
+              "0": "Benign: read-only or clearly safe actions.",
+              "1": "Low: routine writes within scope.",
+              "2": "Moderate: irreversible or out-of-scope actions.",
+              "3": "High: destructive, security-relevant, or policy-violating actions."
+            },
+            "probabilities": {
+              "0": 0.0252,
+              "1": 0.064,
+              "2": 0.7861,
+              "3": 0.1247
+            },
+            "confidence": 0.4825,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 2.1005,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0743,
+              "1": 0.2631,
+              "2": 0.1505,
+              "3": 0.5121
+            },
+            "confidence": 0.1545,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3762.2428780000023
+    },
+    {
+      "id": "heldout-long-27",
+      "input_sha256": "ab8c15edd2ed609d24faf5e402b0f75de91eccf58f749c9e2ed98a8e1395dadb",
+      "tokens": {
+        "action": {
+          "sha256": "b10c870d729e339f1e60e50b70ba48ed4741f0a0c4d2ffe1a70e488797a40d04",
+          "tokens": 1024,
+          "markers": [
+            16,
+            26,
+            40,
+            54
+          ]
+        },
+        "needs_review": {
+          "sha256": "2c3ebef89a4d05fc7d990ffedee6e3f9d42f4f0f14eeee426b1ad13fedea915d",
+          "tokens": 1024,
+          "markers": [
+            12,
+            21
+          ]
+        },
+        "outcome": {
+          "sha256": "937b40f572bd77a9daa67637016ff56c5ebb97064c9d547065abbe6c8acda556",
+          "tokens": 1024,
+          "markers": [
+            13,
+            24,
+            40,
+            55
+          ]
+        },
+        "risk": {
+          "sha256": "5994fec44695f67edd9efbdc8a54fe65a0374a2c3605c4c70c1075f7df06e2a3",
+          "tokens": 1024,
+          "markers": [
+            17,
+            33,
+            45,
+            61
+          ]
+        },
+        "urgency": {
+          "sha256": "68f372f41ca81494811941b52eb0e0f4137440a9e1ef05893e7031999e32585e",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            54
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "stop",
+            "probabilities": {
+              "continue": 0.2872,
+              "human_review": 0.0187,
+              "observe": 0.2795,
+              "stop": 0.4146
+            },
+            "confidence": 0.1676,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "needs_review": {
+            "type": "noul",
+            "noul": 0.96,
+            "confidence": 0.96,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "outcome": {
+            "type": "choice",
+            "choice": "success",
+            "probabilities": {
+              "failure": 0.1862,
+              "harmful": 0.0049,
+              "partial": 0.3405,
+              "success": 0.4683
+            },
+            "confidence": 0.2345,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "risk": {
+            "type": "score",
+            "score": 2.1783,
+            "legend": {
+              "0": "Benign: read-only or clearly safe actions.",
+              "1": "Low: routine writes within scope.",
+              "2": "Moderate: irreversible or out-of-scope actions.",
+              "3": "High: destructive, security-relevant, or policy-violating actions."
+            },
+            "probabilities": {
+              "0": 0.0913,
+              "1": 0.1418,
+              "2": 0.2643,
+              "3": 0.5026
+            },
+            "confidence": 0.1395,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 2.3237,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0478,
+              "1": 0.1724,
+              "2": 0.1881,
+              "3": 0.5917
+            },
+            "confidence": 0.2259,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 4321.460812999998
+    },
+    {
+      "id": "heldout-long-52",
+      "input_sha256": "d76a0c1d473a80707810d7ea31438490a80faae7d502a0b862cbb7b84193b557",
+      "tokens": {
+        "action": {
+          "sha256": "428589c14a5328e65715fa307a04604c038813af07147e2116a62fb6523708c7",
+          "tokens": 1024,
+          "markers": [
+            16,
+            26,
+            40,
+            54
+          ]
+        },
+        "needs_review": {
+          "sha256": "0282f74ba5f00778a26816b2d1248418d666f5923df15ec026e3f39c4d50da2e",
+          "tokens": 1024,
+          "markers": [
+            12,
+            21
+          ]
+        },
+        "outcome": {
+          "sha256": "b4b05c67d1a2ceac27d1958cac2cf91136982bdfc20e0ee97fe4efca46b0e23a",
+          "tokens": 1024,
+          "markers": [
+            13,
+            24,
+            40,
+            55
+          ]
+        },
+        "risk": {
+          "sha256": "fc572b552c9e4cb274bb91bae8b9fbb5719ff34108121e742b04f5083fe01c06",
+          "tokens": 1024,
+          "markers": [
+            17,
+            33,
+            45,
+            61
+          ]
+        },
+        "urgency": {
+          "sha256": "d1417aa832427dac0cbaaad01b6fcce878db4b7287ea85ae62a5994e1e0a1892",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            54
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "continue",
+            "probabilities": {
+              "continue": 0.5459,
+              "human_review": 0.0492,
+              "observe": 0.2008,
+              "stop": 0.204
+            },
+            "confidence": 0.1882,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "needs_review": {
+            "type": "noul",
+            "noul": 0.9778,
+            "confidence": 0.9778,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "outcome": {
+            "type": "choice",
+            "choice": "failure",
+            "probabilities": {
+              "failure": 0.4537,
+              "harmful": 0.0068,
+              "partial": 0.2257,
+              "success": 0.3138
+            },
+            "confidence": 0.2122,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "risk": {
+            "type": "score",
+            "score": 1.554,
+            "legend": {
+              "0": "Benign: read-only or clearly safe actions.",
+              "1": "Low: routine writes within scope.",
+              "2": "Moderate: irreversible or out-of-scope actions.",
+              "3": "High: destructive, security-relevant, or policy-violating actions."
+            },
+            "probabilities": {
+              "0": 0.1889,
+              "1": 0.339,
+              "2": 0.2013,
+              "3": 0.2708
+            },
+            "confidence": 0.0204,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 2.231,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0622,
+              "1": 0.234,
+              "2": 0.1142,
+              "3": 0.5895
+            },
+            "confidence": 0.2267,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3840.174228000002
+    },
+    {
+      "id": "heldout-long-77",
+      "input_sha256": "8afc821eaa8902475abaf2886804836e740c18f1aa6c5226e7edd745c4c9a661",
+      "tokens": {
+        "action": {
+          "sha256": "55e328bbdab7a4437532201382eba7551c15e004d65ac5586f670b88c02da0ae",
+          "tokens": 1024,
+          "markers": [
+            16,
+            26,
+            40,
+            54
+          ]
+        },
+        "needs_review": {
+          "sha256": "b09a50ff1e29e9efad9adbf5a7a7d7ff2eb7f7527df2b07d06bdb87ab22997d8",
+          "tokens": 1024,
+          "markers": [
+            12,
+            21
+          ]
+        },
+        "outcome": {
+          "sha256": "f8e648035ef8334780ddd13a15e8fc1ca4b964c33a6bd226129964fa26ad6b35",
+          "tokens": 1024,
+          "markers": [
+            13,
+            24,
+            40,
+            55
+          ]
+        },
+        "risk": {
+          "sha256": "5fc0ddb15aec1f893ecaeb468d90e6051368be219b16d4658b592a6d6347fb18",
+          "tokens": 1024,
+          "markers": [
+            17,
+            33,
+            45,
+            61
+          ]
+        },
+        "urgency": {
+          "sha256": "356a24ca95b200840be0ed50241a334428697fe7d915d59319f308dc6f151f31",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            54
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "stop",
+            "probabilities": {
+              "continue": 0.2294,
+              "human_review": 0.0136,
+              "observe": 0.0943,
+              "stop": 0.6628
+            },
+            "confidence": 0.357,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "needs_review": {
+            "type": "noul",
+            "noul": 0.9841,
+            "confidence": 0.9841,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "outcome": {
+            "type": "choice",
+            "choice": "partial",
+            "probabilities": {
+              "failure": 0.2521,
+              "harmful": 0.0068,
+              "partial": 0.4434,
+              "success": 0.2977
+            },
+            "confidence": 0.2045,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "risk": {
+            "type": "score",
+            "score": 2.1399,
+            "legend": {
+              "0": "Benign: read-only or clearly safe actions.",
+              "1": "Low: routine writes within scope.",
+              "2": "Moderate: irreversible or out-of-scope actions.",
+              "3": "High: destructive, security-relevant, or policy-violating actions."
+            },
+            "probabilities": {
+              "0": 0.0474,
+              "1": 0.1094,
+              "2": 0.4989,
+              "3": 0.3442
+            },
+            "confidence": 0.206,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 2.3261,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.045,
+              "1": 0.1993,
+              "2": 0.1403,
+              "3": 0.6154
+            },
+            "confidence": 0.2532,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3770.4383060000027
+    },
+    {
+      "id": "heldout-long-102",
+      "input_sha256": "9ab4037e91a6f0d0b7320f7b3fe184808bd6c7f70862a78ecd33c7d8a450ef8b",
+      "tokens": {
+        "action": {
+          "sha256": "f87750a6f1eb0e6307b06c4b23345b6a01347bc8798aaab2f903f462c74df315",
+          "tokens": 1024,
+          "markers": [
+            15,
+            32,
+            50,
+            68,
+            83
+          ]
+        },
+        "category": {
+          "sha256": "0000f48c4fe8aaa626759d74ba82b4254b8cd54b93048ed07a50e59761b05250",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            52,
+            64
+          ]
+        },
+        "churn_risk": {
+          "sha256": "182f99b5cfba4bfc6bafbec31f68b65bb289ccbead7287214a893d90c45369ea",
+          "tokens": 1024,
+          "markers": [
+            21,
+            31,
+            45,
+            59
+          ]
+        },
+        "needs_human": {
+          "sha256": "8bd01ef549c084b4709fb8333bb8d76faca529119d44e14a92fa64af6a5081f7",
+          "tokens": 1024,
+          "markers": [
+            17,
+            27
+          ]
+        },
+        "urgency": {
+          "sha256": "4933ac168c7ddeaaf425d3683d521c61f72da3195da19adcbfcc71fc7083ec6d",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            54
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "request_information",
+            "probabilities": {
+              "answer_directly": 0.4806,
+              "close_no_action": 0.0093,
+              "escalate_to_human": 0.0023,
+              "execute_refund": 0.0024,
+              "request_information": 0.5054
+            },
+            "confidence": 0.5222,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "probabilities": {
+              "account": 0.7726,
+              "billing": 0.0787,
+              "delivery": 0.0022,
+              "refund": 0.0247,
+              "technical": 0.1218
+            },
+            "confidence": 0.5275,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "churn_risk": {
+            "type": "score",
+            "score": 1.26,
+            "legend": {
+              "0": "No sign of dissatisfaction.",
+              "1": "Mild frustration, but the relationship is intact.",
+              "2": "Clearly unhappy; repeat problems or explicit complaints.",
+              "3": "Imminent: threatening to cancel, dispute or leave."
+            },
+            "probabilities": {
+              "0": 0.1494,
+              "1": 0.4977,
+              "2": 0.2965,
+              "3": 0.0564
+            },
+            "confidence": 0.1677,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.9366,
+            "confidence": 0.9366,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.4708,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0776,
+              "1": 0.5879,
+              "2": 0.1206,
+              "3": 0.2139
+            },
+            "confidence": 0.2096,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 4058.0579470000016
+    },
+    {
+      "id": "heldout-long-127",
+      "input_sha256": "c698d8bfed05535d48b31140e74288764ccb8f23264d9e0367310c5e1158b91b",
+      "tokens": {
+        "action": {
+          "sha256": "c888efd246bd96e8d2b7cff95dadae13b4c5344060d452d0ee8780683c9e310a",
+          "tokens": 1024,
+          "markers": [
+            15,
+            32,
+            50,
+            68,
+            83
+          ]
+        },
+        "category": {
+          "sha256": "42ca8ee105ca14506dcdd0e0838817c85a1d576eae970a98c0dd82fe752cdf8e",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            52,
+            64
+          ]
+        },
+        "churn_risk": {
+          "sha256": "6c314e98af2d99815cc24d2503d30f61d81213c2b35481f93b4ed0c4fa339062",
+          "tokens": 1024,
+          "markers": [
+            21,
+            31,
+            45,
+            59
+          ]
+        },
+        "needs_human": {
+          "sha256": "fc1a29c19cc02d082a2409f093061158764cdfdda4572e0e09cf9d8290793e56",
+          "tokens": 1024,
+          "markers": [
+            17,
+            27
+          ]
+        },
+        "urgency": {
+          "sha256": "34c37f56945330478a0f822945042a16a5eed76eb48dc9773e5082908bdc0562",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            54
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "answer_directly",
+            "probabilities": {
+              "answer_directly": 0.8076,
+              "close_no_action": 0.0466,
+              "escalate_to_human": 0.0069,
+              "execute_refund": 0.006,
+              "request_information": 0.1329
+            },
+            "confidence": 0.5969,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "account": 0.1295,
+              "billing": 0.8417,
+              "delivery": 0.0008,
+              "refund": 0.0044,
+              "technical": 0.0236
+            },
+            "confidence": 0.6723,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "churn_risk": {
+            "type": "score",
+            "score": 1.2572,
+            "legend": {
+              "0": "No sign of dissatisfaction.",
+              "1": "Mild frustration, but the relationship is intact.",
+              "2": "Clearly unhappy; repeat problems or explicit complaints.",
+              "3": "Imminent: threatening to cancel, dispute or leave."
+            },
+            "probabilities": {
+              "0": 0.0824,
+              "1": 0.6153,
+              "2": 0.2649,
+              "3": 0.0374
+            },
+            "confidence": 0.2936,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.9448,
+            "confidence": 0.9448,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.6301,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0881,
+              "1": 0.4744,
+              "2": 0.1568,
+              "3": 0.2807
+            },
+            "confidence": 0.1236,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3760.9084830000015
+    },
+    {
+      "id": "heldout-long-152",
+      "input_sha256": "48b15bfbde81fafd23acb113687655805625f6ced995b9615cb9e46e36cf868c",
+      "tokens": {
+        "action": {
+          "sha256": "9d9914344727ac235a7d74bf963e12f335d649ad61b4c8441fefedc62d682773",
+          "tokens": 1024,
+          "markers": [
+            15,
+            32,
+            50,
+            68,
+            83
+          ]
+        },
+        "category": {
+          "sha256": "8f15b081908c6c68ce1e597adba387938d901ff103743eb3a2f74404a2034bb1",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            52,
+            64
+          ]
+        },
+        "churn_risk": {
+          "sha256": "8e370546ba9219586bd27a9166b601c5958042e91bdc2f51eb2115f559acdca4",
+          "tokens": 1024,
+          "markers": [
+            21,
+            31,
+            45,
+            59
+          ]
+        },
+        "needs_human": {
+          "sha256": "349f15fe1bfc3daeb54b1d255139504ce42bf8fcf4ab58549d6e55c1c9efa95a",
+          "tokens": 1024,
+          "markers": [
+            17,
+            27
+          ]
+        },
+        "urgency": {
+          "sha256": "e2ccd8b7b3d637f57392eaca14905ab0a549014506e6825d83ff1799035607af",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            54
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "close_no_action",
+            "probabilities": {
+              "answer_directly": 0.0868,
+              "close_no_action": 0.8892,
+              "escalate_to_human": 0.0052,
+              "execute_refund": 0.0057,
+              "request_information": 0.0131
+            },
+            "confidence": 0.7327,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "probabilities": {
+              "account": 0.9965,
+              "billing": 0.0002,
+              "delivery": 0.0002,
+              "refund": 0.0004,
+              "technical": 0.0027
+            },
+            "confidence": 0.984,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "churn_risk": {
+            "type": "score",
+            "score": 1.3961,
+            "legend": {
+              "0": "No sign of dissatisfaction.",
+              "1": "Mild frustration, but the relationship is intact.",
+              "2": "Clearly unhappy; repeat problems or explicit complaints.",
+              "3": "Imminent: threatening to cancel, dispute or leave."
+            },
+            "probabilities": {
+              "0": 0.1314,
+              "1": 0.4969,
+              "2": 0.216,
+              "3": 0.1557
+            },
+            "confidence": 0.1093,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.9589,
+            "confidence": 0.9589,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.2173,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.3077,
+              "1": 0.3472,
+              "2": 0.1651,
+              "3": 0.18
+            },
+            "confidence": 0.0363,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3867.7971380000004
+    },
+    {
+      "id": "heldout-long-177",
+      "input_sha256": "a46788916ef462266ee065b18dc6299a153187ad1c2825e54ea384de9a37e2fd",
+      "tokens": {
+        "action": {
+          "sha256": "981a8d2ca52381e27add9ffa729ebc7cfaa2486a52b5e04a3c048ad0cffa93b3",
+          "tokens": 1024,
+          "markers": [
+            15,
+            32,
+            50,
+            68,
+            83
+          ]
+        },
+        "category": {
+          "sha256": "645dd2e009c45091dd22f01a9b1cc73bcf829d8a88b083cdddd265f3bdcd60a8",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            52,
+            64
+          ]
+        },
+        "churn_risk": {
+          "sha256": "fe7ebecfd1c297405b032d7e2ccd36d5281259fd634c1996d731e996a25bda35",
+          "tokens": 1024,
+          "markers": [
+            21,
+            31,
+            45,
+            59
+          ]
+        },
+        "needs_human": {
+          "sha256": "344a1ef3b07ff61ebb33c1db22c93b5cedcae247ad8d56b18b5e66313665d65b",
+          "tokens": 1024,
+          "markers": [
+            17,
+            27
+          ]
+        },
+        "urgency": {
+          "sha256": "ef7b3b19711035401ea05cbd8936e9bd271a66c6cd8d8980ea8051217a88f6a2",
+          "tokens": 1024,
+          "markers": [
+            13,
+            26,
+            39,
+            54
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "close_no_action",
+            "probabilities": {
+              "answer_directly": 0.4279,
+              "close_no_action": 0.5522,
+              "escalate_to_human": 0.0044,
+              "execute_refund": 0.0033,
+              "request_information": 0.0122
+            },
+            "confidence": 0.5105,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "probabilities": {
+              "account": 0.971,
+              "billing": 0.0191,
+              "delivery": 0.0003,
+              "refund": 0.0029,
+              "technical": 0.0067
+            },
+            "confidence": 0.9025,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "churn_risk": {
+            "type": "score",
+            "score": 1.3005,
+            "legend": {
+              "0": "No sign of dissatisfaction.",
+              "1": "Mild frustration, but the relationship is intact.",
+              "2": "Clearly unhappy; repeat problems or explicit complaints.",
+              "3": "Imminent: threatening to cancel, dispute or leave."
+            },
+            "probabilities": {
+              "0": 0.1613,
+              "1": 0.4792,
+              "2": 0.2572,
+              "3": 0.1023
+            },
+            "confidence": 0.1133,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.9476,
+            "confidence": 0.9476,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.3739,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.25,
+              "1": 0.3478,
+              "2": 0.1806,
+              "3": 0.2217
+            },
+            "confidence": 0.0212,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3670.5626820000034
+    },
+    {
+      "id": "heldout-long-202",
+      "input_sha256": "8e82940f9854f2a35ac9b78f8687fb99ed93dc44d4370fb939afd532e8448426",
+      "tokens": {
+        "discrepancy_severity": {
+          "sha256": "4bfa5a59a65a347fee185313edd90e8198ddf76316e8815735b002c9cde15dfe",
+          "tokens": 1024,
+          "markers": [
+            20,
+            31,
+            45,
+            58
+          ]
+        },
+        "disposition": {
+          "sha256": "1864459e5ef5ce38fa7beff6519276059564169688c8e40df63f3b7fff3064bc",
+          "tokens": 1024,
+          "markers": [
+            14,
+            27,
+            40,
+            54
+          ]
+        },
+        "duplicate": {
+          "sha256": "3ef27759b01359e4c0568167a2579dec5d480233db7c95f4690f32371af91609",
+          "tokens": 1024,
+          "markers": [
+            16,
+            26
+          ]
+        },
+        "matches_order": {
+          "sha256": "79461b418f966557f4c01444266fd9f667402ff6e24d6318df4815724866be42",
+          "tokens": 1024,
+          "markers": [
+            19,
+            33
+          ]
+        },
+        "urgency": {
+          "sha256": "1f05b9ee5b93b4c47940522e7d91127f057c3fc8ca78551e4cde9e2d9d3af3b6",
+          "tokens": 1024,
+          "markers": [
+            14,
+            27,
+            40,
+            55
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "discrepancy_severity": {
+            "type": "score",
+            "score": 1.7979,
+            "legend": {
+              "0": "None: everything reconciles.",
+              "1": "Trivial: rounding or a cosmetic difference.",
+              "2": "Moderate: a real difference worth confirming.",
+              "3": "Material: a large or unexplained difference."
+            },
+            "probabilities": {
+              "0": 0.0297,
+              "1": 0.2462,
+              "2": 0.6208,
+              "3": 0.1034
+            },
+            "confidence": 0.2931,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "disposition": {
+            "type": "choice",
+            "choice": "reject",
+            "probabilities": {
+              "approve": 0.3126,
+              "hold": 0.1593,
+              "manual_review": 0.0269,
+              "reject": 0.5013
+            },
+            "confidence": 0.2068,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "duplicate": {
+            "type": "noul",
+            "noul": 0.9836,
+            "confidence": 0.9836,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "matches_order": {
+            "type": "noul",
+            "noul": 0.9341,
+            "confidence": 0.9341,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.6294,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0677,
+              "1": 0.4786,
+              "2": 0.2104,
+              "3": 0.2434
+            },
+            "confidence": 0.1294,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 4055.1066200000037
+    },
+    {
+      "id": "heldout-long-227",
+      "input_sha256": "657a47249d1a2a33d992647ea16d4d6936a1afbf935645eef020bb0bb941a3f7",
+      "tokens": {
+        "discrepancy_severity": {
+          "sha256": "60032be3c8b9fad3dfd6866a1512a4a56ba79e1bed6a8eabc35a0dd1e694ebc2",
+          "tokens": 1024,
+          "markers": [
+            20,
+            31,
+            45,
+            58
+          ]
+        },
+        "disposition": {
+          "sha256": "0b8c775198b5c7f45344495efe5ca37c1a99bcd34d3ddd79c677554698884a88",
+          "tokens": 1024,
+          "markers": [
+            14,
+            27,
+            40,
+            54
+          ]
+        },
+        "duplicate": {
+          "sha256": "d843ac2ca51b5dec7d44f862d6f6ba04dc907994e413bfa5faf34c1d703e1d2f",
+          "tokens": 1024,
+          "markers": [
+            16,
+            26
+          ]
+        },
+        "matches_order": {
+          "sha256": "58ec0f02969fbf6455900fef7454f918477bd1a5cff90f5f6a7103d6c2a9890e",
+          "tokens": 1024,
+          "markers": [
+            19,
+            33
+          ]
+        },
+        "urgency": {
+          "sha256": "9e0f01bcc171af281527000b7bee55fb62b7347c226d82a83b8dd9ae3b81d5c9",
+          "tokens": 1024,
+          "markers": [
+            14,
+            27,
+            40,
+            55
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "discrepancy_severity": {
+            "type": "score",
+            "score": 1.8089,
+            "legend": {
+              "0": "None: everything reconciles.",
+              "1": "Trivial: rounding or a cosmetic difference.",
+              "2": "Moderate: a real difference worth confirming.",
+              "3": "Material: a large or unexplained difference."
+            },
+            "probabilities": {
+              "0": 0.029,
+              "1": 0.2108,
+              "2": 0.6825,
+              "3": 0.0777
+            },
+            "confidence": 0.3579,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "disposition": {
+            "type": "choice",
+            "choice": "reject",
+            "probabilities": {
+              "approve": 0.208,
+              "hold": 0.1612,
+              "manual_review": 0.034,
+              "reject": 0.5968
+            },
+            "confidence": 0.247,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "duplicate": {
+            "type": "noul",
+            "noul": 0.9812,
+            "confidence": 0.9812,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "matches_order": {
+            "type": "noul",
+            "noul": 0.9538,
+            "confidence": 0.9538,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.6892,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0567,
+              "1": 0.4476,
+              "2": 0.2456,
+              "3": 0.2501
+            },
+            "confidence": 0.1243,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3864.339754999996
+    },
+    {
+      "id": "heldout-long-252",
+      "input_sha256": "5cbd8670bee649b8c5fdda36180f505baa4be3b75d079c14fe49f98b86d6d6b3",
+      "tokens": {
+        "discrepancy_severity": {
+          "sha256": "6ced954ff8ae320fe50a50df4ad72d7e7f84fe8ef0cba502f57af193ee614b4d",
+          "tokens": 1024,
+          "markers": [
+            20,
+            31,
+            45,
+            58
+          ]
+        },
+        "disposition": {
+          "sha256": "84c84716e3a4e45ed36a4d55e5f6880f9481c0ff1e4611a87e94dd1047fc9d64",
+          "tokens": 1024,
+          "markers": [
+            14,
+            27,
+            40,
+            54
+          ]
+        },
+        "duplicate": {
+          "sha256": "c3a72fbc46d5a57f957f110add06a4eb0da442d83da7887eacb53d1df1670403",
+          "tokens": 1024,
+          "markers": [
+            16,
+            26
+          ]
+        },
+        "matches_order": {
+          "sha256": "d19fe6f1a76817baa3d193fcb7e70bef92a20cbf87e8e9a859723e5071d7789f",
+          "tokens": 1024,
+          "markers": [
+            19,
+            33
+          ]
+        },
+        "urgency": {
+          "sha256": "f540ea8a1843834877ac093d672af636474988275c1d49ea3edb3a485fcb750b",
+          "tokens": 1024,
+          "markers": [
+            14,
+            27,
+            40,
+            55
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "discrepancy_severity": {
+            "type": "score",
+            "score": 1.6773,
+            "legend": {
+              "0": "None: everything reconciles.",
+              "1": "Trivial: rounding or a cosmetic difference.",
+              "2": "Moderate: a real difference worth confirming.",
+              "3": "Material: a large or unexplained difference."
+            },
+            "probabilities": {
+              "0": 0.0796,
+              "1": 0.2872,
+              "2": 0.5096,
+              "3": 0.1236
+            },
+            "confidence": 0.162,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "disposition": {
+            "type": "choice",
+            "choice": "reject",
+            "probabilities": {
+              "approve": 0.167,
+              "hold": 0.2009,
+              "manual_review": 0.0321,
+              "reject": 0.6
+            },
+            "confidence": 0.2511,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "duplicate": {
+            "type": "noul",
+            "noul": 0.9879,
+            "confidence": 0.9879,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "matches_order": {
+            "type": "noul",
+            "noul": 0.9697,
+            "confidence": 0.9697,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.687,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0778,
+              "1": 0.4129,
+              "2": 0.2536,
+              "3": 0.2556
+            },
+            "confidence": 0.0907,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3506.9549720000027
+    },
+    {
+      "id": "heldout-long-277",
+      "input_sha256": "d608ac91fcde92a658799b19cf45cc49fc560252abae4d351cfa5df96af64706",
+      "tokens": {
+        "discrepancy_severity": {
+          "sha256": "096f267182fd12e7def3d5b41d7bd620a4fba53e456839e01e803a60022fbe82",
+          "tokens": 1024,
+          "markers": [
+            20,
+            31,
+            45,
+            58
+          ]
+        },
+        "disposition": {
+          "sha256": "19c12b35f96ab0de910dd2172feb2fafa2e0646b45f6c30aa0e65780c961e0a9",
+          "tokens": 1024,
+          "markers": [
+            14,
+            27,
+            40,
+            54
+          ]
+        },
+        "duplicate": {
+          "sha256": "b2470ea1e136166d0d048076650e7b54790bd0cb46eb11c4ce633483d3c90a5a",
+          "tokens": 1024,
+          "markers": [
+            16,
+            26
+          ]
+        },
+        "matches_order": {
+          "sha256": "152c8c95b86e5f600cb1e427abe7418726340b7aff653eec9e3250278e053100",
+          "tokens": 1024,
+          "markers": [
+            19,
+            33
+          ]
+        },
+        "urgency": {
+          "sha256": "aa74f340e352437c6d1b24ca2dff701ec18cfb389b4631d88ca79a9c31c566a4",
+          "tokens": 1024,
+          "markers": [
+            14,
+            27,
+            40,
+            55
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "discrepancy_severity": {
+            "type": "score",
+            "score": 1.7719,
+            "legend": {
+              "0": "None: everything reconciles.",
+              "1": "Trivial: rounding or a cosmetic difference.",
+              "2": "Moderate: a real difference worth confirming.",
+              "3": "Material: a large or unexplained difference."
+            },
+            "probabilities": {
+              "0": 0.0421,
+              "1": 0.2739,
+              "2": 0.5542,
+              "3": 0.1299
+            },
+            "confidence": 0.2208,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "disposition": {
+            "type": "choice",
+            "choice": "reject",
+            "probabilities": {
+              "approve": 0.1775,
+              "hold": 0.1021,
+              "manual_review": 0.0253,
+              "reject": 0.6951
+            },
+            "confidence": 0.361,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "duplicate": {
+            "type": "noul",
+            "noul": 0.9791,
+            "confidence": 0.9791,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "matches_order": {
+            "type": "noul",
+            "noul": 0.9188,
+            "confidence": 0.9188,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.7337,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0727,
+              "1": 0.3943,
+              "2": 0.2596,
+              "3": 0.2734
+            },
+            "confidence": 0.0896,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3832.994625000005
+    },
+    {
+      "id": "heldout-long-302",
+      "input_sha256": "321bb31ec5f8faa396b48ac73ef381ee316fdc47c598b1fe3d69032252239a5d",
+      "tokens": {
+        "credential_compromise": {
+          "sha256": "5c9a7716bd4b973c0bd9386af1eb14f40b9e7b0b15ee10303fedb87bc738a514",
+          "tokens": 1024,
+          "markers": [
+            17,
+            27
+          ]
+        },
+        "disposition": {
+          "sha256": "860eba1e96efcbe0ada8c17633cc7f3fcea27b7dfdb8d387cd2c8f45d0eed2f5",
+          "tokens": 1024,
+          "markers": [
+            14,
+            31,
+            47,
+            58
+          ]
+        },
+        "severity": {
+          "sha256": "45c06e41cd66efb5f0aea6d480937bfff412334386e6fe549157249988dd8c0e",
+          "tokens": 1024,
+          "markers": [
+            17,
+            31,
+            44,
+            61,
+            77
+          ]
+        },
+        "true_positive": {
+          "sha256": "cf0274cc24d3d33c960beaaa13ea7c018a1f012932863ad28b97124d7edd15dc",
+          "tokens": 1024,
+          "markers": [
+            15,
+            32
+          ]
+        },
+        "urgency": {
+          "sha256": "dcfd2207f1e0336072305d92ec44cc9e3ba552e2a323e61ec20436d3d7f9e562",
+          "tokens": 1024,
+          "markers": [
+            15,
+            28,
+            41,
+            56
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "credential_compromise": {
+            "type": "noul",
+            "noul": 0.8636,
+            "confidence": 0.8636,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "disposition": {
+            "type": "choice",
+            "choice": "monitor",
+            "probabilities": {
+              "close_benign": 0.2454,
+              "contain": 0.2581,
+              "investigate": 0.0923,
+              "monitor": 0.4042
+            },
+            "confidence": 0.0764,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.3808,
+            "legend": {
+              "0": "Negligible: no access to anything sensitive.",
+              "1": "Low: limited access, easily reversed.",
+              "2": "Moderate: access to internal systems or non-public data.",
+              "3": "High: access to production, secrets or customer data.",
+              "4": "Critical: active compromise of crown-jewel systems."
+            },
+            "probabilities": {
+              "0": 0.0265,
+              "1": 0.6747,
+              "2": 0.2256,
+              "3": 0.0378,
+              "4": 0.0354
+            },
+            "confidence": 0.4162,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "true_positive": {
+            "type": "noul",
+            "noul": 0.9424,
+            "confidence": 0.9424,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.6755,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0597,
+              "1": 0.4796,
+              "2": 0.1862,
+              "3": 0.2745
+            },
+            "confidence": 0.1426,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3464.429467000002
+    },
+    {
+      "id": "heldout-long-327",
+      "input_sha256": "8d1d549ec1c9561875953922a6e3b0a0deabbc6683c38d7260f19d1afeb7c7bc",
+      "tokens": {
+        "credential_compromise": {
+          "sha256": "d951a55efbf71af61eced8712751965045510a60896fc76c2838a3fca63576d4",
+          "tokens": 1024,
+          "markers": [
+            17,
+            27
+          ]
+        },
+        "disposition": {
+          "sha256": "be9d39f62022a6ffa5984e2e81c581cc256d7bbd53bc2f4827558c8746d67df8",
+          "tokens": 1024,
+          "markers": [
+            14,
+            31,
+            47,
+            58
+          ]
+        },
+        "severity": {
+          "sha256": "fcf58b4a9b50a92b31994c6a88e1c4d7adaa0006eadd3bda470a932e0b0d845c",
+          "tokens": 1024,
+          "markers": [
+            17,
+            31,
+            44,
+            61,
+            77
+          ]
+        },
+        "true_positive": {
+          "sha256": "f7e657f2b4d1854f36992dde250e94fc8dfd9d8c23f1abe3e0739a7e2288f6f2",
+          "tokens": 1024,
+          "markers": [
+            15,
+            32
+          ]
+        },
+        "urgency": {
+          "sha256": "76ef822da7672393ace12c44235747f153656a094d799d2c77fa8631b33e51d1",
+          "tokens": 1024,
+          "markers": [
+            15,
+            28,
+            41,
+            56
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "credential_compromise": {
+            "type": "noul",
+            "noul": 0.9968,
+            "confidence": 0.9968,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "disposition": {
+            "type": "choice",
+            "choice": "monitor",
+            "probabilities": {
+              "close_benign": 0.0333,
+              "contain": 0.1194,
+              "investigate": 0.0397,
+              "monitor": 0.8076
+            },
+            "confidence": 0.5183,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.6335,
+            "legend": {
+              "0": "Negligible: no access to anything sensitive.",
+              "1": "Low: limited access, easily reversed.",
+              "2": "Moderate: access to internal systems or non-public data.",
+              "3": "High: access to production, secrets or customer data.",
+              "4": "Critical: active compromise of crown-jewel systems."
+            },
+            "probabilities": {
+              "0": 0.039,
+              "1": 0.5907,
+              "2": 0.1969,
+              "3": 0.0443,
+              "4": 0.129
+            },
+            "confidence": 0.2793,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "true_positive": {
+            "type": "noul",
+            "noul": 0.9945,
+            "confidence": 0.9945,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 2.3086,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0337,
+              "1": 0.2524,
+              "2": 0.0856,
+              "3": 0.6284
+            },
+            "confidence": 0.3046,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3563.205697000001
+    },
+    {
+      "id": "heldout-long-352",
+      "input_sha256": "50dfd7bd839814fcaa49c3eee8c1ecd752efb0455d71cbd0ec68099aa7ea20a6",
+      "tokens": {
+        "credential_compromise": {
+          "sha256": "3977674d00a26309501bfc8413a78ad8e4d6fa5549b4e1ef158750f7799bc803",
+          "tokens": 1024,
+          "markers": [
+            17,
+            27
+          ]
+        },
+        "disposition": {
+          "sha256": "2a25800af53302ee72176f0893d0432a339b5da7aea097a5749f6ef16818f319",
+          "tokens": 1024,
+          "markers": [
+            14,
+            31,
+            47,
+            58
+          ]
+        },
+        "severity": {
+          "sha256": "87ba5b23a026b2c743b7e9565f4810d300cfd401cfeb62a76cff8e9d5b5fa4c5",
+          "tokens": 1024,
+          "markers": [
+            17,
+            31,
+            44,
+            61,
+            77
+          ]
+        },
+        "true_positive": {
+          "sha256": "3c3929d571ed2193d4da7083f2e5791e70a9250ec819d02900b62b393e3907a9",
+          "tokens": 1024,
+          "markers": [
+            15,
+            32
+          ]
+        },
+        "urgency": {
+          "sha256": "6b9c9b84ea18276d391b87e3e6228ac9308b6b08b3c22ae47f59370d14dbd588",
+          "tokens": 1024,
+          "markers": [
+            15,
+            28,
+            41,
+            56
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "credential_compromise": {
+            "type": "noul",
+            "noul": 0.9818,
+            "confidence": 0.9818,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "disposition": {
+            "type": "choice",
+            "choice": "monitor",
+            "probabilities": {
+              "close_benign": 0.3503,
+              "contain": 0.0849,
+              "investigate": 0.1699,
+              "monitor": 0.3949
+            },
+            "confidence": 0.102,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.5647,
+            "legend": {
+              "0": "Negligible: no access to anything sensitive.",
+              "1": "Low: limited access, easily reversed.",
+              "2": "Moderate: access to internal systems or non-public data.",
+              "3": "High: access to production, secrets or customer data.",
+              "4": "Critical: active compromise of crown-jewel systems."
+            },
+            "probabilities": {
+              "0": 0.0374,
+              "1": 0.5422,
+              "2": 0.3099,
+              "3": 0.0392,
+              "4": 0.0713
+            },
+            "confidence": 0.2961,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "true_positive": {
+            "type": "noul",
+            "noul": 0.975,
+            "confidence": 0.975,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.9678,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.0503,
+              "1": 0.3783,
+              "2": 0.1248,
+              "3": 0.4467
+            },
+            "confidence": 0.1793,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3576.9317320000055
+    },
+    {
+      "id": "heldout-long-377",
+      "input_sha256": "b6afb62020de0589fc7250ccfd831a4611713cc3a41acd89e1bec5b3bfc635b8",
+      "tokens": {
+        "credential_compromise": {
+          "sha256": "2db0fb4011f083b47c3e15be78b9b3da8a4c49c082f905109e69e76c9e26642c",
+          "tokens": 1024,
+          "markers": [
+            17,
+            27
+          ]
+        },
+        "disposition": {
+          "sha256": "fd6e59af2c788c813da1b4cd9e7a204d08b46d2ead999dae0b9b565b0febbca0",
+          "tokens": 1024,
+          "markers": [
+            14,
+            31,
+            47,
+            58
+          ]
+        },
+        "severity": {
+          "sha256": "2d22e33a1eb751f4cf26f40825a3cc1704a4a606249b9760db1e768d11eca8ba",
+          "tokens": 1024,
+          "markers": [
+            17,
+            31,
+            44,
+            61,
+            77
+          ]
+        },
+        "true_positive": {
+          "sha256": "1a1833cfe6d8fa7ad746f0490b86271daabee0069ef5f4d811d1b43ba148a156",
+          "tokens": 1024,
+          "markers": [
+            15,
+            32
+          ]
+        },
+        "urgency": {
+          "sha256": "35541fc8d15f1667591706a1192da08ab7f9c3d17b05c0bb662b42221746c058",
+          "tokens": 1024,
+          "markers": [
+            15,
+            28,
+            41,
+            56
+          ]
+        }
+      },
+      "output": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "credential_compromise": {
+            "type": "noul",
+            "noul": 0.8765,
+            "confidence": 0.8765,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "disposition": {
+            "type": "choice",
+            "choice": "close_benign",
+            "probabilities": {
+              "close_benign": 0.4534,
+              "contain": 0.0869,
+              "investigate": 0.0628,
+              "monitor": 0.3969
+            },
+            "confidence": 0.1982,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.9101,
+            "legend": {
+              "0": "Negligible: no access to anything sensitive.",
+              "1": "Low: limited access, easily reversed.",
+              "2": "Moderate: access to internal systems or non-public data.",
+              "3": "High: access to production, secrets or customer data.",
+              "4": "Critical: active compromise of crown-jewel systems."
+            },
+            "probabilities": {
+              "0": 0.0632,
+              "1": 0.2308,
+              "2": 0.5359,
+              "3": 0.0731,
+              "4": 0.0971
+            },
+            "confidence": 0.2141,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "true_positive": {
+            "type": "noul",
+            "noul": 0.8532,
+            "confidence": 0.8532,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.3605,
+            "legend": {
+              "0": "No time pressure; can wait indefinitely.",
+              "1": "Routine; handle within the normal queue.",
+              "2": "Elevated; should be handled within the same week.",
+              "3": "Critical; requires action within the same day."
+            },
+            "probabilities": {
+              "0": 0.1634,
+              "1": 0.5206,
+              "2": 0.108,
+              "3": 0.2079
+            },
+            "confidence": 0.1323,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 5120,
+          "output_tokens": 0
+        }
+      },
+      "elapsed_ms": 3627.490448000003
+    }
+  ],
+  "note": "Supplementary fixed probes; not a held-out dataset qualification. Timings include cold cache and bucket switching.",
+  "accelerator_stats_after_measurement": null
+}

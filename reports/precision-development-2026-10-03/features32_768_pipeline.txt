@@ -1,0 +1,669 @@
+RUN cpu
+RUN htp
+[0;93m2026-10-02 15:41:56.969663032 [W:onnxruntime:Default, qnn_backend_manager.cc:318 operator()] Using existing ADSP_LIBRARY_PATH setting of /home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn;/usr/lib/rfsa/adsp;/dsp, which may cause the HTP backend to fail.[m
+[1;31m2026-10-02 15:41:57.120977182 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+ # LIBNATIVE: No alternate configuration present in libnative_tls.conf or from LIBNATIVE_CONFIG environment variable - using default thread-local behavior.
+Starting stage: Graph Preparation Initializing
+Completed stage: Graph Preparation Initializing (553 us)
+Starting stage: Graph Optimizations
+Completed stage: Graph Optimizations (21792510 us)
+Starting stage: Post Graph Optimization
+Completed stage: Post Graph Optimization (11465544 us)
+Starting stage: Graph Sequencing for Target
+ [                                                  ]   0% [###                                               ]   6% [####                                              ]   8% [######                                            ]  12% [#######                                           ]  14% [########                                          ]  16% [#########                                         ]  19% [##########                                        ]  20% [###########                                       ]  23% [############                                      ]  25% [#############                                     ]  26% [##############                                    ]  29% [###############                                   ]  30% [#################                                 ]  34% [###################                               ]  38% [#####################                             ]  43% [######################                            ]  44% [#######################                           ]  46% [#########################                         ]  50% [##########################                        ]  52% [###########################                       ]  54% [############################                      ]  56% [#############################                     ]  59% [###############################                   ]  63% [#################################                 ]  66% [##################################                ]  69% [###################################               ]  70% [####################################              ]  72% [#####################################             ]  74% [######################################            ]  76% [############################################      ]  89% [#############################################     ]  90% [###############################################   ]  95% [################################################  ]  97% [################################################# ]  98% [##################################################] 100%
+Completed stage: Graph Sequencing for Target (446852980 us)
+Starting stage: VTCM Allocation
+Completed stage: VTCM Allocation (2269537 us)
+Starting stage: Parallelization Optimization
+Completed stage: Parallelization Optimization (2049754 us)
+Starting stage: Finalizing Graph Sequence
+
+====== DDR bandwidth summary ======
+spill_bytes=302104576
+fill_bytes=302893056
+write_total_bytes=433739776
+read_total_bytes=781152256
+
+Completed stage: Finalizing Graph Sequence (8195827 us)
+Starting stage: Completion
+Completed stage: Completion (66360 us)
+{"convs": 1034, "shape_validation": [{"id": "conv_000", "max_abs_offset_difference": 0.0, "tolerance": 0.0003775041833821684, "passed": true}, {"id": "conv_001", "max_abs_offset_difference": 0.0, "tolerance": 0.00026972434640154243, "passed": true}, {"id": "conv_002", "max_abs_offset_difference": 0.0, "tolerance": 1.6435816326318308e-05, "passed": true}]}
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc
+{"corrected_convs": 1034, "output": "/home/ubuntu/laya-service/.work/features32_precision16_768_corrected/backbone_768_a16w8.onnx"}
+{"event": "artifact_verification_start", "manifest": "/home/ubuntu/laya-service/.work/features32_precision16_768_corrected/manifest.json"}
+{"buckets": [768], "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204", "event": "artifacts_verified", "seconds": 1.1023155650000263}
+{"bucket": 768, "event": "bucket_start", "phase": "prepare"}
+[0;93m2026-10-02 15:51:02.664925989 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'embeddings_norm.weight_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665004735 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.19.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665088429 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_38/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665106397 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_4/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665149052 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_34/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665189727 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665222121 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_11/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665259463 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.3.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665304409 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_17/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665400186 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_5/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665425758 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.0.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665449351 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_35/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665467475 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_10/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665509088 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.8.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665562158 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_37/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665594709 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_6/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665776836 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_4/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665801054 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/final_norm/norm/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665811835 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_12/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665932194 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_18/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665949224 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.11.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665958338 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_8/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.665971202 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_13/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666031044 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.19.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666124425 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.13.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666152444 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_23/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666183016 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_28/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666206557 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666220775 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.4.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666332176 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_9/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666479253 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/final_norm/norm_1/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666516439 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_33/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666616018 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_26/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666688723 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.3.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666720857 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.20.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666744449 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.7.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666867048 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.9.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666919806 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.20.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666931681 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_27/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666962877 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_23/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666971418 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.8.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.666984282 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_21/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667015635 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_27/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667056571 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.0.mlp_norm.norm.weight_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667068393 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.16.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667094590 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.9.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667115943 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.10.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667145890 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/final_norm/norm/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667177607 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_29/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667199273 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_14/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667214949 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.17.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667229063 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_25/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667249635 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_16/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667261249 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_41/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667270363 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/final_norm/norm_1/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667315101 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_1/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667361349 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_18/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667442387 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_12/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667488531 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_14/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667528216 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/final_norm/norm/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667553528 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.16.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667575350 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_19/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667596443 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'embeddings_norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667649722 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_29/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667697792 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_1/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667749977 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.8.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667781747 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_24/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667789403 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.6.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667829505 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_8/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667836067 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_41/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667843359 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_9/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667852733 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.15.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667907731 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_39/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667924813 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.20.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.667947625 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.18.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668046995 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.17.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668067307 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.15.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668095847 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_17/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668120742 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_32/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668142564 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.18.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668157511 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.21.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668184437 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.10.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668198291 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.16.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668205426 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.10.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668229019 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.14.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668285370 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.11.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668292297 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.12.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668336462 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.6.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668343024 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_33/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668360419 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.17.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668398542 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.13.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668407500 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.10.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668429739 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_19/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668439166 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.2.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668444999 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.9.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668454529 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.19.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668484424 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.18.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668504996 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.6.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668556608 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.2.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668580774 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_15/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668586242 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.3.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668621085 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.1.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668629886 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.5.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668645823 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.19.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668652073 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_11/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668669937 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_38/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668679051 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.11.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668683269 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.4.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668799462 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_36/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668821388 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.12.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668829617 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/embeddings_norm/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668883365 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_13/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668944560 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.7.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.668977423 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.1.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669032004 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.11.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669043357 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.12.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669111427 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_5/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669119969 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.21.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669152832 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.1.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669158248 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.17.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669165487 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.14.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669202569 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_13/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669211683 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.5.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669303867 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.2.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669316835 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_43/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669365843 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.14.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669378655 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_20/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669399487 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.20.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669432350 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.4.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669457089 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_28/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669555418 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.1.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669566928 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.21.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669603853 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.12.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669623957 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_33/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669655205 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.0.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669665621 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_22/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669709994 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.5.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669771085 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.3.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669900559 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_34/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669911235 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_19/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669935557 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669960139 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_40/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669985815 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_29/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.669995659 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_27/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670009981 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.13.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670016074 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.13.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670070812 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_8/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670100550 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.14.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670117268 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.8.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670141434 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_23/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670195910 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_37/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670285594 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_2/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670305749 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_38/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670323925 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_35/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670341216 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_15/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670425119 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_8/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670470533 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_36/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670554905 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_39/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670637766 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_5/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670696357 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_34/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670773905 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_32/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670813122 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_39/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670819632 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_35/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670829320 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.2.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670903170 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.16.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670932596 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.7.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.670985615 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'final_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671062330 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_12/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671078111 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_27/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671097328 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_20/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671156753 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_37/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671238312 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_30/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671301278 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_12/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671406533 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_39/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671495592 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_1/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671545173 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_41/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671561266 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_28/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671571318 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.7.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671586682 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.15.mlp_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671638606 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_25/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671686469 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_5/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671801516 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_40/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671843649 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_19/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671864638 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/embeddings_norm/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671874638 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_9/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671949218 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.18.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671973175 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.21.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.671981352 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_18/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672020308 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_35/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672061817 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.15.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672076868 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_7/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672240871 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_18/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672253892 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_10/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672261391 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.6.attn_norm.norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672282067 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_13/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672308525 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_14/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672320034 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_16/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672335346 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.9.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672361543 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_19/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672374563 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.5.mlp_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672415030 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'final_norm.norm.weight_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672450706 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_27/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672481017 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_33/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672488777 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/embeddings_norm/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672492995 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672497943 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672503047 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_1/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672507422 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672512526 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_1/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672516901 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_2/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672521380 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_3/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672526067 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_3/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672529869 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_2/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672534869 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_2/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672541014 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_2/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672545024 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_3/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672548878 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_3/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672559607 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_4/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672564242 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_4/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672569138 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_4/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672573877 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_4/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672579398 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_5/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672583981 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_5/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672591533 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_6/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672595231 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_6/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672600595 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_7/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672605647 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_7/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672609813 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_6/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672614969 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_6/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672622781 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_7/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672626635 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_7/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672632260 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_7/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672637468 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_8/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672646582 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_9/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672651999 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_8/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672658144 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_9/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672663821 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_9/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672669029 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_10/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672672883 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_10/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672677779 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_11/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672682883 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_3/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672687414 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_11/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672692205 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_11/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672696997 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_10/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672701320 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_10/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672705174 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_11/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672708975 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_13/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672715225 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_12/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672720590 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_12/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672724391 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_13/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672731891 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_14/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672737151 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_14/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672741109 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_15/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672745745 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_15/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672750953 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_15/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672755328 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_14/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672759754 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_15/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672767150 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_16/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672772306 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_16/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672778035 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_16/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672782878 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_17/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672786628 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_17/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672791941 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_16/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672796836 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_17/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672801315 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_17/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672806367 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_18/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672814440 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_19/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672820429 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_18/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672825585 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_20/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672831105 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_20/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672835793 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_21/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672839907 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_21/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672844751 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_20/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672848813 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_37/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672853032 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_20/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672858552 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_21/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672863396 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_21/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672870166 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_22/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672873916 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_23/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672880895 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_22/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672886572 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_22/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672890999 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_22/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672895425 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_23/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672907040 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_23/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672912456 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_24/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672918341 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_24/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672924643 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_24/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672929955 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_25/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672934278 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_24/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672938809 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_24/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672942871 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_32/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672948027 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_25/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672952558 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_25/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672958391 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_38/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672962714 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_25/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672968599 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_26/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672973182 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_26/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672978443 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_26/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672983547 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_26/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672992661 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_27/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.672998338 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_28/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673004171 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_29/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673010577 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_28/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673016045 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_29/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673021618 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_29/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673028076 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_30/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673032919 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_30/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673037763 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_31/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673043075 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_31/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673050419 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_31/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673056043 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_30/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673060158 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_30/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673064116 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_30/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673068751 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_31/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673072449 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_31/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673076667 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_31/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673085521 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_32/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673090833 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_32/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673097031 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_33/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673103489 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_32/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673109270 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_33/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673115155 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_34/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673119113 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_34/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673123957 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_35/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673128905 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_34/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673133904 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_36/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673139529 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_36/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673144216 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_37/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673150154 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_36/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673154945 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_38/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673159372 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_39/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673166143 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_38/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673175361 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_39/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673180413 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_40/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673184840 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_41/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673190517 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_41/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673194527 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_40/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673200047 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_40/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673205360 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_40/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673210203 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_41/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673216870 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_42/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673221296 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_42/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673227807 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_42/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673233900 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_43/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673237650 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/final_norm/norm_1/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673273065 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_3/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673281710 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_1/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673344937 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_28/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673450036 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'final_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673473421 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'embeddings_norm.weight_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673532116 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_36/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673558938 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_43/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673604561 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_26/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673619091 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_37/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673809031 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_6/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673951524 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_21/Constant_output_0_quantized_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.673981210 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer 'layers.4.attn_norm.norm.weight_scale'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.674017980 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_22/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.674041468 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/attn_norm/norm_35/Constant_output_0_quantized_zero_point'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.674312862 [W:onnxruntime:, graph.cc:5607 CleanUnusedInitializersAndNodeArgs] Removing initializer '/mlp_norm/norm_2/Constant_output_0_quantized'. It is not used by any node and should be removed from the model.[m
+[0;93m2026-10-02 15:51:02.709401925 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 15:51:10.480455059 [W:onnxruntime:Default, qnn_backend_manager.cc:318 operator()] Using existing ADSP_LIBRARY_PATH setting of /home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn;/usr/lib/rfsa/adsp;/dsp, which may cause the HTP backend to fail.[m
+[0;93m2026-10-02 15:51:10.632432148 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 15:51:10.632593547 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+[0;93m2026-10-02 15:51:12.693756952 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `Transpose_token_2926` of type `Transpose` with error code 3110
+[m
+[0;93m2026-10-02 15:51:12.698755636 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_1/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:12.703722863 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `Transpose_token_2928` of type `Transpose` with error code 3110
+[m
+[0;93m2026-10-02 15:51:12.706589818 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_1/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:12.725436427 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_1/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:12.728256979 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_1/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:13.434225189 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_2/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:13.437105946 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_2/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:13.456887878 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_2/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:13.459742959 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_2/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:14.754898432 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_4/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:14.757782470 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_4/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:14.779886226 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_4/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:14.782759171 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_4/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:15.347476690 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_5/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:15.350324584 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_5/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:15.369548051 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_5/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:15.372419121 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_5/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:16.647495748 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_7/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:16.650323487 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_7/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:16.670442956 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_7/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:16.673269809 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_7/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:17.366734306 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_8/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:17.369609907 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_8/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:17.392824290 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_8/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:17.395707391 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_8/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:18.679664144 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_10/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:18.682536204 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_10/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:18.704483352 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_10/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:18.707317601 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_10/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:19.529636362 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_11/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:19.532503109 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_11/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:19.552612787 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_11/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:19.555478909 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_11/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:21.234978629 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_13/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:21.237827148 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_13/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:21.261242825 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_13/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:21.264111864 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_13/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:21.828131862 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_14/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:21.831043555 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_14/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:21.852564524 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_14/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:21.855448094 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_14/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:23.005748089 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_16/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:23.008605150 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_16/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:23.029834621 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_16/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:23.032715274 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_16/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:23.605413793 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_17/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:23.608268509 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_17/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:23.630621889 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_17/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:23.633487491 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_17/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:25.050928408 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_19/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:25.053801301 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_19/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:25.072678221 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_19/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:25.075578249 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_19/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:25.645391531 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_20/Mul_1` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:25.648268070 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_20/Mul` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:25.668081823 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_20/Mul_3` of type `ElementWiseMultiply` with error code 3110
+[m
+[0;93m2026-10-02 15:51:25.670930967 [W:onnxruntime:, qnn_model_wrapper.cc:511 CreateQnnNode] QNN.backendValidateOpConfig() failed for node `/attention_context_20/Mul_2` of type `ElementWiseMultiply` with error code 3110
+[m
+[1;31m2026-10-02 15:51:27.297515023 [E:onnxruntime:, qnn_execution_provider.cc:2136 GetCapabilityImpl] Unsupported nodes in QNN EP: { name: /attention_context_1/Mul_1, type: Mul }{ name: /attention_context_1/Mul, type: Mul }{ name: /attention_context_1/Mul_3, type: Mul }{ name: /attention_context_1/Mul_2, type: Mul }{ name: /attention_context_2/Mul_1, type: Mul }{ name: /attention_context_2/Mul, type: Mul }{ name: /attention_context_2/Mul_3, type: Mul }{ name: /attention_context_2/Mul_2, type: Mul }{ name: /attention_context_4/Mul_1, type: Mul }{ name: /attention_context_4/Mul, type: Mul }{ name: /attention_context_4/Mul_3, type: Mul }{ name: /attention_context_4/Mul_2, type: Mul }{ name: /attention_context_5/Mul_1, type: Mul }{ name: /attention_context_5/Mul, type: Mul }{ name: /attention_context_5/Mul_3, type: Mul }{ name: /attention_context_5/Mul_2, type: Mul }{ name: /attention_context_7/Mul_1, type: Mul }{ name: /attention_context_7/Mul, type: Mul }{ name: /attention_context_7/Mul_3, type: Mul }{ name: /attention_context_7/Mul_2, type: Mul }{ name: /attention_context_8/Mul_1, type: Mul }{ name: /attention_context_8/Mul, type: Mul }{ name: /attention_context_8/Mul_3, type: Mul }{ name: /attention_context_8/Mul_2, type: Mul }{ name: /attention_context_10/Mul_1, type: Mul }{ name: /attention_context_10/Mul, type: Mul }{ name: /attention_context_10/Mul_3, type: Mul }{ name: /attention_context_10/Mul_2, type: Mul }{ name: /attention_context_11/Mul_1, type: Mul }{ name: /attention_context_11/Mul, type: Mul }{ name: /attention_context_11/Mul_3, type: Mul }{ name: /attention_context_11/Mul_2, type: Mul }{ name: /attention_context_13/Mul_1, type: Mul }{ name: /attention_context_13/Mul, type: Mul }{ name: /attention_context_13/Mul_3, type: Mul }{ name: /attention_context_13/Mul_2, type: Mul }{ name: /attention_context_14/Mul_1, type: Mul }{ name: /attention_context_14/Mul, type: Mul }{ name: /attention_context_14/Mul_3, type: Mul }{ name: /attention_context_14/Mul_2, type: Mul }{ name: /attention_context_16/Mul_1, type: Mul }{ name: /attention_context_16/Mul, type: Mul }{ name: /attention_context_16/Mul_3, type: Mul }{ name: /attention_context_16/Mul_2, type: Mul }{ name: /attention_context_17/Mul_1, type: Mul }{ name: /attention_context_17/Mul, type: Mul }{ name: /attention_context_17/Mul_3, type: Mul }{ name: /attention_context_17/Mul_2, type: Mul }{ name: /attention_context_19/Mul_1, type: Mul }{ name: /attention_context_19/Mul, type: Mul }{ name: /attention_context_19/Mul_3, type: Mul }{ name: /attention_context_19/Mul_2, type: Mul }{ name: /attention_context_20/Mul_1, type: Mul }{ name: /attention_context_20/Mul, type: Mul }{ name: /attention_context_20/Mul_3, type: Mul }{ name: /attention_context_20/Mul_2, type: Mul }{ name: Transpose_token_2926, type: Transpose }{ name: Transpose_token_2928, type: Transpose }[m
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+ # LIBNATIVE: No alternate configuration present in libnative_tls.conf or from LIBNATIVE_CONFIG environment variable - using default thread-local behavior.
+Starting stage: Graph Preparation Initializing
+Completed stage: Graph Preparation Initializing (3868 us)
+Starting stage: Graph Optimizations
+Completed stage: Graph Optimizations (161313610 us)
+Starting stage: Post Graph Optimization
+Completed stage: Post Graph Optimization (13632226 us)
+Starting stage: Graph Sequencing for Target
+ [                                                  ]   0% [#                                                 ]   2% [##                                                ]   4% [###                                               ]   6% [####                                              ]   8% [#####                                             ]  10% [######                                            ]  12% [#######                                           ]  14% [########                                          ]  16% [#########                                         ]  18% [##########                                        ]  20% [###########                                       ]  22% [############                                      ]  24% [#############                                     ]  26% [##############                                    ]  28% [###############                                   ]  30% [################                                  ]  32% [#################                                 ]  34% [##################                                ]  36% [###################                               ]  38% [####################                              ]  40% [#####################                             ]  42% [######################                            ]  44% [#######################                           ]  46% [########################                          ]  48% [#########################                         ]  50% [##########################                        ]  52% [###########################                       ]  54% [############################                      ]  56% [#############################                     ]  58% [##############################                    ]  60% [###############################                   ]  62% [################################                  ]  64% [#################################                 ]  66% [##################################                ]  68% [###################################               ]  70% [####################################              ]  72% [#####################################             ]  74% [######################################            ]  76% [#######################################           ]  78% [########################################          ]  80% [#########################################         ]  82% [##########################################        ]  84% [###########################################       ]  86% [############################################      ]  88% [#############################################     ]  90% [##############################################    ]  92% [###############################################   ]  94% [################################################  ]  96% [################################################# ]  98% [##################################################] 100%
+Completed stage: Graph Sequencing for Target (493419641 us)
+Starting stage: VTCM Allocation
+Completed stage: VTCM Allocation (124815435 us)
+Starting stage: Parallelization Optimization
+Completed stage: Parallelization Optimization (39419047 us)
+Starting stage: Finalizing Graph Sequence
+
+====== DDR bandwidth summary ======
+spill_bytes=3467986944
+fill_bytes=5574539264
+write_total_bytes=3837250048
+read_total_bytes=6067377152
+
+Completed stage: Finalizing Graph Sequence (138292988 us)
+Starting stage: Completion
+Completed stage: Completion (1234102 us)
+{"bucket": 768, "cache_hit": false, "cache_path": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx", "event": "bucket_ready", "phase": "prepare", "seconds": 1191.820535502}
+{"bucket": 768, "event": "bucket_start", "phase": "reload"}
+[0;93m2026-10-02 16:12:15.243026492 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 16:12:15.510255637 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 16:12:15.510599333 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+{"bucket": 768, "cache_hit": true, "cache_path": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx", "event": "bucket_ready", "phase": "reload", "seconds": 9.749721705000411}
+{"artifact_verification_seconds": 1.1023155650000263, "checkpoint_sha256": "9d628fd971b700382ac6f65920a86f149777b2e748e0c955fb3b19695aa8f204", "event": "complete", "graph_sha256": {"768": "a3ba4ac988f726d61d06543e723612e63c3047fe53d9133b8a7b5858a7365003"}, "manifest": "/home/ubuntu/laya-service/.work/features32_precision16_768_corrected/manifest.json", "manifest_sha256": "d9014ec1c5b5558323da270492a83313492b9b0405b95864966503f04774baae", "model_dir": "/home/ubuntu/laya-service/models/multilingual", "prepare": {"buckets": [{"bucket": 768, "cache_hit": false, "cache_path": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx", "event": "bucket_ready", "phase": "prepare", "seconds": 1191.820535502}], "stats": {"backend_fingerprint": {"backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so", "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182", "cpu_ep_fallback": false, "htp_arch": 68, "onnxruntime": "1.30.0", "onnxruntime_qnn": "2.5.0", "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39", "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so", "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85", "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so", "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23"}, "bucket_calls": {}, "context_cache_enabled": true, "context_cache_errors": 0, "context_cache_hits": 0, "context_cache_misses": 1, "context_cache_paths": {"768": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx"}, "context_cache_writes": 1, "correction_backend_verified_buckets": [768], "cpu_fallbacks": 0, "npu_calls": 0, "session_creations": 1, "session_evictions": 0, "zero_pad_embeddings": true}}, "reload": {"buckets": [{"bucket": 768, "cache_hit": true, "cache_path": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx", "event": "bucket_ready", "phase": "reload", "seconds": 9.749721705000411}], "stats": {"backend_fingerprint": {"backend_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtp.so", "backend_sha256": "2d036a256fd3d900500056d410507017527b7ddfb3599f89e1be2f27c71a7182", "cpu_ep_fallback": false, "htp_arch": 68, "onnxruntime": "1.30.0", "onnxruntime_qnn": "2.5.0", "platform": "Linux-6.8.0-1051-qcom-aarch64-with-glibc2.39", "skel_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Skel.so", "skel_sha256": "23257c721411da2d758a4757c80a14999acfebdec30916c1e7330f85c7b77d85", "stub_path": "/home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn/libQnnHtpV68Stub.so", "stub_sha256": "737b5bb0c1f51fef665c41f35fecae713ca8d2456a45c229b2cef7c299f4db23"}, "bucket_calls": {}, "context_cache_enabled": true, "context_cache_errors": 0, "context_cache_hits": 1, "context_cache_misses": 0, "context_cache_paths": {"768": "/home/ubuntu/laya-service/.work/one-percent-context-cache/backbone_768_a18a3479717db19acb4f839174d2e7c540cd33fde30f14d8df83d27bac545857.onnx"}, "context_cache_writes": 0, "correction_backend_verified_buckets": [768], "cpu_fallbacks": 0, "npu_calls": 0, "session_creations": 1, "session_evictions": 0, "zero_pad_embeddings": true}}, "total_seconds": 1278.1966438149993}
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc
+	Command being timed: ".venv/bin/python npu/compile_contexts.py --manifest /home/ubuntu/laya-service/.work/features32_precision16_768_corrected/manifest.json --verify-reload"
+	User time (seconds): 1127.70
+	System time (seconds): 62.96
+	Percent of CPU this job got: 92%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 21:25.39
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6858904
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 581843
+	Minor (reclaiming a frame) page faults: 7864787
+	Voluntary context switches: 597001
+	Involuntary context switches: 57669
+	Swaps: 0
+	File system inputs: 14226496
+	File system outputs: 710256
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading laya_npu; 16 cases; 4 CPU threads
+[0;93m2026-10-02 16:12:53.339752715 [W:onnxruntime:, qnn_execution_provider.cc:840 QnnEp] File mapped weights feature is only available on Windows arm64 devices for QNN API versions >= 2.32. Feature will be disabled by default[m
+[0;93m2026-10-02 16:12:53.498887151 [W:onnxruntime:Default, qnn_backend_manager.cc:318 operator()] Using existing ADSP_LIBRARY_PATH setting of /home/ubuntu/laya-service/.venv/lib/python3.12/site-packages/onnxruntime_qnn;/usr/lib/rfsa/adsp;/dsp, which may cause the HTP backend to fail.[m
+[0;93m2026-10-02 16:12:53.654731345 [W:onnxruntime:, qnn_backend_manager.cc:2011 SetupBackend] Unable to get platform info: Failed to get HTP arch.[m
+[1;31m2026-10-02 16:12:53.654866397 [E:onnxruntime:, qnn_execution_provider.cc:3204 CreateHtpPowerConfigId] Unable to set HTP power configurations.[m
+[1/16] row=1 agent_trace_observability 8457.9 ms
+[2/16] row=26 agent_trace_observability 8436.4 ms
+[3/16] row=51 agent_trace_observability 8517.7 ms
+[4/16] row=76 agent_trace_observability 8488.2 ms
+[5/16] row=101 customer_service 8857.1 ms
+[6/16] row=126 customer_service 9081.2 ms
+[7/16] row=151 customer_service 9448.4 ms
+[8/16] row=176 customer_service 8902.4 ms
+[9/16] row=201 invoice_processing 8857.9 ms
+[10/16] row=226 invoice_processing 8768.2 ms
+[11/16] row=251 invoice_processing 8843.9 ms
+[12/16] row=276 invoice_processing 8922.6 ms
+[13/16] row=301 security_incidents 8762.6 ms
+[14/16] row=326 security_incidents 8669.8 ms
+[15/16] row=351 security_incidents 8736.8 ms
+[16/16] row=376 security_incidents 8764.9 ms
+{
+  "cases": 16,
+  "complete_public_split": false,
+  "selected_cases_pass": true,
+  "full_public_split_pass": false,
+  "overall": {
+    "decisions": 80,
+    "decision_mismatches": 0,
+    "decision_error_percent": 0.0,
+    "argmax_mismatches": 0,
+    "argmax_error_percent": 0,
+    "total_variation": {
+      "count": 80,
+      "mean": 0.005770128628288788,
+      "p50": 0.003999795020497967,
+      "p95": 0.014512485748574864,
+      "max": 0.045704570457045714
+    },
+    "probability_mae": {
+      "count": 80,
+      "mean": 0.003412663467826636,
+      "p50": 0.002165655065506562,
+      "p95": 0.012251919491949214,
+      "max": 0.018281828182818285
+    },
+    "max_probability_error": {
+      "count": 80,
+      "mean": 0.005555337233878377,
+      "p50": 0.003749815018498137,
+      "p95": 0.014512485748574867,
+      "max": 0.04470447044704473
+    },
+    "noul_abs_error": {
+      "count": 24,
+      "mean": 0.004437500000000003,
+      "p50": 0.002850000000000019,
+      "p95": 0.012384999999999967,
+      "max": 0.012499999999999956
+    },
+    "score_abs_error": {
+      "count": 32,
+      "mean": 0.006765625000000039,
+      "p50": 0.005750000000000033,
+      "p95": 0.02137000000000014,
+      "max": 0.026699999999999946
+    },
+    "score_normalized_abs_error": {
+      "count": 32,
+      "mean": 0.0022098958333333463,
+      "p50": 0.0018000000000000238,
+      "p95": 0.007123333333333379,
+      "max": 0.008899999999999983
+    },
+    "confidence_abs_error": {
+      "count": 80,
+      "mean": 0.004197499999999999,
+      "p50": 0.0023000000000000034,
+      "p95": 0.012504999999999955,
+      "max": 0.0354000000000001
+    },
+    "action_probability_abs_error": {
+      "count": 80,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    }
+  }
+}
+Report: .work/features32_precision16_768_corrected/npu-dev.json; per-case evidence: .work/features32_precision16_768_corrected/npu-dev.cases.jsonl
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:38:dummy call to rpcmem_init, rpcmem APIs will be used from libxdsprpc
+/local/mnt/workspace/mlg_user_admin/QAIRT/SRC/SNPE_SRC/avante-tools/prebuilt/dsp/hexagon-sdk-5.5.5/ipc/fastrpc/rpcmem/src/rpcmem_android.c:42:dummy call to rpcmem_deinit, rpcmem APIs will be used from libxdsprpc

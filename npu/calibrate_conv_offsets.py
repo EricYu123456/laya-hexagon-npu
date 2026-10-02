@@ -386,6 +386,8 @@ def apply(args):
                   'calibration_inputs': manifest['calibration_inputs'], 'shape_validation': result['shape_validation'],
                   'corrected_convs': len(rounding), 'bias_rounding': rounding,
                   'warning': 'Backend-specific HTP correction changes CPU semantics. Revalidate full-model fidelity on HTP; per-Conv output QDQ uncertainty is up to one output step.'}
+    if 'calibration_reuse' in result:
+        provenance['calibration_reuse'] = result['calibration_reuse']
     if deployment:
         provenance['source_manifest_sha256'] = deployment['source_manifest_sha256']
     write_json(target.with_suffix('.offsets.json'), provenance)
