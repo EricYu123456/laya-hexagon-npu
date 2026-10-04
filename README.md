@@ -1,4 +1,4 @@
-# Laya on Qualcomm Hexagon NPU (Rubik Pi 3)
+# Laya on Qualcomm Hexagon NPU (Rubik Pi 3
 
 [![Qualcomm Hexagon](https://img.shields.io/badge/Hardware-Hexagon%20HTP%20V68-orange.svg)](#architecture)
 [![ONNX Runtime QNN](https://img.shields.io/badge/Runtime-ONNX%20Runtime%20QNN%202.5.0-blue.svg)](#quickstart-guide)
